@@ -1,0 +1,1806 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const packs = [
+  {
+    id: 'pack-barra',
+    name: 'Barra & Terraza',
+    popular: false,
+    price: 290,
+    originalPrice: 340,
+    savings: 50,
+    period: 'pago único de equipamiento',
+    desc: 'La configuración ideal para locales dinámicos centrados en barra, mesas altas y terraza donde la rotación de clientes es continua.',
+    features: [
+      '1 Expositor de nogal macizo para barra / caja',
+      '50 Posavasos inteligentes NFC impermeables',
+      '10 Pegatinas QR selladas en resina epoxi',
+      'Configuración e integración con Google Maps',
+      'Soporte técnico y sustitución de hardware 2 años'
+    ],
+    ctaText: 'Solicitar Pack Barra & Terraza',
+    customizerData: {
+      mesas: 0,
+      expositores: 1,
+      tarjetas: 0,
+      posavasos: 50,
+      pegatinas: 10,
+      seo: false,
+      web: false
+    }
+  },
+  {
+    id: 'pack-sala',
+    name: 'Restaurante Sala',
+    popular: true,
+    price: 890,
+    originalPrice: 1150,
+    savings: 260,
+    period: 'pago único equipamiento + regalo digital',
+    desc: 'La solución probada para restaurantes de 10 a 20 mesas. Equipa tu sala con la pieza noble de entrega de cuenta y empodera a tu equipo.',
+    features: [
+      '12 Portacuentas en piel suave y placa de titanio',
+      '2 Expositores de nogal para recepción y barra',
+      '5 Tarjetas NFC de bolsillo para el equipo de sala',
+      '1er mes de SEO Local en Google Maps incluido (Regalo)',
+      'Grabado láser de logo corporativo personalizado',
+      'Garantía premium de hardware y chips 2 años'
+    ],
+    ctaText: 'Solicitar Pack Restaurante Sala',
+    customizerData: {
+      mesas: 12,
+      expositores: 2,
+      tarjetas: 5,
+      posavasos: 0,
+      pegatinas: 0,
+      seo: true,
+      web: false
+    }
+  },
+  {
+    id: 'pack-360',
+    name: 'Digitalización 360°',
+    popular: false,
+    price: 1790,
+    originalPrice: 2250,
+    savings: 460,
+    period: 'equipamiento completo + web + SEO',
+    desc: 'Todo el ecosistema físico de sala y terraza combinado con una web gastronómica de alta conversión y posicionamiento local estratégico.',
+    features: [
+      '20 Portacuentas en piel y titanio (Sala completa)',
+      '3 Expositores de nogal + 8 Tarjetas NFC de sala',
+      '100 Posavasos inteligentes + 25 Pegatinas QR',
+      'Página Web Gastronómica con carta y reservas',
+      '3 meses de Posicionamiento SEO Local incluidos',
+      'Asesor personal de reputación y ficha de Google'
+    ],
+    ctaText: 'Solicitar Pack Digitalización 360°',
+    customizerData: {
+      mesas: 20,
+      expositores: 3,
+      tarjetas: 8,
+      posavasos: 100,
+      pegatinas: 25,
+      seo: true,
+      web: true
+    }
+  }
+];
+---
+
+<section class={`pricing-section ${className}`} id="precios" aria-label="Precios y configuración de equipamiento TapNova">
+  <div class="pricing-ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="pricing-ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <div class="section-container">
+    <!-- Header Section -->
+    <header class="pricing-header text-center">
+      <h2 class="pricing-main-title font-display">
+        Equipa tu local a tu medida o elige un pack llave en mano.
+      </h2>
+      <p class="pricing-main-sub">
+        Separamos con total claridad el <strong>equipamiento físico en propiedad</strong> (pago único desgravable) de los <strong>servicios de crecimiento digital</strong>. Sin permanencias forzadas.
+      </p>
+
+      <!-- Mode Switcher (Packs vs Customizer) -->
+      <div class="pricing-mode-switcher-container">
+        <div class="pricing-mode-dock" role="tablist" aria-label="Modo de visualización de precios">
+          <button 
+            type="button" 
+            role="tab" 
+            class="mode-btn active" 
+            id="tab-mode-packs"
+            aria-selected="true"
+            aria-controls="view-mode-packs"
+          >
+            <span class="mode-icon" aria-hidden="true">⭐</span>
+            <span>Packs Recomendados</span>
+          </button>
+
+          <button 
+            type="button" 
+            role="tab" 
+            class="mode-btn" 
+            id="tab-mode-customizer"
+            aria-selected="false"
+            aria-controls="view-mode-customizer"
+          >
+            <span class="mode-icon" aria-hidden="true">⚙️</span>
+            <span>Configurador a Medida</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- VIEW 1: CURATED PACKS -->
+    <div class="pricing-view-panel active" id="view-mode-packs" role="tabpanel" aria-labelledby="tab-mode-packs">
+      <div class="packs-grid">
+        {packs.map((pack) => (
+          <article class={`pack-card-shell ${pack.popular ? 'pack-popular' : ''}`}>
+            <div class="pack-card-inner">
+              <!-- Card Header -->
+              <div class="pack-header">
+                <h3 class="pack-title font-display">{pack.name}</h3>
+                <p class="pack-desc">{pack.desc}</p>
+              </div>
+
+              <!-- Price Box -->
+              <div class="pack-price-box">
+                <div class="price-figures">
+                  <span class="currency">€</span>
+                  <span class="amount font-display">{pack.price}</span>
+                  <span class="period">/ {pack.period}</span>
+                </div>
+                <div class="price-savings-row">
+                  <span class="original-price">Antes {pack.originalPrice} €</span>
+                  <span class="savings-chip">Ahorras {pack.savings} € en bundle</span>
+                </div>
+              </div>
+
+              <!-- Features List -->
+              <ul class="pack-features-list">
+                {pack.features.map((feat) => (
+                  <li>
+                    <span class="check-icon" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Actions -->
+              <div class="pack-actions">
+                <a href="#contacto" class={`btn-pack-cta ${pack.popular ? 'btn-solid-white' : 'btn-primary'}`}>
+                  <span>{pack.ctaText}</span>
+                  <span class="btn-icon" aria-hidden="true">→</span>
+                </a>
+
+                <button 
+                  type="button" 
+                  class="btn-customize-link"
+                  data-customizer-trigger={pack.id}
+                  data-customizer-payload={JSON.stringify(pack.customizerData)}
+                >
+                  <span>Ajustar este pack en el configurador</span>
+                  <span aria-hidden="true">⚙️</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Trust Assurance Strip -->
+      <div class="pricing-trust-strip">
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>Factura de equipamiento 100% deducible</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>Garantía de chips y materiales 2 años</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>Sin cuotas obligatorias por el hardware</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: INTERACTIVE CUSTOMIZER -->
+    <div class="pricing-view-panel" id="view-mode-customizer" role="tabpanel" aria-labelledby="tab-mode-customizer">
+      <div class="customizer-layout-grid">
+        
+        <!-- Left Column: Controls -->
+        <div class="customizer-controls-column">
+          
+          <!-- Control Block 1: Portacuentas en Mesa -->
+          <div class="control-card-shell">
+            <div class="control-header">
+              <div class="control-title-row">
+                <span class="tier-indicator" id="portacuentas-tier-label">79 € / ud</span>
+              </div>
+              <h4 class="control-name">Portacuentas en Piel & Titanio</h4>
+              <p class="control-sub">Mueve el selector según el número de mesas que tiene tu restaurante.</p>
+            </div>
+
+            <div class="slider-wrapper">
+              <div class="slider-val-bubble" id="slider-bubble">
+                <span id="bubble-value">12</span> mesas
+              </div>
+              <input 
+                type="range" 
+                min="0" 
+                max="40" 
+                value="12" 
+                step="1"
+                class="custom-slider" 
+                id="input-mesas-slider"
+                aria-label="Número de mesas o portacuentas"
+              />
+              <div class="slider-ticks">
+                <span>0 mesas</span>
+                <span>10 mesas (-13%)</span>
+                <span>20+ mesas (-25%)</span>
+                <span>40 mesas</span>
+              </div>
+            </div>
+
+            <div class="volume-discount-callout" id="volume-discount-notice">
+              <span class="sparkle-icon">✨</span>
+              <span id="discount-notice-text">Descuento por volumen aplicado: -13% en cada unidad (69 €/ud en vez de 79 €).</span>
+            </div>
+          </div>
+
+          <!-- Control Block 2: Secondary Hardware (Steppers & Selectors) -->
+          <div class="control-card-shell">
+            <div class="control-header">
+              <h4 class="control-name">Soportes Físicos para Barra, Sala y Terraza</h4>
+              <p class="control-sub">Añade los elementos adicionales según la distribución de tu local.</p>
+            </div>
+
+            <div class="steppers-grid">
+              <!-- Expositor Nogal -->
+              <div class="stepper-item">
+                <div class="stepper-info">
+                  <strong class="item-name">Expositores de Nogal</strong>
+                  <span class="item-meta">Barra & Caja · 69 € / ud</span>
+                </div>
+                <div class="stepper-control">
+                  <button type="button" class="btn-step" data-stepper="minus" data-target="input-expositores" aria-label="Quitar expositor">−</button>
+                  <input type="number" min="0" max="10" value="2" id="input-expositores" class="stepper-val" readonly aria-label="Cantidad de expositores" />
+                  <button type="button" class="btn-step" data-stepper="plus" data-target="input-expositores" aria-label="Añadir expositor">+</button>
+                </div>
+              </div>
+
+              <!-- Tarjetas NFC -->
+              <div class="stepper-item">
+                <div class="stepper-info">
+                  <strong class="item-name">Tarjetas NFC de Sala</strong>
+                  <span class="item-meta">Para camareros · 15 € / ud</span>
+                </div>
+                <div class="stepper-control">
+                  <button type="button" class="btn-step" data-stepper="minus" data-target="input-tarjetas" aria-label="Quitar tarjeta">−</button>
+                  <input type="number" min="0" max="20" value="4" id="input-tarjetas" class="stepper-val" readonly aria-label="Cantidad de tarjetas" />
+                  <button type="button" class="btn-step" data-stepper="plus" data-target="input-tarjetas" aria-label="Añadir tarjeta">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pack Posavasos & Pegatinas (Pill Toggles) -->
+            <div class="pills-selectors-row">
+              <!-- Posavasos -->
+              <div class="pill-group">
+                <span class="pill-group-label">Posavasos Inteligentes (Terraza / Copas):</span>
+                <div class="pills-choice" id="choice-posavasos" role="radiogroup">
+                  <button type="button" class="btn-pill-opt active" data-value="0" role="radio" aria-checked="true">0 uds</button>
+                  <button type="button" class="btn-pill-opt" data-value="50" role="radio" aria-checked="false">50 uds (+120€)</button>
+                  <button type="button" class="btn-pill-opt" data-value="100" role="radio" aria-checked="false">100 uds (+190€)</button>
+                </div>
+              </div>
+
+              <!-- Pegatinas QR -->
+              <div class="pill-group">
+                <span class="pill-group-label">Pegatinas QR Epoxi (Cartas / Cristales):</span>
+                <div class="pills-choice" id="choice-pegatinas" role="radiogroup">
+                  <button type="button" class="btn-pill-opt active" data-value="0" role="radio" aria-checked="true">0 uds</button>
+                  <button type="button" class="btn-pill-opt" data-value="10" role="radio" aria-checked="false">10 uds (+35€)</button>
+                  <button type="button" class="btn-pill-opt" data-value="25" role="radio" aria-checked="false">25 uds (+65€)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Control Block 3: Digital Growth (Software & Services) -->
+          <div class="control-card-shell">
+            <div class="control-header">
+              <h4 class="control-name">Software & Servicios de Atracción</h4>
+              <p class="control-sub">Impulsa tus visitas con posicionamiento local continuo y web gastronómica.</p>
+            </div>
+
+            <div class="services-toggle-stack">
+              <!-- SEO Local Toggle -->
+              <label class="service-toggle-card">
+                <input type="checkbox" id="toggle-seo-service" class="service-checkbox" checked />
+                <span class="custom-check-marker"></span>
+                <div class="service-text-wrap">
+                  <div class="service-title-row">
+                    <strong>Posicionamiento SEO Local en Google Maps</strong>
+                    <span class="service-cost">89 € / mes</span>
+                  </div>
+                  <p class="service-detail">
+                    Gestión activa de palabras clave locales, auditoría continua de reseñas y reportes mensuales de llamadas recibidas y rutas. Sin permanencia.
+                  </p>
+                </div>
+              </label>
+
+              <!-- Web Gastronómica Toggle -->
+              <label class="service-toggle-card">
+                <input type="checkbox" id="toggle-web-service" class="service-checkbox" />
+                <span class="custom-check-marker"></span>
+                <div class="service-text-wrap">
+                  <div class="service-title-row">
+                    <strong>Página Web Gastronómica con Reservas</strong>
+                    <span class="service-cost">790 € (Pago único)</span>
+                  </div>
+                  <p class="service-detail">
+                    Diseño responsive de alta gama, carta interactiva digital QR y motor de reservas propio sin comisiones por cubierto.
+                  </p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Sticky Live Receipt / Cart Summary -->
+        <div class="customizer-summary-column">
+          <div class="summary-card-shell" id="sticky-summary-shell">
+            <div class="summary-header">
+              <span class="receipt-icon" aria-hidden="true">🧾</span>
+              <h4 class="summary-title font-display">Tu Configuración a Medida</h4>
+              <p class="summary-sub">Presupuesto en tiempo real para tu restaurante.</p>
+            </div>
+
+            <!-- Itemized breakdown -->
+            <div class="summary-breakdown" id="summary-breakdown-list">
+              <!-- Dynamically populated by JS -->
+            </div>
+
+            <!-- Totals Section -->
+            <div class="summary-totals-block">
+              <!-- Hardware Total (One-time) -->
+              <div class="total-row-highlight">
+                <div class="total-label-wrap">
+                  <span class="main-label">Equipamiento Físico</span>
+                  <span class="sub-label">Pago único en propiedad · Activo del local</span>
+                </div>
+                <div class="total-price-wrap">
+                  <span class="total-amount" id="total-hardware-amount">0 €</span>
+                </div>
+              </div>
+
+              <!-- Digital Services Row (Monthly or Project) -->
+              <div class="digital-services-totals" id="digital-totals-block">
+                <!-- Dynamically rendered -->
+              </div>
+
+              <!-- Accumulated Savings -->
+              <div class="savings-alert-box" id="summary-savings-box">
+                <span class="savings-text">Ahorro total aplicado: <strong id="total-savings-amount">0 €</strong></span>
+              </div>
+            </div>
+
+            <!-- Call to Action Button -->
+            <div class="summary-actions">
+              <a 
+                href="#contacto" 
+                class="btn-solid-white btn-submit-configuration" 
+                id="btn-request-configuration"
+              >
+                <span>Solicitar este presupuesto</span>
+                <span class="btn-icon" aria-hidden="true">→</span>
+              </a>
+
+              <a 
+                href="#" 
+                class="whatsapp-quote-link" 
+                id="btn-whatsapp-quote"
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <span>Enviar configuración por WhatsApp</span>
+                <span class="wa-icon" aria-hidden="true">💬</span>
+              </a>
+            </div>
+
+            <!-- Security Assurance -->
+            <div class="summary-guarantee-note">
+              <span>✓ Precios sin IVA · Envío en 48-72h · Prueba de muestra disponible</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    position: relative;
+    padding-top: clamp(5rem, 9vw, 9.5rem);
+    padding-bottom: clamp(5rem, 9vw, 9.5rem);
+    background: transparent;
+    overflow: hidden;
+  }
+
+  /* Atmospheric Background Glows */
+  .pricing-ambient-glow {
+    position: absolute;
+    width: clamp(500px, 60vw, 900px);
+    height: clamp(400px, 45vw, 650px);
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    opacity: 0.18;
+  }
+
+  .glow-top {
+    top: 5%;
+    left: 15%;
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.4) 0%, rgba(223, 145, 247, 0.2) 50%, transparent 70%);
+  }
+
+  .glow-bottom {
+    bottom: 5%;
+    right: 10%;
+    background: radial-gradient(circle, rgba(223, 145, 247, 0.35) 0%, rgba(255, 132, 0, 0.2) 55%, transparent 70%);
+  }
+
+  /* Section Header */
+  .pricing-header {
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .pricing-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px var(--accent-amber);
+  }
+
+  .badge-text {
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .pricing-main-title {
+    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 960px;
+    text-wrap: balance;
+  }
+
+  .pricing-main-sub {
+    font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+
+  .pricing-main-sub strong {
+    color: #ffffff;
+  }
+
+  /* -------------------------------------------------------------------------
+     Mode Switcher (Packs vs Customizer)
+     ------------------------------------------------------------------------- */
+  .pricing-mode-switcher-container {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pricing-mode-dock {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    background: rgba(14, 14, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .mode-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.25s var(--ease-default);
+    cursor: pointer;
+    min-height: 46px;
+    border: none;
+  }
+
+  .mode-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mode-btn.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+  }
+
+  .mode-icon {
+    font-size: 1rem;
+  }
+
+  .mode-tag {
+    font-size: 0.6875rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+  }
+
+  .mode-btn.active .mode-tag {
+    background: rgba(255, 157, 36, 0.16);
+    border-color: rgba(255, 157, 36, 0.35);
+    color: var(--accent-amber);
+  }
+
+  .mode-btn.active .mode-tag.tag-accent {
+    background: rgba(223, 145, 247, 0.16);
+    border-color: rgba(223, 145, 247, 0.35);
+    color: var(--accent-purple);
+  }
+
+  /* -------------------------------------------------------------------------
+     Views Visibility Toggle
+     ------------------------------------------------------------------------- */
+  .pricing-view-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s var(--ease-default), transform 0.4s var(--ease-default);
+  }
+
+  .pricing-view-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* -------------------------------------------------------------------------
+     VIEW 1: PACKS GRID
+     ------------------------------------------------------------------------- */
+  .packs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 3.5rem;
+  }
+
+  @media (min-width: 992px) {
+    .packs-grid {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+    }
+  }
+
+  .pack-card-shell {
+    position: relative;
+    border-radius: clamp(1.75rem, 2.5vw, 2.25rem);
+    background: rgba(14, 14, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s var(--ease-default), border-color 0.3s var(--ease-default), box-shadow 0.3s var(--ease-default);
+  }
+
+  .pack-card-shell:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.75);
+  }
+
+  /* Popular Highlight */
+  .pack-popular {
+    border-color: rgba(255, 157, 36, 0.4);
+    background: linear-gradient(180deg, rgba(26, 20, 16, 0.85) 0%, rgba(14, 14, 18, 0.85) 100%);
+  }
+
+  .popular-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-gradient, linear-gradient(90deg, #feed7a 0%, #ff8400 100%));
+    color: #050505;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 1.25rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(255, 132, 0, 0.35);
+    z-index: 5;
+  }
+
+  .pack-card-inner {
+    padding: clamp(2rem, 3.5vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1.75rem;
+  }
+
+  .pack-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 0.75rem;
+  }
+
+  .badge-amber {
+    background: rgba(255, 157, 36, 0.12);
+    border: 1px solid rgba(255, 157, 36, 0.28);
+    color: var(--accent-amber);
+  }
+
+  .badge-popular {
+    background: rgba(254, 237, 122, 0.12);
+    border: 1px solid rgba(254, 237, 122, 0.35);
+    color: var(--accent-yellow);
+  }
+
+  .badge-purple {
+    background: rgba(223, 145, 247, 0.12);
+    border: 1px solid rgba(223, 145, 247, 0.28);
+    color: var(--accent-purple);
+  }
+
+  .pack-title {
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .pack-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+  }
+
+  /* Price box */
+  .pack-price-box {
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .price-figures {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+
+  .currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .amount {
+    font-size: clamp(2.75rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .period {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .price-savings-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .original-price {
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .savings-chip {
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  /* Features List */
+  .pack-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .pack-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-amber);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  /* Pack Actions */
+  .pack-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: auto;
+  }
+
+  .btn-pack-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-customize-link {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    padding: 0.4rem;
+    transition: color 0.2s ease;
+  }
+
+  .btn-customize-link:hover {
+    color: var(--accent-amber);
+  }
+
+  /* Trust Assurance Strip */
+  .pricing-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: 1.75rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .trust-icon {
+    color: var(--accent-amber);
+    font-weight: bold;
+  }
+
+  /* -------------------------------------------------------------------------
+     VIEW 2: INTERACTIVE CUSTOMIZER
+     ------------------------------------------------------------------------- */
+  .customizer-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 3vw, 3.5rem);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .customizer-layout-grid {
+      grid-template-columns: 1.35fr 1fr;
+    }
+  }
+
+  .control-card-shell {
+    background: rgba(14, 14, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: 1.75rem;
+  }
+
+  .control-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .control-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.35rem;
+  }
+
+  .zone-pill {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-amber);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.1);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+  }
+
+  .pill-purple {
+    color: var(--accent-purple);
+    background: rgba(223, 145, 247, 0.1);
+    border-color: rgba(223, 145, 247, 0.25);
+  }
+
+  .tier-indicator {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-feature-settings: "tnum";
+  }
+
+  .control-name {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+  }
+
+  .control-sub {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  /* Custom Slider Styling */
+  .slider-wrapper {
+    position: relative;
+    padding: 1.5rem 0 0.75rem;
+  }
+
+  .slider-val-bubble {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .slider-val-bubble span {
+    color: var(--accent-amber);
+    font-size: 1.5rem;
+  }
+
+  .custom-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--accent-amber);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .custom-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 14px var(--accent-amber);
+  }
+
+  .slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.65rem;
+  }
+
+  .volume-discount-callout {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.2);
+    font-size: 0.8125rem;
+    color: var(--accent-amber);
+  }
+
+  /* Steppers Grid */
+  .steppers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .steppers-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .stepper-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.15rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-md);
+  }
+
+  .stepper-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .item-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .item-meta {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+  }
+
+  .stepper-control {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    padding: 0.2rem;
+  }
+
+  .btn-step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .btn-step:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .stepper-val {
+    width: 28px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+  }
+
+  /* Pill Choice Selectors */
+  .pills-selectors-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .pill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pill-group-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .pills-choice {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-pill-opt {
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-pill-opt:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+  }
+
+  .btn-pill-opt.active {
+    background: rgba(255, 157, 36, 0.15);
+    border-color: rgba(255, 157, 36, 0.35);
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  /* Service Checkboxes */
+  .services-toggle-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .service-toggle-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .service-toggle-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .service-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .custom-check-marker {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .service-checkbox:checked + .custom-check-marker {
+    background: var(--accent-purple);
+    border-color: var(--accent-purple);
+  }
+
+  .service-checkbox:checked + .custom-check-marker::after {
+    content: "✓";
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #050505;
+  }
+
+  .service-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .service-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #ffffff;
+  }
+
+  .service-cost {
+    font-weight: 700;
+    color: var(--accent-purple);
+    font-size: 0.9rem;
+  }
+
+  .service-detail {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* -------------------------------------------------------------------------
+     Summary Sticky Column (Live Receipt)
+     ------------------------------------------------------------------------- */
+  .customizer-summary-column {
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    .summary-card-shell {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+
+  .summary-card-shell {
+    background: #09090c;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: clamp(1.75rem, 2.5vw, 2.25rem);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .summary-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .receipt-icon {
+    font-size: 1.5rem;
+  }
+
+  .summary-title {
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .summary-sub {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+  }
+
+  /* Breakdown List */
+  .summary-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 240px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .breakdown-row .row-name {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .breakdown-row .row-qty {
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  .breakdown-row .row-price {
+    font-weight: 600;
+    color: #ffffff;
+    font-feature-settings: "tnum";
+  }
+
+  /* Totals Block */
+  .summary-totals-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .total-row-highlight {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .total-label-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .main-label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .sub-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+  }
+
+  .total-amount {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-feature-settings: "tnum";
+  }
+
+  .digital-services-totals {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.85rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(223, 145, 247, 0.3);
+    border-radius: var(--radius-md);
+  }
+
+  .digital-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: var(--accent-purple);
+  }
+
+  .savings-alert-box {
+    padding: 0.65rem 0.95rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 157, 36, 0.1);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+    color: var(--accent-amber);
+    font-size: 0.8125rem;
+    text-align: center;
+  }
+
+  /* Summary Actions */
+  .summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-submit-configuration {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .whatsapp-quote-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid rgba(37, 211, 102, 0.25);
+    color: #25d366;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .whatsapp-quote-link:hover {
+    background: rgba(37, 211, 102, 0.18);
+    border-color: rgba(37, 211, 102, 0.45);
+  }
+
+  .summary-guarantee-note {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* -------------------------------------------------------------------------
+     Mobile Adaptations (< 1024px & 360-430px)
+     ------------------------------------------------------------------------- */
+  @media (max-width: 1023px) {
+    .pricing-mode-dock {
+      width: 100%;
+      justify-content: center;
+      border-radius: var(--radius-lg);
+    }
+
+    .mode-btn {
+      padding: 0.55rem 0.95rem;
+      font-size: 0.8125rem;
+    }
+
+    .mode-tag {
+      display: none;
+    }
+
+    .pack-card-inner {
+      padding: 1.75rem 1.5rem;
+    }
+
+    .control-card-shell,
+    .summary-card-shell {
+      padding: 1.5rem 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .pills-choice {
+      flex-direction: column;
+    }
+
+    .btn-pill-opt {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  function initPricingSection() {
+    const section = document.getElementById('precios');
+    if (!section || section.dataset.initialized) return;
+    section.dataset.initialized = 'true';
+
+    // Tabs mode switching
+    const tabPacks = document.getElementById('tab-mode-packs');
+    const tabCustomizer = document.getElementById('tab-mode-customizer');
+    const viewPacks = document.getElementById('view-mode-packs');
+    const viewCustomizer = document.getElementById('view-mode-customizer');
+
+    function setViewMode(mode: 'packs' | 'customizer') {
+      const isPacks = mode === 'packs';
+
+      tabPacks?.classList.toggle('active', isPacks);
+      tabPacks?.setAttribute('aria-selected', isPacks ? 'true' : 'false');
+      viewPacks?.classList.toggle('active', isPacks);
+
+      tabCustomizer?.classList.toggle('active', !isPacks);
+      tabCustomizer?.setAttribute('aria-selected', !isPacks ? 'true' : 'false');
+      viewCustomizer?.classList.toggle('active', !isPacks);
+    }
+
+    tabPacks?.addEventListener('click', () => setViewMode('packs'));
+    tabCustomizer?.addEventListener('click', () => setViewMode('customizer'));
+
+    // Customizer Elements
+    const sliderMesas = document.getElementById('input-mesas-slider') as HTMLInputElement | null;
+    const bubbleValue = document.getElementById('bubble-value');
+    const tierLabel = document.getElementById('portacuentas-tier-label');
+    const discountNoticeText = document.getElementById('discount-notice-text');
+
+    const inputExpositores = document.getElementById('input-expositores') as HTMLInputElement | null;
+    const inputTarjetas = document.getElementById('input-tarjetas') as HTMLInputElement | null;
+
+    const choicePosavasos = document.getElementById('choice-posavasos');
+    const choicePegatinas = document.getElementById('choice-pegatinas');
+
+    const toggleSeo = document.getElementById('toggle-seo-service') as HTMLInputElement | null;
+    const toggleWeb = document.getElementById('toggle-web-service') as HTMLInputElement | null;
+
+    const breakdownContainer = document.getElementById('summary-breakdown-list');
+    const totalHardwareElem = document.getElementById('total-hardware-amount');
+    const digitalTotalsBlock = document.getElementById('digital-totals-block');
+    const savingsElem = document.getElementById('total-savings-amount');
+    const savingsBox = document.getElementById('summary-savings-box');
+    const btnWhatsapp = document.getElementById('btn-whatsapp-quote') as HTMLAnchorElement | null;
+    const btnContact = document.getElementById('btn-request-configuration') as HTMLAnchorElement | null;
+
+    let selectedPosavasos = 0;
+    let selectedPegatinas = 0;
+
+    // Steppers Logic
+    document.querySelectorAll<HTMLButtonElement>('.btn-step').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const action = btn.getAttribute('data-stepper');
+        if (!targetId) return;
+
+        const input = document.getElementById(targetId) as HTMLInputElement | null;
+        if (!input) return;
+
+        let val = parseInt(input.value, 10) || 0;
+        const min = parseInt(input.min, 10) || 0;
+        const max = parseInt(input.max, 10) || 99;
+
+        if (action === 'plus' && val < max) val++;
+        if (action === 'minus' && val > min) val--;
+
+        input.value = val.toString();
+        calculateLiveQuote();
+      });
+    });
+
+    // Pill Selector for Posavasos & Pegatinas
+    function bindPillGroup(container: HTMLElement | null, onSelect: (val: number) => void) {
+      if (!container) return;
+      const btns = container.querySelectorAll<HTMLButtonElement>('.btn-pill-opt');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-checked', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
+          const num = parseInt(btn.getAttribute('data-value') || '0', 10);
+          onSelect(num);
+          calculateLiveQuote();
+        });
+      });
+    }
+
+    bindPillGroup(choicePosavasos, (val) => { selectedPosavasos = val; });
+    bindPillGroup(choicePegatinas, (val) => { selectedPegatinas = val; });
+
+    // Slider Event
+    sliderMesas?.addEventListener('input', () => {
+      calculateLiveQuote();
+    });
+
+    // Toggle Events
+    toggleSeo?.addEventListener('change', calculateLiveQuote);
+    toggleWeb?.addEventListener('change', calculateLiveQuote);
+
+    // Main Live Pricing Calculation Logic
+    function calculateLiveQuote() {
+      const mesas = parseInt(sliderMesas?.value || '0', 10);
+      const expositores = parseInt(inputExpositores?.value || '0', 10);
+      const tarjetas = parseInt(inputTarjetas?.value || '0', 10);
+      const hasSeo = !!toggleSeo?.checked;
+      const hasWeb = !!toggleWeb?.checked;
+
+      // Update Slider Display
+      if (bubbleValue) bubbleValue.textContent = mesas.toString();
+
+      // Determine Portacuentas Unit Price & Tier
+      let unitPrice = 79;
+      let originalUnitPrice = 79;
+      let tierText = '79 € / ud';
+      let noticeMsg = 'Precio base individual (1 a 9 mesas). A partir de 10 mesas obtienes -13% de descuento.';
+
+      if (mesas >= 20) {
+        unitPrice = 59;
+        tierText = '59 € / ud (-25% dto)';
+        noticeMsg = '¡Nivel Sala Grande activado! -25% de descuento por volumen (ahorras 20 € en cada portacuentas).';
+      } else if (mesas >= 10) {
+        unitPrice = 69;
+        tierText = '69 € / ud (-13% dto)';
+        noticeMsg = 'Descuento por volumen aplicado: -13% en cada unidad (ahorras 10 € en cada portacuentas).';
+      }
+
+      if (tierLabel) tierLabel.textContent = tierText;
+      if (discountNoticeText) discountNoticeText.textContent = noticeMsg;
+
+      // Price Calculations
+      const costPortacuentas = mesas * unitPrice;
+      const regularPortacuentas = mesas * originalUnitPrice;
+      const savingsPortacuentas = regularPortacuentas - costPortacuentas;
+
+      const costExpositores = expositores * 69;
+      const costTarjetas = tarjetas * 15;
+
+      let costPosavasos = 0;
+      if (selectedPosavasos === 50) costPosavasos = 120;
+      if (selectedPosavasos === 100) costPosavasos = 190;
+
+      let costPegatinas = 0;
+      if (selectedPegatinas === 10) costPegatinas = 35;
+      if (selectedPegatinas === 25) costPegatinas = 65;
+
+      const totalHardware = costPortacuentas + costExpositores + costTarjetas + costPosavasos + costPegatinas;
+
+      // Update Breakdown DOM
+      if (breakdownContainer) {
+        const items = [];
+
+        if (mesas > 0) {
+          items.push(`
+            <div class="breakdown-row">
+              <span class="row-name"><span class="row-qty">${mesas}x</span> Portacuentas Piel & Titanio</span>
+              <span class="row-price">${costPortacuentas} €</span>
+            </div>
+          `);
+        }
+
+        if (expositores > 0) {
+          items.push(`
+            <div class="breakdown-row">
+              <span class="row-name"><span class="row-qty">${expositores}x</span> Expositor Nogal Macizo</span>
+              <span class="row-price">${costExpositores} €</span>
+            </div>
+          `);
+        }
+
+        if (tarjetas > 0) {
+          items.push(`
+            <div class="breakdown-row">
+              <span class="row-name"><span class="row-qty">${tarjetas}x</span> Tarjetas NFC de Sala</span>
+              <span class="row-price">${costTarjetas} €</span>
+            </div>
+          `);
+        }
+
+        if (selectedPosavasos > 0) {
+          items.push(`
+            <div class="breakdown-row">
+              <span class="row-name"><span class="row-qty">${selectedPosavasos}x</span> Posavasos Inteligentes</span>
+              <span class="row-price">${costPosavasos} €</span>
+            </div>
+          `);
+        }
+
+        if (selectedPegatinas > 0) {
+          items.push(`
+            <div class="breakdown-row">
+              <span class="row-name"><span class="row-qty">${selectedPegatinas}x</span> Pegatinas QR Epoxi</span>
+              <span class="row-price">${costPegatinas} €</span>
+            </div>
+          `);
+        }
+
+        if (items.length === 0) {
+          breakdownContainer.innerHTML = `<div class="breakdown-row"><span class="row-name">Selecciona al menos un soporte físico</span><span class="row-price">0 €</span></div>`;
+        } else {
+          breakdownContainer.innerHTML = items.join('');
+        }
+      }
+
+      // Update Totals
+      if (totalHardwareElem) totalHardwareElem.textContent = `${totalHardware.toLocaleString('es-ES')} €`;
+
+      // Update Digital Block
+      if (digitalTotalsBlock) {
+        const digitalLines = [];
+        if (hasSeo) {
+          digitalLines.push(`
+            <div class="digital-line">
+              <span>SEO Local Google Maps</span>
+              <strong>89 € / mes</strong>
+            </div>
+          `);
+        }
+        if (hasWeb) {
+          digitalLines.push(`
+            <div class="digital-line">
+              <span>Web Gastronómica con Reservas</span>
+              <strong>790 € (Pago único)</strong>
+            </div>
+          `);
+        }
+
+        if (digitalLines.length > 0) {
+          digitalTotalsBlock.style.display = 'flex';
+          digitalTotalsBlock.innerHTML = digitalLines.join('');
+        } else {
+          digitalTotalsBlock.style.display = 'none';
+        }
+      }
+
+      // Update Savings
+      if (savingsElem && savingsBox) {
+        if (savingsPortacuentas > 0) {
+          savingsBox.style.display = 'block';
+          savingsElem.textContent = `${savingsPortacuentas} €`;
+        } else {
+          savingsBox.style.display = 'none';
+        }
+      }
+
+      // Build WhatsApp Pre-filled message URL
+      if (btnWhatsapp) {
+        const textParts = [
+          `Hola TapNova, he configurado un presupuesto a medida para mi restaurante:`,
+          mesas > 0 ? `- ${mesas} Portacuentas en piel y titanio` : '',
+          expositores > 0 ? `- ${expositores} Expositores de nogal` : '',
+          tarjetas > 0 ? `- ${tarjetas} Tarjetas NFC de sala` : '',
+          selectedPosavasos > 0 ? `- ${selectedPosavasos} Posavasos inteligentes` : '',
+          selectedPegatinas > 0 ? `- ${selectedPegatinas} Pegatinas QR` : '',
+          `*Subtotal Equipamiento:* ${totalHardware} €`,
+          hasSeo ? `*Servicio:* Posicionamiento SEO Local (89 €/mes)` : '',
+          hasWeb ? `*Proyecto:* Página Web Gastronómica (790 €)` : '',
+          `Me gustaría recibir una muestra o formalizar el pedido.`
+        ].filter(Boolean).join('\n');
+
+        btnWhatsapp.href = `https://wa.me/34600000000?text=${encodeURIComponent(textParts)}`;
+      }
+    }
+
+    // Connect "Ajustar este pack en el configurador" buttons
+    document.querySelectorAll<HTMLButtonElement>('[data-customizer-trigger]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rawData = btn.getAttribute('data-customizer-payload');
+        if (!rawData) return;
+
+        try {
+          const data = JSON.parse(rawData);
+          // Set Slider Mesas
+          if (sliderMesas && typeof data.mesas === 'number') {
+            sliderMesas.value = data.mesas.toString();
+          }
+
+          // Set Steppers
+          if (inputExpositores && typeof data.expositores === 'number') {
+            inputExpositores.value = data.expositores.toString();
+          }
+          if (inputTarjetas && typeof data.tarjetas === 'number') {
+            inputTarjetas.value = data.tarjetas.toString();
+          }
+
+          // Set Posavasos
+          if (choicePosavasos && typeof data.posavasos === 'number') {
+            selectedPosavasos = data.posavasos;
+            choicePosavasos.querySelectorAll<HTMLButtonElement>('.btn-pill-opt').forEach(b => {
+              const val = parseInt(b.getAttribute('data-value') || '0', 10);
+              const isActive = val === selectedPosavasos;
+              b.classList.toggle('active', isActive);
+              b.setAttribute('aria-checked', isActive ? 'true' : 'false');
+            });
+          }
+
+          // Set Pegatinas
+          if (choicePegatinas && typeof data.pegatinas === 'number') {
+            selectedPegatinas = data.pegatinas;
+            choicePegatinas.querySelectorAll<HTMLButtonElement>('.btn-pill-opt').forEach(b => {
+              const val = parseInt(b.getAttribute('data-value') || '0', 10);
+              const isActive = val === selectedPegatinas;
+              b.classList.toggle('active', isActive);
+              b.setAttribute('aria-checked', isActive ? 'true' : 'false');
+            });
+          }
+
+          // Set Toggles
+          if (toggleSeo) toggleSeo.checked = !!data.seo;
+          if (toggleWeb) toggleWeb.checked = !!data.web;
+
+          // Switch to customizer tab
+          setViewMode('customizer');
+
+          // Recalculate
+          calculateLiveQuote();
+
+          // Scroll smoothly to customizer
+          viewCustomizer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (err) {
+          console.error('Error preloading customizer data:', err);
+        }
+      });
+    });
+
+    // Initial calculation
+    calculateLiveQuote();
+  }
+
+  // Bind on page load & Astro client navigation
+  initPricingSection();
+  document.addEventListener('astro:page-load', initPricingSection);
+</script>

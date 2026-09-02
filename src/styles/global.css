@@ -1,0 +1,261 @@
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/syne";
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap");
+
+:root {
+  /* Clyde-inspired dark palette */
+  --bg-black: #050505;
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-surface-elevated: #18181c;
+  --bg-surface-light: #f5f5f3;
+
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-on-light: #0d0d0d;
+
+  --accent-amber: #ff9d24;
+  --accent-yellow: #feed7a;
+  --accent-orange: #ff8400;
+  --accent-purple: #df91f7;
+  --accent-magenta: #e056fd;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-light: rgba(0, 0, 0, 0.08);
+
+  --gradient-horizontal: linear-gradient(90deg, #feed7a 0%, #ff8400 50%, #df91f7 100%);
+  --gradient-vertical: linear-gradient(0deg, #feed7a 0%, #ff8400 50%, #df91f7 100%);
+  --gradient-halo: radial-gradient(circle at 45% 45%, rgba(0, 0, 0, 0.96) 20%, rgba(30, 20, 15, 0.45) 58%, rgba(255, 140, 0, 0.35) 86%, rgba(223, 145, 247, 0.45) 100%);
+
+  /* Layout & Spacing */
+  --page-inset: clamp(1.25rem, 4vw, 3.5rem);
+  --section-gap: clamp(4.5rem, 9vw, 10rem);
+  --container-max: clamp(1920px, 88vw, 1360px);
+  --container-hero: clamp(1728px, 93vw, 1560px);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Syne Variable', Georgia, serif;
+
+  /* Easings & Radii */
+  --ease-default: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-black);
+  color: var(--text-primary);
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16.5px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-black);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-width: 320px;
+}
+
+img, picture, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p, li, a {
+  overflow-wrap: break-word;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.section-container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-inset);
+  padding-right: var(--page-inset);
+  width: 100%;
+}
+
+.hero-container {
+  max-width: var(--container-hero);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-inset);
+  padding-right: var(--page-inset);
+  width: 100%;
+}
+
+/* Button with button-in-button icon pattern (scaled for premium presence) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.78rem 1.45rem;
+  padding-right: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s var(--ease-default), border-color 0.3s var(--ease-default), transform 0.2s var(--ease-default);
+  min-height: 48px;
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary .btn-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  transition: transform 0.2s var(--ease-default), background 0.2s var(--ease-default);
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateX(2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-solid-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.82rem 1.55rem;
+  padding-right: 0.75rem;
+  background: #ffffff;
+  color: #050505;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s var(--ease-default), opacity 0.2s var(--ease-default), box-shadow 0.2s var(--ease-default);
+  min-height: 48px;
+}
+
+.btn-solid-white:hover {
+  opacity: 0.94;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.2);
+}
+
+.btn-solid-white:active {
+  transform: scale(0.97);
+}
+
+.btn-solid-white .btn-icon {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  transition: transform 0.2s var(--ease-default);
+}
+
+.btn-solid-white:hover .btn-icon {
+  transform: translateX(2px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent-amber);
+  color: var(--bg-black);
+}
+
+@media (max-width: 639px) {
+  .btn-primary,
+  .btn-solid-white {
+    gap: 0.625rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

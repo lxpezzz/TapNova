@@ -1,0 +1,196 @@
+---
+---
+
+<div class="cookie-banner-wrapper" id="tapnova-cookie-banner" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Consentimiento de cookies">
+  <div class="cookie-banner-card">
+    <div class="cookie-banner-content">
+      <div class="cookie-banner-header">
+        <span class="cookie-emoji" aria-hidden="true">🍪</span>
+        <strong class="cookie-banner-title">Privacidad y Cookies en TapNova</strong>
+      </div>
+      <p class="cookie-banner-desc">
+        Utilizamos cookies técnicas y de rendimiento para garantizar la fluidez de las animaciones y la navegación segura. Puedes aceptar todas, rechazar las no esenciales o consultar los detalles en nuestra <a href="/politica-de-cookies" class="cookie-policy-link">Política de Cookies</a>.
+      </p>
+    </div>
+
+    <div class="cookie-banner-actions">
+      <button type="button" class="btn-solid-white cookie-btn-accept" id="cookie-accept-all">
+        <span>Aceptar todas</span>
+      </button>
+
+      <button type="button" class="cookie-btn-reject" id="cookie-reject-optional">
+        <span>Solo necesarias</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner-wrapper {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    max-width: 480px;
+    width: calc(100% - 3rem);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.97);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+    pointer-events: none;
+  }
+
+  .cookie-banner-wrapper.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .cookie-banner-card {
+    background: rgba(14, 14, 18, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem 1.65rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cookie-banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .cookie-banner-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cookie-emoji {
+    font-size: 1.25rem;
+  }
+
+  .cookie-banner-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .cookie-banner-desc {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .cookie-policy-link {
+    color: var(--accent-amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+  }
+
+  .cookie-policy-link:hover {
+    color: #ffffff;
+  }
+
+  .cookie-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .cookie-btn-accept {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-pill);
+    flex: 1;
+    justify-content: center;
+  }
+
+  .cookie-btn-reject {
+    padding: 0.65rem 1.15rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .cookie-btn-reject:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 639px) {
+    .cookie-banner-wrapper {
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      width: calc(100% - 2rem);
+    }
+
+    .cookie-banner-card {
+      padding: 1.25rem 1.15rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .cookie-banner-actions {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .cookie-btn-accept,
+    .cookie-btn-reject {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  function initCookieConsent() {
+    const banner = document.getElementById('tapnova-cookie-banner');
+    if (!banner || banner.dataset.initialized) return;
+    banner.dataset.initialized = 'true';
+
+    const storedConsent = localStorage.getItem('tapnova_cookie_consent');
+
+    if (!storedConsent) {
+      // Smoothly display after 1 second
+      setTimeout(() => {
+        banner.classList.add('visible');
+        banner.setAttribute('aria-hidden', 'false');
+      }, 1000);
+    }
+
+    const btnAccept = document.getElementById('cookie-accept-all');
+    const btnReject = document.getElementById('cookie-reject-optional');
+
+    function handleConsent(choice: 'accepted' | 'rejected') {
+      localStorage.setItem('tapnova_cookie_consent', choice);
+      banner?.classList.remove('visible');
+      banner?.setAttribute('aria-hidden', 'true');
+    }
+
+    btnAccept?.addEventListener('click', () => handleConsent('accepted'));
+    btnReject?.addEventListener('click', () => handleConsent('rejected'));
+  }
+
+  initCookieConsent();
+  document.addEventListener('astro:page-load', initCookieConsent);
+</script>

@@ -1,0 +1,129 @@
+---
+import { Image } from 'astro:assets';
+import OrganicHalo from './OrganicHalo.astro';
+
+import portacuentasClosedImg from '../assets/products/portacuentas-closed.webp';
+import portacuentasOpenImg from '../assets/products/portacuentas-open.webp';
+
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { class: className = '', id = 'hero-main-product-stage' } = Astro.props;
+---
+
+<div class={`product-stage-container ${className}`} id={id}>
+  <!-- Background Organic Living Membrane Halo -->
+  <OrganicHalo id="stage-organic-halo" />
+
+  <!-- 3D Perspective Stage for Portacuentas -->
+  <div class="product-3d-wrapper" id="product-3d-wrapper">
+    <!-- State A: Closed Portacuentas -->
+    <div class="product-layer layer-closed" id="layer-portacuentas-closed">
+      <Image
+        src={portacuentasClosedImg}
+        alt="Portacuentas inteligente TapNova con QR y NFC cerrado en piel y titanio"
+        width={700}
+        height={700}
+        quality={85}
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="product-img product-img-closed"
+      />
+    </div>
+
+    <!-- State B: Open Portacuentas -->
+    <div class="product-layer layer-open" id="layer-portacuentas-open" aria-hidden="true">
+      <Image
+        src={portacuentasOpenImg}
+        alt="Portacuentas inteligente TapNova abierto revelando placa de titanio con QR y NFC"
+        width={700}
+        height={700}
+        quality={85}
+        loading="lazy"
+        fetchpriority="low"
+        decoding="async"
+        class="product-img product-img-open"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-stage-container {
+    position: relative;
+    width: clamp(380px, 52vw, 840px);
+    height: clamp(380px, 52vw, 840px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    z-index: 10;
+  }
+
+  /* 3D Wrapper that holds closed & open states */
+  .product-3d-wrapper {
+    position: relative;
+    width: 92%;
+    height: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    will-change: transform;
+    z-index: 5;
+  }
+
+  .product-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+    mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 78%, transparent 98%);
+    -webkit-mask-image: radial-gradient(ellipse 48% 48% at 50% 50%, #000 78%, transparent 98%);
+  }
+
+  .layer-closed {
+    opacity: 1;
+    z-index: 2;
+    transform-origin: 30% 50%;
+  }
+
+  .layer-open {
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+    transform-origin: 50% 50%;
+  }
+
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: lighten;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  @media (max-width: 1023px) {
+    .product-stage-container {
+      width: clamp(220px, 72vw, 320px);
+      height: clamp(220px, 72vw, 320px);
+      margin-inline: auto;
+    }
+
+    .layer-closed {
+      display: flex;
+    }
+
+    .layer-open {
+      opacity: 0;
+      pointer-events: none;
+      transform: none;
+    }
+  }
+</style>

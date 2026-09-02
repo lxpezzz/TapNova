@@ -1,0 +1,80 @@
+---
+import { SITE_METADATA } from '../data/siteData';
+import CosmicNebulaBackground from '../components/CosmicNebulaBackground.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_METADATA.title,
+  description = SITE_METADATA.description
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE_METADATA.url).toString();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TapNova",
+  "url": SITE_METADATA.url,
+  "logo": SITE_METADATA.url + "/favicon.svg",
+  "description": description,
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": SITE_METADATA.phone,
+    "contactType": "customer service",
+    "areaServed": "ES",
+    "availableLanguage": "Spanish"
+  },
+  "knowsAbout": [
+    "Hostelería",
+    "Portacuentas inteligentes QR y NFC",
+    "Expositores de diseño para restaurantes",
+    "Tarjetas NFC",
+    "Google Maps y Google Business Profile",
+    "SEO Local para restaurantes"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="TapNova" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="theme-color" content="#050505" />
+    <meta name="color-scheme" content="dark" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <CosmicNebulaBackground />
+    <slot />
+    <CookieBanner />
+  </body>
+</html>

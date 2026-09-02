@@ -1,0 +1,923 @@
+---
+import { Image } from 'astro:assets';
+
+import portacuentasImg from '../assets/showcase/portacuentas-context.webp';
+import expositorImg from '../assets/showcase/expositor-context.webp';
+import tarjetasImg from '../assets/showcase/tarjetas-context.webp';
+import pegatinasImg from '../assets/showcase/pegatinas-context.webp';
+import posavasosImg from '../assets/products/pegatina.webp';
+
+const products = [
+  {
+    id: 'portacuentas',
+    index: '01',
+    tabLabel: 'Portacuentas',
+    zone: 'Zona 01 · La Mesa',
+    glowClass: 'glow-amber',
+    title: 'Donde termina el servicio y nace la reseña de 5 estrellas.',
+    lead: 'El 82% de las valoraciones se pierden porque se piden cuando el cliente ya ha abandonado el local. Entregar la cuenta en una pieza noble de piel y titanio convierte ese instante natural en una valoración verificada antes de levantarse.',
+    image: portacuentasImg,
+    imageAlt: 'Portacuentas inteligente de piel y titanio para mesas de restaurante',
+    specs: [
+      {
+        icon: 'nfc',
+        label: 'Tecnología Dual',
+        value: 'Chip NFC 13.56 MHz bajo el lomo + QR óptico grabado a láser en titanio.'
+      },
+      {
+        icon: 'shield',
+        label: 'Materiales Nobles',
+        value: 'Piel suave de alta resistencia con placa de titanio cepillado antihuellas.'
+      },
+      {
+        icon: 'clock',
+        label: 'Apertura Inmediata',
+        value: 'Apertura directa de la ficha oficial de Google en 2 segundos sin apps.'
+      }
+    ],
+    ctaText: 'Solicitar muestra de portacuentas'
+  },
+  {
+    id: 'expositores',
+    index: '02',
+    tabLabel: 'Expositores',
+    zone: 'Zona 02 · Barra, Recepción & Caja',
+    glowClass: 'glow-purple',
+    title: 'Presencia visual noble para captar reseñas en momentos de espera.',
+    lead: 'Situado a la altura de los ojos en la barra, en caja o en el mostrador de bienvenida. Diseñado para clientes que esperan mesa, toman un aperitivo rápido o abonan la cuenta en el mostrador.',
+    image: expositorImg,
+    imageAlt: 'Expositor de madera de nogal macizo con chip NFC y QR para barra de restaurante',
+    specs: [
+      {
+        icon: 'wood',
+        label: 'Madera de Nogal Macizo',
+        value: 'Bloque macizo mecanizado con acabado al aceite natural ecológico.'
+      },
+      {
+        icon: 'nfc',
+        label: 'NFC de Proximidad',
+        value: 'Antena de campo medio con lectura instantánea a 3-4 cm de distancia.'
+      },
+      {
+        icon: 'eye',
+        label: 'Inclinación Ergonómica',
+        value: 'Ángulo de 65° optimizado para lectura y tap desde taburete o de pie.'
+      }
+    ],
+    ctaText: 'Solicitar muestra de expositor'
+  },
+  {
+    id: 'tarjetas',
+    index: '03',
+    tabLabel: 'Tarjetas NFC',
+    zone: 'Zona 03 · Equipo de Sala & Metres',
+    glowClass: 'glow-purple',
+    title: 'El poder de convertir una felicitación en una reseña al instante.',
+    lead: 'Ultra-ligera y diseñada para el bolsillo del personal de sala. Cuando un comensal elogia el plato o el servicio, el camarero acerca la tarjeta a su smartphone y canaliza la felicitación a Google en 2 segundos.',
+    image: tarjetasImg,
+    imageAlt: 'Tarjeta inteligente contactless para personal de sala en restaurante',
+    specs: [
+      {
+        icon: 'card',
+        label: 'Formato Bolsillo',
+        value: 'Dimensiones bancarias estándar ISO 7810 ultraligera (5 gramos).'
+      },
+      {
+        icon: 'shield',
+        label: 'Blindaje Sellado',
+        value: 'Resistente a líquidos, roces constantes y desinfectantes de hostelería.'
+      },
+      {
+        icon: 'sparkle',
+        label: 'Identidad Corporativa',
+        value: 'Acabado negro mate antireflejo personalizado con el logo de tu local.'
+      }
+    ],
+    ctaText: 'Solicitar pack de tarjetas de sala'
+  },
+  {
+    id: 'pegatinas',
+    index: '04',
+    tabLabel: 'Pegatinas QR',
+    zone: 'Zona 04 · Cartas, Cristaleras & Exterior',
+    glowClass: 'glow-amber',
+    title: 'Fijación permanente de alta durabilidad en cualquier soporte.',
+    lead: 'Diseñadas para la portada de cartas físicas, mamparas de cristal o mesas de terraza expuestas a la intemperie. Resisten sol intenso, lluvia y productos de limpieza diarios sin degradarse.',
+    image: pegatinasImg,
+    imageAlt: 'Pegatinas y placas adhesivas impermeables con código QR grabado para restaurantes',
+    specs: [
+      {
+        icon: 'sun',
+        label: 'Resina Epoxi Anti-UV',
+        value: 'Cúpula protectora brillante resistente a rayos solares y arañazos.'
+      },
+      {
+        icon: 'sticker',
+        label: 'Adhesivo Industrial 3M',
+        value: 'Fijación de grado permanente en madera tratada, metal, cristal o vinilo.'
+      },
+      {
+        icon: 'qr',
+        label: 'Resolución Óptica',
+        value: 'QR vectorizado de contraste ultra-alto legible incluso con poca luz.'
+      }
+    ],
+    ctaText: 'Solicitar pack de pegatinas'
+  },
+  {
+    id: 'posavasos',
+    index: '05',
+    tabLabel: 'Posavasos',
+    zone: 'Zona 05 · Terrazas, Coctelería & Mesas Altas',
+    glowClass: 'glow-amber',
+    title: 'Interacción sin esfuerzo mientras el cliente disfruta de su bebida.',
+    lead: 'Pensado para momentos casuales, vermuterías y barras informales donde no se entrega portacuentas tradicional. Base rígida impermeable con tecnología NFC integrada en el núcleo que invita al tap natural.',
+    image: posavasosImg,
+    imageAlt: 'Posavasos inteligente con chip NFC integrado para bares y terrazas',
+    specs: [
+      {
+        icon: 'drop',
+        label: 'Núcleo NFC Estanco',
+        value: 'Cápsula subacuática sellada al 100% resistente a condensación fría.'
+      },
+      {
+        icon: 'shield',
+        label: 'Base Antideslizante',
+        value: 'Cuerpo compuesto rígido hidrófugo con absorción térmica y agarre suave.'
+      },
+      {
+        icon: 'nfc',
+        label: 'Doble Vía Táctil',
+        value: 'Iconografía central NFC de tacto intuitivo + micro-QR de respaldo.'
+      }
+    ],
+    ctaText: 'Solicitar muestra de posavasos'
+  }
+];
+---
+
+<div class="product-showcase-collection" id="productos">
+  <!-- Showcase Section Header -->
+  <header class="showcase-main-header">
+    <div class="section-container text-center">
+      <h2 class="showcase-main-title font-display">
+        Un soporte físico diseñado para cada momento del cliente.
+      </h2>
+      <p class="showcase-main-sub">
+        En la mesa, en la barra, en manos del equipo o en la terraza. TapNova distribuye la tecnología en los 5 puntos de contacto naturales del restaurante para conseguir opiniones verificadas sin interrumpir la experiencia.
+      </p>
+    </div>
+  </header>
+
+  <!-- Interactive Stage Wrapper -->
+  <section class="showcase-stage-section" aria-label="Catálogo interactivo de soportes TapNova">
+    <div class="section-container">
+      
+      <!-- Top Interactive Tabs Dock with Countdown Line -->
+      <div class="showcase-tabs-container">
+        <div class="showcase-tabs-dock" role="tablist" aria-label="Seleccionar soporte" id="showcase-tabs-dock">
+          {products.map((product, idx) => (
+            <button
+              type="button"
+              role="tab"
+              class={`showcase-tab-btn ${idx === 0 ? 'active' : ''}`}
+              id={`tab-${product.id}`}
+              aria-selected={idx === 0 ? 'true' : 'false'}
+              aria-controls={`panel-${product.id}`}
+              data-product-index={idx}
+            >
+              <span class="tab-index-num">{product.index}</span>
+              <span class="tab-label-text">{product.tabLabel}</span>
+              
+              <!-- Realtime Countdown Progress Indicator -->
+              <span class="tab-progress-track" aria-hidden="true">
+                <span class="tab-progress-fill" id={`progress-${product.id}`}></span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Main Stage: Double-Bezel Hardware Showcase -->
+      <div class="zone-card-shell stage-card-shell" id="showcase-main-shell">
+        <div class="stage-panels-container">
+          {products.map((product, idx) => (
+            <article
+              class={`product-panel ${idx === 0 ? 'active' : ''}`}
+              id={`panel-${product.id}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${product.id}`}
+              data-panel-index={idx}
+            >
+              <!-- Visual Column -->
+              <div class="showcase-visual-col">
+                <div class="editorial-image-frame">
+                  <div class={`frame-ambient-glow ${product.glowClass}`} aria-hidden="true"></div>
+                  <Image 
+                    src={product.image} 
+                    alt={product.imageAlt}
+                    width={820}
+                    height={615}
+                    quality={90}
+                    class="showcase-img"
+                  />
+                </div>
+              </div>
+
+              <!-- Editorial Column -->
+              <div class="showcase-copy-col">
+                <h3 class="showcase-title font-display">
+                  {product.title}
+                </h3>
+                
+                <p class="showcase-lead-text">
+                  {product.lead}
+                </p>
+
+                <!-- Technical Specs Bento -->
+                <div class="specs-grid">
+                  {product.specs.map(spec => (
+                    <div class="spec-card">
+                      <div class="spec-icon" aria-hidden="true">
+                        {spec.icon === 'nfc' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18a8 8 0 0 1 0-12"></path><path d="M10 16a5 5 0 0 1 0-8"></path><path d="M14 14a2 2 0 0 1 0-4"></path><circle cx="18" cy="12" r="1.5" fill="currentColor"></circle></svg>
+                        )}
+                        {spec.icon === 'shield' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        )}
+                        {spec.icon === 'clock' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                        )}
+                        {spec.icon === 'wood' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                        )}
+                        {spec.icon === 'eye' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        )}
+                        {spec.icon === 'card' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+                        )}
+                        {spec.icon === 'sparkle' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"></path></svg>
+                        )}
+                        {spec.icon === 'sun' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        )}
+                        {spec.icon === 'sticker' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path><path d="M15 3v6h6"></path></svg>
+                        )}
+                        {spec.icon === 'qr' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
+                        )}
+                        {spec.icon === 'drop' && (
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg>
+                        )}
+                      </div>
+                      <div>
+                        <span class="spec-label">{spec.label}</span>
+                        <p class="spec-value">{spec.value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="showcase-cta-group">
+                  <a href="#contacto" class="btn-solid-white">
+                    <span>{product.ctaText}</span>
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .product-showcase-collection {
+    position: relative;
+    padding-top: clamp(4.5rem, 9vw, 9rem);
+    padding-bottom: clamp(4.5rem, 9vw, 9rem);
+    background: transparent;
+    overflow: hidden;
+  }
+
+  /* Section Header */
+  .showcase-main-header {
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .showcase-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px var(--accent-amber);
+  }
+
+  .badge-text {
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .showcase-main-title {
+    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 960px;
+    text-wrap: balance;
+  }
+
+  .showcase-main-sub {
+    font-size: clamp(1.05rem, 1.3vw, 1.22rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+
+  /* Interactive Stage Section */
+  .showcase-stage-section {
+    position: relative;
+    z-index: 5;
+  }
+
+  /* -------------------------------------------------------------------------
+     Top Interactive Tabs Dock
+     ------------------------------------------------------------------------- */
+  .showcase-tabs-container {
+    width: 100%;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    justify-content: center;
+  }
+
+  .showcase-tabs-dock {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem;
+    background: rgba(14, 14, 18, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .showcase-tabs-dock::-webkit-scrollbar {
+    display: none;
+  }
+
+  .showcase-tab-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.15rem;
+    padding-bottom: 0.8rem;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.25s var(--ease-default), background 0.25s var(--ease-default);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  .showcase-tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .showcase-tab-btn.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+  }
+
+  .tab-index-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+    font-feature-settings: "tnum";
+  }
+
+  .showcase-tab-btn.active .tab-index-num {
+    opacity: 1;
+    color: var(--accent-amber);
+  }
+
+  .tab-label-text {
+    letter-spacing: -0.01em;
+  }
+
+  .tab-zone-tag {
+    font-size: 0.6875rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .showcase-tab-btn.active .tab-zone-tag {
+    background: rgba(255, 157, 36, 0.15);
+    border-color: rgba(255, 157, 36, 0.3);
+    color: var(--accent-amber);
+  }
+
+  /* Countdown Progress Fill Line */
+  .tab-progress-track {
+    position: absolute;
+    bottom: 4px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .showcase-tab-btn.active .tab-progress-track {
+    opacity: 1;
+  }
+
+  .tab-progress-fill {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #feed7a 0%, #ff8400 50%, #df91f7 100%);
+    border-radius: 2px;
+    transform-origin: left center;
+  }
+
+  /* -------------------------------------------------------------------------
+     Stage Double-Bezel Card Shell
+     ------------------------------------------------------------------------- */
+  .zone-card-shell {
+    position: relative;
+    padding: clamp(2rem, 4.2vw, 4.25rem);
+    background: rgba(12, 12, 16, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    overflow: hidden;
+  }
+
+  .stage-panels-container {
+    position: relative;
+    display: grid;
+    grid-template-areas: "panel";
+    width: 100%;
+  }
+
+  /* Individual Product Panel with Silky Cross-fade Grid Area */
+  .product-panel {
+    grid-area: panel;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 4.5vw, 4.5rem);
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(14px) scale(0.99);
+    transition: opacity 0.45s cubic-bezier(0.32, 0.72, 0, 1), transform 0.45s cubic-bezier(0.32, 0.72, 0, 1), visibility 0.45s ease;
+  }
+
+  .product-panel.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  @media (min-width: 1024px) {
+    .product-panel {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
+
+  /* Visual Column */
+  .showcase-visual-col {
+    position: relative;
+    width: 100%;
+  }
+
+  .editorial-image-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #0a0a0c;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+  }
+
+  .showcase-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-default);
+  }
+
+  .stage-card-shell:hover .showcase-img {
+    transform: scale(1.025);
+  }
+
+  .frame-ambient-glow {
+    position: absolute;
+    inset: -20%;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.35;
+    z-index: 0;
+  }
+
+  .glow-amber {
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.35) 0%, transparent 70%);
+  }
+
+  .glow-purple {
+    background: radial-gradient(circle, rgba(223, 145, 247, 0.35) 0%, transparent 70%);
+  }
+
+  .frame-corner-tag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    background: rgba(10, 10, 14, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .tag-zone {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-amber);
+  }
+
+  .tag-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  /* Editorial Copy Column */
+  .showcase-copy-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+  }
+
+  .zone-micro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .micro-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .badge-amber {
+    background: rgba(255, 157, 36, 0.12);
+    border: 1px solid rgba(255, 157, 36, 0.28);
+    color: var(--accent-amber);
+  }
+
+  .badge-amber .micro-dot {
+    background: var(--accent-amber);
+    box-shadow: 0 0 6px var(--accent-amber);
+  }
+
+  .badge-purple {
+    background: rgba(223, 145, 247, 0.12);
+    border: 1px solid rgba(223, 145, 247, 0.28);
+    color: var(--accent-purple);
+  }
+
+  .badge-purple .micro-dot {
+    background: var(--accent-purple);
+    box-shadow: 0 0 6px var(--accent-purple);
+  }
+
+  .showcase-title {
+    font-size: clamp(1.95rem, 2.8vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .showcase-lead-text {
+    font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  /* Technical Specs Grid */
+  .specs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .spec-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-md);
+  }
+
+  .spec-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-amber);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .product-panel[data-panel-index="1"] .spec-icon,
+  .product-panel[data-panel-index="2"] .spec-icon {
+    color: var(--accent-purple);
+  }
+
+  .spec-label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.15rem;
+    letter-spacing: -0.01em;
+  }
+
+  .spec-value {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .showcase-cta-group {
+    margin-top: 0.5rem;
+  }
+
+  /* -------------------------------------------------------------------------
+     Mobile Responsiveness (< 1024px & 360-430px)
+     ------------------------------------------------------------------------- */
+  @media (max-width: 1023px) {
+    .showcase-tabs-container {
+      justify-content: flex-start;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      width: calc(100% + 2rem);
+      padding: 0 1rem;
+    }
+
+    .showcase-tabs-dock {
+      border-radius: var(--radius-lg);
+      padding: 0.35rem;
+      width: 100%;
+      scroll-snap-type: x mandatory;
+    }
+
+    .showcase-tab-btn {
+      scroll-snap-align: center;
+      padding: 0.55rem 0.95rem;
+      padding-bottom: 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    .tab-zone-tag {
+      display: none;
+    }
+
+    .zone-card-shell {
+      padding: 1.35rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .showcase-title {
+      font-size: clamp(1.45rem, 5vw, 1.85rem);
+    }
+
+    .spec-card {
+      padding: 0.85rem 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tab-progress-fill {
+      transition: none !important;
+    }
+    .product-panel {
+      transition: opacity 0.2s ease, visibility 0.2s ease !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initProductShowcase() {
+    const dock = document.getElementById('showcase-tabs-dock');
+    const shell = document.getElementById('showcase-main-shell');
+    if (!dock || !shell || dock.dataset.initialized) return;
+    dock.dataset.initialized = 'true';
+
+    const tabButtons = Array.from(dock.querySelectorAll<HTMLButtonElement>('.showcase-tab-btn'));
+    const panels = Array.from(shell.querySelectorAll<HTMLElement>('.product-panel'));
+    const totalProducts = tabButtons.length;
+    if (totalProducts === 0) return;
+
+    const AUTOPLAY_DURATION = 5500; // 5.5 seconds per product
+    let currentIndex = 0;
+    let startTime = performance.now();
+    let isPaused = false;
+    let isInViewport = false;
+    let animFrameId: number | null = null;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function switchProduct(newIndex: number) {
+      if (newIndex === currentIndex) return;
+
+      // Reset previous progress bar
+      const prevProgress = document.getElementById(`progress-${tabButtons[currentIndex].id.replace('tab-', '')}`);
+      if (prevProgress) prevProgress.style.width = '0%';
+
+      // Update Tab Buttons
+      tabButtons.forEach((btn, idx) => {
+        const isActive = idx === newIndex;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Update Panels
+      panels.forEach((panel, idx) => {
+        const isActive = idx === newIndex;
+        panel.classList.toggle('active', isActive);
+      });
+
+      // Scroll active tab into view smoothly on mobile
+      if (window.innerWidth < 1024) {
+        tabButtons[newIndex]?.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'nearest'
+        });
+      }
+
+      currentIndex = newIndex;
+      startTime = performance.now();
+    }
+
+    // Manual Click Override
+    tabButtons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        switchProduct(idx);
+        startTime = performance.now();
+      });
+    });
+
+    // Pause on Hover & Touch
+    shell.addEventListener('mouseenter', () => { isPaused = true; });
+    shell.addEventListener('mouseleave', () => { 
+      isPaused = false; 
+      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+    });
+
+    dock.addEventListener('mouseenter', () => { isPaused = true; });
+    dock.addEventListener('mouseleave', () => { 
+      isPaused = false; 
+      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+    });
+
+    shell.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+    shell.addEventListener('touchend', () => { 
+      isPaused = false; 
+      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+    }, { passive: true });
+
+    // Animation Loop with Real-time Progress Countdown
+    let progressFraction = 0;
+
+    function tick(now: number) {
+      if (!prefersReducedMotion && isInViewport && !isPaused) {
+        const elapsed = now - startTime;
+        progressFraction = Math.min(Math.max(elapsed / AUTOPLAY_DURATION, 0), 1);
+
+        const currentProgress = document.getElementById(`progress-${tabButtons[currentIndex].id.replace('tab-', '')}`);
+        if (currentProgress) {
+          currentProgress.style.width = `${(progressFraction * 100).toFixed(1)}%`;
+        }
+
+        if (elapsed >= AUTOPLAY_DURATION) {
+          const nextIndex = (currentIndex + 1) % totalProducts;
+          switchProduct(nextIndex);
+        }
+      }
+
+      animFrameId = requestAnimationFrame(tick);
+    }
+
+    // IntersectionObserver: Only run when visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isInViewport = entry.isIntersecting;
+        if (isInViewport) {
+          startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    const section = document.getElementById('productos');
+    if (section) observer.observe(section);
+
+    // Start tick loop if motion not reduced
+    if (!prefersReducedMotion) {
+      animFrameId = requestAnimationFrame(tick);
+    }
+  }
+
+  // Initialize on load and Astro page transitions
+  initProductShowcase();
+  document.addEventListener('astro:page-load', initProductShowcase);
+</script>

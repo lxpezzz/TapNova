@@ -1,0 +1,674 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_METADATA } from '../data/siteData';
+
+const lastUpdated = "2 de septiembre de 2026";
+---
+
+<Layout 
+  title="Política de Cookies — TapNova"
+  description="Información detallada sobre el uso de cookies técnicas y de rendimiento, gestión del consentimiento y configuración en navegadores en TapNova."
+>
+  <Navbar />
+
+  <main id="cookies-content" class="legal-page-main">
+    <div class="section-container">
+      
+      <!-- Top Centered Breadcrumb Button -->
+      <nav class="legal-breadcrumb-nav text-center" aria-label="Ruta de navegación">
+        <a href="/" class="back-home-btn">
+          <span class="btn-arrow" aria-hidden="true">←</span>
+          <span>Volver al inicio</span>
+        </a>
+      </nav>
+
+      <!-- Main Centered Editorial Header -->
+      <header class="legal-main-header text-center">
+        <div class="legal-eyebrow-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span class="badge-text">Marco Regulatorio · ePrivacy & LSSI-CE</span>
+        </div>
+        <h1 class="legal-main-title font-display">
+          Política de Cookies
+        </h1>
+        <p class="legal-main-sub">
+          Última actualización: <strong>{lastUpdated}</strong> · Conforme al artículo 22.2 de la Ley 34/2002 (LSSI-CE) y directrices de la AEPD.
+        </p>
+      </header>
+
+      <!-- Main Centered Content Shell (Double-Bezel Card) -->
+      <div class="zone-card-shell legal-card-shell">
+        <div class="legal-article-body">
+          
+          <!-- Cláusula 01: Qué es una Cookie -->
+          <section class="legal-clause text-center" id="definicion">
+            <div class="clause-header">
+              <div class="clause-pill-badge">
+                <span class="clause-num">01</span>
+                <span class="clause-dot" aria-hidden="true"></span>
+                <span class="clause-tag">Conceptos Básicos</span>
+              </div>
+              <h2 class="clause-title font-display">¿Qué es una Cookie y para qué sirve?</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Una cookie es un pequeño archivo de texto que un sitio web descarga en tu ordenador, smartphone o tablet al navegar por sus páginas. Las cookies permiten a una página web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación del usuario o de su equipo, garantizar la fluidez técnica del diseño interactivo y ofrecer una navegación segura y personalizada.
+            </p>
+          </section>
+
+          <!-- Cláusula 02: Tipos de Cookies -->
+          <section class="legal-clause text-center" id="tipos-cookies">
+            <div class="clause-header">
+              <div class="clause-pill-badge">
+                <span class="clause-num">02</span>
+                <span class="clause-dot" aria-hidden="true"></span>
+                <span class="clause-tag">Clasificación</span>
+              </div>
+              <h2 class="clause-title font-display">Tipos de Cookies que Utiliza TapNova</h2>
+            </div>
+            
+            <p class="clause-desc">
+              En cumplimiento del principio de minimización de datos, en este sitio web utilizamos únicamente las siguientes categorías de cookies:
+            </p>
+
+            <div class="legal-features-grid">
+              <div class="feature-box">
+                <span class="feature-icon">⚙️</span>
+                <strong class="feature-title">Cookies Técnicas (Estrictamente Necesarias)</strong>
+                <p>Imprescindibles para permitir la navegación fluida, la correcta ejecución de animaciones 3D, el selector interactivo de productos y la seguridad del servidor. No requieren consentimiento previo.</p>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">📊</span>
+                <strong class="feature-title">Cookies de Preferencias y Rendimiento</strong>
+                <p>Permiten recordar tu consentimiento sobre cookies y medir de forma anónima y agregada la velocidad de carga de la web, sin identificar tu persona.</p>
+              </div>
+            </div>
+
+            <div class="legal-callout-card">
+              <span class="callout-icon">🛡️</span>
+              <p>
+                <strong>Declaración expresa de no invasión:</strong> TapNova <strong>NO utiliza cookies de perfilado publicitario invasivo</strong>, no rastrea tu actividad entre diferentes sitios web ni comercializa datos con intermediarios o redes publicitarias de terceros.
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 03: Tabla Detallada -->
+          <section class="legal-clause text-center" id="tabla-cookies">
+            <div class="clause-header">
+              <div class="clause-pill-badge">
+                <span class="clause-num">03</span>
+                <span class="clause-dot" aria-hidden="true"></span>
+                <span class="clause-tag">Inventario Técnico</span>
+              </div>
+              <h2 class="clause-title font-display">Cuadro Detallado de Cookies Empleadas</h2>
+            </div>
+            
+            <p class="clause-desc">
+              A continuación se detalla la lista de cookies y mecanismos de almacenamiento local utilizados en el dominio <strong>https://tapnova.es</strong>:
+            </p>
+            
+            <div class="cookies-table-container">
+              <div class="cookie-card-item">
+                <div class="cookie-card-header">
+                  <span class="cookie-name">tapnova_cookie_consent</span>
+                  <span class="cookie-type-badge">Técnica · Propia</span>
+                </div>
+                <div class="cookie-details-grid">
+                  <div>
+                    <span class="cookie-field-label">Finalidad</span>
+                    <p class="cookie-field-val">Almacena la elección de consentimiento del usuario (aceptado/rechazado) para no volver a mostrar el aviso.</p>
+                  </div>
+                  <div>
+                    <span class="cookie-field-label">Caducidad</span>
+                    <p class="cookie-field-val">1 año (Almacenamiento Local)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cookie-card-item">
+                <div class="cookie-card-header">
+                  <span class="cookie-name">__cf_bm / _cfuvid</span>
+                  <span class="cookie-type-badge">Seguridad · Terceros</span>
+                </div>
+                <div class="cookie-details-grid">
+                  <div>
+                    <span class="cookie-field-label">Finalidad</span>
+                    <p class="cookie-field-val">Mitigación de ataques automatizados de bots maliciosos y protección de denegación de servicio (Cloudflare).</p>
+                  </div>
+                  <div>
+                    <span class="cookie-field-label">Caducidad</span>
+                    <p class="cookie-field-val">30 minutos a sesión</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cookie-card-item">
+                <div class="cookie-card-header">
+                  <span class="cookie-name">_astro_session</span>
+                  <span class="cookie-type-badge">Técnica · Sesión</span>
+                </div>
+                <div class="cookie-details-grid">
+                  <div>
+                    <span class="cookie-field-label">Finalidad</span>
+                    <p class="cookie-field-val">Gestión de la navegación fluida y transiciones entre páginas sin recarga brusca.</p>
+                  </div>
+                  <div>
+                    <span class="cookie-field-label">Caducidad</span>
+                    <p class="cookie-field-val">Al cerrar la sesión del navegador</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 04: Cómo Gestionar o Desactivar -->
+          <section class="legal-clause text-center" id="gestion-navegadores">
+            <div class="clause-header">
+              <div class="clause-pill-badge">
+                <span class="clause-num">04</span>
+                <span class="clause-dot" aria-hidden="true"></span>
+                <span class="clause-tag">Control del Usuario</span>
+              </div>
+              <h2 class="clause-title font-display">Cómo Gestionar o Bloquear Cookies en tu Navegador</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Puedes permitir, bloquear o eliminar las cookies instaladas en tu dispositivo en cualquier momento configurando las opciones del navegador que utilices. Consulta las instrucciones oficiales de los principales navegadores:
+            </p>
+
+            <div class="browser-links-grid">
+              <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="browser-card-btn">
+                <span class="browser-icon">🌐</span>
+                <strong class="browser-name">Google Chrome</strong>
+                <span class="browser-action">Configurar cookies →</span>
+              </a>
+
+              <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="browser-card-btn">
+                <span class="browser-icon">🧭</span>
+                <strong class="browser-name">Apple Safari</strong>
+                <span class="browser-action">Configurar cookies →</span>
+              </a>
+
+              <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" class="browser-card-btn">
+                <span class="browser-icon">🦊</span>
+                <strong class="browser-name">Mozilla Firefox</strong>
+                <span class="browser-action">Configurar cookies →</span>
+              </a>
+
+              <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" class="browser-card-btn">
+                <span class="browser-icon">🔷</span>
+                <strong class="browser-name">Microsoft Edge</strong>
+                <span class="browser-action">Configurar cookies →</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- Cláusula 05: Revocación y Contacto -->
+          <section class="legal-clause text-center" id="revocacion">
+            <div class="clause-header">
+              <div class="clause-pill-badge">
+                <span class="clause-num">05</span>
+                <span class="clause-dot" aria-hidden="true"></span>
+                <span class="clause-tag">Atención al Cliente</span>
+              </div>
+              <h2 class="clause-title font-display">Dudas sobre el Uso de Cookies</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Si tienes cualquier consulta sobre nuestra política de cookies o sobre el tratamiento técnico de datos en el portal, puedes contactar con nuestro equipo de privacidad en <a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a>.
+            </p>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Bottom Centered Action -->
+      <div class="legal-bottom-action text-center">
+        <a href="/" class="btn-solid-white">
+          <span>Volver a la página principal</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* -------------------------------------------------------------------------
+     Main Page Wrapper (100% Transparent to reveal Cosmic Nebula Background)
+     ------------------------------------------------------------------------- */
+  .legal-page-main {
+    position: relative;
+    padding-top: clamp(6.5rem, 11vw, 10.5rem);
+    padding-bottom: clamp(5rem, 9vw, 9.5rem);
+    min-height: 100vh;
+    background: transparent; /* Fondo cósmico interactivo exacto */
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  /* Centered Helper */
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Top Breadcrumb */
+  .legal-breadcrumb-nav {
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.25s var(--ease-default);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .back-home-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .back-home-btn:hover .btn-arrow {
+    transform: translateX(-3px);
+  }
+
+  /* Main Editorial Header */
+  .legal-main-header {
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .legal-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px var(--accent-amber);
+  }
+
+  .badge-text {
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .legal-main-title {
+    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 960px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub {
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub strong {
+    color: #ffffff;
+  }
+
+  /* -------------------------------------------------------------------------
+     Double-Bezel Card Shell (Matching ProductShowcase & PricingSection)
+     ------------------------------------------------------------------------- */
+  .zone-card-shell {
+    position: relative;
+    padding: clamp(2.5rem, 5vw, 4.75rem);
+    background: rgba(12, 12, 16, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    max-width: 1040px;
+    margin: 0 auto;
+    z-index: 5;
+  }
+
+  .legal-article-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  /* Individual Clause */
+  .legal-clause {
+    gap: 1.35rem;
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .legal-clause:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .clause-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .clause-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+  }
+
+  .clause-num {
+    color: var(--accent-amber);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .clause-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .clause-tag {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .clause-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 820px;
+    text-wrap: balance;
+  }
+
+  .clause-desc {
+    font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+    line-height: 1.72;
+    color: var(--text-secondary);
+    max-width: 820px;
+    text-wrap: pretty;
+  }
+
+  .clause-desc strong {
+    color: #ffffff;
+  }
+
+  .clause-desc a {
+    color: var(--accent-amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .clause-desc a:hover {
+    color: var(--accent-yellow);
+  }
+
+  /* Features Grid */
+  .legal-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .legal-features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .feature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.35rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .feature-box p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Callout Card */
+  .legal-callout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.35rem 1.75rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 157, 36, 0.07);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    color: var(--accent-amber);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 840px;
+  }
+
+  .legal-callout-card p {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .callout-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Cookies Table Container */
+  .cookies-table-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 0.5rem;
+  }
+
+  .cookie-card-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    text-align: left;
+  }
+
+  .cookie-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 0.5rem;
+  }
+
+  .cookie-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: monospace;
+  }
+
+  .cookie-type-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent-amber);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.12);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+  }
+
+  .cookie-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .cookie-details-grid {
+      grid-template-columns: 2.2fr 1fr;
+    }
+  }
+
+  .cookie-field-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .cookie-field-val {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* Browser Links Grid */
+  .browser-links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .browser-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .browser-card-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.25s var(--ease-default);
+  }
+
+  .browser-card-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 157, 36, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .browser-icon {
+    font-size: 1.6rem;
+  }
+
+  .browser-name {
+    font-size: 0.95rem;
+    color: #ffffff;
+  }
+
+  .browser-action {
+    font-size: 0.78rem;
+    color: var(--accent-amber);
+    font-weight: 500;
+  }
+
+  /* Bottom Centered Return Action */
+  .legal-bottom-action {
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Mobile Adaptations (< 768px) */
+  @media (max-width: 767px) {
+    .legal-card-shell {
+      padding: 1.5rem 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .feature-box,
+    .cookie-card-item {
+      padding: 1rem;
+    }
+  }
+</style>

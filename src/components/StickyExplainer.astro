@@ -1,0 +1,583 @@
+---
+import { Image } from 'astro:assets';
+import { EXPLAINER_STEPS } from '../data/siteData';
+
+import portacuentasVisual from '../assets/products/portacuentas.webp';
+import step2Visual from '../assets/showcase/explainer-step2.webp';
+import step3Visual from '../assets/showcase/explainer-step3.webp';
+
+const stepVisuals = [
+  portacuentasVisual,
+  step2Visual,
+  step3Visual
+];
+---
+
+<section class="sticky-explainer-section" id="explainer" aria-label="Cómo funciona TapNova">
+  <!-- Desktop Sticky Viewport -->
+  <div class="explainer-scroll-track" id="explainer-track">
+    <div class="explainer-sticky-viewport">
+      <div class="section-container explainer-grid" id="explainer-grid">
+        
+        <!-- Left: Large Visual Stage (~50% width) -->
+        <div class="explainer-visual-col">
+          <div class="organic-visual-canvas">
+            <div class="canvas-ambient-glow" aria-hidden="true"></div>
+            
+            <div class="visuals-stack" id="explainer-visuals-stack">
+              <!-- Visual 01: Portacuentas -->
+              <div class="step-visual active" data-step="0">
+                <div class="visual-wrapper">
+                  <Image 
+                    src={stepVisuals[0]} 
+                    alt="Portacuentas inteligente TapNova con QR y NFC en piel grabada"
+                    width={560}
+                    height={560}
+                    quality={90}
+                    class="visual-img img-contain"
+                  />
+                </div>
+              </div>
+
+              <!-- Visual 02: Tap Smartphone -->
+              <div class="step-visual" data-step="1">
+                <div class="visual-wrapper">
+                  <Image 
+                    src={stepVisuals[1]} 
+                    alt="Teléfono móvil interactuando con tarjeta NFC mediante toque instantáneo"
+                    width={560}
+                    height={560}
+                    quality={90}
+                    class="visual-img img-cover"
+                  />
+                </div>
+              </div>
+
+              <!-- Visual 03: Google Maps & Local SEO -->
+              <div class="step-visual" data-step="2">
+                <div class="visual-wrapper">
+                  <Image 
+                    src={stepVisuals[2]} 
+                    alt="Posicionamiento local en Google Maps y crecimiento de reputación digital"
+                    width={560}
+                    height={560}
+                    quality={90}
+                    class="visual-img img-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center: Editorial Content Column -->
+        <div class="explainer-content-col">
+          <div class="content-states-wrapper">
+            {EXPLAINER_STEPS.map((step, idx) => (
+              <div 
+                class={`explainer-state-card ${idx === 0 ? 'active' : ''}`}
+                data-text-step={idx}
+                id={`explainer-card-${idx}`}
+              >
+                <h2 class="state-title font-display">{step.title}</h2>
+                <p class="state-description">{step.description}</p>
+                <div class="state-cta-row">
+                  <a href={step.ctaHref} class="btn-primary">
+                    <span>{step.cta}</span>
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Right: Real Vertical Progress Gauge (Clyde reference) -->
+        <div class="explainer-gauge-col" aria-hidden="true">
+          <div class="vertical-gauge">
+            <span class="gauge-num num-top active" id="gauge-num-top">01</span>
+            <div class="gauge-track">
+              <div class="gauge-bar" id="gauge-bar-fill"></div>
+            </div>
+            <span class="gauge-num num-bottom" id="gauge-num-bottom">03</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sequential Storytelling (Clean, frictionless fallback) -->
+  <div class="mobile-explainer-stream">
+    <div class="section-container">
+      <div class="mobile-intro">
+        <h2 class="mobile-heading font-display">Cómo funciona el ciclo completo</h2>
+      </div>
+
+      <div class="mobile-steps-list">
+        {EXPLAINER_STEPS.map((step, idx) => (
+          <article class="mobile-step-card">
+            <div class="mobile-step-media">
+              <Image 
+                src={stepVisuals[idx]} 
+                alt={step.title}
+                width={480}
+                height={380}
+                quality={88}
+                class="mobile-step-img"
+              />
+              <span class="mobile-step-number font-display">{step.step}</span>
+            </div>
+            <div class="mobile-step-body">
+              <h3 class="mobile-step-title font-display">{step.title}</h3>
+              <p class="mobile-step-desc">{step.description}</p>
+              <a href={step.ctaHref} class="btn-primary mobile-step-btn">
+                <span>{step.cta}</span>
+                <span class="btn-icon" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sticky-explainer-section {
+    position: relative;
+    background-color: transparent;
+    border-top: none;
+  }
+
+  /* Desktop Scroll Track */
+  .explainer-scroll-track {
+    display: none;
+    position: relative;
+    height: 270vh; /* 2.7 viewports for natural reading pace */
+  }
+
+  @media (min-width: 992px) {
+    .explainer-scroll-track {
+      display: block;
+    }
+
+    .mobile-explainer-stream {
+      display: none;
+    }
+  }
+
+  .explainer-sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 50px;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 5rem);
+    width: 100%;
+  }
+
+  /* Left: Large Visual Stage (~50% width) */
+  .explainer-visual-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .organic-visual-canvas {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 1 / 1;
+    border-radius: clamp(2rem, 3.5vw, 3rem);
+    background: radial-gradient(circle at 45% 45%, rgba(20, 18, 22, 0.95) 0%, rgba(8, 8, 10, 0.98) 70%);
+    border: 1px solid var(--border-medium);
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  }
+
+  .canvas-ambient-glow {
+    position: absolute;
+    inset: -10%;
+    background: radial-gradient(circle at 35% 35%, rgba(223, 145, 247, 0.25) 0%, rgba(255, 132, 0, 0.2) 42%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    opacity: 0.85;
+    animation: canvasHaloBreathe 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes canvasHaloBreathe {
+    0% {
+      transform: scale(0.96) translate(-2%, -2%);
+    }
+    100% {
+      transform: scale(1.04) translate(2%, 2%);
+    }
+  }
+
+  .visuals-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .step-visual {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.6s var(--ease-default), transform 0.6s var(--ease-default);
+  }
+
+  .step-visual.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .visual-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+
+  .visual-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .img-contain {
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.9));
+  }
+
+  .img-cover {
+    object-fit: cover;
+  }
+
+  .visual-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(5, 5, 5, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--accent-yellow);
+  }
+
+  /* Center: Editorial Content Column */
+  .explainer-content-col {
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+  }
+
+  .content-states-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .explainer-state-card {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%) translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s var(--ease-default), transform 0.5s var(--ease-default);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .explainer-state-card.active {
+    opacity: 1;
+    transform: translateY(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  .state-eyebrow {
+    color: var(--accent-amber);
+  }
+
+  .state-title {
+    font-size: clamp(2.15rem, 3.8vw, 3.3rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+  }
+
+  .state-description {
+    font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 540px;
+  }
+
+  .state-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .state-tag-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .state-cta-row {
+    margin-top: 0.5rem;
+  }
+
+  /* Right: Real Vertical Progress Gauge (Clyde reference) */
+  .explainer-gauge-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .vertical-gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    height: 260px;
+  }
+
+  .gauge-num {
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s var(--ease-default);
+  }
+
+  .gauge-num.active {
+    color: var(--accent-amber);
+  }
+
+  .gauge-track {
+    position: relative;
+    width: 2px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .gauge-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: var(--gradient-vertical);
+    border-radius: 1px;
+    transition: height 0.1s linear;
+  }
+
+  /* Mobile Sequential Stream */
+  .mobile-explainer-stream {
+    padding: 0.5rem 0 1.5rem;
+  }
+
+  .mobile-intro {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-heading {
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 0.5rem;
+  }
+
+  .mobile-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .mobile-step-card {
+    background: #09090b;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .mobile-step-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #000000;
+  }
+
+  .mobile-step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mobile-step-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-step-body {
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .mobile-step-title {
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.25;
+  }
+
+  .mobile-step-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .mobile-step-btn {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+</style>
+
+<script>
+  function initStickyExplainer() {
+    const track = document.getElementById('explainer-track');
+    if (!track || track.dataset.initialized || !window.matchMedia('(min-width: 992px)').matches) return;
+    track.dataset.initialized = 'true';
+
+    const visualElements = document.querySelectorAll('.step-visual');
+    const textCards = document.querySelectorAll('.explainer-state-card');
+    const gaugeBar = document.getElementById('gauge-bar-fill');
+    const numTop = document.getElementById('gauge-num-top');
+    const numBottom = document.getElementById('gauge-num-bottom');
+
+    let currentStep = 0;
+    let ticking = false;
+
+    function updateExplainer() {
+      const rect = track.getBoundingClientRect();
+      const trackHeight = track.offsetHeight;
+      const windowHeight = window.innerHeight;
+
+      // Scroll progress from 0 (entry) to 1 (exit)
+      const scrolled = -rect.top;
+      const maxScroll = trackHeight - windowHeight;
+      let progress = 0;
+
+      if (maxScroll > 0) {
+        progress = Math.min(Math.max(scrolled / maxScroll, 0), 1);
+      }
+
+      // Update vertical progress gauge bar
+      if (gaugeBar) {
+        gaugeBar.style.height = (progress * 100).toFixed(1) + '%';
+      }
+
+      // Update gauge numbers active state
+      if (progress > 0.6) {
+        numBottom?.classList.add('active');
+        numTop?.classList.remove('active');
+      } else {
+        numTop?.classList.add('active');
+        numBottom?.classList.remove('active');
+      }
+
+      // Calculate step (0, 1, 2)
+      let step = 0;
+      if (progress > 0.64) {
+        step = 2;
+      } else if (progress > 0.28) {
+        step = 1;
+      } else {
+        step = 0;
+      }
+
+      if (step !== currentStep) {
+        currentStep = step;
+
+        // Switch visual states
+        visualElements.forEach((vis, idx) => {
+          vis.classList.toggle('active', idx === currentStep);
+        });
+
+        // Switch text states
+        textCards.forEach((card, idx) => {
+          card.classList.toggle('active', idx === currentStep);
+        });
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateExplainer);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial run
+    updateExplainer();
+  }
+
+  initStickyExplainer();
+  document.addEventListener('astro:page-load', initStickyExplainer);
+</script>

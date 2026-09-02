@@ -1,0 +1,860 @@
+---
+import ProductStage from "./ProductStage.astro";
+import ProductEcosystem from "./ProductEcosystem.astro";
+import PortacuentasFeatures from "./PortacuentasFeatures.astro";
+---
+
+<!-- Master Sticky Sequence Section -->
+<section
+  class="hero-sequence"
+  id="hero-sequence"
+  aria-label="Demostración interactiva de TapNova"
+>
+  <!-- Sticky Visual Stage -->
+  <div class="hero-stage" id="hero-stage">
+    <!-- Subtle ambient canvas illumination -->
+    <div class="hero-ambient-canvas" aria-hidden="true"></div>
+
+    <div class="hero-stage-inner hero-container">
+      <!-- 1. Initial Editorial Copy (Lateral on desktop, top on mobile) -->
+      <div class="hero-initial-copy" id="hero-initial-copy">
+        <h1 class="copy-headline font-display">
+          El momento adecuado<br />
+          lo cambia <span class="hero-title__accent">todo.</span>
+        </h1>
+        <p class="copy-desc">
+          TapNova integra <strong>QR y NFC</strong> en los puntos de contacto que
+          ya forman parte de la experiencia de tu local.
+        </p>
+        <div class="copy-cta-wrap">
+          <a href="#contacto" class="btn-primary">
+            <span>Descubrir cómo funciona</span>
+            <span class="btn-icon" aria-hidden="true">→</span>
+          </a>
+          <span class="copy-trust-hint"
+            >Sin descargas ni apps · Lectura directa</span
+          >
+        </div>
+      </div>
+
+      <!-- 2. Portacuentas Features & Benefits (Lateral, zero product overlap) -->
+      <PortacuentasFeatures id="hero-portacuentas-desc" />
+
+      <!-- 3. Central Product Stage (Closed -> Open) -->
+      <div class="hero-stage-center" id="hero-stage-center">
+        <div class="hero-stage-motion" id="hero-stage-motion">
+          <ProductStage id="hero-main-product-stage" />
+        </div>
+      </div>
+
+      <div class="hero-mobile-context" aria-live="polite">
+        <span id="hero-mobile-context-closed">NFC integrado · Sin apps</span>
+        <span id="hero-mobile-context-open">Pídela en el momento clave</span>
+      </div>
+
+      <!-- 3. Scroll Cue (Visual hint at initial frame) -->
+      <div class="hero-scroll-cue" id="hero-scroll-cue" aria-hidden="true">
+        <span class="cue-label">Desliza para explorar</span>
+        <div class="cue-indicator">
+          <span class="cue-line"></span>
+        </div>
+      </div>
+
+      <!-- 4. TapNova Physical Ecosystem (Progressive constellation) -->
+      <ProductEcosystem id="hero-ecosystem-stage" />
+
+      <!-- 5. Seamless Bridge Statement (Directly in stage) -->
+      <div class="hero-bridge-inner" id="hero-bridge-inner" aria-hidden="true">
+        <div class="bridge-inner-content">
+          <h2 class="bridge-statement font-display">
+            El tap consigue la interacción.<br class="desktop-break" />
+            <span class="gradient-text">La visibilidad se trabaja después.</span
+            >
+          </h2>
+          <p class="bridge-sub">
+            Conseguir opiniones en la mesa es el primer paso. El segundo es
+            convertir ese flujo continuo de valoraciones en visibilidad real
+            para quienes buscan dónde comer o cenar en tu zona.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- En móvil el ecosistema continúa después del hero para no superponer etapas. -->
+<div class="hero-mobile-followup">
+  <ProductEcosystem id="mobile-ecosystem-stage" />
+  <div class="hero-mobile-bridge">
+    <h2 class="bridge-statement font-display">
+      El tap consigue la interacción.<br />
+      <span class="gradient-text">La visibilidad se trabaja después.</span>
+    </h2>
+    <p class="bridge-sub">
+      Conseguir opiniones en la mesa es el primer paso. El segundo es convertir
+      ese flujo continuo de valoraciones en visibilidad real para quienes buscan
+      dónde comer o cenar en tu zona.
+    </p>
+  </div>
+</div>
+
+<style>
+  /* 1. Tall Sticky Sequence Container */
+  .hero-sequence {
+    position: relative;
+    min-height: 440vh;
+    background-color: transparent;
+  }
+
+  .hero-mobile-followup {
+    display: none;
+  }
+
+  /* 2. Sticky Stage: Pins to viewport naturally via CSS */
+  .hero-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  /* Ambient Canvas Glow */
+  .hero-ambient-canvas {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(400px, 65vw, 1000px);
+    height: clamp(400px, 65vw, 850px);
+    background: radial-gradient(
+      circle,
+      rgba(255, 157, 36, 0.09) 0%,
+      rgba(223, 145, 247, 0.05) 45%,
+      transparent 72%
+    );
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-stage-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  /* 1. Initial Editorial Copy (Lateral on Desktop) */
+  .hero-initial-copy {
+    position: absolute;
+    left: var(--page-inset);
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: clamp(540px, 42vw, 680px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 20;
+    pointer-events: auto;
+    will-change: transform, opacity;
+  }
+
+  .copy-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    width: fit-content;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px var(--accent-amber);
+  }
+
+  .badge-text {
+    color: var(--accent-amber);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .copy-headline {
+    font-size: clamp(2.85rem, 4.4vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1.05;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .headline-accent {
+    color: var(--accent-yellow);
+    display: inline-block;
+  }
+
+  .hero-title__accent {
+    color: #f5a623;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.18em;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    transform: translateY(0.03em);
+  }
+
+  .copy-desc {
+    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 520px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .copy-cta-wrap {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .copy-trust-hint {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+  }
+
+  /* 2. Central Product Stage */
+  .hero-stage-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-stage-center {
+      justify-content: flex-end;
+      padding-right: clamp(1.5rem, 5vw, 5rem);
+    }
+  }
+
+  .hero-stage-motion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+  }
+
+  /* 3. Editorial Scroll Cue */
+  .hero-scroll-cue {
+    position: absolute;
+    bottom: clamp(1.75rem, 4vh, 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    z-index: 20;
+    pointer-events: none;
+    will-change: opacity;
+  }
+
+  .hero-mobile-context {
+    display: none;
+  }
+
+  .cue-label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .cue-indicator {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cue-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--accent-amber),
+      transparent
+    );
+    animation: cueLineDrop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  @keyframes cueLineDrop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(200%);
+    }
+  }
+
+  /* 6. Seamless Bridge Statement in Stage */
+  .hero-bridge-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 960px;
+    padding: 0 var(--page-inset);
+    text-align: center;
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .bridge-inner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.15rem;
+  }
+
+  .bridge-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  .bridge-statement {
+    font-size: clamp(2.25rem, 4.2vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.14;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    color: var(--accent-purple);
+  }
+
+  .bridge-sub {
+    font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 700px;
+    text-wrap: balance;
+  }
+
+  /* =========================================================================
+     DESKTOP LAYOUT (>= 1024px)
+     Full cinematic sticky sequence with GSAP ScrollTrigger
+     ========================================================================= */
+  @media (min-width: 1024px) {
+    .hero-sequence {
+      position: relative;
+      min-height: 440vh;
+      background-color: transparent;
+    }
+
+    .hero-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100svh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .hero-stage-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-initial-copy {
+      position: absolute;
+      left: var(--page-inset);
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: clamp(500px, 40vw, 600px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      z-index: 20;
+      pointer-events: auto;
+      will-change: transform, opacity;
+    }
+
+    .hero-stage-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: clamp(1.5rem, 5vw, 5rem);
+      z-index: 10;
+    }
+
+    .hero-bridge-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 820px;
+      padding: 0 var(--page-inset);
+      text-align: center;
+      pointer-events: none;
+      z-index: 25;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+  }
+
+  /* =========================================================================
+     MOBILE-FIRST RESPONSIVE FLOW (< 1024px)
+     Rules 1 to 24:
+     - No sticky locking (Rule 15)
+     - Normal document flow (Rule 13)
+     - Width min(100% - 32px, 430px) (Rule 3)
+     - 1 column sequence: Copy -> Protagonista -> Features -> Ecosistema -> Bridge (Rule 2)
+     ========================================================================= */
+  @media (max-width: 1023px) {
+    .hero-sequence {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      height: auto;
+      overflow-x: clip;
+      padding: max(5.5rem, env(safe-area-inset-top)) 0 4rem;
+      background-color: transparent;
+    }
+
+    .hero-stage {
+      position: relative;
+      top: auto;
+      left: auto;
+      height: auto;
+      min-height: 0;
+      width: 100%;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+    }
+
+    .hero-stage-inner {
+      position: relative;
+      width: min(100% - 32px, 430px);
+      margin-inline: auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.25rem;
+      height: auto;
+      box-sizing: border-box;
+    }
+
+    /* 1. Copy Headline & CTA (Rule 2 & 16) */
+    .hero-initial-copy {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      z-index: 20;
+      order: 1;
+    }
+
+    .copy-eyebrow-badge {
+      margin: 0 auto;
+      padding: 0.25rem 0.75rem;
+    }
+
+    .copy-headline {
+      font-size: clamp(2.1rem, 9.2vw, 3.2rem);
+      line-height: 1.12;
+      width: 100%;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .desktop-break {
+      display: none;
+    }
+
+    .copy-desc {
+      font-size: clamp(0.95rem, 3.7vw, 1.08rem);
+      line-height: 1.5;
+      max-width: 22rem;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      text-wrap: balance;
+    }
+
+    .copy-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.25rem;
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .copy-cta-wrap .btn-primary {
+      min-height: 48px;
+      min-width: 44px;
+      width: min(100%, 280px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .copy-trust-hint {
+      font-size: 0.75rem;
+    }
+
+    /* 2. Protagonista: Portacuentas con Halo (Rule 4 & 5) */
+    .hero-stage-center {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0.5rem 0;
+      z-index: 10;
+      pointer-events: auto;
+      order: 2;
+    }
+
+    .hero-stage-motion {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: none !important;
+    }
+
+    /* 3. Portacuentas Features (Rule 6 & 7) */
+    :global(.portacuentas-desc-panel) {
+      order: 3;
+      width: 100%;
+    }
+
+    /* 4. TapNova Core Ecosistema (Rule 9, 10, 11, 12) */
+    :global(.ecosystem-stage-container) {
+      order: 4;
+      width: 100%;
+    }
+
+    /* 5. Bridge Statement (Rule 16) */
+    .hero-bridge-inner {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+      max-width: 32rem;
+      margin: 1.5rem auto 0;
+      padding: 0;
+      opacity: 1;
+      pointer-events: auto;
+      text-align: center;
+      z-index: 20;
+      order: 5;
+    }
+
+    .bridge-statement {
+      font-size: clamp(1.65rem, 6.5vw, 2.2rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+
+    .bridge-sub {
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      line-height: 1.55;
+      margin-top: 0.75rem;
+    }
+
+    .hero-scroll-cue {
+      bottom: max(1.1rem, calc(env(safe-area-inset-bottom) + 0.75rem));
+      display: flex !important;
+      gap: 0.35rem;
+    }
+
+    .hero-scroll-cue .cue-label {
+      font-size: 0.62rem;
+    }
+
+    .hero-scroll-cue .cue-indicator {
+      height: 18px;
+    }
+  }
+
+  /* Tablet adjustment: 640px to 1023px (Rule 24) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hero-stage-inner {
+      width: min(100% - 48px, 680px);
+      gap: 3rem;
+    }
+
+    .copy-headline {
+      font-size: clamp(2.6rem, 5.5vw, 3.4rem);
+    }
+  }
+
+  /* Móvil: el hero narra una sola idea por vez. */
+  @media (max-width: 1023px) {
+    .hero-sequence {
+      min-height: 150svh;
+      height: 150svh;
+      overflow: clip;
+      padding: 0;
+    }
+
+    .hero-stage {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      min-height: 100svh;
+      overflow: hidden;
+      display: block;
+    }
+
+    .hero-stage-inner {
+      display: block;
+      height: 100%;
+      padding: 0;
+    }
+
+    .hero-initial-copy {
+      position: absolute;
+      top: max(5.5rem, env(safe-area-inset-top));
+      left: 0;
+      width: 100vw;
+      max-width: none;
+      margin-left: calc((100% - 100vw) / 2);
+      transform: none;
+    }
+
+    .copy-headline {
+      font-size: clamp(1.55rem, 6.4vw, 2rem);
+    }
+
+    .copy-desc,
+    .copy-trust-hint {
+      display: none;
+    }
+
+    .hero-stage-center {
+      position: absolute;
+      top: 57%;
+      left: 50%;
+      width: 100%;
+      height: 60%;
+      margin: 0 auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-stage-motion {
+      will-change: transform;
+    }
+
+    .hero-mobile-context {
+      position: absolute;
+      right: 1rem;
+      bottom: max(3.5rem, calc(env(safe-area-inset-bottom) + 3rem));
+      left: 1rem;
+      display: grid;
+      place-items: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    .hero-mobile-context span {
+      grid-area: 1 / 1;
+      will-change: transform, opacity;
+    }
+
+    #hero-mobile-context-open {
+      opacity: 0;
+    }
+
+    :global(.portacuentas-desc-panel) {
+      position: absolute;
+      top: 12%;
+      right: 0;
+      left: 0;
+      width: min(100%, 23rem);
+      margin: 0 auto;
+      opacity: 0;
+      pointer-events: none;
+      transform: none;
+      will-change: transform, opacity;
+    }
+
+    :global(.portacuentas-desc-panel .desc-intro) {
+      display: none;
+    }
+
+    :global(.portacuentas-desc-panel .desc-header) {
+      gap: 0;
+    }
+
+    :global(#hero-ecosystem-stage),
+    .hero-bridge-inner {
+      display: none !important;
+    }
+
+    .hero-mobile-followup {
+      display: block;
+      width: min(100% - 32px, 430px);
+      margin: 0 auto;
+      padding: 0.25rem 0 0.5rem;
+    }
+
+    .hero-mobile-bridge {
+      max-width: 32rem;
+      margin: 0.75rem auto 0;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+    .hero-sequence {
+      min-height: 0;
+      height: auto;
+      overflow: visible;
+      padding: max(5.5rem, env(safe-area-inset-top)) 0 2rem;
+    }
+
+    .hero-stage {
+      position: relative;
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .hero-stage-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      height: auto;
+    }
+
+    .hero-initial-copy,
+    .hero-stage-center,
+    :global(.portacuentas-desc-panel) {
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      width: 100%;
+      height: auto;
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+
+    .hero-initial-copy { order: 1; }
+    .hero-stage-center { order: 2; }
+    :global(.portacuentas-desc-panel) { order: 3; }
+    .copy-desc,
+    .copy-trust-hint { display: block; }
+  }
+</style>
+
+<script>
+  import { initHeroScroll } from "../scripts/hero-scroll";
+
+  let cleanup: (() => void) | null = null;
+
+  function init() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    if (cleanup) {
+      cleanup();
+    }
+    cleanup = initHeroScroll();
+  }
+
+  // Initialize immediately on load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  document.addEventListener("astro:page-load", init);
+</script>

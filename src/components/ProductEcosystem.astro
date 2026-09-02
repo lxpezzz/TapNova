@@ -1,0 +1,892 @@
+---
+import { Image } from "astro:assets";
+
+import portacuentasOpenImg from "../assets/products/portacuentas-open.webp";
+import expositorImg from "../assets/products/expositor.webp";
+import tarjetaNfcImg from "../assets/products/tarjeta-nfc.webp";
+import posavasosImg from "../assets/products/pegatina.webp";
+
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { class: className = "", id = "hero-ecosystem-stage" } = Astro.props;
+const ecosystemHeaderId = `${id}-header`;
+const ecosystemGridId = `${id}-grid`;
+
+const satellites = [
+  {
+    id: "eco-corner-01",
+    position: "sat-top-left",
+    image: portacuentasOpenImg,
+    width: 380,
+    zone: "Mesa",
+    title: "Portacuentas en piel",
+    hint: "Al pedir la cuenta",
+  },
+  {
+    id: "eco-corner-02",
+    position: "sat-top-right",
+    image: expositorImg,
+    width: 360,
+    zone: "Barra & Hall",
+    title: "Expositor de nogal",
+    hint: "Al recibir o esperar",
+  },
+  {
+    id: "eco-corner-03",
+    position: "sat-bottom-left",
+    image: tarjetaNfcImg,
+    width: 340,
+    zone: "Equipo de sala",
+    title: "Tarjetas NFC de sala",
+    hint: "Tras una felicitación",
+  },
+  {
+    id: "eco-corner-04",
+    position: "sat-bottom-right",
+    image: posavasosImg,
+    width: 330,
+    zone: "Terraza & Cartas",
+    title: "Soportes adhesivos",
+    hint: "Espacios exteriores",
+  },
+];
+---
+
+<div
+  class={`ecosystem-stage-container ${className}`}
+  id={id}
+  aria-label="Ecosistema de soportes TapNova"
+>
+  <!-- =======================================================================
+       DESKTOP VIEW: 3D Orbital Constellation Chamber (>= 1024px)
+       Scrubbed via GSAP ScrollTrigger
+       ======================================================================= -->
+  <div class="desktop-constellation-wrapper">
+    <!-- Subtle Header Copy above the Constellation -->
+    <div class="ecosystem-header" id={ecosystemHeaderId}>
+      <h2 class="eco-headline font-display">
+        Un soporte inteligente para cada rincón de tu local.
+      </h2>
+      <p class="eco-sub">
+        Mesa, barra, terraza o en mano del personal. Cada interacción ocurre en
+        el instante exacto.
+      </p>
+    </div>
+
+    <!-- 3D Orbital Constellation Chamber -->
+    <div class="orbital-constellation-chamber" id={ecosystemGridId}>
+      <!-- SVG Orbital Laser Connection Rays -->
+      <svg
+        class="orbital-laser-canvas"
+        viewBox="0 0 700 700"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- Orbital concentric rings -->
+        <circle
+          cx="350"
+          cy="350"
+          r="240"
+          stroke="rgba(255, 255, 255, 0.08)"
+          stroke-width="1"
+          stroke-dasharray="4 8"
+          class="orbit-ring-outer"></circle>
+        <circle
+          cx="350"
+          cy="350"
+          r="160"
+          stroke="rgba(255, 157, 36, 0.12)"
+          stroke-width="1"
+          stroke-dasharray="2 6"
+          class="orbit-ring-inner"></circle>
+
+        <!-- Laser Beams to each satellite -->
+        <line
+          x1="350"
+          y1="350"
+          x2="185"
+          y2="185"
+          stroke="url(#laser-grad-amber)"
+          stroke-width="1.4"
+          stroke-dasharray="4 6"
+          class="laser-beam beam-1"></line>
+        <line
+          x1="350"
+          y1="350"
+          x2="515"
+          y2="185"
+          stroke="url(#laser-grad-purple)"
+          stroke-width="1.4"
+          stroke-dasharray="4 6"
+          class="laser-beam beam-2"></line>
+        <line
+          x1="350"
+          y1="350"
+          x2="185"
+          y2="515"
+          stroke="url(#laser-grad-purple)"
+          stroke-width="1.4"
+          stroke-dasharray="4 6"
+          class="laser-beam beam-3"></line>
+        <line
+          x1="350"
+          y1="350"
+          x2="515"
+          y2="515"
+          stroke="url(#laser-grad-amber)"
+          stroke-width="1.4"
+          stroke-dasharray="4 6"
+          class="laser-beam beam-4"></line>
+
+        <defs>
+          <linearGradient
+            id="laser-grad-amber"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stop-color="#feed7a" stop-opacity="0.85"></stop>
+            <stop offset="50%" stop-color="#ff9d24" stop-opacity="0.45"></stop>
+            <stop offset="100%" stop-color="#ff8400" stop-opacity="0.08"></stop>
+          </linearGradient>
+          <linearGradient
+            id="laser-grad-purple"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stop-color="#df91f7" stop-opacity="0.85"></stop>
+            <stop offset="50%" stop-color="#e056fd" stop-opacity="0.45"></stop>
+            <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.08"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- Center Jewel: TapNova Core Emblem -->
+      <div class="constellation-core-hub" id="square-center-hub">
+        <div class="hub-gravitational-aura" aria-hidden="true"></div>
+        <div class="hub-logo-mark">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="hub-svg"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="url(#hub-logo-grad)"
+                stroke-width="1.75"></circle>
+              <path
+                d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12"
+                stroke="#ffffff"
+                stroke-width="1.75"
+                stroke-linecap="round"></path>
+              <circle cx="12" cy="12" r="1.5" fill="#ff9d24"></circle>
+              <defs>
+                <linearGradient
+                  id="hub-logo-grad"
+                  x1="2"
+                  y1="2"
+                  x2="22"
+                  y2="22"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#feed7a"></stop>
+                  <stop offset="0.5" stop-color="#ff8400"></stop>
+                  <stop offset="1" stop-color="#df91f7"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+        </div>
+      </div>
+
+      {
+        satellites.map((satellite) => (
+          <div
+            class={`orbital-satellite ${satellite.position}`}
+            id={`${id}-${satellite.id}`}
+          >
+            <div class="satellite-glass-card">
+              <div class="satellite-visual-wrap">
+                <Image
+                  src={satellite.image}
+                  alt=""
+                  width={satellite.width}
+                  height={satellite.width}
+                  quality={85}
+                  loading="lazy"
+                  decoding="async"
+                  class="satellite-img"
+                />
+              </div>
+              <div class="satellite-info">
+                <span class="satellite-title">{satellite.title}</span>
+                <span class="satellite-hint">{satellite.hint}</span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MOBILE-FIRST FLOW (< 1024px, specially 360–430px)
+       Rules 9, 10, 11, 12, 13 & 20:
+       - No absolute positioning
+       - TapNova Core is a clean header/badge (Rule 12)
+       - Native horizontal snap carousel for products (Rule 10)
+       ======================================================================= -->
+  <div class="mobile-ecosystem-flow">
+    <!-- Header with TapNova Core Badge -->
+    <div class="mobile-eco-header">
+      <h2 class="mobile-eco-headline font-display">
+        Un soporte inteligente para cada rincón de tu local.
+      </h2>
+      <p class="mobile-eco-desc">
+        Mesa, barra, terraza o en mano del personal. Cada interacción ocurre en
+        el instante exacto.
+      </p>
+    </div>
+
+    <!-- Native Horizontal Snap Carousel -->
+    <div
+      class="mobile-products-track"
+      aria-label="Soportes inteligentes TapNova"
+    >
+      {
+        satellites.map((satellite) => (
+          <div class="mobile-product-card">
+            <div class="mobile-card-visual">
+              <Image
+                src={satellite.image}
+                alt={satellite.title}
+                width={360}
+                height={270}
+                quality={85}
+                loading="lazy"
+                decoding="async"
+                class="mobile-card-img"
+              />
+            </div>
+            <div class="mobile-card-body">
+              <h3 class="mobile-card-title">{satellite.title}</h3>
+              <p class="mobile-card-hint">{satellite.hint}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Micro swipe indicator cue -->
+    <div class="mobile-swipe-cue" aria-hidden="true">
+      <span class="cue-arrow">←</span>
+      <span class="cue-text">Desliza para ver los 4 soportes</span>
+      <span class="cue-arrow">→</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* =========================================================================
+     DESKTOP STYLES (>= 1024px)
+     ========================================================================= */
+  @media (min-width: 1024px) {
+    .mobile-ecosystem-flow {
+      display: none !important;
+    }
+
+    .desktop-constellation-wrapper {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .ecosystem-stage-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 12;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .ecosystem-header {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: 960px;
+      width: calc(100% - 2rem);
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.35rem;
+      z-index: 25;
+      opacity: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .eco-headline {
+      font-size: clamp(2.7rem, 4.4vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .eco-sub {
+      font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+      line-height: 1.62;
+      color: var(--text-secondary);
+      max-width: 660px;
+      margin: 0 auto;
+      text-wrap: balance;
+    }
+
+    .orbital-constellation-chamber {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(640px, 58vw, 860px);
+      height: clamp(640px, 58vw, 860px);
+      perspective: 1000px;
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .orbital-laser-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .orbit-ring-outer {
+      animation: orbitRotate 60s linear infinite;
+      transform-origin: 350px 350px;
+    }
+
+    .orbit-ring-inner {
+      animation: orbitRotateRev 40s linear infinite;
+      transform-origin: 350px 350px;
+    }
+
+    .laser-beam {
+      animation: laserPulse 3s ease-in-out infinite alternate;
+    }
+
+    .beam-2 {
+      animation-delay: 0.75s;
+    }
+    .beam-3 {
+      animation-delay: 1.5s;
+    }
+    .beam-4 {
+      animation-delay: 2.25s;
+    }
+
+    .constellation-core-hub {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    .hub-gravitational-aura {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 157, 36, 0.28) 0%,
+        rgba(223, 145, 247, 0.18) 40%,
+        transparent 75%
+      );
+      filter: blur(24px);
+      animation: auraPulse 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .hub-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1.35rem;
+      border-radius: var(--radius-pill);
+      background: rgba(14, 14, 20, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      user-select: none;
+    }
+
+    .hub-logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hub-svg {
+      width: 1.65rem;
+      height: 1.65rem;
+    }
+
+    .hub-brand-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .orbital-satellite {
+      position: absolute;
+      width: clamp(180px, 16vw, 240px);
+      z-index: 5;
+      will-change: transform, opacity;
+      pointer-events: auto;
+    }
+
+    .sat-top-left {
+      top: 12%;
+      left: 0%;
+    }
+    .sat-top-right {
+      top: 12%;
+      right: 0%;
+    }
+    .sat-bottom-left {
+      bottom: 12%;
+      left: 0%;
+    }
+    .sat-bottom-right {
+      bottom: 12%;
+      right: 0%;
+    }
+
+    .satellite-glass-card {
+      position: relative;
+      display: block;
+      padding: 0.75rem;
+      background: rgba(14, 14, 18, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.55),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition:
+        transform 0.3s var(--ease-default),
+        border-color 0.3s var(--ease-default),
+        box-shadow 0.3s var(--ease-default);
+    }
+
+    .satellite-glass-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.65),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .satellite-visual-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.05) 0%,
+        transparent 70%
+      );
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .satellite-img {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      mix-blend-mode: lighten;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .satellite-info {
+      position: absolute;
+      top: 50%;
+      width: clamp(9rem, 12vw, 12.5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      text-align: center;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .sat-top-left .satellite-info,
+    .sat-bottom-left .satellite-info {
+      right: calc(100% + clamp(1rem, 2vw, 1.75rem));
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .sat-top-right .satellite-info,
+    .sat-bottom-right .satellite-info {
+      left: calc(100% + clamp(1rem, 2vw, 1.75rem));
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .satellite-zone-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .badge-amber {
+      background: rgba(255, 157, 36, 0.12);
+      border: 1px solid rgba(255, 157, 36, 0.3);
+      color: var(--accent-amber);
+    }
+
+    .badge-purple {
+      background: rgba(223, 145, 247, 0.12);
+      border: 1px solid rgba(223, 145, 247, 0.3);
+      color: var(--accent-purple);
+    }
+
+    .zone-num {
+      opacity: 0.65;
+      font-feature-settings: "tnum";
+    }
+
+    .satellite-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.015em;
+    }
+
+    .satellite-hint {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+  }
+
+  /* =========================================================================
+     MOBILE-FIRST RESPONSIVE FLOW (< 1024px)
+     Rules 9, 10, 11, 12, 13, 16 & 20
+     ========================================================================= */
+  @media (max-width: 1023px) {
+    .desktop-constellation-wrapper {
+      display: none !important;
+    }
+
+    .ecosystem-stage-container {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      transform: none;
+      opacity: 1;
+      pointer-events: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      z-index: 15;
+    }
+
+    .mobile-ecosystem-flow {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    /* Mobile Header with TapNova Core Badge (Rule 12) */
+    .mobile-eco-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .mobile-core-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 157, 36, 0.08);
+      border: 1px solid rgba(255, 157, 36, 0.28);
+      color: var(--accent-amber);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mobile-core-badge .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-amber);
+      box-shadow: 0 0 6px var(--accent-amber);
+    }
+
+    .mobile-eco-headline {
+      font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .mobile-eco-desc {
+      font-size: clamp(0.875rem, 3.4vw, 0.95rem);
+      line-height: 1.5;
+      color: var(--text-secondary);
+      max-width: 22rem;
+      text-wrap: balance;
+    }
+
+    /* Native Horizontal Snap Track (Rule 10) */
+    .mobile-products-track {
+      display: flex;
+      gap: 14px;
+      width: calc(100% + 32px);
+      margin-inline: -16px;
+      padding: 4px 16px 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      box-sizing: border-box;
+    }
+
+    .mobile-products-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Product Card (Rule 10 & 20) */
+    .mobile-product-card {
+      flex: 0 0 82%;
+      max-width: 320px;
+      scroll-snap-align: center;
+      border-radius: 20px;
+      background: rgba(16, 16, 22, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    .mobile-card-visual {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .mobile-card-img {
+      width: 86%;
+      height: 86%;
+      object-fit: contain;
+      mix-blend-mode: lighten;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .mobile-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .badge-amber {
+      background: rgba(255, 157, 36, 0.2);
+      border: 1px solid rgba(255, 157, 36, 0.4);
+      color: #ffffff;
+    }
+
+    .badge-purple {
+      background: rgba(223, 145, 247, 0.2);
+      border: 1px solid rgba(223, 145, 247, 0.4);
+      color: #ffffff;
+    }
+
+    .mobile-card-body {
+      padding: 0.85rem 1.15rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.015em;
+    }
+
+    .mobile-card-hint {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    /* Micro swipe indicator */
+    .mobile-swipe-cue {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .cue-arrow {
+      color: var(--accent-purple);
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Tablet adjustment: 640px to 1023px (Rule 11) */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-products-track {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+
+    .mobile-product-card {
+      flex: none;
+      max-width: 100%;
+    }
+
+    .mobile-swipe-cue {
+      display: none;
+    }
+  }
+
+  @keyframes orbitRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes orbitRotateRev {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes laserPulse {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes auraPulse {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+  }
+</style>

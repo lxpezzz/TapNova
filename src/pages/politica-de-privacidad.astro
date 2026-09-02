@@ -1,0 +1,603 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_METADATA } from '../data/siteData';
+
+const lastUpdated = "2 de septiembre de 2026";
+---
+
+<Layout 
+  title="Política de Privacidad — TapNova"
+  description="Información detallada sobre el tratamiento de datos personales, derechos RGPD y seguridad de la información en TapNova Technologies."
+>
+  <Navbar />
+
+  <main id="privacy-content" class="legal-page-main">
+    <div class="section-container">
+      
+      <!-- Top Centered Breadcrumb Button -->
+      <nav class="legal-breadcrumb-nav text-center" aria-label="Ruta de navegación">
+        <a href="/" class="back-home-btn">
+          <span class="btn-arrow" aria-hidden="true">←</span>
+          <span>Volver al inicio</span>
+        </a>
+      </nav>
+
+      <!-- Main Centered Editorial Header -->
+      <header class="legal-main-header text-center">
+        <h1 class="legal-main-title font-display">
+          Política de Privacidad
+        </h1>
+        <p class="legal-main-sub">
+          Última actualización: <strong>{lastUpdated}</strong> · Conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).
+        </p>
+      </header>
+
+      <!-- Main Centered Content Shell (Double-Bezel Card) -->
+      <div class="zone-card-shell legal-card-shell">
+        <div class="legal-article-body">
+          
+          <!-- Cláusula 01: Responsable del Tratamiento -->
+          <section class="legal-clause text-center" id="responsable">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Responsable del Tratamiento de tus Datos</h2>
+            </div>
+            
+            <p class="clause-desc">
+              En virtud de lo establecido en el artículo 13 del <strong>Reglamento General de Protección de Datos (UE) 2016/679 (RGPD)</strong>, se informa de forma transparente de la identidad del responsable del tratamiento de los datos recabados en este sitio web:
+            </p>
+            
+            <div class="legal-data-grid">
+              <div class="data-card">
+                <span class="data-label">Responsable</span>
+                <strong class="data-val">TapNova Technologies, S.L.</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Nombre comercial</span>
+                <strong class="data-val">TapNova</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">N.I.F. / C.I.F.</span>
+                <strong class="data-val">B-88941203</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Sede social</span>
+                <strong class="data-val">Paseo de la Castellana 95, Planta 18, 28046 Madrid</strong>
+              </div>
+              <div class="data-card col-full">
+                <span class="data-label">Contacto delegado de privacidad</span>
+                <strong class="data-val"><a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a> · Asunto: «Protección de Datos»</strong>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 02: Qué Datos Recopilamos -->
+          <section class="legal-clause text-center" id="datos-recopilados">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Datos Personales que Tratamos</h2>
+            </div>
+            
+            <p class="clause-desc">
+              TapNova recopila exclusivamente los datos imprescindibles para gestionar las relaciones comerciales con restaurantes, hoteles y negocios de hostelería:
+            </p>
+
+            <div class="legal-features-grid">
+              <div class="feature-box">
+                <span class="feature-icon">🏢</span>
+                <strong class="feature-title">Datos Profesionales y de Contacto</strong>
+                <p>Nombre del restaurante, persona de contacto, teléfono/WhatsApp, correo corporativo y dirección postal para envíos de hardware.</p>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">⚙️</span>
+                <strong class="feature-title">Datos Técnicos de Navegación</strong>
+                <p>Dirección IP anonimizada y métricas técnicas de interacción estrictamente necesarias para el rendimiento visual de la web.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 03: Finalidad del Tratamiento -->
+          <section class="legal-clause text-center" id="finalidad">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Para qué Utilizamos tus Datos</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Tratamos los datos facilitados con las siguientes finalidades legítimas y específicas:
+            </p>
+            
+            <div class="legal-callout-card">
+              <span class="callout-icon">📋</span>
+              <p>
+                <strong>1. Elaboración y envío de propuestas</strong> de equipamiento de sala a medida y presupuestos solicitados a través del configurador interactivo, formulario o WhatsApp.<br/><br/>
+                <strong>2. Fabricación, grabado láser y preconfiguración técnica</strong> de chips NFC y códigos QR vinculados a la ficha oficial de Google del restaurante.<br/><br/>
+                <strong>3. Gestión administrativa, facturación mercantil</strong> y cumplimiento de normativas tributarias españolas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 04: Legitimación -->
+          <section class="legal-clause text-center" id="legitimacion">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Legitimación para el Tratamiento</h2>
+            </div>
+            
+            <p class="clause-desc">
+              La base legal que nos faculta para tratar tus datos personales varía según el tipo de interacción:
+            </p>
+
+            <div class="legal-features-grid">
+              <div class="feature-box">
+                <span class="feature-icon">🤝</span>
+                <strong class="feature-title">Relación Contractual</strong>
+                <p>Aplicación de medidas precontractuales o ejecución del contrato de compraventa mercantil de equipamiento físico (Art. 6.1.b RGPD).</p>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">✓</span>
+                <strong class="feature-title">Consentimiento Expreso</strong>
+                <p>Otorgado libremente al remitir una consulta a través de nuestros formularios o canales de mensajería (Art. 6.1.a RGPD).</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 05: Conservación de Datos -->
+          <section class="legal-clause text-center" id="conservacion">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Plazo de Conservación de los Datos</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Tus datos se conservarán durante el tiempo necesario para gestionar la consulta o mantener la relación mercantil activa. Una vez extinguida la relación, los datos permanecerán debidamente bloqueados a disposición exclusiva de las Administraciones Públicas y tribunales durante los plazos legales de prescripción (generalmente hasta 5 años por imperativo tributario y mercantil).
+            </p>
+          </section>
+
+          <!-- Cláusula 06: Destinatarios y Cesión a Terceros -->
+          <section class="legal-clause text-center" id="destinatarios">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Destinatarios y Comunicación de Datos</h2>
+            </div>
+            
+            <p class="clause-desc">
+              <strong>TapNova jamás vende, alquila ni cede tus datos a terceros con fines publicitarios o comerciales ajenos.</strong> Únicamente acceden a la información proveedores auxiliares estrictamente necesarios bajo contrato de encargo de tratamiento:
+            </p>
+
+            <div class="legal-callout-card">
+              <span class="callout-icon">🔒</span>
+              <p>
+                Empresas de transporte urgente y logística para la entrega física de los soportes grabados, proveedores de alojamiento web de alta seguridad ubicados en territorio de la Unión Europea y entidades bancarias para el cobro de facturas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 07: Derechos del Usuario -->
+          <section class="legal-clause text-center" id="derechos">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Ejercicio de tus Derechos RGPD</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Como titular de los datos, la normativa europea te reconoce los siguientes derechos:
+            </p>
+
+            <div class="legal-features-grid">
+              <div class="feature-box">
+                <span class="feature-icon">👁️</span>
+                <strong class="feature-title">Acceso y Rectificación</strong>
+                <p>Conocer qué datos tratamos sobre ti y solicitar su corrección si son inexactos o incompletos.</p>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">🗑️</span>
+                <strong class="feature-title">Supresión y Limitación</strong>
+                <p>Pedir la eliminación de tus datos («derecho al olvido») o la limitación temporal de su tratamiento.</p>
+              </div>
+            </div>
+
+            <div class="legal-callout-card">
+              <span class="callout-icon">✉️</span>
+              <p>
+                Para ejercer cualquiera de estos derechos, remite un correo a <a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a> adjuntando copia de tu documento de identidad e indicando en el asunto «Ejercicio Derechos Privacidad». Asimismo, tienes derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> a través de su sede electrónica en <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 08: Seguridad y Encriptación -->
+          <section class="legal-clause text-center" id="seguridad">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Medidas de Seguridad Técnicas</h2>
+            </div>
+            
+            <p class="clause-desc">
+              TapNova aplica medidas técnicas y organizativas de última generación para garantizar la confidencialidad, integridad y disponibilidad de la información personal, incluyendo comunicaciones cifradas bajo protocolo <strong>SSL/TLS de 256 bits</strong>, cortafuegos perimetrales y protocolos de acceso restringido en servidores de alta seguridad.
+            </p>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Bottom Centered Action -->
+      <div class="legal-bottom-action text-center">
+        <a href="/" class="btn-solid-white">
+          <span>Volver a la página principal</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* -------------------------------------------------------------------------
+     Main Page Wrapper (100% Transparent to reveal Cosmic Nebula Background)
+     ------------------------------------------------------------------------- */
+  .legal-page-main {
+    position: relative;
+    padding-top: clamp(6.5rem, 11vw, 10.5rem);
+    padding-bottom: clamp(5rem, 9vw, 9.5rem);
+    min-height: 100vh;
+    background: transparent; /* Fondo cósmico interactivo exacto */
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  /* Centered Helper */
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Top Breadcrumb */
+  .legal-breadcrumb-nav {
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.25s var(--ease-default);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .back-home-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .back-home-btn:hover .btn-arrow {
+    transform: translateX(-3px);
+  }
+
+  /* Main Editorial Header */
+  .legal-main-header {
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .legal-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: rgba(223, 145, 247, 0.08);
+    border: 1px solid rgba(223, 145, 247, 0.25);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    box-shadow: 0 0 8px var(--accent-purple);
+  }
+
+  .badge-text {
+    color: var(--accent-purple);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .legal-main-title {
+    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 960px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub {
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub strong {
+    color: #ffffff;
+  }
+
+  /* -------------------------------------------------------------------------
+     Double-Bezel Card Shell (Matching ProductShowcase & PricingSection)
+     ------------------------------------------------------------------------- */
+  .zone-card-shell {
+    position: relative;
+    padding: clamp(2.5rem, 5vw, 4.75rem);
+    background: rgba(12, 12, 16, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    max-width: 1040px;
+    margin: 0 auto;
+    z-index: 5;
+  }
+
+  .legal-article-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  /* Individual Clause */
+  .legal-clause {
+    gap: 1.35rem;
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .legal-clause:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .clause-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .clause-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+  }
+
+  .clause-num {
+    color: var(--accent-purple);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .clause-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .clause-tag {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .clause-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 820px;
+    text-wrap: balance;
+  }
+
+  .clause-desc {
+    font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+    line-height: 1.72;
+    color: var(--text-secondary);
+    max-width: 820px;
+    text-wrap: pretty;
+  }
+
+  .clause-desc strong {
+    color: #ffffff;
+  }
+
+  .clause-desc a {
+    color: var(--accent-purple);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .clause-desc a:hover {
+    color: #eed5fd;
+  }
+
+  /* Data Grid for Legal Entity */
+  .legal-data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .legal-data-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .data-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+  }
+
+  .data-card.col-full {
+    grid-column: 1 / -1;
+  }
+
+  .data-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--accent-purple);
+  }
+
+  .data-val {
+    font-size: 0.95rem;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+
+  .data-val a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .data-val a:hover {
+    color: var(--accent-purple);
+  }
+
+  /* Callout Card */
+  .legal-callout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.35rem 1.75rem;
+    border-radius: var(--radius-md);
+    background: rgba(223, 145, 247, 0.07);
+    border: 1px solid rgba(223, 145, 247, 0.22);
+    color: var(--accent-purple);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 820px;
+  }
+
+  .legal-callout-card p {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .legal-callout-card a {
+    color: var(--accent-purple);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .callout-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Features Grid in Responsibility */
+  .legal-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 820px;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .legal-features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .feature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.35rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .feature-box p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Bottom Centered Return Action */
+  .legal-bottom-action {
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Mobile Adaptations (< 768px) */
+  @media (max-width: 767px) {
+    .legal-card-shell {
+      padding: 1.5rem 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .data-card,
+    .feature-box {
+      padding: 1rem;
+    }
+  }
+</style>

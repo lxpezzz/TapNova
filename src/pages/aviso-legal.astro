@@ -1,0 +1,584 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_METADATA } from '../data/siteData';
+
+const lastUpdated = "2 de septiembre de 2026";
+---
+
+<Layout 
+  title="Aviso Legal y Términos de Uso — TapNova"
+  description="Información legal, condiciones generales de uso, propiedad intelectual y política de protección de datos de TapNova Technologies."
+>
+  <Navbar />
+
+  <main id="legal-content" class="legal-page-main">
+    <div class="section-container">
+      
+      <!-- Top Centered Breadcrumb Button -->
+      <nav class="legal-breadcrumb-nav text-center" aria-label="Ruta de navegación">
+        <a href="/" class="back-home-btn">
+          <span class="btn-arrow" aria-hidden="true">←</span>
+          <span>Volver al inicio</span>
+        </a>
+      </nav>
+
+      <!-- Main Centered Editorial Header -->
+      <header class="legal-main-header text-center">
+        <h1 class="legal-main-title font-display">
+          Aviso Legal y Términos de Uso
+        </h1>
+        <p class="legal-main-sub">
+          Última actualización: <strong>{lastUpdated}</strong> · Conforme a la Ley 34/2002 (LSSI-CE) y el Reglamento (UE) 2016/679 (RGPD).
+        </p>
+      </header>
+
+      <!-- Main Centered Content Shell (Double-Bezel Card) -->
+      <div class="zone-card-shell legal-card-shell">
+        <div class="legal-article-body">
+          
+          <!-- Cláusula 01: Titular -->
+          <section class="legal-clause text-center" id="titular">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Datos Identificativos del Titular</h2>
+            </div>
+            
+            <p class="clause-desc">
+              En cumplimiento del artículo 10 de la <strong>Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</strong>, se detallan a continuación los datos identificativos de la entidad titular de este sitio web:
+            </p>
+            
+            <div class="legal-data-grid">
+              <div class="data-card">
+                <span class="data-label">Denominación social</span>
+                <strong class="data-val">TapNova Technologies, S.L.</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Nombre comercial</span>
+                <strong class="data-val">TapNova</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">N.I.F. / C.I.F.</span>
+                <strong class="data-val">B-88941203</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Domicilio social</span>
+                <strong class="data-val">Paseo de la Castellana 95, Planta 18, 28046 Madrid</strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Correo electrónico</span>
+                <strong class="data-val"><a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a></strong>
+              </div>
+              <div class="data-card">
+                <span class="data-label">Teléfono de atención</span>
+                <strong class="data-val"><a href={`tel:${SITE_METADATA.phone}`}>{SITE_METADATA.phone}</a></strong>
+              </div>
+              <div class="data-card col-full">
+                <span class="data-label">Actividad principal</span>
+                <strong class="data-val">Desarrollo, ingeniería y distribución de soportes interactivos físicos con tecnología contactless (NFC y QR) y servicios de consultoría digital y posicionamiento SEO local para el sector de la hostelería.</strong>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 02: Objeto -->
+          <section class="legal-clause text-center" id="objeto">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Objeto y Condiciones de Acceso</h2>
+            </div>
+            
+            <p class="clause-desc">
+              El presente Aviso Legal regula el acceso, navegación y utilización del portal accesible a través del dominio <strong>https://tapnova.es</strong>, así como las responsabilidades derivadas de la utilización de sus contenidos (textos, gráficos, fotografías, software y elementos de diseño de marca).
+            </p>
+            <p class="clause-desc">
+              El acceso o la mera navegación por el portal atribuye la condición de <strong>Usuario</strong> e implica la aceptación plena de todas las cláusulas publicadas en este documento.
+            </p>
+          </section>
+
+          <!-- Cláusula 03: Propiedad Intelectual -->
+          <section class="legal-clause text-center" id="propiedad-intelectual">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Propiedad Intelectual e Industrial</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Todos los derechos de propiedad intelectual e industrial sobre los contenidos del Sitio Web —incluyendo el diseño gráfico, interfaces de usuario, fotografías de producto, planos de ensamblaje de soportes físicos (portacuentas de piel y titanio, expositores de nogal, tarjetas NFC y posavasos), textos, código fuente y marcas registradas— pertenecen legítimamente a <strong>TapNova Technologies, S.L.</strong>
+            </p>
+            
+            <div class="legal-callout-card">
+              <span class="callout-icon">⚖️</span>
+              <p>
+                Queda expresamente prohibida la reproducción, distribución, transformación o comunicación pública de la totalidad o parte de los contenidos de este portal con fines comerciales sin la autorización previa y por escrito de TapNova.
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 04: Responsabilidades -->
+          <section class="legal-clause text-center" id="responsabilidad">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Exclusión de Responsabilidades</h2>
+            </div>
+            
+            <p class="clause-desc">
+              El Usuario se compromete a hacer un uso diligente y legal del portal. TapNova no se responsabiliza de interrupciones del servicio motivadas por labores de mantenimiento, fallos de telecomunicaciones ajenos o incompatibilidades técnicas en terminales móviles de usuarios.
+            </p>
+
+            <div class="legal-features-grid">
+              <div class="feature-box">
+                <span class="feature-icon">⚡</span>
+                <strong class="feature-title">Disponibilidad Técnica</strong>
+                <p>Mantenemos una disponibilidad constante del sitio, sin responder por cortes de red ajenos a nuestro control.</p>
+              </div>
+              <div class="feature-box">
+                <span class="feature-icon">🛡️</span>
+                <strong class="feature-title">Uso Diligente</strong>
+                <p>El cliente es responsable del uso y custodia de los soportes físicos una vez formalizada la entrega.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cláusula 05: Plataformas Terceros -->
+          <section class="legal-clause text-center" id="enlaces">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Interacción con Plataformas de Terceros (Google)</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Los soportes físicos comercializados por TapNova (chips NFC y micro-códigos QR) dirigen de manera directa hacia las fichas oficiales de Google Business Profile (Google Reviews) o cartas digitales titularidad del propio hostelero.
+            </p>
+            <p class="clause-desc">
+              <strong>Google y Google Maps</strong> son marcas registradas propiedad de Google LLC. TapNova actúa como proveedor independiente de equipamiento físico y consultoría de visibilidad local; no ostenta vínculo societario ni patrocinio directo con Google LLC.
+            </p>
+          </section>
+
+          <!-- Cláusula 06: Protección de Datos -->
+          <section class="legal-clause text-center" id="privacidad">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Protección de Datos Personales (RGPD)</h2>
+            </div>
+            
+            <p class="clause-desc">
+              De acuerdo con el <strong>Reglamento (UE) 2016/679 (RGPD)</strong> y la <strong>Ley Orgánica 3/2018 (LOPDGDD)</strong>, los datos recabados en los formularios de contacto, configuradores a medida o canales directos son tratados por <strong>TapNova Technologies, S.L.</strong> exclusivamente para la gestión de presupuestos, envío de muestras comerciales y soporte técnico a locales de hostelería.
+            </p>
+
+            <div class="legal-callout-card">
+              <span class="callout-icon">✉️</span>
+              <p>
+                Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación y portabilidad enviando un correo a <a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a> indicando «Ejercicio Derechos RGPD».
+              </p>
+            </div>
+          </section>
+
+          <!-- Cláusula 07: Cookies -->
+          <section class="legal-clause text-center" id="cookies">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Política de Cookies</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Este sitio web emplea únicamente cookies técnicas estrictamente necesarias para el correcto funcionamiento de las animaciones y la experiencia interactiva, prescindiendo de rastreo publicitario invasivo ni comercialización de perfiles con terceros.
+            </p>
+          </section>
+
+          <!-- Cláusula 08: Legislación y Jurisdicción -->
+          <section class="legal-clause text-center" id="jurisdiccion">
+            <div class="clause-header">
+              <h2 class="clause-title font-display">Legislación Aplicable y Fuero Judicial</h2>
+            </div>
+            
+            <p class="clause-desc">
+              Las presentes condiciones se rigen en su totalidad por la <strong>legislación española</strong>. Para la resolución de cualquier controversia, las partes se someten a los Juzgados y Tribunales de la ciudad de <strong>Madrid (España)</strong>, con renuncia a cualquier otro fuero que pudiera corresponderles, salvo lo dispuesto imperativamente por la normativa de protección de consumidores y usuarios.
+            </p>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Bottom Centered Action -->
+      <div class="legal-bottom-action text-center">
+        <a href="/" class="btn-solid-white">
+          <span>Volver a la página principal</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* -------------------------------------------------------------------------
+     Main Page Wrapper (100% Transparent to reveal Cosmic Nebula Background)
+     ------------------------------------------------------------------------- */
+  .legal-page-main {
+    position: relative;
+    padding-top: clamp(6.5rem, 11vw, 10.5rem);
+    padding-bottom: clamp(5rem, 9vw, 9.5rem);
+    min-height: 100vh;
+    background: transparent; /* Permite ver el fondo cósmico interactivo exacto */
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  /* Centered Helper */
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Top Breadcrumb */
+  .legal-breadcrumb-nav {
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.25s var(--ease-default);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .back-home-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .back-home-btn:hover .btn-arrow {
+    transform: translateX(-3px);
+  }
+
+  /* Main Editorial Header */
+  .legal-main-header {
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  .legal-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.95rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 8px var(--accent-amber);
+  }
+
+  .badge-text {
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .legal-main-title {
+    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 960px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub {
+    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 760px;
+    text-wrap: balance;
+  }
+
+  .legal-main-sub strong {
+    color: #ffffff;
+  }
+
+  /* -------------------------------------------------------------------------
+     Double-Bezel Card Shell (Identical to ProductShowcase & PricingSection)
+     ------------------------------------------------------------------------- */
+  .zone-card-shell {
+    position: relative;
+    padding: clamp(2.5rem, 5vw, 4.75rem);
+    background: rgba(12, 12, 16, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    max-width: 1040px;
+    margin: 0 auto;
+    z-index: 5;
+  }
+
+  .legal-article-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  /* Individual Clause */
+  .legal-clause {
+    gap: 1.35rem;
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .legal-clause:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .clause-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .clause-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+  }
+
+  .clause-num {
+    color: var(--accent-amber);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .clause-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .clause-tag {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .clause-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 820px;
+    text-wrap: balance;
+  }
+
+  .clause-desc {
+    font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+    line-height: 1.72;
+    color: var(--text-secondary);
+    max-width: 820px;
+    text-wrap: pretty;
+  }
+
+  .clause-desc strong {
+    color: #ffffff;
+  }
+
+  .clause-desc a {
+    color: var(--accent-amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .clause-desc a:hover {
+    color: var(--accent-yellow);
+  }
+
+  /* Data Grid for Legal Entity */
+  .legal-data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 840px;
+    margin-top: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .legal-data-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .data-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+  }
+
+  .data-card.col-full {
+    grid-column: 1 / -1;
+  }
+
+  .data-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--accent-amber);
+  }
+
+  .data-val {
+    font-size: 0.95rem;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+
+  .data-val a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .data-val a:hover {
+    color: var(--accent-amber);
+  }
+
+  /* Callout Card */
+  .legal-callout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1.35rem 1.75rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 157, 36, 0.07);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    color: var(--accent-amber);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 820px;
+  }
+
+  .legal-callout-card p {
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .legal-callout-card a {
+    color: var(--accent-amber);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .callout-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Features Grid in Responsibility */
+  .legal-features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 820px;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .legal-features-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .feature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.35rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .feature-box p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Bottom Centered Return Action */
+  .legal-bottom-action {
+    margin-top: clamp(3rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 5;
+  }
+
+  /* -------------------------------------------------------------------------
+     Mobile Adaptations (< 768px)
+     ------------------------------------------------------------------------- */
+  @media (max-width: 767px) {
+    .legal-card-shell {
+      padding: 1.5rem 1.25rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .data-card,
+    .feature-box {
+      padding: 1rem;
+    }
+  }
+</style>

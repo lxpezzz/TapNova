@@ -1,0 +1,384 @@
+---
+import { SITE_METADATA } from '../data/siteData';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer" id="footer" aria-label="Pie de página de TapNova">
+  <!-- Subtle Horizon Nebula Wash -->
+  <div class="footer-ambient-wash" aria-hidden="true"></div>
+
+  <div class="section-container">
+    <div class="footer-top-grid">
+      
+      <!-- Brand Column -->
+      <div class="footer-brand-col">
+        <a href="/" class="footer-brand-logo" aria-label="TapNova — Inicio">
+          <span class="footer-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="url(#footer-logo-grad)" stroke-width="1.75"/>
+              <path d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="1.5" fill="#ff9d24"/>
+              <defs>
+                <linearGradient id="footer-logo-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#feed7a"/>
+                  <stop offset="0.5" stop-color="#ff8400"/>
+                  <stop offset="1" stop-color="#df91f7"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="footer-brand-text">TapNova</span>
+        </a>
+
+        <p class="footer-tagline">
+          Ingeniería física en materiales nobles y posicionamiento estratégico en Google para restaurantes de excelencia.
+        </p>
+      </div>
+
+      <!-- Links Columns Grid -->
+      <div class="footer-nav-grid">
+        
+        <!-- Col 1: Soportes de Sala -->
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Soportes de Sala</span>
+          <ul class="footer-links-list">
+            <li><a href="/#productos">Portacuentas Piel & Titanio</a></li>
+            <li><a href="/#productos">Expositores de Nogal</a></li>
+            <li><a href="/#productos">Tarjetas NFC de Sala</a></li>
+            <li><a href="/#productos">Posavasos Inteligentes</a></li>
+            <li><a href="/#productos">Pegatinas QR Epoxi</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Crecimiento Digital -->
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Crecimiento Digital</span>
+          <ul class="footer-links-list">
+            <li><a href="/#seo-local">Posicionamiento SEO Local</a></li>
+            <li><a href="/#explainer">Cómo funciona el tap</a></li>
+            <li><a href="/#precios">Tarifas & Configurador</a></li>
+            <li><a href="/#precios">Páginas Web Gastronómicas</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contacto Directo -->
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Contacto Directo</span>
+          <ul class="footer-links-list">
+            <li>
+              <a 
+                href="https://wa.me/34600000000?text=Hola%20TapNova%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20restaurante" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="footer-wa-link"
+              >
+                <span class="wa-dot" aria-hidden="true">💬</span>
+                <span>WhatsApp de Sala</span>
+              </a>
+            </li>
+            <li><a href={`mailto:${SITE_METADATA.email}`}>{SITE_METADATA.email}</a></li>
+            <li><a href={`tel:${SITE_METADATA.phone}`}>{SITE_METADATA.phone}</a></li>
+            <li class="footer-address">Paseo de la Castellana 95, Madrid</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Marco Legal -->
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Marco Legal</span>
+          <ul class="footer-links-list">
+            <li><a href="/aviso-legal">Aviso legal</a></li>
+            <li><a href="/politica-de-privacidad">Política de privacidad</a></li>
+            <li><a href="/politica-de-cookies">Política de cookies</a></li>
+            <li><span class="footer-guarantee-note">Garantía oficial 2 años</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Sovereign Row -->
+    <div class="footer-bottom-row">
+      <p class="footer-copyright">
+        © {currentYear} {SITE_METADATA.brand} Technologies, S.L. Todos los derechos reservados.
+      </p>
+
+      <div class="footer-legal-inline">
+        <span>Diseñado para hostelería de excelencia</span>
+      </div>
+
+      <a href="#site-header" class="back-to-top-btn" aria-label="Volver arriba">
+        <span>Subir</span>
+        <span class="top-arrow" aria-hidden="true">↑</span>
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  /* -------------------------------------------------------------------------
+     Monolithic Dark Horizon Footer (100% Dark Luxury OLED Palette)
+     ------------------------------------------------------------------------- */
+  .site-footer {
+    position: relative;
+    background: rgba(8, 8, 12, 0.88);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    padding-top: clamp(4.5rem, 8vw, 7.5rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  /* Seamless Ambient Wash at Top */
+  .footer-ambient-wash {
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 140px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 157, 36, 0.14) 0%, rgba(223, 145, 247, 0.08) 50%, transparent 75%);
+    pointer-events: none;
+  }
+
+  /* Main Top Grid */
+  .footer-top-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 2;
+    padding-bottom: clamp(3rem, 5vw, 4.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  @media (min-width: 1024px) {
+    .footer-top-grid {
+      grid-template-columns: 1.15fr 2.25fr;
+      align-items: start;
+    }
+  }
+
+  /* Brand Column */
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    max-width: 380px;
+  }
+
+  .footer-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    width: fit-content;
+  }
+
+  .footer-brand-logo:hover {
+    opacity: 0.85;
+  }
+
+  .footer-mark {
+    width: 2.1rem;
+    height: 2.1rem;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .footer-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer-brand-text {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    font-family: var(--font-sans);
+  }
+
+  /* Status Badge */
+  .footer-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: fit-content;
+  }
+
+  .status-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #25d366;
+    box-shadow: 0 0 8px #25d366;
+  }
+
+  .status-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-tagline {
+    font-size: 0.95rem;
+    line-height: 1.62;
+    color: var(--text-secondary);
+  }
+
+  /* Nav Links Grid */
+  .footer-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.75rem, 3vw, 2.75rem);
+  }
+
+  @media (min-width: 640px) {
+    .footer-nav-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .footer-col-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--accent-amber);
+  }
+
+  .footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links-list a {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-default);
+    line-height: 1.45;
+  }
+
+  .footer-links-list a:hover {
+    color: #ffffff;
+  }
+
+  .footer-wa-link {
+    color: #25d366 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 500;
+  }
+
+  .footer-wa-link:hover {
+    color: #40ea85 !important;
+  }
+
+  .footer-address {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .footer-guarantee-note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* Bottom Row */
+  .footer-bottom-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: clamp(2rem, 3vw, 2.5rem);
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom-row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-copyright {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+  }
+
+  .footer-legal-inline {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .back-to-top-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .back-to-top-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .top-arrow {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+  }
+
+  .back-to-top-btn:hover .top-arrow {
+    transform: translateY(-2px);
+  }
+
+  /* Mobile Tweaks */
+  @media (max-width: 639px) {
+    .footer-nav-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 1.25rem;
+    }
+
+    .footer-bottom-row {
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+</style>
