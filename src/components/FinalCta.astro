@@ -96,7 +96,9 @@ import { SITE_METADATA } from '../data/siteData';
     padding-top: clamp(4.5rem, 8vw, 8.5rem);
     padding-bottom: clamp(5rem, 9vw, 9.5rem);
     background: transparent;
-    overflow: hidden;
+    /* El halo inferior debe continuar bajo el footer; recortarlo aquí crea
+       una junta horizontal visible al terminar la sección. */
+    overflow: visible;
   }
 
   /* Subtle Deep Space Ambient Glow */

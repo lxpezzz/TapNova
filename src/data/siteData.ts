@@ -14,7 +14,7 @@ export const HERO_PRODUCTS: ProductSlide[] = [
     id: 'portacuentas',
     num: '01',
     name: 'Portacuentas QR + NFC',
-    title: 'La reseña empieza en la mesa.',
+    title: 'Donde termina el servicio, empieza la reseña.',
     description: 'El comensal sostiene el portacuentas. Un toque con su móvil o un escaneo abre directamente tu ficha en Google.',
     ctaText: 'Ver portacuentas',
     ctaHref: '#portacuentas',
@@ -66,23 +66,17 @@ export const EXPLAINER_STEPS = [
   {
     step: '01',
     title: 'La reseña aparece cuando más sentido tiene.',
-    description: 'Pedir una valoración fuera de tiempo no funciona. TapNova integra QR y NFC en objetos que ya forman parte del servicio.',
-    cta: 'Ver portacuentas',
-    ctaHref: '#portacuentas'
+    description: 'Integramos QR y NFC en los momentos clave del servicio para que dejar una reseña resulte natural, rápido y sencillo.',
   },
   {
     step: '02',
     title: 'Acercar. Escanear. Listo.',
-    description: 'El cliente utiliza NFC o QR desde su propio móvil. Sin descargas, sin registros y sin pasos innecesarios.',
-    cta: 'Ver cómo funciona',
-    ctaHref: '#como-funciona'
+    description: 'El cliente acerca el móvil o escanea el QR y accede directamente. Sin apps, sin registros y sin pasos innecesarios.',
   },
   {
     step: '03',
-    title: 'La reputación también se trabaja.',
-    description: 'TapNova conecta los puntos de contacto físicos con SEO Local: optimización de Google Maps, respuesta a reseñas y presencia de zona.',
-    cta: 'Servicio SEO Local',
-    ctaHref: '#seo-local'
+    title: 'Conseguir reseñas es solo el principio.',
+    description: 'TapNova conecta la captación de reseñas con SEO local: optimización de tu perfil de Google, respuesta a reseñas y seguimiento de tu visibilidad en la zona.',
   }
 ];
 

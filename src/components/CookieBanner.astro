@@ -40,6 +40,15 @@
     pointer-events: none;
   }
 
+  @media (max-width: 1023px) {
+    .cookie-banner-wrapper {
+      bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+      left: 1rem;
+      right: 1rem;
+      width: calc(100% - 2rem);
+    }
+  }
+
   .cookie-banner-wrapper.visible {
     opacity: 1;
     visibility: visible;

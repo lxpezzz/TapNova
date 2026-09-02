@@ -4,16 +4,23 @@ interface Props {
   id?: string;
 }
 
-const { class: className = '', id = 'hero-portacuentas-desc' } = Astro.props;
+const { class: className = "", id = "hero-portacuentas-desc" } = Astro.props;
 ---
 
-<div class={`portacuentas-desc-panel ${className}`} id={id} aria-label="Características del portacuentas TapNova">
+<div
+  class={`portacuentas-desc-panel ${className}`}
+  id={id}
+  aria-label="Características del portacuentas TapNova"
+>
   <div class="desc-header">
     <h2 class="desc-headline font-display">
-      Diseñado para conseguir la reseña <span class="desc-headline-accent">al pedir la cuenta.</span>
+      Diseñado para conseguir la reseña <span class="desc-headline-accent"
+        >al pedir la cuenta.</span
+      >
     </h2>
     <p class="desc-intro">
-      Cada elemento del portacuentas TapNova está pensado para eliminar la fricción del cliente y conseguir una valoración en caliente antes de levantarse.
+      Haz que dejar una reseña forme parte de la experiencia, sin interrumpirla
+      ni añadir pasos innecesarios.
     </p>
   </div>
 </div>
@@ -50,21 +57,93 @@ const { class: className = '', id = 'hero-portacuentas-desc' } = Astro.props;
       border-radius: var(--radius-pill);
     }
 
-    .badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-purple); box-shadow: 0 0 6px var(--accent-purple); }
-    .badge-text { color: var(--accent-purple); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .desc-headline { color: #fff; font-size: clamp(2.1rem, 3vw, 2.95rem); font-weight: 500; line-height: 1.14; letter-spacing: -0.025em; text-wrap: balance; }
-    .desc-headline-accent { color: var(--accent-amber); }
-    .desc-intro { max-width: 32rem; color: var(--text-secondary); font-size: clamp(0.95rem, 1.15vw, 1.08rem); line-height: 1.62; text-wrap: balance; }
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+      box-shadow: 0 0 6px var(--accent-purple);
+    }
+    .badge-text {
+      color: var(--accent-purple);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .desc-headline {
+      color: #fff;
+      font-size: clamp(2.1rem, 3vw, 2.95rem);
+      font-weight: 500;
+      line-height: 1.14;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+    .desc-headline-accent {
+      color: var(--accent-amber);
+    }
+    .desc-intro {
+      max-width: 32rem;
+      color: var(--text-secondary);
+      font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+      line-height: 1.62;
+      text-wrap: balance;
+    }
   }
 
   @media (max-width: 1023px) {
-    .portacuentas-desc-panel { position: relative; width: 100%; margin: 0 auto; opacity: 1; z-index: 10; }
-    .desc-header { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; text-align: center; }
-    .desc-eyebrow-badge { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.25rem 0.65rem; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); }
-    .badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-purple); }
-    .badge-text { color: var(--accent-purple); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-    .desc-headline { color: #fff; font-size: clamp(1.65rem, 6vw, 2.2rem); font-weight: 500; line-height: 1.16; letter-spacing: -0.025em; text-wrap: balance; }
-    .desc-headline-accent { color: var(--accent-amber); }
-    .desc-intro { max-width: 30rem; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; text-wrap: balance; }
+    .portacuentas-desc-panel {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      opacity: 1;
+      z-index: 10;
+    }
+    .desc-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      text-align: center;
+    }
+    .desc-eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+    }
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-purple);
+    }
+    .badge-text {
+      color: var(--accent-purple);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .desc-headline {
+      color: #fff;
+      font-size: clamp(1.65rem, 6vw, 2.2rem);
+      font-weight: 500;
+      line-height: 1.16;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+    .desc-headline-accent {
+      color: var(--accent-amber);
+    }
+    .desc-intro {
+      max-width: 30rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-wrap: balance;
+    }
   }
 </style>

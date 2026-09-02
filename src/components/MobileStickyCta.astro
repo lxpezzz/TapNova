@@ -1,0 +1,466 @@
+---
+import { SITE_METADATA } from "../data/siteData";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const whatsappMessage = encodeURIComponent(
+  "Hola TapNova, me gustaría solicitar una propuesta y simulación de grabado para mi restaurante.",
+);
+---
+
+<nav
+  class={`mobile-sticky-bar ${className}`}
+  id="mobile-sticky-bar"
+  aria-label="Navegación móvil de sala"
+>
+  <!-- Ambient Internal Micro Glow -->
+  <div class="bar-ambient-glow" aria-hidden="true"></div>
+
+  <div class="bar-inner-container">
+    <ul class="bar-tabs-grid" role="menubar">
+      <!-- 1. Inicio (Hero) -->
+      <li class="tab-cell" role="none">
+        <a
+          href="/#hero-sequence"
+          class="tab-action-btn active"
+          role="menuitem"
+          data-target-section="hero-sequence"
+          id="m-tab-hero"
+          aria-label="Ir al inicio"
+        >
+          <span class="tab-icon-holder" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </span>
+          <span class="tab-caption">Inicio</span>
+          <span class="tab-active-pip" aria-hidden="true"></span>
+        </a>
+      </li>
+
+      <!-- 2. Soportes (Productos) -->
+      <li class="tab-cell" role="none">
+        <a
+          href="/#productos"
+          class="tab-action-btn"
+          role="menuitem"
+          data-target-section="productos"
+          id="m-tab-productos"
+          aria-label="Ver soportes de sala"
+        >
+          <span class="tab-icon-holder" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </span>
+          <span class="tab-caption">Productos</span>
+          <span class="tab-active-pip" aria-hidden="true"></span>
+        </a>
+      </li>
+
+      <!-- 3. Precios (Tarifas & Packs) -->
+      <li class="tab-cell" role="none">
+        <a
+          href="/#precios"
+          class="tab-action-btn"
+          role="menuitem"
+          data-target-section="precios"
+          id="m-tab-precios"
+          aria-label="Ver tarifas y packs"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-badge-euro-icon lucide-badge-euro"
+            ><path
+              d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
+            ></path><path d="M7 12h5"></path><path d="M15 9.4a4 4 0 1 0 0 5.2"
+            ></path></svg
+          >
+          <span class="tab-caption">Precios</span>
+          <span class="tab-active-pip" aria-hidden="true"></span>
+        </a>
+      </li>
+
+      <!-- 4. WhatsApp Directo (Live Status) -->
+      <li class="tab-cell" role="none">
+        <a
+          href={`https://wa.me/34600000000?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tab-action-btn tab-whatsapp"
+          role="menuitem"
+          aria-label="Contactar por WhatsApp con el equipo de sala"
+        >
+          <span class="tab-icon-holder" aria-hidden="true">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+            </svg>
+            <span class="wa-status-dot" title="Especialista online"></span>
+          </span>
+          <span class="tab-caption">WhatsApp</span>
+        </a>
+      </li>
+
+      <!-- 5. Propuesta / Contacto (Featured Action CTA) -->
+      <li class="tab-cell" role="none">
+        <a
+          href="/#contacto"
+          class="tab-action-btn tab-featured-cta"
+          role="menuitem"
+          data-target-section="contacto"
+          id="m-tab-contacto"
+          aria-label="Solicitar propuesta y simulación"
+        >
+          <span class="tab-cta-badge" aria-hidden="true">
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </span>
+          <span class="tab-caption cta-label">Propuesta</span>
+          <span class="tab-active-pip" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* Floating Island Dock (< 1024px) */
+  .mobile-sticky-bar {
+    display: block;
+    position: fixed;
+    bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(100% - 1.5rem), 480px);
+    z-index: 950;
+    background: rgba(10, 10, 16, 0.35);
+    backdrop-filter: blur(24px) saturate(190%);
+    -webkit-backdrop-filter: blur(24px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    box-shadow: 
+      0 16px 40px -4px rgba(0, 0, 0, 0.75),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.22);
+    user-select: none;
+    pointer-events: auto;
+    overflow: hidden;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.35s ease;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-sticky-bar {
+      display: none !important;
+    }
+  }
+
+  /* Thin reflective internal celestial glow */
+  .bar-ambient-glow {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(254, 237, 122, 0.5) 50%,
+      transparent 100%
+    );
+    filter: blur(0.5px);
+    pointer-events: none;
+  }
+
+  .bar-inner-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .bar-tabs-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tab-cell {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Instagram-like touch button */
+  .tab-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.35rem 0.25rem;
+    width: 100%;
+    max-width: 64px;
+    min-height: 48px;
+    color: rgba(255, 255, 255, 0.52);
+    text-decoration: none;
+    border-radius: 12px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      color 0.2s ease,
+      transform 0.15s ease;
+  }
+
+  .tab-action-btn:active {
+    transform: scale(0.92);
+  }
+
+  .tab-icon-holder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .tab-caption {
+    font-size: 0.65rem; /* ~10px */
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    transition:
+      color 0.2s ease,
+      font-weight 0.2s ease;
+  }
+
+  /* Active Tab State (Instagram inspired) */
+  .tab-action-btn.active {
+    color: #ffffff;
+  }
+
+  .tab-action-btn.active .tab-icon-holder {
+    color: #feed7a;
+    filter: drop-shadow(0 0 8px rgba(254, 237, 122, 0.6));
+  }
+
+  .tab-action-btn.active .tab-caption {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Subtle indicator pip under active tab */
+  .tab-active-pip {
+    position: absolute;
+    bottom: 1px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #feed7a;
+    box-shadow: 0 0 6px #feed7a;
+    opacity: 0;
+    transform: scale(0);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .tab-action-btn.active .tab-active-pip {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* WhatsApp Live Dot */
+  .wa-status-dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #25d366;
+    box-shadow: 0 0 8px #25d366;
+    animation: waPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes waPulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.75;
+    }
+  }
+
+  .tab-whatsapp:hover .tab-icon-holder {
+    color: #25d366;
+  }
+
+  /* Featured CTA Tab (Propuesta) */
+  .tab-featured-cta {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .tab-cta-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: linear-gradient(
+      135deg,
+      rgba(254, 237, 122, 0.18),
+      rgba(255, 132, 0, 0.24)
+    );
+    border: 1px solid rgba(254, 237, 122, 0.4);
+    box-shadow: 0 0 10px rgba(255, 157, 36, 0.2);
+    color: #feed7a;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .tab-featured-cta:active .tab-cta-badge {
+    transform: scale(0.92);
+  }
+
+  .tab-featured-cta.active .tab-cta-badge {
+    background: linear-gradient(135deg, #feed7a, #ff9d24);
+    color: #050505;
+    box-shadow: 0 0 14px rgba(254, 237, 122, 0.5);
+  }
+
+  .tab-featured-cta .cta-label {
+    color: #feed7a;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  function setupMobileStickyBar() {
+    const navBar = document.getElementById("mobile-sticky-bar");
+    if (!navBar) return;
+
+    const navButtons = navBar.querySelectorAll<HTMLAnchorElement>(
+      "[data-target-section]",
+    );
+    const sectionIds = ["hero-sequence", "productos", "precios", "contacto"];
+
+    // Smooth section tracking using IntersectionObserver
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -40% 0px",
+      threshold: 0.1,
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.id;
+          navButtons.forEach((btn) => {
+            const targetId = btn.getAttribute("data-target-section");
+            if (targetId === currentId) {
+              btn.classList.add("active");
+            } else {
+              btn.classList.remove("active");
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+
+    // Clean tap scrolling
+    navButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const targetId = btn.getAttribute("data-target-section");
+        if (!targetId) return;
+
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: "smooth" });
+          navButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobileStickyBar);
+  } else {
+    setupMobileStickyBar();
+  }
+</script>

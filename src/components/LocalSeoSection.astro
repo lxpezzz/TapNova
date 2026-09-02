@@ -1,20 +1,25 @@
 ---
-import { Image } from 'astro:assets';
-import seoLocalImg from '../assets/showcase/seo-local-context.webp';
+import { Image } from "astro:assets";
+import seoLocalImg from "../assets/showcase/seo-local-context.webp";
 ---
 
-<section class="local-seo-section" id="seo-local" aria-label="Servicio de SEO Local para hostelería">
+<section
+  class="local-seo-section"
+  id="seo-local"
+  aria-label="Servicio de SEO Local para hostelería"
+>
   <!-- Atmospheric background aura -->
   <div class="seo-ambient-aura" aria-hidden="true"></div>
 
   <div class="section-container">
     <div class="seo-header">
       <h2 class="seo-heading font-display">
-        El producto facilita la reseña.<br/>
-        TapNova trabaja lo que ocurre después.
+        De la mesa a Google. Y de <span class="seo-title__accent">Google</span> a
+        nuevos clientes.
       </h2>
       <p class="seo-lead">
-        Conseguir opiniones en la mesa es el primer paso. El segundo es convertir ese flujo continuo de valoraciones en visibilidad real para quienes buscan dónde comer o cenar en tu zona.
+        Una buena reputación no sirve de mucho si nadie la ve. TapNova la
+        convierte en presencia local.
       </p>
     </div>
 
@@ -23,8 +28,8 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
       <!-- Left: Visual Smartphone Mockup -->
       <div class="seo-visual-col">
         <div class="seo-image-frame">
-          <Image 
-            src={seoLocalImg} 
+          <Image
+            src={seoLocalImg}
             alt="Optimización de ficha de Google Business Profile y posicionamiento en Google Maps"
             width={780}
             height={585}
@@ -39,9 +44,11 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
         <div class="seo-pillar-item">
           <div class="pillar-num font-display">01</div>
           <div class="pillar-body">
-            <h3 class="pillar-title">Optimización Integral de Google Business Profile</h3>
+            <h3 class="pillar-title">Ponemos a punto tu ficha de Google</h3>
             <p class="pillar-desc">
-              Configuración técnica de tu ficha: categorías primarias y secundarias, 
+              Revisamos que toda la información esté <strong
+                >correcta, completa y preparada</strong
+              > para que tus clientes te encuentren fácilmente.
             </p>
           </div>
         </div>
@@ -49,9 +56,11 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
         <div class="seo-pillar-item">
           <div class="pillar-num font-display">02</div>
           <div class="pillar-body">
-            <h3 class="pillar-title">Protocolo Estratégico de Reseñas</h3>
+            <h3 class="pillar-title">Cuidamos tus reseñas</h3>
             <p class="pillar-desc">
-              Las menciones de platos y términos específicos influyen en el algoritmo local. Ayudamos a enfocar el momento de valoración y redactamos respuestas profesionales para cada opinión.
+              Te ayudamos a conseguir más opiniones y respondemos a <strong
+                >TODAS</strong
+              > las reseñas de forma profesional y cercana.
             </p>
           </div>
         </div>
@@ -59,9 +68,12 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
         <div class="seo-pillar-item">
           <div class="pillar-num font-display">03</div>
           <div class="pillar-body">
-            <h3 class="pillar-title">Relevancia en Google Maps y Radio Local</h3>
+            <h3 class="pillar-title">
+              Mejoramos tu visibilidad en Google Maps
+            </h3>
             <p class="pillar-desc">
-              Consistencia estricta de datos (Nombre, Dirección y Teléfono) en los principales mapas y directorios para maximizar el alcance cuando alguien busca restaurantes en tu entorno.
+              Mejoramos tu presencia en Google para que más personas te
+              encuentren cuando buscan un negocio como el tuyo en su zona.
             </p>
           </div>
         </div>
@@ -69,9 +81,12 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
         <div class="seo-pillar-item">
           <div class="pillar-num font-display">04</div>
           <div class="pillar-body">
-            <h3 class="pillar-title">Seguimiento Real sin Métricas Fantasma</h3>
+            <h3 class="pillar-title">Te enseñamos lo que realmente funciona</h3>
             <p class="pillar-desc">
-              Informes claros con las acciones que importan a un local: llamadas recibidas, solicitudes de ruta para llegar y visitas directas a tu menú o reserva online.
+              <strong>TODOS LOS MESES</strong> recibirás un informe detallado por
+              escrito con los resultados más importantes. Además, tendrás contacto
+              directo con nosotros para resolver dudas y revisar la evolución de tu
+              negocio.
             </p>
           </div>
         </div>
@@ -82,7 +97,9 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
     <div class="seo-honesty-banner">
       <div class="banner-icon" aria-hidden="true">✓</div>
       <p class="banner-text">
-        <strong>Compromiso TapNova:</strong> No prometemos la posición #1 fija ni inventamos algoritmos mágicos. Trabajamos con los factores oficiales de relevancia, prominencia y proximidad contrastados por las directrices de Google.
+        <strong>Compromiso TapNova:</strong> No prometemos la posición #1 ni resultados
+        milagrosos. Trabajamos con criterios reales de Google y acciones continuas
+        para mejorar la visibilidad de tu negocio en tu zona.
       </p>
     </div>
   </div>
@@ -104,7 +121,12 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
     transform: translateX(-50%);
     width: 75vw;
     height: 420px;
-    background: radial-gradient(circle, rgba(223, 145, 247, 0.08) 0%, rgba(255, 157, 36, 0.05) 45%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(223, 145, 247, 0.08) 0%,
+      rgba(255, 157, 36, 0.05) 45%,
+      transparent 70%
+    );
     filter: blur(60px);
     pointer-events: none;
   }
@@ -160,7 +182,16 @@ import seoLocalImg from '../assets/showcase/seo-local-context.webp';
     border: 1px solid var(--border-subtle);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
   }
-
+  .seo-title__accent {
+    color: #f5a623;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.18em;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    transform: translateY(0.03em);
+  }
   .seo-context-img {
     width: 100%;
     height: auto;

@@ -81,12 +81,6 @@ const stepVisuals = [
               >
                 <h2 class="state-title font-display">{step.title}</h2>
                 <p class="state-description">{step.description}</p>
-                <div class="state-cta-row">
-                  <a href={step.ctaHref} class="btn-primary">
-                    <span>{step.cta}</span>
-                    <span class="btn-icon" aria-hidden="true">→</span>
-                  </a>
-                </div>
               </div>
             ))}
           </div>
@@ -131,10 +125,7 @@ const stepVisuals = [
             <div class="mobile-step-body">
               <h3 class="mobile-step-title font-display">{step.title}</h3>
               <p class="mobile-step-desc">{step.description}</p>
-              <a href={step.ctaHref} class="btn-primary mobile-step-btn">
-                <span>{step.cta}</span>
                 <span class="btn-icon" aria-hidden="true">→</span>
-              </a>
             </div>
           </article>
         ))}
@@ -414,19 +405,19 @@ const stepVisuals = [
 
   /* Mobile Sequential Stream */
   .mobile-explainer-stream {
-    padding: 0.5rem 0 1.5rem;
+    padding: 0.25rem 0 1rem;
   }
 
   .mobile-intro {
     text-align: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .mobile-heading {
     font-size: 1.85rem;
     font-weight: 400;
     color: #ffffff;
-    margin-top: 0.5rem;
+    margin-top: 0;
   }
 
   .mobile-steps-list {
@@ -501,7 +492,8 @@ const stepVisuals = [
   function initStickyExplainer() {
     const track = document.getElementById('explainer-track');
     if (!track || track.dataset.initialized || !window.matchMedia('(min-width: 992px)').matches) return;
-    track.dataset.initialized = 'true';
+    const scrollTrack = track;
+    scrollTrack.dataset.initialized = 'true';
 
     const visualElements = document.querySelectorAll('.step-visual');
     const textCards = document.querySelectorAll('.explainer-state-card');
@@ -513,8 +505,8 @@ const stepVisuals = [
     let ticking = false;
 
     function updateExplainer() {
-      const rect = track.getBoundingClientRect();
-      const trackHeight = track.offsetHeight;
+      const rect = scrollTrack.getBoundingClientRect();
+      const trackHeight = scrollTrack.offsetHeight;
       const windowHeight = window.innerHeight;
 
       // Scroll progress from 0 (entry) to 1 (exit)

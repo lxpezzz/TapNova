@@ -420,7 +420,7 @@ const packs = [
 
             <!-- Security Assurance -->
             <div class="summary-guarantee-note">
-              <span>✓ Precios sin IVA · Envío en 48-72h · Prueba de muestra disponible</span>
+              <span>✓ Precios sin IVA · Envío en 48-72h · Simulación de grabado láser incluida</span>
             </div>
           </div>
         </div>
@@ -1728,7 +1728,7 @@ const packs = [
           `*Subtotal Equipamiento:* ${totalHardware} €`,
           hasSeo ? `*Servicio:* Posicionamiento SEO Local (89 €/mes)` : '',
           hasWeb ? `*Proyecto:* Página Web Gastronómica (790 €)` : '',
-          `Me gustaría recibir una muestra o formalizar el pedido.`
+          `Me gustaría solicitar la propuesta con simulación de grabado o formalizar el pedido.`
         ].filter(Boolean).join('\n');
 
         btnWhatsapp.href = `https://wa.me/34600000000?text=${encodeURIComponent(textParts)}`;
@@ -1790,8 +1790,8 @@ const packs = [
 
           // Scroll smoothly to customizer
           viewCustomizer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } catch (err) {
-          console.error('Error preloading customizer data:', err);
+        } catch {
+          // La precarga es opcional: si falla, el configurador sigue disponible.
         }
       });
     });

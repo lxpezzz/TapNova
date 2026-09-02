@@ -5,9 +5,6 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="site-footer" id="footer" aria-label="Pie de página de TapNova">
-  <!-- Subtle Horizon Nebula Wash -->
-  <div class="footer-ambient-wash" aria-hidden="true"></div>
-
   <div class="section-container">
     <div class="footer-top-grid">
       
@@ -122,26 +119,14 @@ const currentYear = new Date().getFullYear();
      ------------------------------------------------------------------------- */
   .site-footer {
     position: relative;
-    background: rgba(8, 8, 12, 0.88);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    /* El fondo cósmico es continuo: el footer no introduce ninguna capa
+       rectangular que pueda crear una junta con el CTA anterior. */
+    background: transparent;
     color: var(--text-primary);
     padding-top: clamp(4.5rem, 8vw, 7.5rem);
     padding-bottom: clamp(2.5rem, 5vw, 4rem);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
     overflow: hidden;
     z-index: 10;
-  }
-
-  /* Seamless Ambient Wash at Top */
-  .footer-ambient-wash {
-    position: absolute;
-    top: 0;
-    left: 15%;
-    right: 15%;
-    height: 140px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255, 157, 36, 0.14) 0%, rgba(223, 145, 247, 0.08) 50%, transparent 75%);
-    pointer-events: none;
   }
 
   /* Main Top Grid */

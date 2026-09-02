@@ -19,12 +19,13 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       <!-- 1. Initial Editorial Copy (Lateral on desktop, top on mobile) -->
       <div class="hero-initial-copy" id="hero-initial-copy">
         <h1 class="copy-headline font-display">
-          El momento adecuado<br />
-          lo cambia <span class="hero-title__accent">todo.</span>
+          Más reseñas. En el momento <span class="hero-title__accent"
+            >perfecto.</span
+          >
         </h1>
         <p class="copy-desc">
-          TapNova integra <strong>QR y NFC</strong> en los puntos de contacto que
-          ya forman parte de la experiencia de tu local.
+          Convierte los puntos de contacto de tu negocio en oportunidades para
+          conseguir reseñas con <strong>QR y NFC</strong>.
         </p>
         <div class="copy-cta-wrap">
           <a href="#contacto" class="btn-primary">
@@ -32,7 +33,7 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
             <span class="btn-icon" aria-hidden="true">→</span>
           </a>
           <span class="copy-trust-hint"
-            >Sin descargas ni apps · Lectura directa</span
+            >Sin apps · Sin registros · Un toque y listo</span
           >
         </div>
       </div>
@@ -48,7 +49,9 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       </div>
 
       <div class="hero-mobile-context" aria-live="polite">
-        <span id="hero-mobile-context-closed">NFC integrado · Sin apps</span>
+        <span id="hero-mobile-context-closed"
+          >Sin apps · Sin registros · Un toque y listo</span
+        >
         <span id="hero-mobile-context-open">Pídela en el momento clave</span>
       </div>
 
@@ -826,11 +829,19 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       transform: none;
     }
 
-    .hero-initial-copy { order: 1; }
-    .hero-stage-center { order: 2; }
-    :global(.portacuentas-desc-panel) { order: 3; }
+    .hero-initial-copy {
+      order: 1;
+    }
+    .hero-stage-center {
+      order: 2;
+    }
+    :global(.portacuentas-desc-panel) {
+      order: 3;
+    }
     .copy-desc,
-    .copy-trust-hint { display: block; }
+    .copy-trust-hint {
+      display: block;
+    }
   }
 </style>
 

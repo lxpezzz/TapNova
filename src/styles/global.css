@@ -89,6 +89,12 @@ body {
   min-width: 320px;
 }
 
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 img, picture, svg {
   display: block;
   max-width: 100%;

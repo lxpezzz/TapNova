@@ -2,6 +2,7 @@
 import { SITE_METADATA } from '../data/siteData';
 import CosmicNebulaBackground from '../components/CosmicNebulaBackground.astro';
 import CookieBanner from '../components/CookieBanner.astro';
+import MobileStickyCta from '../components/MobileStickyCta.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -76,5 +77,6 @@ const jsonLd = {
     <CosmicNebulaBackground />
     <slot />
     <CookieBanner />
+    <MobileStickyCta />
   </body>
 </html>

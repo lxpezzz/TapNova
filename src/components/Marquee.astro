@@ -1,0 +1,238 @@
+---
+interface Props {
+  /** Array de frases o palabras a mostrar en el marquee */
+  items?: string[];
+  /** Símbolo separador entre elementos (por defecto '✦') */
+  separator?: string;
+  /** Velocidad de desplazamiento ('slow', 'normal', 'fast' o segundos numéricos) */
+  speed?: "slow" | "normal" | "fast" | number;
+  /** Dirección del movimiento ('left' o 'right') */
+  direction?: "left" | "right";
+  /** Si se pausa al pasar el ratón por encima */
+  pauseOnHover?: boolean;
+  /** Máscara de desvanecimiento suave en los extremos izquierdo y derecho */
+  fadeEdges?: boolean;
+  /** Familia tipográfica ('display' para Syne, 'sans' para Plus Jakarta Sans) */
+  fontStyle?: "display" | "sans";
+  /** Tamaño de tipografía ('sm', 'md', 'lg') */
+  size?: "sm" | "md" | "lg";
+  /** Clases CSS adicionales para el contenedor exterior */
+  class?: string;
+}
+
+const DEFAULT_ITEMS = [
+  "MÁS RESEÑAS. EN EL MOMENTO PERFECTO.",
+  "PORTACUENTAS NFC + QR",
+  "EXPOSITORES QR + NFC",
+  "TARJETAS NFC",
+  "GOOGLE BUSINESS PROFILE",
+  "SEO LOCAL",
+  "WEBS QUE CONVIERTEN",
+];
+
+const {
+  items = DEFAULT_ITEMS,
+  separator = "✦",
+  speed = "slow",
+  direction = "left",
+  pauseOnHover = false,
+  fadeEdges = true,
+  fontStyle = "display",
+  size = "md",
+  class: className = "",
+} = Astro.props;
+
+// Calculate duration in seconds (calibrated for quiet luxury, slow and stately)
+let durationSeconds = 90;
+if (typeof speed === "number") {
+  durationSeconds = speed;
+} else if (speed === "slow") {
+  durationSeconds = 120;
+} else if (speed === "fast") {
+  durationSeconds = 45;
+}
+
+// Generate unique CSS variables for this instance
+const animationDuration = `${durationSeconds}s`;
+const animationDirection = direction === "right" ? "reverse" : "normal";
+
+// Repeat list sufficiently to ensure seamless width coverage
+const repeatedItems = [...items, ...items];
+---
+
+<div
+  class={`tapnova-marquee-root ${fontStyle === "display" ? "font-display" : "font-sans"} size-${size} ${fadeEdges ? "has-edge-fade" : ""} ${pauseOnHover ? "hover-pause" : ""} ${className}`}
+  style={`--marquee-duration: ${animationDuration}; --marquee-direction: ${animationDirection};`}
+  role="region"
+  aria-label="Cinta continua TapNova"
+>
+  <div class="marquee-viewport">
+    <!-- First Track Copy -->
+    <div class="marquee-track" aria-hidden="false">
+      {
+        repeatedItems.map((item) => (
+          <span class="marquee-item">
+            <span class="item-text">{item}</span>
+            <span class="item-separator" aria-hidden="true">
+              {separator}
+            </span>
+          </span>
+        ))
+      }
+      <slot />
+    </div>
+
+    <!-- Second Track Copy for 100% Seamless Loop -->
+    <div class="marquee-track" aria-hidden="true">
+      {
+        repeatedItems.map((item) => (
+          <span class="marquee-item">
+            <span class="item-text">{item}</span>
+            <span class="item-separator" aria-hidden="true">
+              {separator}
+            </span>
+          </span>
+        ))
+      }
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style>
+  .tapnova-marquee-root {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding-top: clamp(0.625rem, 1.8vw, 1.25rem);
+    padding-bottom: clamp(0.625rem, 1.8vw, 1.25rem);
+    overflow: hidden;
+    user-select: none;
+    pointer-events: auto;
+  }
+
+  /* Fade out edges using smooth CSS mask-gradient */
+  .tapnova-marquee-root.has-edge-fade {
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .marquee-viewport {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 100%;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee-scroll var(--marquee-duration, 35s) linear infinite;
+    animation-direction: var(--marquee-direction, normal);
+  }
+
+  /* Pause smoothly when hovering if prop enabled */
+  .tapnova-marquee-root.hover-pause:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Pure White Typography with High-End Editorial Spacing */
+  .item-text {
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition:
+      color 0.3s ease,
+      text-shadow 0.3s ease;
+  }
+
+  .tapnova-marquee-root:hover .item-text {
+    color: #ffffff;
+    text-shadow: 0 0 24px rgba(255, 255, 255, 0.35);
+  }
+
+  /* Celestial Subtle Separator */
+  .item-separator {
+    display: inline-block;
+    padding-left: clamp(1.75rem, 3.5vw, 3.5rem);
+    padding-right: clamp(1.75rem, 3.5vw, 3.5rem);
+    font-size: 0.85em;
+    color: rgba(254, 237, 122, 0.85); /* Amber-gold star accent */
+    text-shadow: 0 0 12px rgba(254, 237, 122, 0.5);
+    opacity: 0.85;
+    line-height: 1;
+  }
+
+  /* Font Sizes */
+  .size-sm .item-text {
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    letter-spacing: 0.24em;
+  }
+  .size-sm .item-separator {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .size-md .item-text {
+    font-size: clamp(0.875rem, 1.6vw, 1.125rem);
+    letter-spacing: 0.22em;
+  }
+
+  .size-lg .item-text {
+    font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+    letter-spacing: 0.18em;
+  }
+  .size-lg .item-separator {
+    padding-left: clamp(2.5rem, 4vw, 4.5rem);
+    padding-right: clamp(2.5rem, 4vw, 4.5rem);
+  }
+
+  /* GPU-Accelerated Keyframes */
+  @keyframes marquee-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  /* Respect Reduced Motion Preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      transform: none;
+    }
+    .marquee-viewport {
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .marquee-viewport::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>
