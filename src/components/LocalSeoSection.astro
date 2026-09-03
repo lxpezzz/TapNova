@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import seoLocalImg from "../assets/showcase/seo-local-context.webp";
+import SeoRadarConsole from "./SeoRadarConsole.astro";
 ---
 
 <section
@@ -102,7 +103,8 @@ import seoLocalImg from "../assets/showcase/seo-local-context.webp";
         para mejorar la visibilidad de tu negocio en tu zona.
       </p>
     </div>
-  </div>
+
+    <SeoRadarConsole />  </div>
 </section>
 
 <style>
@@ -134,9 +136,14 @@ import seoLocalImg from "../assets/showcase/seo-local-context.webp";
   .seo-header {
     text-align: center;
     max-width: 840px;
-    margin: 0 auto clamp(3rem, 6vw, 5rem);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .seo-heading {
@@ -147,7 +154,9 @@ import seoLocalImg from "../assets/showcase/seo-local-context.webp";
     letter-spacing: -0.025em;
     margin-top: 0.75rem;
     margin-bottom: 1.25rem;
+    text-align: center;
     text-wrap: balance;
+    width: 100%;
   }
 
   .seo-lead {
@@ -155,7 +164,10 @@ import seoLocalImg from "../assets/showcase/seo-local-context.webp";
     line-height: 1.62;
     color: var(--text-secondary);
     max-width: 720px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-wrap: balance;
   }
 
   /* Showcase Split */
@@ -288,4 +300,5 @@ import seoLocalImg from "../assets/showcase/seo-local-context.webp";
   .banner-text strong {
     color: #ffffff;
   }
+
 </style>

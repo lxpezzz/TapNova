@@ -17,6 +17,7 @@ If your generated code includes ANY of the following, the design instantly fails
 - **Banned Borders & Shadows:** Generic 1px solid gray borders. Harsh, dark drop shadows (`shadow-md`, `rgba(0,0,0,0.3)`). 
 - **Banned Layouts:** Edge-to-edge sticky navbars glued to the top. Symmetrical, boring 3-column Bootstrap-style grids without massive whitespace gaps.
 - **Banned Motion:** Standard `linear` or `ease-in-out` transitions. Instant state changes without interpolation.
+- **Banned AI/SaaS Tropes (STRICT):** NO eyebrows, NO badges, NO floating pills, NO category tags, NO "MÁS ELEGIDO" / "POPULAR" ribbons unless explicitly mandated by the user. Headings must stand strong on their own without AI clutter.
 
 ## 3. THE CREATIVE VARIANCE ENGINE
 Before writing code, silently "roll the dice" and select ONE combination from the following archetypes based on the prompt's context to ensure the output is uniquely tailored but always premium:
@@ -49,7 +50,7 @@ Never place a premium card, image, or container flatly on the background. They m
 
 ### C. Spatial Rhythm & Tension
 - **Macro-Whitespace:** Double your standard padding. Use `py-24` to `py-40` for sections. Allow the design to breathe heavily.
-- **Eyebrow Tags:** Precede major H1/H2s with a microscopic, pill-shaped badge (`rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium`).
+- **PROHIBITED - NO EYEBROWS, BADGES OR DECORATIVE TAGS:** Never add eyebrow badges, pills, category tags, floating ribbons or AI-like micro-badges above or inside sections, titles or cards unless the user explicitly requests them. Keep headings raw, confident and editorial.
 
 ## 5. MOTION CHOREOGRAPHY (FLUID DYNAMICS)
 Never use default transitions. All motion must simulate real-world mass and spring physics. Use custom cubic-beziers (e.g., `transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]`).

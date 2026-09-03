@@ -1,4 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+
+import portacuentasImg from '../assets/products/portacuentas.webp';
+import portacuentasOpenImg from '../assets/products/portacuentas-open.webp';
+import expositorImg from '../assets/products/expositor.webp';
+import tarjetaNfcImg from '../assets/products/tarjeta-nfc.webp';
+import posavasosImg from '../assets/products/pegatina.webp';
+import pegatinasImg from '../assets/products/pegatina.webp';
+import seoLocalImg from '../assets/showcase/seo-local-context.webp';
+
 interface Props {
   class?: string;
 }
@@ -9,20 +19,40 @@ const packs = [
   {
     id: 'pack-barra',
     name: 'Barra & Terraza',
+    badge: 'BARRA & TERRAZA',
+    badgeClass: 'badge-amber',
     popular: false,
     price: 290,
     originalPrice: 340,
     savings: 50,
     period: 'pago único de equipamiento',
-    desc: 'La configuración ideal para locales dinámicos centrados en barra, mesas altas y terraza donde la rotación de clientes es continua.',
-    features: [
-      '1 Expositor de nogal macizo para barra / caja',
-      '50 Posavasos inteligentes NFC impermeables',
-      '10 Pegatinas QR selladas en resina epoxi',
-      'Configuración e integración con Google Maps',
-      'Soporte técnico y sustitución de hardware 2 años'
+    target: 'Para locales dinámicos centrados en barra, mesas altas y terraza.',
+    inventory: [
+      {
+        qty: '1',
+        name: 'Expositor Nogal',
+        detail: 'Barra / Caja cobro',
+        icon: 'wood'
+      },
+      {
+        qty: '50',
+        name: 'Posavasos NFC',
+        detail: 'Impermeables terraza',
+        icon: 'coaster'
+      },
+      {
+        qty: '10',
+        name: 'Pegatinas QR',
+        detail: 'Resina epoxi relieve',
+        icon: 'sticker'
+      }
     ],
-    ctaText: 'Solicitar Pack Barra & Terraza',
+    perks: [
+      'Configuración e integración directa con Google Maps',
+      'Grabado láser o acabado TapNova verificado',
+      'Sustitución de hardware y chips NFC 2 años'
+    ],
+    ctaText: 'Elegir Pack Barra & Terraza',
     customizerData: {
       mesas: 0,
       expositores: 1,
@@ -36,21 +66,41 @@ const packs = [
   {
     id: 'pack-sala',
     name: 'Restaurante Sala',
+    badge: 'MÁS ELEGIDO · RECOMENDADO',
+    badgeClass: 'badge-popular',
     popular: true,
     price: 890,
     originalPrice: 1150,
     savings: 260,
-    period: 'pago único equipamiento + regalo digital',
-    desc: 'La solución probada para restaurantes de 10 a 20 mesas. Equipa tu sala con la pieza noble de entrega de cuenta y empodera a tu equipo.',
-    features: [
-      '12 Portacuentas en piel suave y placa de titanio',
-      '2 Expositores de nogal para recepción y barra',
-      '5 Tarjetas NFC de bolsillo para el equipo de sala',
-      '1er mes de SEO Local en Google Maps incluido (Regalo)',
-      'Grabado láser de logo corporativo personalizado',
-      'Garantía premium de hardware y chips 2 años'
+    period: 'equipamiento sala + regalo digital',
+    target: 'Para restaurantes de 10 a 20 mesas que cuidan cada pase.',
+    inventory: [
+      {
+        qty: '12',
+        name: 'Portacuentas Piel',
+        detail: 'Con placa de titanio',
+        icon: 'bill'
+      },
+      {
+        qty: '2',
+        name: 'Expositores Nogal',
+        detail: 'Recepción y barra',
+        icon: 'wood'
+      },
+      {
+        qty: '5',
+        name: 'Tarjetas NFC',
+        detail: 'Equipo de camareros',
+        icon: 'card'
+      }
     ],
-    ctaText: 'Solicitar Pack Restaurante Sala',
+    gift: '1er mes de SEO Local en Google Maps de regalo (valorado en 89 €)',
+    perks: [
+      'Grabado láser personalizado con el logo de tu local',
+      'Chips NFC de alta sensibilidad compatibles con iPhone y Android',
+      'Garantía premium de hardware y soporte directo 2 años'
+    ],
+    ctaText: 'Elegir Pack Restaurante Sala',
     customizerData: {
       mesas: 12,
       expositores: 2,
@@ -64,21 +114,56 @@ const packs = [
   {
     id: 'pack-360',
     name: 'Digitalización 360°',
+    badge: 'SALA COMPLETA + WEB + SEO',
+    badgeClass: 'badge-purple',
     popular: false,
     price: 1790,
     originalPrice: 2250,
     savings: 460,
     period: 'equipamiento completo + web + SEO',
-    desc: 'Todo el ecosistema físico de sala y terraza combinado con una web gastronómica de alta conversión y posicionamiento local estratégico.',
-    features: [
-      '20 Portacuentas en piel y titanio (Sala completa)',
-      '3 Expositores de nogal + 8 Tarjetas NFC de sala',
-      '100 Posavasos inteligentes + 25 Pegatinas QR',
-      'Página Web Gastronómica con carta y reservas',
-      '3 meses de Posicionamiento SEO Local incluidos',
-      'Asesor personal de reputación y ficha de Google'
+    target: 'La solución definitiva para equipar tu local y captar clientes online.',
+    inventory: [
+      {
+        qty: '20',
+        name: 'Portacuentas Piel',
+        detail: 'Titanio (sala completa)',
+        icon: 'bill'
+      },
+      {
+        qty: '3',
+        name: 'Expositores Nogal',
+        detail: 'Barra, hall y terraza',
+        icon: 'wood'
+      },
+      {
+        qty: '8',
+        name: 'Tarjetas NFC',
+        detail: 'Equipo de sala',
+        icon: 'card'
+      },
+      {
+        qty: '100',
+        name: 'Posavasos NFC',
+        detail: '+ 25 Pegatinas QR',
+        icon: 'plus'
+      }
     ],
-    ctaText: 'Solicitar Pack Digitalización 360°',
+    digitalBonus: [
+      {
+        title: 'Página Web Gastronómica',
+        desc: 'Carta interactiva y reservas sin comisiones'
+      },
+      {
+        title: '3 meses SEO Local',
+        desc: 'Estrategia activa y posicionamiento en Maps'
+      }
+    ],
+    perks: [
+      'Asesor personal asignado para optimización de ficha de Google',
+      'Personalización completa con tu identidad corporativa',
+      'Garantía premium de 2 años en todo el equipamiento físico'
+    ],
+    ctaText: 'Elegir Pack Digitalización 360°',
     customizerData: {
       mesas: 20,
       expositores: 3,
@@ -90,10 +175,33 @@ const packs = [
     }
   }
 ];
+
+const desktopPacks = [
+  {
+    ...packs[0],
+    displayName: 'Tap Start',
+    benefit: 'Convierte momentos de sala en nuevas reseñas.',
+    visualLabel: 'Captación de reseñas',
+  },
+  {
+    ...packs[1],
+    displayName: 'Tap Pro',
+    benefit: 'Tu sala conectada con la visibilidad local.',
+    visualLabel: 'Sala + Google Maps',
+  },
+  {
+    ...packs[2],
+    displayName: 'Tap Galaxy',
+    benefit: 'El sistema completo, dentro y fuera del local.',
+    visualLabel: 'Ecosistema TapNova',
+  },
+];
 ---
 
 <section class={`pricing-section ${className}`} id="precios" aria-label="Precios y configuración de equipamiento TapNova">
+  <!-- Atmospheric Background Glows -->
   <div class="pricing-ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="pricing-ambient-glow glow-middle" aria-hidden="true"></div>
   <div class="pricing-ambient-glow glow-bottom" aria-hidden="true"></div>
 
   <div class="section-container">
@@ -103,49 +211,224 @@ const packs = [
         Equipa tu local a tu medida o elige un pack llave en mano.
       </h2>
       <p class="pricing-main-sub">
-        Separamos con total claridad el <strong>equipamiento físico en propiedad</strong> (pago único desgravable) de los <strong>servicios de crecimiento digital</strong>. Sin permanencias forzadas.
+        Separamos con total claridad el <strong>equipamiento físico en propiedad</strong> (pago único 100% desgravable) de los <strong>servicios de crecimiento digital</strong>. Sin permanencias ni sorpresas.
       </p>
-
-      <!-- Mode Switcher (Packs vs Customizer) -->
-      <div class="pricing-mode-switcher-container">
-        <div class="pricing-mode-dock" role="tablist" aria-label="Modo de visualización de precios">
-          <button 
-            type="button" 
-            role="tab" 
-            class="mode-btn active" 
-            id="tab-mode-packs"
-            aria-selected="true"
-            aria-controls="view-mode-packs"
-          >
-            <span class="mode-icon" aria-hidden="true">⭐</span>
-            <span>Packs Recomendados</span>
-          </button>
-
-          <button 
-            type="button" 
-            role="tab" 
-            class="mode-btn" 
-            id="tab-mode-customizer"
-            aria-selected="false"
-            aria-controls="view-mode-customizer"
-          >
-            <span class="mode-icon" aria-hidden="true">⚙️</span>
-            <span>Configurador a Medida</span>
-          </button>
-        </div>
-      </div>
     </header>
 
-    <!-- VIEW 1: CURATED PACKS -->
-    <div class="pricing-view-panel active" id="view-mode-packs" role="tabpanel" aria-labelledby="tab-mode-packs">
+    <!-- =======================================================================
+         SECCIÓN 1: LOS 3 PACKS (De un solo vistazo)
+         ======================================================================= -->
+    <div class="packs-showcase-wrapper" id="packs-recomendados">
+      <div class="packs-section-label">
+        <h3 class="packs-subheading font-display">Packs recomendados con todo incluido</h3>
+        <p class="packs-subdesc">Todo el hardware configurado, grabado y listo para el servicio desde el primer día.</p>
+      </div>
+
+      <div class="desktop-pack-explorer" data-active-pack="pack-sala">
+        <div class="desktop-pack-visual" aria-live="polite">
+          <div class="pack-visual-heading">
+            <span class="pack-visual-eyebrow">EL SISTEMA EN TU NEGOCIO</span>
+            <p class="pack-visual-state" data-pack-visual-label>Sala + Google Maps</p>
+          </div>
+
+          <!-- Visual Conceptual & Explicativo por Pack -->
+          <div class="product-stage-canvas" aria-hidden="true">
+            <!-- Ambiente sutil -->
+            <div class="stage-spotlight"></div>
+            
+            <!-- Representación Conceptual de Soportes Físicos Existentes -->
+            <div class="stage-hardware-cluster">
+              <div class="stage-product-item item-portacuentas">
+                <Image
+                  src={portacuentasImg}
+                  alt="Portacuentas TapNova"
+                  width={320}
+                  height={320}
+                  quality={90}
+                  class="stage-img"
+                />
+              </div>
+
+              <div class="stage-product-item item-expositor">
+                <Image
+                  src={expositorImg}
+                  alt="Expositor TapNova"
+                  width={220}
+                  height={220}
+                  quality={90}
+                  class="stage-img"
+                />
+              </div>
+
+              <div class="stage-product-item item-tarjeta">
+                <Image
+                  src={tarjetaNfcImg}
+                  alt="Tarjeta NFC TapNova"
+                  width={160}
+                  height={160}
+                  quality={90}
+                  class="stage-img"
+                />
+              </div>
+            </div>
+
+            <!-- CAPA START: Captación de reseñas con productos físicos -->
+            <div class="stage-layer layer-start">
+              <div class="stage-concept-badge badge-start">
+                <span class="concept-icon">★</span>
+                <div class="concept-text">
+                  <strong>Captación en sala</strong>
+                  <span>Soportes físicos NFC y QR</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAPA PRO: Productos físicos + Google / SEO Local -->
+            <div class="stage-layer layer-pro">
+              <div class="stage-concept-card card-pro">
+                <div class="concept-header">
+                  <span class="concept-tag">Google Maps & SEO Local</span>
+                </div>
+                <p class="concept-desc">Soportes físicos en sala conectados con la presencia en Google Maps.</p>
+              </div>
+            </div>
+
+            <!-- CAPA GALAXY: Sistema completo con físico + Google + Web -->
+            <div class="stage-layer layer-galaxy">
+              <div class="stage-concept-card card-galaxy">
+                <div class="concept-header">
+                  <span class="concept-tag tag-galaxy">Sistema completo</span>
+                </div>
+                <p class="concept-desc">Soportes físicos + Ficha Google Maps + Página web para tu negocio.</p>
+              </div>
+            </div>
+
+            <div class="stage-pedestal-rim"></div>
+          </div>
+
+          <div class="pack-visual-caption">
+            <span class="pack-visual-index" data-pack-visual-index>02</span>
+            <p data-pack-visual-copy>El equipamiento de tu sala activa reseñas y conecta tu negocio con las búsquedas cercanas.</p>
+          </div>
+        </div>
+
+        <div class="desktop-pack-panel">
+          <!-- Selector Horizontal de los 3 Packs (Siempre visibles: Tap Start, Tap Pro y Tap Galaxy) -->
+          <div class="desktop-pack-selector" role="tablist" aria-label="Elige un pack TapNova">
+            {desktopPacks.map((pack) => (
+              <button
+                type="button"
+                class:list={['desktop-pack-option', { 'is-active': pack.popular }]}
+                data-pack-option={pack.id}
+                role="tab"
+                aria-selected={pack.popular ? 'true' : 'false'}
+                aria-controls={`pack-detail-${pack.id}`}
+              >
+                <div class="pack-opt-top">
+                  <div class="pack-opt-title-wrap">
+                    <span class="desktop-pack-option-name font-display">{pack.displayName}</span>
+                    {pack.popular && <span class="desktop-pack-option-badge">Más elegido</span>}
+                  </div>
+                  <div class="desktop-pack-option-price">
+                    <b>{pack.price} €</b>
+                    <small>pago único</small>
+                  </div>
+                </div>
+                <p class="desktop-pack-option-benefit">{pack.benefit}</p>
+              </button>
+            ))}
+          </div>
+
+          <!-- Detalle del Pack Activo: Productos incluidos, servicios y CTA (ceñido 100% a datos reales) -->
+          <div class="desktop-pack-details">
+            {desktopPacks.map((pack) => (
+              <section
+                class:list={['desktop-pack-detail', { 'is-active': pack.popular }]}
+                id={`pack-detail-${pack.id}`}
+                data-pack-detail={pack.id}
+                role="tabpanel"
+                tabindex="0"
+                hidden={!pack.popular}
+              >
+                <div class="desktop-pack-detail-head">
+                  <div class="detail-kicker-row">
+                    <span class="desktop-pack-detail-kicker">{pack.visualLabel}</span>
+                    {pack.savings && (
+                      <span class="detail-savings-badge">Ahorras {pack.savings} €</span>
+                    )}
+                  </div>
+                  <h4 class="font-display">{pack.displayName}</h4>
+                  <p class="detail-target-desc">{pack.target}</p>
+                </div>
+
+                <div class="desktop-pack-detail-columns">
+                  <div class="detail-col">
+                    <span class="desktop-pack-detail-label">Productos incluidos</span>
+                    <ul class="desktop-pack-inventory">
+                      {pack.inventory.map((item) => (
+                        <li>
+                          <span class="inv-qty">{item.qty}×</span>
+                          <span class="inv-name">{item.name}</span>
+                          <span class="inv-note">({item.detail})</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div class="detail-col">
+                    <span class="desktop-pack-detail-label">Servicios incluidos</span>
+                    <ul class="desktop-pack-services">
+                      {pack.gift && (
+                        <li class="service-highlight">
+                          <span class="service-icon">✦</span>
+                          <span>{pack.gift}</span>
+                        </li>
+                      )}
+                      {pack.digitalBonus?.map((bonus) => (
+                        <li class="service-bonus">
+                          <span class="service-icon">✦</span>
+                          <span><strong>{bonus.title}:</strong> {bonus.desc}</span>
+                        </li>
+                      ))}
+                      {pack.perks.map((perk) => (
+                        <li>
+                          <span class="service-icon">✓</span>
+                          <span>{perk}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="desktop-pack-detail-actions">
+                  <a href="#contacto" class="btn-pack-cta btn-solid-white">
+                    <span>{pack.ctaText}</span>
+                    <span class="btn-icon" aria-hidden="true">→</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="btn-customize-link"
+                    data-customizer-trigger={pack.id}
+                    data-customizer-payload={JSON.stringify(pack.customizerData)}
+                  >
+                    <span>Personalizar este pack</span>
+                    <span class="action-arrow" aria-hidden="true">↓</span>
+                  </button>
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div class="packs-grid">
         {packs.map((pack) => (
           <article class={`pack-card-shell ${pack.popular ? 'pack-popular' : ''}`}>
             <div class="pack-card-inner">
-              <!-- Card Header -->
+              <!-- Top Header & Target -->
               <div class="pack-header">
                 <h3 class="pack-title font-display">{pack.name}</h3>
-                <p class="pack-desc">{pack.desc}</p>
+                <p class="pack-target">{pack.target}</p>
               </div>
 
               <!-- Price Box -->
@@ -157,25 +440,68 @@ const packs = [
                 </div>
                 <div class="price-savings-row">
                   <span class="original-price">Antes {pack.originalPrice} €</span>
-                  <span class="savings-chip">Ahorras {pack.savings} € en bundle</span>
+                  <span class="savings-chip">Ahorras {pack.savings} €</span>
                 </div>
               </div>
 
-              <!-- Features List -->
-              <ul class="pack-features-list">
-                {pack.features.map((feat) => (
+              <!-- Instant Glance Equipment Matrix (De un vistazo sin leer todo) -->
+              <div class="pack-glance-section">
+                <span class="glance-title">QUÉ INCLUYE (DE UN VISTAZO):</span>
+                
+                <div class="glance-items-grid">
+                  {pack.inventory.map((item) => (
+                    <div class="glance-item-card">
+                      <div class="glance-qty-badge">
+                        <span class="glance-qty-num">{item.qty}</span>
+                        <span class="glance-qty-x">x</span>
+                      </div>
+                      <div class="glance-item-info">
+                        <strong class="glance-item-name">{item.name}</strong>
+                        <span class="glance-item-detail">{item.detail}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Regalo / Bonus Digital */}
+                {pack.gift && (
+                  <div class="pack-gift-pill">
+                    <span class="gift-icon" aria-hidden="true">🎁</span>
+                    <span class="gift-text">{pack.gift}</span>
+                  </div>
+                )}
+
+                {/* Digital Bonus for 360 Pack */}
+                {pack.digitalBonus && (
+                  <div class="pack-digital-bonus-list">
+                    {pack.digitalBonus.map((bonus) => (
+                      <div class="digital-bonus-item">
+                        <span class="bonus-check" aria-hidden="true">⚡</span>
+                        <div class="bonus-texts">
+                          <strong>{bonus.title}:</strong> <span>{bonus.desc}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <!-- Quick Perks Bullet Strip -->
+              <ul class="pack-perks-list" aria-label="Detalles y garantías">
+                {pack.perks.map((perk) => (
                   <li>
-                    <span class="check-icon" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                    <span>{feat}</span>
+                    <span class="perk-icon" aria-hidden="true">✓</span>
+                    <span>{perk}</span>
                   </li>
                 ))}
               </ul>
 
-              <!-- Actions -->
+              <!-- Actions Area -->
               <div class="pack-actions">
-                <a href="#contacto" class={`btn-pack-cta ${pack.popular ? 'btn-solid-white' : 'btn-primary'}`}>
+                <a 
+                  href="#contacto" 
+                  class={`btn-pack-cta ${pack.popular ? 'btn-solid-white' : 'btn-primary'}`}
+                >
                   <span>{pack.ctaText}</span>
                   <span class="btn-icon" aria-hidden="true">→</span>
                 </a>
@@ -186,8 +512,8 @@ const packs = [
                   data-customizer-trigger={pack.id}
                   data-customizer-payload={JSON.stringify(pack.customizerData)}
                 >
-                  <span>Ajustar este pack en el configurador</span>
-                  <span aria-hidden="true">⚙️</span>
+                  <span>Personalizar unidades de este pack</span>
+                  <span class="action-arrow" aria-hidden="true">↓</span>
                 </button>
               </div>
             </div>
@@ -198,40 +524,125 @@ const packs = [
       <!-- Trust Assurance Strip -->
       <div class="pricing-trust-strip">
         <div class="trust-item">
-          <span class="trust-icon">✓</span>
+          <span class="trust-icon" aria-hidden="true">✓</span>
           <span>Factura de equipamiento 100% deducible</span>
         </div>
         <div class="trust-item">
-          <span class="trust-icon">✓</span>
+          <span class="trust-icon" aria-hidden="true">✓</span>
           <span>Garantía de chips y materiales 2 años</span>
         </div>
         <div class="trust-item">
-          <span class="trust-icon">✓</span>
+          <span class="trust-icon" aria-hidden="true">✓</span>
           <span>Sin cuotas obligatorias por el hardware</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✓</span>
+          <span>Simulación de grabado gratuita antes de producir</span>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 2: INTERACTIVE CUSTOMIZER -->
-    <div class="pricing-view-panel" id="view-mode-customizer" role="tabpanel" aria-labelledby="tab-mode-customizer">
+    <!-- =======================================================================
+         SEPARADOR CTA: "¿PREFIERES CREAR TU PROPIA COMBINACIÓN?"
+         Funciona como divisor visual y puente interactivo hacia los productos individuales
+         ======================================================================= -->
+    <div class="pricing-custom-separator-wrap" id="separador-combinacion">
+      <div class="zone-card-shell separator-cta-card">
+        <!-- Floating Ambient Aura inside the card -->
+        <div class="separator-halo" aria-hidden="true"></div>
+
+        <div class="separator-content">
+          <div class="separator-badge">
+            <span class="sep-badge-dot" aria-hidden="true"></span>
+            <span>CONFIGURACIÓN A MEDIDA</span>
+          </div>
+
+          <h3 class="separator-title font-display">
+            ¿PREFIERES CREAR TU PROPIA COMBINACIÓN?
+          </h3>
+
+          <p class="separator-desc">
+            Si tu restaurante tiene un número específico de mesas, barra o terraza, ajusta las unidades exactas de cada soporte físico y calcula tu presupuesto con descuentos por volumen en tiempo real.
+          </p>
+
+          <div class="separator-actions">
+            <a href="#productos-individuales" class="btn-solid-white btn-jump-customizer" id="btn-scroll-to-customizer">
+              <span>Diseñar mi propia combinación</span>
+              <span class="btn-icon" aria-hidden="true">↓</span>
+            </a>
+            <span class="separator-hint">Ajusta cada producto a continuación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         SECCIÓN 2: PRODUCTOS INDIVIDUALES & CONFIGURADOR INTERACTIVO
+         (Debajo de los packs y del CTA separador)
+         ======================================================================= -->
+    <div class="individual-products-section" id="productos-individuales">
+      <div class="individual-section-label">
+        <h3 class="individual-main-title font-display">
+          Configura tus productos individuales
+        </h3>
+        <p class="individual-main-sub">
+          Añade exactamente lo que necesitas para tu local. Los descuentos por volumen en portacuentas se aplican de forma automática.
+        </p>
+      </div>
+
       <div class="customizer-layout-grid">
-        
-        <!-- Left Column: Controls -->
+        <!-- Left Column: Individual Product Controllers -->
         <div class="customizer-controls-column">
-          
-          <!-- Control Block 1: Portacuentas en Mesa -->
-          <div class="control-card-shell">
-            <div class="control-header">
-              <div class="control-title-row">
-                <span class="tier-indicator" id="portacuentas-tier-label">79 € / ud</span>
+
+          <!-- PRODUCTO 1: Portacuentas en Piel & Titanio -->
+          <div class="control-card-shell product-control-card">
+            <div class="product-card-topbar">
+              <div class="product-thumb-wrap">
+                <Image 
+                  src={portacuentasImg} 
+                  alt="Portacuentas en piel y titanio" 
+                  width={96}
+                  height={96}
+                  class="product-thumb-img"
+                  loading="lazy"
+                />
               </div>
-              <h4 class="control-name">Portacuentas en Piel & Titanio</h4>
-              <p class="control-sub">Mueve el selector según el número de mesas que tiene tu restaurante.</p>
+              <div class="product-header-info">
+                <div class="product-badge-row">
+                  <span class="zone-pill">SALA & MESAS</span>
+                  <span class="tier-indicator" id="portacuentas-tier-label">79 € / ud</span>
+                </div>
+                <h4 class="control-name">Portacuentas en Piel & Titanio</h4>
+                <p class="control-sub">El soporte noble de entrega de cuenta. Chip NFC integrado y placa de titanio grabada.</p>
+              </div>
             </div>
 
+            <!-- Volume Tier Scale Bar -->
+            <div class="volume-tiers-legend">
+              <div class="tier-col active" id="tier-col-1">
+                <span class="tier-col-range">1 a 9 mesas</span>
+                <strong class="tier-col-price">79 €/ud</strong>
+                <span class="tier-col-note">Precio base</span>
+              </div>
+              <div class="tier-col" id="tier-col-2">
+                <span class="tier-col-range">10 a 19 mesas</span>
+                <strong class="tier-col-price">69 €/ud</strong>
+                <span class="tier-col-note">-13% de ahorro</span>
+              </div>
+              <div class="tier-col" id="tier-col-3">
+                <span class="tier-col-range">20+ mesas</span>
+                <strong class="tier-col-price">59 €/ud</strong>
+                <span class="tier-col-note">-25% de ahorro</span>
+              </div>
+            </div>
+
+            <!-- Interactive Slider -->
             <div class="slider-wrapper">
-              <div class="slider-val-bubble" id="slider-bubble">
-                <span id="bubble-value">12</span> mesas
+              <div class="slider-header-flex">
+                <span class="slider-label">Número de mesas:</span>
+                <div class="slider-val-bubble" id="slider-bubble">
+                  <span id="bubble-value">12</span> mesas
+                </div>
               </div>
               <input 
                 type="range" 
@@ -244,32 +655,45 @@ const packs = [
                 aria-label="Número de mesas o portacuentas"
               />
               <div class="slider-ticks">
-                <span>0 mesas</span>
+                <span>0</span>
                 <span>10 mesas (-13%)</span>
-                <span>20+ mesas (-25%)</span>
+                <span>20 mesas (-25%)</span>
                 <span>40 mesas</span>
               </div>
             </div>
 
             <div class="volume-discount-callout" id="volume-discount-notice">
-              <span class="sparkle-icon">✨</span>
+              <span class="sparkle-icon" aria-hidden="true">✨</span>
               <span id="discount-notice-text">Descuento por volumen aplicado: -13% en cada unidad (69 €/ud en vez de 79 €).</span>
             </div>
           </div>
 
-          <!-- Control Block 2: Secondary Hardware (Steppers & Selectors) -->
+          <!-- PRODUCTO 2 & 3: Expositores de Nogal y Tarjetas NFC -->
           <div class="control-card-shell">
             <div class="control-header">
-              <h4 class="control-name">Soportes Físicos para Barra, Sala y Terraza</h4>
-              <p class="control-sub">Añade los elementos adicionales según la distribución de tu local.</p>
+              <div class="control-title-row">
+                <span class="zone-pill">BARRA, CAJA & SALA</span>
+              </div>
+              <h4 class="control-name">Soportes auxiliares para barra y equipo</h4>
+              <p class="control-sub">Completa los puntos de contacto del comensal antes y después del servicio.</p>
             </div>
 
             <div class="steppers-grid">
               <!-- Expositor Nogal -->
-              <div class="stepper-item">
+              <div class="stepper-item-card">
+                <div class="stepper-thumb">
+                  <Image 
+                    src={expositorImg} 
+                    alt="Expositor nogal" 
+                    width={72} 
+                    height={72} 
+                    class="stepper-img"
+                    loading="lazy"
+                  />
+                </div>
                 <div class="stepper-info">
                   <strong class="item-name">Expositores de Nogal</strong>
-                  <span class="item-meta">Barra & Caja · 69 € / ud</span>
+                  <span class="item-meta">Barra & Caja · <strong>69 € / ud</strong></span>
                 </div>
                 <div class="stepper-control">
                   <button type="button" class="btn-step" data-stepper="minus" data-target="input-expositores" aria-label="Quitar expositor">−</button>
@@ -279,10 +703,20 @@ const packs = [
               </div>
 
               <!-- Tarjetas NFC -->
-              <div class="stepper-item">
+              <div class="stepper-item-card">
+                <div class="stepper-thumb">
+                  <Image 
+                    src={tarjetaNfcImg} 
+                    alt="Tarjeta NFC para camareros" 
+                    width={72} 
+                    height={72} 
+                    class="stepper-img"
+                    loading="lazy"
+                  />
+                </div>
                 <div class="stepper-info">
                   <strong class="item-name">Tarjetas NFC de Sala</strong>
-                  <span class="item-meta">Para camareros · 15 € / ud</span>
+                  <span class="item-meta">Para camareros · <strong>15 € / ud</strong></span>
                 </div>
                 <div class="stepper-control">
                   <button type="button" class="btn-step" data-stepper="minus" data-target="input-tarjetas" aria-label="Quitar tarjeta">−</button>
@@ -292,42 +726,49 @@ const packs = [
               </div>
             </div>
 
-            <!-- Pack Posavasos & Pegatinas (Pill Toggles) -->
+            <!-- Pack Posavasos & Pegatinas (Pill Selectors) -->
             <div class="pills-selectors-row">
               <!-- Posavasos -->
               <div class="pill-group">
-                <span class="pill-group-label">Posavasos Inteligentes (Terraza / Copas):</span>
-                <div class="pills-choice" id="choice-posavasos" role="radiogroup">
+                <div class="pill-title-flex">
+                  <span class="pill-group-label">Posavasos Inteligentes NFC (Terraza & Copas):</span>
+                </div>
+                <div class="pills-choice" id="choice-posavasos" role="radiogroup" aria-label="Posavasos NFC">
                   <button type="button" class="btn-pill-opt active" data-value="0" role="radio" aria-checked="true">0 uds</button>
-                  <button type="button" class="btn-pill-opt" data-value="50" role="radio" aria-checked="false">50 uds (+120€)</button>
-                  <button type="button" class="btn-pill-opt" data-value="100" role="radio" aria-checked="false">100 uds (+190€)</button>
+                  <button type="button" class="btn-pill-opt" data-value="50" role="radio" aria-checked="false">50 uds (+120 €)</button>
+                  <button type="button" class="btn-pill-opt" data-value="100" role="radio" aria-checked="false">100 uds (+190 €)</button>
                 </div>
               </div>
 
               <!-- Pegatinas QR -->
               <div class="pill-group">
-                <span class="pill-group-label">Pegatinas QR Epoxi (Cartas / Cristales):</span>
-                <div class="pills-choice" id="choice-pegatinas" role="radiogroup">
+                <div class="pill-title-flex">
+                  <span class="pill-group-label">Pegatinas QR Epoxi (Cartas, Cristales y Entradas):</span>
+                </div>
+                <div class="pills-choice" id="choice-pegatinas" role="radiogroup" aria-label="Pegatinas QR">
                   <button type="button" class="btn-pill-opt active" data-value="0" role="radio" aria-checked="true">0 uds</button>
-                  <button type="button" class="btn-pill-opt" data-value="10" role="radio" aria-checked="false">10 uds (+35€)</button>
-                  <button type="button" class="btn-pill-opt" data-value="25" role="radio" aria-checked="false">25 uds (+65€)</button>
+                  <button type="button" class="btn-pill-opt" data-value="10" role="radio" aria-checked="false">10 uds (+35 €)</button>
+                  <button type="button" class="btn-pill-opt" data-value="25" role="radio" aria-checked="false">25 uds (+65 €)</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Control Block 3: Digital Growth (Software & Services) -->
+          <!-- SERVICIOS DIGITALES OPCIONALES -->
           <div class="control-card-shell">
             <div class="control-header">
-              <h4 class="control-name">Software & Servicios de Atracción</h4>
-              <p class="control-sub">Impulsa tus visitas con posicionamiento local continuo y web gastronómica.</p>
+              <div class="control-title-row">
+                <span class="zone-pill pill-purple">SOFTWARE & CRECIMIENTO DIGITAL</span>
+              </div>
+              <h4 class="control-name">Servicios opcionales de visibilidad</h4>
+              <p class="control-sub">Impulsa tus visitas con posicionamiento local continuo y web de alta conversión.</p>
             </div>
 
             <div class="services-toggle-stack">
               <!-- SEO Local Toggle -->
               <label class="service-toggle-card">
                 <input type="checkbox" id="toggle-seo-service" class="service-checkbox" checked />
-                <span class="custom-check-marker"></span>
+                <span class="custom-check-marker" aria-hidden="true"></span>
                 <div class="service-text-wrap">
                   <div class="service-title-row">
                     <strong>Posicionamiento SEO Local en Google Maps</strong>
@@ -342,14 +783,14 @@ const packs = [
               <!-- Web Gastronómica Toggle -->
               <label class="service-toggle-card">
                 <input type="checkbox" id="toggle-web-service" class="service-checkbox" />
-                <span class="custom-check-marker"></span>
+                <span class="custom-check-marker" aria-hidden="true"></span>
                 <div class="service-text-wrap">
                   <div class="service-title-row">
                     <strong>Página Web Gastronómica con Reservas</strong>
                     <span class="service-cost">790 € (Pago único)</span>
                   </div>
                   <p class="service-detail">
-                    Diseño responsive de alta gama, carta interactiva digital QR y motor de reservas propio sin comisiones por cubierto.
+                    Diseño responsive de alta gama, carta interactiva digital QR y motor de reservas propio sin comisiones por comensal.
                   </p>
                 </div>
               </label>
@@ -377,7 +818,7 @@ const packs = [
               <div class="total-row-highlight">
                 <div class="total-label-wrap">
                   <span class="main-label">Equipamiento Físico</span>
-                  <span class="sub-label">Pago único en propiedad · Activo del local</span>
+                  <span class="sub-label">Pago único en propiedad · 100% deducible</span>
                 </div>
                 <div class="total-price-wrap">
                   <span class="total-amount" id="total-hardware-amount">0 €</span>
@@ -420,7 +861,7 @@ const packs = [
 
             <!-- Security Assurance -->
             <div class="summary-guarantee-note">
-              <span>✓ Precios sin IVA · Envío en 48-72h · Simulación de grabado láser incluida</span>
+              <span>✓ Precios sin IVA · Envío en 48-72h · Simulación de grabado láser personalizada incluida</span>
             </div>
           </div>
         </div>
@@ -433,8 +874,8 @@ const packs = [
 <style>
   .pricing-section {
     position: relative;
-    padding-top: clamp(5rem, 9vw, 9.5rem);
-    padding-bottom: clamp(5rem, 9vw, 9.5rem);
+    padding-top: clamp(5rem, 8vw, 8.5rem);
+    padding-bottom: clamp(6rem, 9vw, 10rem);
     background: transparent;
     overflow: hidden;
   }
@@ -442,29 +883,39 @@ const packs = [
   /* Atmospheric Background Glows */
   .pricing-ambient-glow {
     position: absolute;
-    width: clamp(500px, 60vw, 900px);
-    height: clamp(400px, 45vw, 650px);
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(85px);
     pointer-events: none;
-    opacity: 0.18;
+    opacity: 0.16;
   }
 
   .glow-top {
-    top: 5%;
-    left: 15%;
-    background: radial-gradient(circle, rgba(255, 157, 36, 0.4) 0%, rgba(223, 145, 247, 0.2) 50%, transparent 70%);
+    top: 3%;
+    left: 10%;
+    width: clamp(500px, 55vw, 850px);
+    height: clamp(400px, 40vw, 650px);
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.45) 0%, rgba(223, 145, 247, 0.2) 50%, transparent 70%);
+  }
+
+  .glow-middle {
+    top: 45%;
+    right: 5%;
+    width: clamp(450px, 50vw, 750px);
+    height: clamp(350px, 35vw, 550px);
+    background: radial-gradient(circle, rgba(223, 145, 247, 0.35) 0%, rgba(255, 132, 0, 0.18) 55%, transparent 70%);
   }
 
   .glow-bottom {
-    bottom: 5%;
-    right: 10%;
-    background: radial-gradient(circle, rgba(223, 145, 247, 0.35) 0%, rgba(255, 132, 0, 0.2) 55%, transparent 70%);
+    bottom: 3%;
+    left: 15%;
+    width: clamp(500px, 60vw, 900px);
+    height: clamp(400px, 45vw, 650px);
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.3) 0%, rgba(223, 145, 247, 0.25) 50%, transparent 70%);
   }
 
   /* Section Header */
   .pricing-header {
-    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    margin-bottom: clamp(3.5rem, 6vw, 5rem);
     position: relative;
     z-index: 2;
   }
@@ -484,7 +935,7 @@ const packs = [
     padding: 0.35rem 0.95rem;
     border-radius: var(--radius-pill);
     background: rgba(255, 157, 36, 0.08);
-    border: 1px solid rgba(255, 157, 36, 0.22);
+    border: 1px solid rgba(255, 157, 36, 0.24);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
@@ -505,12 +956,12 @@ const packs = [
   }
 
   .pricing-main-title {
-    font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+    font-size: clamp(2.3rem, 4.2vw, 4rem);
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.12;
     color: #ffffff;
     letter-spacing: -0.03em;
-    max-width: 960px;
+    max-width: 980px;
     text-wrap: balance;
   }
 
@@ -527,119 +978,612 @@ const packs = [
   }
 
   /* -------------------------------------------------------------------------
-     Mode Switcher (Packs vs Customizer)
+     SECCIÓN 1: PACKS SHOWCASE (De un vistazo)
      ------------------------------------------------------------------------- */
-  .pricing-mode-switcher-container {
-    margin-top: 1.25rem;
+  .packs-showcase-wrapper {
+    position: relative;
+    z-index: 2;
+    margin-bottom: clamp(4rem, 7vw, 6rem);
+  }
+
+  .packs-section-label {
     display: flex;
-    justify-content: center;
-  }
-
-  .pricing-mode-dock {
-    display: inline-flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 0.5rem;
-    padding: 0.45rem;
-    background: rgba(14, 14, 18, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-pill);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: clamp(2rem, 3.5vw, 3rem);
   }
 
-  .mode-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.65rem 1.35rem;
-    border-radius: var(--radius-pill);
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.25s var(--ease-default);
-    cursor: pointer;
-    min-height: 46px;
-    border: none;
-  }
-
-  .mode-btn:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .mode-btn.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    font-weight: 600;
-  }
-
-  .mode-icon {
-    font-size: 1rem;
-  }
-
-  .mode-tag {
-    font-size: 0.6875rem;
-    padding: 0.15rem 0.55rem;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-  }
-
-  .mode-btn.active .mode-tag {
-    background: rgba(255, 157, 36, 0.16);
-    border-color: rgba(255, 157, 36, 0.35);
+  .packs-label-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     color: var(--accent-amber);
+    text-transform: uppercase;
   }
 
-  .mode-btn.active .mode-tag.tag-accent {
-    background: rgba(223, 145, 247, 0.16);
-    border-color: rgba(223, 145, 247, 0.35);
-    color: var(--accent-purple);
+  .packs-subheading {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.02em;
   }
 
-  /* -------------------------------------------------------------------------
-     Views Visibility Toggle
-     ------------------------------------------------------------------------- */
-  .pricing-view-panel {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s var(--ease-default), transform 0.4s var(--ease-default);
+  .packs-subdesc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 600px;
   }
 
-  .pricing-view-panel.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* -------------------------------------------------------------------------
-     VIEW 1: PACKS GRID
-     ------------------------------------------------------------------------- */
   .packs-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1.75rem, 3vw, 2.5rem);
-    margin-bottom: 3.5rem;
+    gap: clamp(1.75rem, 2.5vw, 2.25rem);
+    margin-bottom: 2.5rem;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 1024px) {
     .packs-grid {
       grid-template-columns: repeat(3, 1fr);
       align-items: stretch;
     }
   }
 
+  .desktop-pack-explorer {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .packs-grid {
+      display: none;
+    }
+
+    .desktop-pack-explorer {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(420px, 0.85fr);
+      gap: clamp(2.5rem, 4.5vw, 4.5rem);
+      align-items: stretch;
+      max-width: 1240px;
+      margin: 0 auto 3rem;
+    }
+
+    .desktop-pack-visual {
+      position: relative;
+      display: flex;
+      min-height: 600px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(2rem, 2.8vw, 2.75rem);
+      background: rgba(14, 14, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .pack-visual-heading {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .pack-visual-eyebrow,
+    .desktop-pack-detail-label {
+      color: var(--text-muted);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pack-visual-state {
+      color: var(--accent-amber);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* Product Stage Canvas */
+    .product-stage-canvas {
+      position: relative;
+      flex-grow: 1;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      perspective: 1000px;
+    }
+
+    .stage-spotlight {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 157, 36, 0.12) 0%, rgba(223, 145, 247, 0.04) 40%, transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+      transition: all 0.6s ease;
+    }
+
+    [data-active-pack='pack-360'] .stage-spotlight {
+      background: radial-gradient(circle, rgba(223, 145, 247, 0.18) 0%, rgba(255, 157, 36, 0.08) 50%, transparent 75%);
+    }
+
+    /* Cluster de Hardware Físico Real */
+    .stage-hardware-cluster {
+      position: relative;
+      width: 380px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .stage-product-item {
+      position: absolute;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85));
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .stage-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .item-portacuentas {
+      width: 250px;
+      left: 10%;
+      top: 18%;
+      z-index: 3;
+      transform: rotate(-8deg);
+    }
+
+    .item-expositor {
+      width: 170px;
+      right: 8%;
+      top: 8%;
+      z-index: 2;
+      transform: rotate(6deg) scale(0.95);
+    }
+
+    .item-tarjeta {
+      width: 130px;
+      left: 36%;
+      bottom: 6%;
+      z-index: 4;
+      transform: rotate(-3deg);
+    }
+
+    /* Pedestal inferior */
+    .stage-pedestal-rim {
+      position: absolute;
+      bottom: 2%;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 30%, rgba(255, 157, 36, 0.4) 50%, rgba(255, 255, 255, 0.2) 70%, transparent 100%);
+      border-radius: 50%;
+    }
+
+    /* Capas Contextuales Conceptuales */
+    .stage-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 5;
+    }
+
+    /* CAPA START: Productos físicos para captar reseñas */
+    .layer-start {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .stage-concept-badge {
+      position: absolute;
+      bottom: 12%;
+      left: 6%;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1rem;
+      background: rgba(18, 18, 22, 0.9);
+      border: 1px solid rgba(255, 157, 36, 0.35);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .concept-icon {
+      color: var(--accent-amber);
+      font-size: 1rem;
+    }
+
+    .concept-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .concept-text strong {
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .concept-text span {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+    }
+
+    /* CAPA PRO: Productos físicos + Google / SEO Local */
+    .layer-pro {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .stage-concept-card {
+      position: absolute;
+      top: 6%;
+      right: 4%;
+      width: 280px;
+      padding: 0.95rem 1.15rem;
+      background: rgba(16, 16, 22, 0.92);
+      border: 1px solid rgba(255, 157, 36, 0.35);
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(16px);
+    }
+
+    .concept-header {
+      margin-bottom: 0.4rem;
+    }
+
+    .concept-tag {
+      color: var(--accent-amber);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-galaxy {
+      color: var(--accent-purple);
+    }
+
+    .concept-desc {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+
+    /* CAPA GALAXY: Sistema completo con físico + Google + Web */
+    .layer-galaxy {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .card-galaxy {
+      top: auto;
+      bottom: 8%;
+      right: 4%;
+      border-color: rgba(223, 145, 247, 0.35);
+    }
+
+    /* Estados de Activación del Visual según data-active-pack */
+    [data-active-pack='pack-barra'] .layer-start {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-active-pack='pack-sala'] .layer-pro {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-active-pack='pack-sala'] .item-portacuentas {
+      transform: rotate(-5deg) scale(1.04);
+    }
+
+    [data-active-pack='pack-360'] .layer-pro {
+      opacity: 0.85;
+      transform: translateY(-8px) scale(0.95);
+    }
+    [data-active-pack='pack-360'] .layer-galaxy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pack-visual-caption {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: flex-start;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.25rem;
+      gap: 1.25rem;
+    }
+
+    .pack-visual-index {
+      color: var(--accent-amber);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .pack-visual-caption p {
+      max-width: 44ch;
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    /* Columna Derecha: Panel de Packs */
+    .desktop-pack-panel {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .desktop-pack-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .desktop-pack-option {
+      position: relative;
+      width: 100%;
+      padding: 1.25rem 1.4rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(16, 16, 20, 0.6);
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .desktop-pack-option:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .desktop-pack-option.is-active {
+      background: rgba(22, 20, 24, 0.95);
+      border-color: rgba(255, 157, 36, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 157, 36, 0.2);
+    }
+
+    .pack-opt-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .pack-opt-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .desktop-pack-option-name {
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .desktop-pack-option-badge {
+      color: #050505;
+      background: linear-gradient(90deg, #feed7a 0%, #ff9d24 100%);
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .desktop-pack-option-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .desktop-pack-option-price b {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-feature-settings: "tnum";
+    }
+
+    .desktop-pack-option-price small {
+      color: var(--text-muted);
+      font-size: 0.6875rem;
+    }
+
+    .desktop-pack-option-benefit {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      line-height: 1.45;
+    }
+
+    .desktop-pack-option.is-active .desktop-pack-option-benefit {
+      color: #d1cfc9;
+    }
+
+    /* Detalle del Pack Activo */
+    .desktop-pack-details {
+      margin-top: 1.5rem;
+    }
+
+    .desktop-pack-detail {
+      padding: 1.6rem 1.8rem;
+      border-radius: 20px;
+      background: rgba(14, 14, 18, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .detail-kicker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .desktop-pack-detail-kicker {
+      color: var(--accent-amber);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .detail-savings-badge {
+      color: var(--accent-amber);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      background: rgba(255, 157, 36, 0.1);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 157, 36, 0.25);
+    }
+
+    .desktop-pack-detail h4 {
+      margin: 0 0 0.4rem;
+      color: #ffffff;
+      font-size: 1.75rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .detail-target-desc {
+      margin: 0 0 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .desktop-pack-detail-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 1.15rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .desktop-pack-inventory,
+    .desktop-pack-services {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0.6rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    .desktop-pack-inventory li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .inv-qty {
+      color: var(--accent-amber);
+      font-weight: 700;
+    }
+
+    .inv-name {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .inv-note {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+    }
+
+    .desktop-pack-services li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    .service-icon {
+      color: var(--accent-amber);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .service-highlight strong {
+      color: #feed7a;
+    }
+
+    .service-bonus strong {
+      color: var(--accent-purple);
+    }
+
+    .pack-guarantee-micro {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.85rem 0 1.15rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .desktop-pack-detail-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .desktop-pack-detail-actions .btn-pack-cta {
+      width: auto;
+      padding: 0.85rem 1.6rem;
+      font-size: 0.875rem;
+    }
+
+    .desktop-pack-detail-actions .btn-customize-link {
+      padding: 0.35rem 0;
+      font-size: 0.8125rem;
+    }
+  }
+
   .pack-card-shell {
     position: relative;
     border-radius: clamp(1.75rem, 2.5vw, 2.25rem);
-    background: rgba(14, 14, 18, 0.72);
+    background: rgba(14, 14, 18, 0.78);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     display: flex;
@@ -649,15 +1593,16 @@ const packs = [
   }
 
   .pack-card-shell:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 32px 70px rgba(0, 0, 0, 0.75);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 32px 75px rgba(0, 0, 0, 0.8);
   }
 
   /* Popular Highlight */
   .pack-popular {
-    border-color: rgba(255, 157, 36, 0.4);
-    background: linear-gradient(180deg, rgba(26, 20, 16, 0.85) 0%, rgba(14, 14, 18, 0.85) 100%);
+    border-color: rgba(255, 157, 36, 0.5);
+    background: linear-gradient(180deg, rgba(28, 22, 16, 0.9) 0%, rgba(14, 14, 18, 0.9) 100%);
+    box-shadow: 0 30px 80px rgba(255, 132, 0, 0.15), 0 20px 50px rgba(0, 0, 0, 0.8);
   }
 
   .popular-ribbon {
@@ -665,23 +1610,28 @@ const packs = [
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--accent-gradient, linear-gradient(90deg, #feed7a 0%, #ff8400 100%));
+    background: linear-gradient(90deg, #feed7a 0%, #ff9d24 50%, #ff8400 100%);
     color: #050505;
     font-size: 0.6875rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
-    padding: 0.25rem 1.25rem;
+    letter-spacing: 0.14em;
+    padding: 0.3rem 1.4rem;
     border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 12px rgba(255, 132, 0, 0.35);
+    box-shadow: 0 4px 16px rgba(255, 132, 0, 0.4);
     z-index: 5;
+    white-space: nowrap;
   }
 
   .pack-card-inner {
-    padding: clamp(2rem, 3.5vw, 2.75rem);
+    padding: clamp(2rem, 3vw, 2.6rem);
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .pack-badge-row {
+    margin-bottom: 0.45rem;
   }
 
   .pack-badge {
@@ -692,51 +1642,49 @@ const packs = [
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    width: fit-content;
-    margin-bottom: 0.75rem;
   }
 
   .badge-amber {
     background: rgba(255, 157, 36, 0.12);
-    border: 1px solid rgba(255, 157, 36, 0.28);
+    border: 1px solid rgba(255, 157, 36, 0.3);
     color: var(--accent-amber);
   }
 
   .badge-popular {
-    background: rgba(254, 237, 122, 0.12);
-    border: 1px solid rgba(254, 237, 122, 0.35);
+    background: rgba(254, 237, 122, 0.16);
+    border: 1px solid rgba(254, 237, 122, 0.4);
     color: var(--accent-yellow);
   }
 
   .badge-purple {
-    background: rgba(223, 145, 247, 0.12);
-    border: 1px solid rgba(223, 145, 247, 0.28);
+    background: rgba(223, 145, 247, 0.14);
+    border: 1px solid rgba(223, 145, 247, 0.35);
     color: var(--accent-purple);
   }
 
   .pack-title {
-    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    font-size: clamp(1.65rem, 2.2vw, 2rem);
     font-weight: 500;
     color: #ffffff;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
 
-  .pack-desc {
-    font-size: 0.92rem;
-    line-height: 1.6;
+  .pack-target {
+    font-size: 0.875rem;
+    line-height: 1.5;
     color: var(--text-secondary);
-    margin-top: 0.4rem;
+    margin-top: 0.35rem;
   }
 
   /* Price box */
   .pack-price-box {
-    padding: 1.25rem 0;
+    padding: 1.15rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.4rem;
   }
 
   .price-figures {
@@ -752,7 +1700,7 @@ const packs = [
   }
 
   .amount {
-    font-size: clamp(2.75rem, 4vw, 3.5rem);
+    font-size: clamp(2.8rem, 3.8vw, 3.4rem);
     font-weight: 500;
     color: #ffffff;
     line-height: 1;
@@ -768,7 +1716,7 @@ const packs = [
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.78rem;
+    font-size: 0.8125rem;
   }
 
   .original-price {
@@ -778,47 +1726,199 @@ const packs = [
 
   .savings-chip {
     color: var(--accent-amber);
-    font-weight: 600;
+    font-weight: 700;
+    background: rgba(255, 157, 36, 0.1);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 157, 36, 0.25);
   }
 
-  /* Features List */
-  .pack-features-list {
-    list-style: none;
+  /* -------------------------------------------------------------------------
+     GLANCE EQUIPMENT MATRIX (Lo que tiene cada uno de un vistazo)
+     ------------------------------------------------------------------------- */
+  .pack-glance-section {
     display: flex;
     flex-direction: column;
-    gap: 0.95rem;
-    flex-grow: 1;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
   }
 
-  .pack-features-list li {
+  .glance-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    padding-left: 0.25rem;
+  }
+
+  .glance-items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .glance-item-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease;
+  }
+
+  .glance-item-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .glance-qty-badge {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    min-width: 44px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 157, 36, 0.14);
+    border: 1px solid rgba(255, 157, 36, 0.3);
+    color: var(--accent-amber);
+  }
+
+  .pack-popular .glance-qty-badge {
+    background: rgba(254, 237, 122, 0.18);
+    border-color: rgba(254, 237, 122, 0.4);
+    color: #feed7a;
+  }
+
+  .glance-qty-num {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+    font-feature-settings: "tnum";
+  }
+
+  .glance-qty-x {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: 1px;
+    opacity: 0.8;
+  }
+
+  .glance-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .glance-item-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .glance-item-detail {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Gift Pill & Digital Bonus */
+  .pack-gift-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 0.85rem;
+    background: linear-gradient(90deg, rgba(254, 237, 122, 0.14) 0%, rgba(255, 157, 36, 0.12) 100%);
+    border: 1px solid rgba(254, 237, 122, 0.35);
+    border-radius: var(--radius-md);
+  }
+
+  .gift-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .gift-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #feed7a;
+    line-height: 1.35;
+  }
+
+  .pack-digital-bonus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.25rem;
+  }
+
+  .digital-bonus-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.92rem;
-    line-height: 1.55;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    background: rgba(223, 145, 247, 0.08);
+    border: 1px solid rgba(223, 145, 247, 0.22);
+    font-size: 0.8rem;
     color: var(--text-secondary);
   }
 
-  .check-icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-amber);
+  .bonus-check {
+    color: var(--accent-purple);
+    font-weight: bold;
     flex-shrink: 0;
-    margin-top: 0.15rem;
+  }
+
+  .digital-bonus-item strong {
+    color: #ffffff;
+  }
+
+  /* Perks List */
+  .pack-perks-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0.25rem 0;
+  }
+
+  .pack-perks-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+  }
+
+  .perk-icon {
+    color: var(--accent-amber);
+    font-weight: bold;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
   }
 
   /* Pack Actions */
   .pack-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 0.75rem;
     margin-top: auto;
+    padding-top: 0.5rem;
   }
 
   .btn-pack-cta {
@@ -830,7 +1930,7 @@ const packs = [
     background: none;
     border: none;
     color: var(--text-secondary);
-    font-size: 0.8125rem;
+    font-size: 0.82rem;
     font-weight: 500;
     display: inline-flex;
     align-items: center;
@@ -845,34 +1945,197 @@ const packs = [
     color: var(--accent-amber);
   }
 
+  .btn-customize-link .action-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .btn-customize-link:hover .action-arrow {
+    transform: translateY(2px);
+  }
+
   /* Trust Assurance Strip */
   .pricing-trust-strip {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(1.5rem, 3vw, 3rem);
-    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  @media (min-width: 640px) {
+    .pricing-trust-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-trust-strip {
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
   }
 
   .trust-item {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
     font-size: 0.875rem;
     color: var(--text-secondary);
+  }
+
+  @media (min-width: 1024px) {
+    .trust-item {
+      justify-content: center;
+    }
   }
 
   .trust-icon {
     color: var(--accent-amber);
     font-weight: bold;
+    flex-shrink: 0;
   }
 
   /* -------------------------------------------------------------------------
-     VIEW 2: INTERACTIVE CUSTOMIZER
+     SEPARADOR CTA: "¿PREFIERES CREAR TU PROPIA COMBINACIÓN?"
      ------------------------------------------------------------------------- */
+  .pricing-custom-separator-wrap {
+    position: relative;
+    z-index: 5;
+    margin-top: clamp(4rem, 7vw, 6.5rem);
+    margin-bottom: clamp(4rem, 7vw, 6.5rem);
+  }
+
+  .separator-cta-card {
+    position: relative;
+    border-radius: clamp(1.75rem, 3vw, 2.5rem);
+    background: linear-gradient(135deg, rgba(20, 18, 24, 0.95) 0%, rgba(12, 12, 16, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .separator-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.22) 0%, rgba(223, 145, 247, 0.15) 50%, transparent 75%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  .separator-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .separator-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.1);
+    border: 1px solid rgba(255, 157, 36, 0.28);
+    color: var(--accent-amber);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .sep-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-amber);
+    box-shadow: 0 0 6px var(--accent-amber);
+  }
+
+  .separator-title {
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .separator-desc {
+    font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 680px;
+    text-wrap: balance;
+  }
+
+  .separator-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .btn-jump-customizer {
+    padding-inline: 2rem;
+  }
+
+  .separator-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* -------------------------------------------------------------------------
+     SECCIÓN 2: PRODUCTOS INDIVIDUALES & CONFIGURADOR
+     ------------------------------------------------------------------------- */
+  .individual-products-section {
+    position: relative;
+    z-index: 2;
+    scroll-margin-top: 5rem;
+  }
+
+  .individual-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .individual-main-title {
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .individual-main-sub {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 660px;
+    text-wrap: balance;
+  }
+
   .customizer-layout-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -887,7 +2150,7 @@ const packs = [
   }
 
   .control-card-shell {
-    background: rgba(14, 14, 18, 0.72);
+    background: rgba(14, 14, 18, 0.78);
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: var(--radius-xl);
     padding: clamp(1.75rem, 3vw, 2.5rem);
@@ -895,6 +2158,49 @@ const packs = [
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     margin-bottom: 1.75rem;
+  }
+
+  /* Product Topbar with Thumbnail */
+  .product-card-topbar {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-thumb-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 0.35rem;
+  }
+
+  .product-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: lighten;
+  }
+
+  .product-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex-grow: 1;
+  }
+
+  .product-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.15rem;
   }
 
   .control-header {
@@ -908,7 +2214,7 @@ const packs = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .zone-pill {
@@ -946,27 +2252,96 @@ const packs = [
   .control-sub {
     font-size: 0.875rem;
     color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Volume Tiers Scale Bar */
+  .volume-tiers-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    padding: 0.5rem;
+  }
+
+  .tier-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.55rem 0.4rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+  }
+
+  .tier-col.active {
+    background: rgba(255, 157, 36, 0.15);
+    border: 1px solid rgba(255, 157, 36, 0.35);
+  }
+
+  .tier-col-range {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .tier-col.active .tier-col-range {
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  .tier-col-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0.15rem 0;
+    font-feature-settings: "tnum";
+  }
+
+  .tier-col-note {
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
   }
 
   /* Custom Slider Styling */
   .slider-wrapper {
     position: relative;
-    padding: 1.5rem 0 0.75rem;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .slider-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.85rem;
+  }
+
+  .slider-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
   }
 
   .slider-val-bubble {
     font-size: 1.15rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 0.75rem;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .slider-val-bubble span {
     color: var(--accent-amber);
-    font-size: 1.5rem;
+    font-size: 1.45rem;
+    font-weight: 800;
+    font-feature-settings: "tnum";
   }
 
   .custom-slider {
@@ -1015,7 +2390,7 @@ const packs = [
     padding: 0.75rem 1rem;
     border-radius: var(--radius-md);
     background: rgba(255, 157, 36, 0.08);
-    border: 1px solid rgba(255, 157, 36, 0.2);
+    border: 1px solid rgba(255, 157, 36, 0.22);
     font-size: 0.8125rem;
     color: var(--accent-amber);
   }
@@ -1024,7 +2399,7 @@ const packs = [
   .steppers-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
     margin-bottom: 1.75rem;
   }
 
@@ -1034,26 +2409,51 @@ const packs = [
     }
   }
 
-  .stepper-item {
+  .stepper-item-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.15rem;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: var(--radius-md);
   }
 
+  .stepper-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 0.2rem;
+  }
+
+  .stepper-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: lighten;
+  }
+
   .stepper-info {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.15rem;
+    flex-grow: 1;
+    min-width: 0;
   }
 
   .item-name {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
     color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .item-meta {
@@ -1065,10 +2465,11 @@ const packs = [
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-pill);
     padding: 0.2rem;
+    flex-shrink: 0;
   }
 
   .btn-step {
@@ -1100,6 +2501,7 @@ const packs = [
     font-weight: 700;
     text-align: center;
     outline: none;
+    font-feature-settings: "tnum";
   }
 
   /* Pill Choice Selectors */
@@ -1107,8 +2509,8 @@ const packs = [
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .pill-group {
@@ -1130,10 +2532,10 @@ const packs = [
   }
 
   .btn-pill-opt {
-    padding: 0.45rem 1rem;
+    padding: 0.5rem 1.1rem;
     border-radius: var(--radius-pill);
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     color: var(--text-secondary);
     font-size: 0.8125rem;
     font-weight: 500;
@@ -1147,8 +2549,8 @@ const packs = [
   }
 
   .btn-pill-opt.active {
-    background: rgba(255, 157, 36, 0.15);
-    border-color: rgba(255, 157, 36, 0.35);
+    background: rgba(255, 157, 36, 0.16);
+    border-color: rgba(255, 157, 36, 0.38);
     color: var(--accent-amber);
     font-weight: 600;
   }
@@ -1174,7 +2576,7 @@ const packs = [
 
   .service-toggle-card:hover {
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.15);
   }
 
   .service-checkbox {
@@ -1429,21 +2831,6 @@ const packs = [
      Mobile Adaptations (< 1024px & 360-430px)
      ------------------------------------------------------------------------- */
   @media (max-width: 1023px) {
-    .pricing-mode-dock {
-      width: 100%;
-      justify-content: center;
-      border-radius: var(--radius-lg);
-    }
-
-    .mode-btn {
-      padding: 0.55rem 0.95rem;
-      font-size: 0.8125rem;
-    }
-
-    .mode-tag {
-      display: none;
-    }
-
     .pack-card-inner {
       padding: 1.75rem 1.5rem;
     }
@@ -1454,6 +2841,11 @@ const packs = [
       border-radius: var(--radius-lg);
     }
 
+    .separator-cta-card {
+      padding: 2.25rem 1.5rem;
+      border-radius: var(--radius-xl);
+    }
+
     .pills-choice {
       flex-direction: column;
     }
@@ -1461,6 +2853,27 @@ const packs = [
     .btn-pill-opt {
       width: 100%;
       text-align: center;
+    }
+
+    .product-card-topbar {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .volume-tiers-legend {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+
+    .tier-col {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .tier-col-price {
+      margin: 0;
     }
   }
 </style>
@@ -1471,32 +2884,15 @@ const packs = [
     if (!section || section.dataset.initialized) return;
     section.dataset.initialized = 'true';
 
-    // Tabs mode switching
-    const tabPacks = document.getElementById('tab-mode-packs');
-    const tabCustomizer = document.getElementById('tab-mode-customizer');
-    const viewPacks = document.getElementById('view-mode-packs');
-    const viewCustomizer = document.getElementById('view-mode-customizer');
-
-    function setViewMode(mode: 'packs' | 'customizer') {
-      const isPacks = mode === 'packs';
-
-      tabPacks?.classList.toggle('active', isPacks);
-      tabPacks?.setAttribute('aria-selected', isPacks ? 'true' : 'false');
-      viewPacks?.classList.toggle('active', isPacks);
-
-      tabCustomizer?.classList.toggle('active', !isPacks);
-      tabCustomizer?.setAttribute('aria-selected', !isPacks ? 'true' : 'false');
-      viewCustomizer?.classList.toggle('active', !isPacks);
-    }
-
-    tabPacks?.addEventListener('click', () => setViewMode('packs'));
-    tabCustomizer?.addEventListener('click', () => setViewMode('customizer'));
-
     // Customizer Elements
     const sliderMesas = document.getElementById('input-mesas-slider') as HTMLInputElement | null;
     const bubbleValue = document.getElementById('bubble-value');
     const tierLabel = document.getElementById('portacuentas-tier-label');
     const discountNoticeText = document.getElementById('discount-notice-text');
+
+    const tierCol1 = document.getElementById('tier-col-1');
+    const tierCol2 = document.getElementById('tier-col-2');
+    const tierCol3 = document.getElementById('tier-col-3');
 
     const inputExpositores = document.getElementById('input-expositores') as HTMLInputElement | null;
     const inputTarjetas = document.getElementById('input-tarjetas') as HTMLInputElement | null;
@@ -1513,10 +2909,62 @@ const packs = [
     const savingsElem = document.getElementById('total-savings-amount');
     const savingsBox = document.getElementById('summary-savings-box');
     const btnWhatsapp = document.getElementById('btn-whatsapp-quote') as HTMLAnchorElement | null;
-    const btnContact = document.getElementById('btn-request-configuration') as HTMLAnchorElement | null;
 
     let selectedPosavasos = 0;
     let selectedPegatinas = 0;
+
+    const packExplorer = section.querySelector<HTMLElement>('.desktop-pack-explorer');
+    const packOptions = section.querySelectorAll<HTMLButtonElement>('[data-pack-option]');
+    const packDetails = section.querySelectorAll<HTMLElement>('[data-pack-detail]');
+    const visualLabel = section.querySelector<HTMLElement>('[data-pack-visual-label]');
+    const visualIndex = section.querySelector<HTMLElement>('[data-pack-visual-index]');
+    const visualCopy = section.querySelector<HTMLElement>('[data-pack-visual-copy]');
+
+    const desktopPackVisuals: Record<string, { index: string; label: string; copy: string }> = {
+      'pack-barra': {
+        index: '01',
+        label: 'Captación de reseñas',
+        copy: 'Los soportes físicos convierten un buen servicio en una invitación natural a dejar una reseña.',
+      },
+      'pack-sala': {
+        index: '02',
+        label: 'Sala + Google Maps',
+        copy: 'El equipamiento de tu sala activa reseñas y conecta tu negocio con las búsquedas cercanas.',
+      },
+      'pack-360': {
+        index: '03',
+        label: 'Ecosistema TapNova',
+        copy: 'El sistema une la experiencia en sala, la visibilidad local y una web preparada para recibir reservas.',
+      },
+    };
+
+    function selectDesktopPack(packId: string) {
+      if (!packExplorer || !desktopPackVisuals[packId]) return;
+
+      const visual = desktopPackVisuals[packId];
+      packExplorer.dataset.activePack = packId;
+      packOptions.forEach((option) => {
+        const isActive = option.dataset.packOption === packId;
+        option.classList.toggle('is-active', isActive);
+        option.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      packDetails.forEach((detail) => {
+        const isActive = detail.dataset.packDetail === packId;
+        detail.classList.toggle('is-active', isActive);
+        detail.hidden = !isActive;
+      });
+
+      if (visualLabel) visualLabel.textContent = visual.label;
+      if (visualIndex) visualIndex.textContent = visual.index;
+      if (visualCopy) visualCopy.textContent = visual.copy;
+    }
+
+    packOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        const packId = option.dataset.packOption;
+        if (packId) selectDesktopPack(packId);
+      });
+    });
 
     // Steppers Logic
     document.querySelectorAll<HTMLButtonElement>('.btn-step').forEach(btn => {
@@ -1584,18 +3032,27 @@ const packs = [
 
       // Determine Portacuentas Unit Price & Tier
       let unitPrice = 79;
-      let originalUnitPrice = 79;
+      const originalUnitPrice = 79;
       let tierText = '79 € / ud';
       let noticeMsg = 'Precio base individual (1 a 9 mesas). A partir de 10 mesas obtienes -13% de descuento.';
+
+      // Reset tier highlighting
+      tierCol1?.classList.remove('active');
+      tierCol2?.classList.remove('active');
+      tierCol3?.classList.remove('active');
 
       if (mesas >= 20) {
         unitPrice = 59;
         tierText = '59 € / ud (-25% dto)';
         noticeMsg = '¡Nivel Sala Grande activado! -25% de descuento por volumen (ahorras 20 € en cada portacuentas).';
+        tierCol3?.classList.add('active');
       } else if (mesas >= 10) {
         unitPrice = 69;
         tierText = '69 € / ud (-13% dto)';
         noticeMsg = 'Descuento por volumen aplicado: -13% en cada unidad (ahorras 10 € en cada portacuentas).';
+        tierCol2?.classList.add('active');
+      } else {
+        tierCol1?.classList.add('active');
       }
 
       if (tierLabel) tierLabel.textContent = tierText;
@@ -1621,7 +3078,7 @@ const packs = [
 
       // Update Breakdown DOM
       if (breakdownContainer) {
-        const items = [];
+        const items: string[] = [];
 
         if (mesas > 0) {
           items.push(`
@@ -1680,7 +3137,7 @@ const packs = [
 
       // Update Digital Block
       if (digitalTotalsBlock) {
-        const digitalLines = [];
+        const digitalLines: string[] = [];
         if (hasSeo) {
           digitalLines.push(`
             <div class="digital-line">
@@ -1728,14 +3185,14 @@ const packs = [
           `*Subtotal Equipamiento:* ${totalHardware} €`,
           hasSeo ? `*Servicio:* Posicionamiento SEO Local (89 €/mes)` : '',
           hasWeb ? `*Proyecto:* Página Web Gastronómica (790 €)` : '',
-          `Me gustaría solicitar la propuesta con simulación de grabado o formalizar el pedido.`
+          `Me gustaría solicitar la propuesta con simulación de grabado personalizada o formalizar el pedido.`
         ].filter(Boolean).join('\n');
 
         btnWhatsapp.href = `https://wa.me/34600000000?text=${encodeURIComponent(textParts)}`;
       }
     }
 
-    // Connect "Ajustar este pack en el configurador" buttons
+    // Connect "Personalizar unidades de este pack" buttons
     document.querySelectorAll<HTMLButtonElement>('[data-customizer-trigger]').forEach(btn => {
       btn.addEventListener('click', () => {
         const rawData = btn.getAttribute('data-customizer-payload');
@@ -1782,18 +3239,24 @@ const packs = [
           if (toggleSeo) toggleSeo.checked = !!data.seo;
           if (toggleWeb) toggleWeb.checked = !!data.web;
 
-          // Switch to customizer tab
-          setViewMode('customizer');
-
           // Recalculate
           calculateLiveQuote();
 
-          // Scroll smoothly to customizer
-          viewCustomizer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Scroll smoothly to individual products section
+          const targetSection = document.getElementById('productos-individuales');
+          targetSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } catch {
-          // La precarga es opcional: si falla, el configurador sigue disponible.
+          // Fallback
         }
       });
+    });
+
+    // Smooth scroll for separator button
+    const btnScrollCustomizer = document.getElementById('btn-scroll-to-customizer');
+    btnScrollCustomizer?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.getElementById('productos-individuales');
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     // Initial calculation

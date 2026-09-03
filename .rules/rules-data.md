@@ -21,3 +21,10 @@ Los datos deben encargarse de contenido.
 
 No lleves esta regla al extremo:
 textos únicos que solo aparecen una vez pueden permanecer en el componente.
+
+---
+
+# REGLAS CRÍTICAS
+
+## CRITICAL DATA INTEGRITY
+Never invent, infer or modify prices, quantities, guarantees, discounts, statistics, performance claims, product materials or service inclusions. If a value is not explicitly present in the project, omit it instead of inventing it.

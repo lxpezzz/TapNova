@@ -1,0 +1,1397 @@
+---
+
+---
+
+<!-- =======================================================================
+         CONSOLA DE POSICIONAMIENTO EN GOOGLE MAPS (RADAR CÓSMICO DUAL)
+         En Desktop: Radar a la izquierda + Plan Básico y Plan Avanzado verticales en 2 columnas a la derecha.
+         En Móvil: Plan Básico (arriba) -> Radar Maestro -30% (en medio) -> Plan Avanzado (abajo).
+         ======================================================================= -->
+<div class="seo-radar-console" id="tarifas-seo">
+  <!-- Encabezado de la Consola -->
+  <div class="console-head text-center">
+    <h3 class="console-title font-display">
+      Elige hasta dónde quieres llegar en <span class="console-title__accent"
+        >Google Maps</span
+      >
+    </h3>
+    <p class="console-sub">
+      Cuando alguien busca en Google Maps un restaurante, bar o negocio como el
+      tuyo, trabajamos para que tengas más posibilidades de aparecer y recibir
+      llamadas, visitas o reservas.
+    </p>
+  </div>
+
+  <!-- Consola Interactiva -->
+  <div class="radar-split-console" id="seo-interactive-console">
+    <!-- PLAN 1: SEO BÁSICO (129 €) -->
+    <article
+      class="interactive-plan-card plan-basic"
+      id="plan-card-basic"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Seleccionar y ver cobertura SEO Local Básico"
+    >
+      <!-- Cabecera Vertical -->
+      <div class="plan-card-top">
+        <h4 class="plan-name font-display">SEO Local Básico</h4>
+        <p class="plan-desc">
+          Para mantener tu negocio bien cuidado en Google.
+        </p>
+      </div>
+
+      <!-- Precio Vertical -->
+      <div class="plan-price-block">
+        <div class="price-figures">
+          <span class="p-curr">€</span>
+          <span class="p-val font-display">129</span>
+          <span class="p-period">+ IVA / mes</span>
+        </div>
+        <span class="p-note">Sin permanencia · Cobertura perimetral</span>
+      </div>
+
+      <!-- 3 Entregables Tácticos Claros -->
+      <ul class="plan-features-list">
+        <li>
+          <span class="t-bullet font-display">01</span>
+          <div>
+            <strong>Tu información siempre correcta:</strong>
+            <span
+              >Revisamos horarios, teléfono, servicios, fotos y datos de tu
+              negocio.</span
+            >
+          </div>
+        </li>
+        <li>
+          <span class="t-bullet font-display">02</span>
+          <div>
+            <strong>Respuesta activa a reseñas:</strong>
+            <span
+              >Contestamos al 100% de las opiniones con profesionalidad y
+              cercanía.</span
+            >
+          </div>
+        </li>
+        <li>
+          <span class="t-bullet font-display">03</span>
+          <div>
+            <strong>Vigilamos tu ficha:</strong>
+            <span
+              >Detectamos errores o problemas que puedan hacer que pierdas
+              visibilidad.</span
+            >
+          </div>
+        </li>
+      </ul>
+
+      <!-- Acciones Verticales -->
+      <div class="plan-actions-block">
+        <a href="#contacto" class="btn-primary btn-plan-action">
+          <span>Quiero cuidar mi ficha de Google</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- MAPA LOCAL TIPO GOOGLE MAPS CON RANKINGS POR ZONA -->
+    <div class="radar-master-stage map-state-initial" id="radar-master-stage">
+      <!-- Halo ambiental reactivo -->
+      <div
+        class="master-glow glow-neutral"
+        id="master-radar-glow"
+        aria-hidden="true"
+      >
+      </div>
+
+      <p class="map-context-caption">
+        Así puede verse tu negocio hoy en distintas zonas de Google Maps
+      </p>
+
+      <!-- Lienzo del Mapa Local -->
+      <div
+        class="map-grid-canvas"
+        id="map-grid-canvas"
+        aria-label="Simulación de posiciones en mapa de Google Maps"
+      >
+        <!-- Contenedor Escalable para Zoom Dinámico -->
+        <div class="map-scalable-viewport" id="map-scalable-viewport">
+          <!-- Fondo de Mapa Vectorial Estilizado (Calles y Manzanas Urbanas) -->
+          <svg
+            class="map-city-svg"
+            viewBox="0 0 320 320"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <radialGradient id="map-vignette" cx="50%" cy="50%" r="50%">
+                <stop offset="65%" stop-color="rgba(10, 10, 14, 0)"></stop>
+                <stop offset="100%" stop-color="rgba(10, 10, 14, 0.88)"></stop>
+              </radialGradient>
+            </defs>
+
+            <!-- Manzanas urbanas sutiles -->
+            <rect x="22" y="24" width="76" height="54" rx="6" class="map-block"
+            ></rect>
+            <rect x="114" y="24" width="92" height="54" rx="6" class="map-block"
+            ></rect>
+            <rect x="222" y="24" width="76" height="54" rx="6" class="map-block"
+            ></rect>
+
+            <rect x="22" y="94" width="76" height="60" rx="6" class="map-block"
+            ></rect>
+            <rect
+              x="114"
+              y="94"
+              width="92"
+              height="60"
+              rx="6"
+              class="map-block central-block"></rect>
+            <rect x="222" y="94" width="76" height="60" rx="6" class="map-block"
+            ></rect>
+
+            <rect x="22" y="170" width="76" height="58" rx="6" class="map-block"
+            ></rect>
+            <rect
+              x="114"
+              y="170"
+              width="92"
+              height="58"
+              rx="6"
+              class="map-block"></rect>
+            <rect
+              x="222"
+              y="170"
+              width="76"
+              height="58"
+              rx="6"
+              class="map-block"></rect>
+
+            <rect x="22" y="244" width="76" height="52" rx="6" class="map-block"
+            ></rect>
+            <rect
+              x="114"
+              y="244"
+              width="92"
+              height="52"
+              rx="6"
+              class="map-block"></rect>
+            <rect
+              x="222"
+              y="244"
+              width="76"
+              height="52"
+              rx="6"
+              class="map-block"></rect>
+
+            <!-- Red de Calles / Avenidas -->
+            <line x1="0" y1="86" x2="320" y2="86" class="map-street main-avenue"
+            ></line>
+            <line
+              x1="0"
+              y1="162"
+              x2="320"
+              y2="162"
+              class="map-street main-avenue"></line>
+            <line
+              x1="0"
+              y1="236"
+              x2="320"
+              y2="236"
+              class="map-street main-avenue"></line>
+
+            <line
+              x1="106"
+              y1="0"
+              x2="106"
+              y2="320"
+              class="map-street main-avenue"></line>
+            <line
+              x1="214"
+              y1="0"
+              x2="214"
+              y2="320"
+              class="map-street main-avenue"></line>
+
+            <!-- Círculos de Cobertura de Búsqueda -->
+            <circle
+              cx="160"
+              cy="160"
+              r="38"
+              class="map-coverage-ring ring-initial-range"></circle>
+            <circle
+              cx="160"
+              cy="160"
+              r="76"
+              class="map-coverage-ring ring-basic-range"></circle>
+            <circle
+              cx="160"
+              cy="160"
+              r="134"
+              class="map-coverage-ring ring-advanced-range"></circle>
+
+            <!-- Viñeta suave perimetral -->
+            <rect x="0" y="0" width="320" height="320" fill="url(#map-vignette)"
+            ></rect>
+          </svg>
+
+          <!-- Capa de Pines de Medición en Cuadrícula 3x3 -->
+          <div class="map-pins-layer" aria-hidden="true">
+            <!-- Fila 1: Puntos Norte -->
+            <div class="map-pin" data-pin="1" style="top: 16%; left: 18%;">
+              <span class="pin-badge badge-danger" id="badge-1">#18</span>
+            </div>
+            <div class="map-pin" data-pin="2" style="top: 16%; left: 50%;">
+              <span class="pin-badge badge-danger" id="badge-2">#14</span>
+            </div>
+            <div class="map-pin" data-pin="3" style="top: 16%; left: 82%;">
+              <span class="pin-badge badge-danger" id="badge-3">#21</span>
+            </div>
+
+            <!-- Fila 2: Puntos Centro -->
+            <div class="map-pin" data-pin="4" style="top: 50%; left: 18%;">
+              <span class="pin-badge badge-danger" id="badge-4">#16</span>
+            </div>
+
+            <!-- NODO CENTRAL: TU NEGOCIO -->
+            <div
+              class="map-business-hub"
+              style="top: 50%; left: 50%;"
+              title="Tu negocio (Punto central)"
+            >
+              <div class="hub-pulse"></div>
+              <div class="hub-marker">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <div class="map-pin" data-pin="6" style="top: 50%; left: 82%;">
+              <span class="pin-badge badge-danger" id="badge-6">#15</span>
+            </div>
+
+            <!-- Fila 3: Puntos Sur -->
+            <div class="map-pin" data-pin="7" style="top: 84%; left: 18%;">
+              <span class="pin-badge badge-danger" id="badge-7">#24</span>
+            </div>
+            <div class="map-pin" data-pin="8" style="top: 84%; left: 50%;">
+              <span class="pin-badge badge-danger" id="badge-8">#11</span>
+            </div>
+            <div class="map-pin" data-pin="9" style="top: 84%; left: 82%;">
+              <span class="pin-badge badge-danger" id="badge-9">#19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-state-labels" aria-live="polite">
+        <span
+          class="map-state-label map-state-label--initial"
+          id="map-state-label">Sin optimizar</span
+        >
+      </div>
+
+      <div class="map-visibility-copy">
+        <p>
+          Así medimos tu visibilidad en diferentes zonas. Nuestro trabajo
+          consiste en mejorar esas posiciones de forma progresiva.
+        </p>
+        <p class="map-visibility-note">
+          Ejemplo visual. Las posiciones y su evolución dependen de
+          factores como ubicación, competencia, categoría y situación inicial
+          del negocio.
+        </p>
+      </div>
+    </div>
+
+    <!-- PLAN 2: SEO AVANZADO (179 €) -->
+    <article
+      class="interactive-plan-card plan-advanced"
+      id="plan-card-advanced"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Seleccionar y previsualizar SEO Local Avanzado"
+    >
+      <!-- Cabecera Vertical -->
+      <div class="plan-card-top">
+        <h4 class="plan-name font-display">SEO Local Avanzado</h4>
+        <p class="plan-desc">
+          Para aumentar tus posibilidades de aparecer antes que otros negocios
+          de tu zona.
+        </p>
+      </div>
+
+      <!-- Precio Vertical -->
+      <div class="plan-price-block">
+        <div class="price-figures">
+          <span class="p-curr">€</span>
+          <span class="p-val font-display">179</span>
+          <span class="p-period">+ IVA / mes</span>
+        </div>
+        <span class="p-note">Sin permanencia · Estrategia continua</span>
+      </div>
+
+      <!-- 3 Entregables Tácticos Claros -->
+      <ul class="plan-features-list">
+        <li>
+          <span class="t-bullet font-display">01</span>
+          <div>
+            <strong>Incluye todo el plan Básico:</strong>
+            <span>Tu ficha sigue siempre actualizada y gestionada..</span>
+          </div>
+        </li>
+        <li>
+          <span class="t-bullet font-display">02</span>
+          <div>
+            <strong>Trabajamos las búsquedas que hacen tus clientes:</strong>
+            <span
+              >“restaurante cerca de mí”, “mejor pizzería en Castellón” o “bar
+              para cenar cerca”.</span
+            >
+          </div>
+        </li>
+        <li>
+          <span class="t-bullet font-display">03</span>
+          <div>
+            <strong>Comparamos tu negocio con la competencia:</strong>
+            <span
+              >Revisamos quién aparece por delante de ti y qué podemos mejorar.</span
+            >
+          </div>
+        </li>
+        <li>
+          <span class="t-bullet font-display">04</span>
+          <div>
+            <strong>Te contamos los resultados cada mes:</strong>
+            <span
+              >Recibes un informe sencillo mensual para saber si estás ganando
+              visibilidad.</span
+            >
+          </div>
+        </li>
+      </ul>
+
+      <!-- Acciones Verticales -->
+      <div class="plan-actions-block">
+        <a
+          href="#contacto"
+          class="btn-primary btn-plan-action btn-action-advanced"
+        >
+          <span>Quiero aparecer más en Google</span>
+          <span class="btn-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <!-- Barra de Garantías Cósmica -->
+  <div class="radar-guarantee-dock">
+    <span>✓ Sin permanencias ni penalizaciones</span>
+    <span class="g-dot" aria-hidden="true">·</span>
+    <span>✓ Métodos 100% legales según criterios de Google</span>
+    <span class="g-dot" aria-hidden="true">·</span>
+    <span>✓ Asesor personal directo</span>
+  </div>
+</div>
+
+<style>
+  /* =========================================================================
+     SECCIÓN CONSOLA DE TARIFAS Y POSICIONAMIENTO
+     ========================================================================= */
+  .seo-radar-console {
+    margin-top: clamp(4.5rem, 8vw, 7.5rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  .console-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .console-title {
+    font-size: clamp(2rem, 3.5vw, 2.9rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    max-width: 780px;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .console-title__accent {
+    color: #f5a623;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.18em;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    transform: translateY(0.03em);
+  }
+
+  .console-sub {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+    line-height: 1.55;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* =========================================================================
+     CONSOLA SPLIT INTERACTIVA
+     En Móvil: Flex vertical con orden [Básico -> Radar -30% -> Avanzado]
+     En Desktop (>= 1024px): CSS Grid con áreas [radar basic advanced]
+     ========================================================================= */
+  .radar-split-console {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  #plan-card-basic {
+    order: 1;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  #radar-master-stage {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  #plan-card-advanced {
+    order: 3;
+    width: 100%;
+    max-width: 440px;
+  }
+
+  @media (min-width: 1024px) {
+    .radar-split-console {
+      display: grid;
+      grid-template-columns: 340px 1fr 1fr;
+      grid-template-areas: "radar basic advanced";
+      align-items: stretch;
+      gap: 1.75rem;
+    }
+
+    #radar-master-stage {
+      grid-area: radar;
+      order: unset;
+      justify-content: flex-start;
+      margin-left: -1rem;
+      padding: 1rem 0;
+    }
+
+    #plan-card-basic {
+      grid-area: basic;
+      order: unset;
+      max-width: 100%;
+    }
+
+    #plan-card-advanced {
+      grid-area: advanced;
+      order: unset;
+      max-width: 100%;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     STAGE DEL MAPA LOCAL TIPO GOOGLE MAPS
+     ------------------------------------------------------------------------- */
+  .radar-master-stage {
+    position: relative;
+  }
+
+  .map-context-caption,
+  .map-state-labels {
+    width: min(100%, 350px);
+    text-align: center;
+  }
+
+  .map-context-caption {
+    margin: 0 0 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  .map-state-labels {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .map-state-label--basic {
+    color: var(--accent-amber);
+  }
+
+  .map-state-label--advanced {
+    color: #34d399;
+  }
+
+  .map-visibility-copy {
+    width: min(100%, 350px);
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .map-visibility-note {
+    margin-top: 0.55rem;
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    line-height: 1.45;
+  }
+
+  /* Halo reactivo de atmósfera cósmica detrás del mapa */
+  .master-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(65px);
+    pointer-events: none;
+    opacity: 0.22;
+    transition:
+      background 0.6s ease,
+      opacity 0.6s ease,
+      width 0.3s ease,
+      height 0.3s ease;
+  }
+
+  @media (min-width: 1024px) {
+    .master-glow {
+      width: 360px;
+      height: 360px;
+      left: -15px;
+      filter: blur(85px);
+    }
+  }
+
+  .master-glow.glow-amber {
+    background: radial-gradient(
+      circle,
+      rgba(255, 157, 36, 0.85) 0%,
+      transparent 70%
+    );
+  }
+
+  .master-glow.glow-emerald {
+    background: radial-gradient(
+      circle,
+      rgba(16, 185, 129, 0.85) 0%,
+      transparent 70%
+    );
+  }
+
+  /* Contenedor del Mapa: En móvil 30% más pequeño (~245px), en desktop ~350px */
+  .map-grid-canvas {
+    position: relative;
+    width: 245px;
+    height: 245px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 24px;
+    background: rgba(14, 14, 18, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  @media (min-width: 1024px) {
+    .map-grid-canvas {
+      width: 350px;
+      height: 350px;
+      border-radius: 28px;
+    }
+  }
+
+  /* Calles y manzanas del mapa */
+  .map-city-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .map-block {
+    fill: rgba(255, 255, 255, 0.03);
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 0.8;
+  }
+
+  .central-block {
+    fill: rgba(255, 255, 255, 0.05);
+  }
+
+  .map-street {
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 1.5;
+  }
+
+  .map-coverage-ring {
+    fill: none;
+    stroke-dasharray: 4 4;
+    transition: all 0.5s ease;
+  }
+
+  .ring-basic-range {
+    stroke: rgba(255, 157, 36, 0.35);
+    stroke-width: 1.2;
+  }
+
+  .ring-advanced-range {
+    stroke: rgba(16, 185, 129, 0.12);
+    stroke-width: 1;
+  }
+
+  /* Capa de Pines */
+  .map-pins-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* Pin de Búsqueda Individual */
+  .map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pin-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.45rem;
+    border-radius: 9999px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1.5px solid transparent;
+  }
+
+  @media (min-width: 1024px) {
+    .pin-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+    }
+  }
+
+  /* Estilos de posición (Badges por rango) */
+  .badge-top {
+    background: #10b981;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.7);
+    transform: scale(1.08);
+  }
+
+  .badge-mid {
+    background: #f59e0b;
+    color: #0d0d0d;
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .badge-danger {
+    background: rgba(239, 68, 68, 0.22);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.45);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-low {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-secondary);
+    border-color: rgba(255, 255, 255, 0.25);
+    opacity: 0.85;
+  }
+
+  /* Viewport del Mapa: siempre cubre el 100% del contenedor sin encogerse ni flotar */
+  .map-scalable-viewport {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Los círculos de cobertura y los pines crecen y se expanden orgánicamente */
+  .map-state-initial .ring-initial-range {
+    transform: scale(1);
+    transform-origin: 160px 160px;
+    opacity: 1;
+  }
+
+  .map-state-basic .ring-basic-range {
+    transform: scale(1.15);
+    transform-origin: 160px 160px;
+    opacity: 1;
+  }
+
+  .map-state-advanced .ring-advanced-range {
+    transform: scale(1.05);
+    transform-origin: 160px 160px;
+    opacity: 1;
+  }
+
+  /* Hub Central (Tu Negocio) */
+  .map-business-hub {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  .hub-pulse {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    animation: hub-breathe 2.4s infinite ease-out;
+  }
+
+  .hub-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    z-index: 6;
+    transition: all 0.45s ease;
+  }
+
+  @keyframes hub-breathe {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.15;
+    }
+    100% {
+      transform: scale(0.85);
+      opacity: 0.8;
+    }
+  }
+
+  /* Anillos de Cobertura */
+  .ring-initial-range {
+    stroke: rgba(239, 68, 68, 0.35);
+    stroke-width: 1;
+    transition: all 0.5s ease;
+  }
+
+  /* Reacciones del Mapa en Estado INICIAL (Sin Selección) */
+  .map-state-initial .ring-initial-range {
+    stroke: rgba(239, 68, 68, 0.5);
+    stroke-width: 1.4;
+  }
+
+  .map-state-initial .ring-basic-range {
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 1;
+  }
+
+  .map-state-initial .ring-advanced-range {
+    stroke: rgba(255, 255, 255, 0.03);
+    stroke-width: 1;
+  }
+
+  .map-state-initial .hub-marker {
+    background: #3f3f46;
+    color: #d4d4d8;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .map-state-initial .hub-pulse {
+    background: rgba(239, 68, 68, 0.15);
+  }
+
+  /* Reacciones del Mapa en Estado BÁSICO */
+  .map-state-basic .ring-initial-range {
+    stroke: rgba(255, 255, 255, 0.04);
+  }
+
+  .map-state-basic .ring-basic-range {
+    stroke: rgba(255, 157, 36, 0.65);
+    stroke-width: 1.6;
+  }
+
+  .map-state-basic .ring-advanced-range {
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 1;
+  }
+
+  .map-state-basic .hub-marker {
+    background: #ff9d24;
+    color: #050505;
+    box-shadow: 0 0 16px rgba(255, 157, 36, 0.9);
+    border-color: #ffffff;
+  }
+
+  .map-state-basic .hub-pulse {
+    background: rgba(255, 157, 36, 0.3);
+  }
+
+  /* Reacciones del Mapa en Estado AVANZADO */
+  .map-state-advanced .ring-initial-range {
+    stroke: rgba(255, 255, 255, 0.03);
+  }
+
+  .map-state-advanced .ring-basic-range {
+    stroke: rgba(16, 185, 129, 0.25);
+    stroke-width: 1;
+  }
+
+  .map-state-advanced .ring-advanced-range {
+    stroke: rgba(16, 185, 129, 0.7);
+    stroke-width: 2;
+  }
+
+  .map-state-advanced .hub-marker {
+    background: #10b981;
+    color: #050505;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.95);
+    border-color: #ffffff;
+  }
+
+  .map-state-advanced .hub-pulse {
+    background: rgba(16, 185, 129, 0.35);
+  }
+
+  .master-glow.glow-neutral {
+    background: radial-gradient(
+      circle,
+      rgba(239, 68, 68, 0.35) 0%,
+      transparent 70%
+    );
+  }
+
+  @keyframes pulse-hub {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     TARJETAS DE PLANES INTERACTIVAS (VERTICALES)
+     ------------------------------------------------------------------------- */
+  .interactive-plan-card {
+    position: relative;
+    border-radius: clamp(1.25rem, 2vw, 1.6rem);
+    background: rgba(12, 12, 16, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: clamp(1.35rem, 2vw, 1.65rem);
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .interactive-plan-card:hover {
+    background: rgba(18, 18, 24, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+  }
+
+  /* Estado Activo / Seleccionado */
+  .interactive-plan-card.is-active {
+    background: rgba(18, 18, 24, 0.85);
+    border-color: rgba(255, 157, 36, 0.45);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      0 0 35px rgba(255, 157, 36, 0.1),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .interactive-plan-card.plan-advanced.is-active {
+    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      0 0 35px rgba(16, 185, 129, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Cabecera Vertical */
+  .plan-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .plan-name {
+    font-size: clamp(1.2rem, 1.8vw, 1.35rem);
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .plan-desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* Bloque de Precio Vertical */
+  .plan-price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .price-figures {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+  }
+
+  .p-curr {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .p-val {
+    font-size: clamp(2.1rem, 3.2vw, 2.7rem);
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+  }
+
+  .p-period {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    margin-left: 0.2rem;
+  }
+
+  .p-note {
+    font-size: 0.72rem;
+    color: var(--accent-amber);
+    font-weight: 500;
+  }
+
+  .plan-advanced .p-note {
+    color: rgba(16, 185, 129, 0.9);
+  }
+
+  /* Lista de Entregables Tácticos */
+  .plan-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+  }
+
+  .plan-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+  }
+
+  .t-bullet {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-purple);
+    line-height: 1.4;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+
+  .plan-features-list li strong {
+    color: #ffffff;
+    font-weight: 500;
+    display: inline;
+    margin-right: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .plan-card-top {
+      height: 78px;
+    }
+  }
+
+  /* Bloque de Acciones Vertical */
+  .plan-actions-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: auto;
+    padding-top: 0.35rem;
+    width: 100%;
+  }
+
+  .btn-plan-action {
+    width: 100%;
+    height: 46px;
+    min-height: 46px;
+    padding: 0 0.75rem 0 1.25rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    border-radius: var(--radius-pill);
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .btn-action-advanced {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 157, 36, 0.35);
+  }
+
+  .btn-action-advanced:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 157, 36, 0.55);
+  }
+
+  .plan-wa-link {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    text-align: center;
+    padding: 0.15rem;
+  }
+
+  .plan-wa-link:hover {
+    color: #25d366;
+  }
+
+  /* Barra de Garantías Cósmica */
+  .radar-guarantee-dock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.75rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    padding: 0.85rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-pill);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(12px);
+  }
+
+  .g-dot {
+    opacity: 0.3;
+  }
+
+  @media (max-width: 767px) {
+    .plan-features-list li > div > span {
+      display: none;
+    }
+
+    .plan-features-list li strong {
+      display: block;
+      margin-right: 0;
+    }
+
+    .radar-guarantee-dock {
+      flex-direction: column;
+      gap: 0.35rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .g-dot {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function setupSeoRadarConsole() {
+    const cardBasic = document.getElementById("plan-card-basic");
+    const cardAdvanced = document.getElementById("plan-card-advanced");
+    const masterStage = document.getElementById("radar-master-stage");
+    const masterGlow = document.getElementById("master-radar-glow");
+    const stateLabel = document.getElementById("map-state-label");
+    const interactiveConsole = document.getElementById(
+      "seo-interactive-console",
+    );
+
+    if (
+      !cardBasic ||
+      !cardAdvanced ||
+      !masterStage ||
+      !masterGlow ||
+      !interactiveConsole ||
+      interactiveConsole.dataset.initialized
+    )
+      return;
+
+    interactiveConsole.dataset.initialized = "true";
+
+    // Estado seleccionado actual: null = Sin selección (números malos), 'basic' o 'advanced'
+    let selectedPlan: "basic" | "advanced" | null = null;
+
+    // 1. Estado Inicial (Sin Optimizar - Números Malos)
+    const initialPositions: Record<string, { rank: string; type: "danger" }> = {
+      "1": { rank: "#18", type: "danger" },
+      "2": { rank: "#14", type: "danger" },
+      "3": { rank: "#21", type: "danger" },
+      "4": { rank: "#16", type: "danger" },
+      "6": { rank: "#15", type: "danger" },
+      "7": { rank: "#24", type: "danger" },
+      "8": { rank: "#11", type: "danger" },
+      "9": { rank: "#19", type: "danger" },
+    };
+
+    // 2. Estado Plan Básico (Mejora bastante en el perímetro inmediato)
+    const basicPositions: Record<
+      string,
+      { rank: string; type: "top" | "mid" | "low" }
+    > = {
+      "1": { rank: "#6", type: "low" },
+      "2": { rank: "#4", type: "mid" },
+      "3": { rank: "#7", type: "low" },
+      "4": { rank: "#5", type: "mid" },
+      "6": { rank: "#4", type: "mid" },
+      "7": { rank: "#8", type: "low" },
+      "8": { rank: "#3", type: "top" },
+      "9": { rank: "#6", type: "low" },
+    };
+
+    // 3. Estado Plan Avanzado (mejora progresiva y variable según cada zona)
+    const advancedPositions: Record<
+      string,
+      { rank: string; type: "top" | "mid" | "low" }
+    > = {
+      "1": { rank: "#4", type: "mid" },
+      "2": { rank: "#2", type: "top" },
+      "3": { rank: "#5", type: "mid" },
+      "4": { rank: "#3", type: "top" },
+      "6": { rank: "#1", type: "top" },
+      "7": { rank: "#7", type: "low" },
+      "8": { rank: "#2", type: "top" },
+      "9": { rank: "#4", type: "mid" },
+    };
+
+    function updatePinBadges(
+      positions: Record<string, { rank: string; type: string }>,
+    ) {
+      Object.keys(positions).forEach((pinId) => {
+        const badge = document.getElementById(`badge-${pinId}`);
+        if (badge) {
+          const info = positions[pinId];
+          badge.textContent = info.rank;
+          badge.className = `pin-badge badge-${info.type}`;
+        }
+      });
+    }
+
+    function renderState(plan: "basic" | "advanced" | null) {
+      // Clases activas de tarjetas
+      cardBasic?.classList.toggle("is-active", plan === "basic");
+      cardBasic?.setAttribute("aria-pressed", (plan === "basic").toString());
+
+      cardAdvanced?.classList.toggle("is-active", plan === "advanced");
+      cardAdvanced?.setAttribute(
+        "aria-pressed",
+        (plan === "advanced").toString(),
+      );
+
+      // Quitar estados anteriores del mapa
+      masterStage?.classList.remove(
+        "map-state-initial",
+        "map-state-basic",
+        "map-state-advanced",
+      );
+      masterGlow?.classList.remove(
+        "glow-neutral",
+        "glow-amber",
+        "glow-emerald",
+      );
+
+      if (plan === "basic") {
+        masterStage?.classList.add("map-state-basic");
+        masterGlow?.classList.add("glow-amber");
+        updatePinBadges(basicPositions);
+        if (stateLabel) {
+          stateLabel.textContent = "SEO básico";
+          stateLabel.className = "map-state-label map-state-label--basic";
+        }
+      } else if (plan === "advanced") {
+        masterStage?.classList.add("map-state-advanced");
+        masterGlow?.classList.add("glow-emerald");
+        updatePinBadges(advancedPositions);
+        if (stateLabel) {
+          stateLabel.textContent = "SEO avanzado";
+          stateLabel.className = "map-state-label map-state-label--advanced";
+        }
+      } else {
+        // Estado inicial (sin selección / reseteado)
+        masterStage?.classList.add("map-state-initial");
+        masterGlow?.classList.add("glow-neutral");
+        updatePinBadges(initialPositions);
+        if (stateLabel) {
+          stateLabel.textContent = "Sin optimizar";
+          stateLabel.className = "map-state-label map-state-label--initial";
+        }
+      }
+    }
+
+    // Inicializar sin selección (números malos del local)
+    renderState(null);
+
+    // Selección por click o tap en tarjeta Básica (Bloquea o alterna)
+    function handleSelectBasic(e: Event) {
+      // Evitar que el click se interprete si se pulsó en el botón o enlace de WhatsApp
+      const target = e.target as HTMLElement;
+      if (target.closest("a")) return;
+
+      selectedPlan = selectedPlan === "basic" ? null : "basic";
+      renderState(selectedPlan);
+    }
+
+    // Selección por click o tap en tarjeta Avanzada (Bloquea o alterna)
+    function handleSelectAdvanced(e: Event) {
+      const target = e.target as HTMLElement;
+      if (target.closest("a")) return;
+
+      selectedPlan = selectedPlan === "advanced" ? null : "advanced";
+      renderState(selectedPlan);
+    }
+
+    cardBasic.addEventListener("click", handleSelectBasic);
+    cardAdvanced.addEventListener("click", handleSelectAdvanced);
+
+    // Accesibilidad por teclado
+    cardBasic.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        selectedPlan = selectedPlan === "basic" ? null : "basic";
+        renderState(selectedPlan);
+      }
+    });
+
+    cardAdvanced.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        selectedPlan = selectedPlan === "advanced" ? null : "advanced";
+        renderState(selectedPlan);
+      }
+    });
+
+    // Resetear si se hace click o tap fuera de los planes
+    document.addEventListener("pointerdown", (e) => {
+      if (!selectedPlan) return;
+      const target = e.target as HTMLElement;
+      if (!interactiveConsole?.contains(target)) {
+        selectedPlan = null;
+        renderState(null);
+      }
+    });
+
+    // Resetear si el usuario hace scroll significativo
+    let lastScrollY = window.scrollY;
+    let scrollAccumulator = 0;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!selectedPlan) {
+          lastScrollY = window.scrollY;
+          return;
+        }
+
+        const delta = Math.abs(window.scrollY - lastScrollY);
+        scrollAccumulator += delta;
+        lastScrollY = window.scrollY;
+
+        // Si el usuario hace scroll de más de 60px, reseteamos el mapa
+        if (scrollAccumulator > 60) {
+          selectedPlan = null;
+          scrollAccumulator = 0;
+          renderState(null);
+        }
+      },
+      { passive: true },
+    );
+  }
+
+  // Inicialización directa y en transiciones de navegación Astro
+  setupSeoRadarConsole();
+  document.addEventListener("astro:page-load", setupSeoRadarConsole);
+</script>

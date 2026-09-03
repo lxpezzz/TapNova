@@ -850,29 +850,46 @@ const products = [
       });
     });
 
-    // Pause on Hover & Touch
-    shell.addEventListener('mouseenter', () => { isPaused = true; });
-    shell.addEventListener('mouseleave', () => { 
-      isPaused = false; 
-      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
-    });
-
-    dock.addEventListener('mouseenter', () => { isPaused = true; });
-    dock.addEventListener('mouseleave', () => { 
-      isPaused = false; 
-      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
-    });
-
-    shell.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
-    shell.addEventListener('touchend', () => { 
-      isPaused = false; 
-      startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
-    }, { passive: true });
-
-    // Animation Loop with Real-time Progress Countdown
     let progressFraction = 0;
 
+    // The animation only needs a frame while the showcase can be seen. Keeping
+    // a permanent rAF alive after the section has left the viewport wastes main
+    // thread time without changing the visible product cycle.
+    function stopTick() {
+      if (animFrameId !== null) {
+        cancelAnimationFrame(animFrameId);
+        animFrameId = null;
+      }
+    }
+
+    function startTick() {
+      if (!prefersReducedMotion && isInViewport && !isPaused && !document.hidden && animFrameId === null) {
+        animFrameId = requestAnimationFrame(tick);
+      }
+    }
+
+    function setPaused(paused: boolean) {
+      isPaused = paused;
+      if (isPaused) {
+        stopTick();
+      } else {
+        startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+        startTick();
+      }
+    }
+
+    // Pause on Hover & Touch
+    shell.addEventListener('mouseenter', () => setPaused(true));
+    shell.addEventListener('mouseleave', () => setPaused(false));
+    dock.addEventListener('mouseenter', () => setPaused(true));
+    dock.addEventListener('mouseleave', () => setPaused(false));
+    shell.addEventListener('touchstart', () => setPaused(true), { passive: true });
+    shell.addEventListener('touchend', () => setPaused(false), { passive: true });
+
+    // Animation Loop with Real-time Progress Countdown
+
     function tick(now: number) {
+      animFrameId = null;
       if (!prefersReducedMotion && isInViewport && !isPaused) {
         const elapsed = now - startTime;
         progressFraction = Math.min(Math.max(elapsed / AUTOPLAY_DURATION, 0), 1);
@@ -888,7 +905,7 @@ const products = [
         }
       }
 
-      animFrameId = requestAnimationFrame(tick);
+      startTick();
     }
 
     // IntersectionObserver: Only run when visible
@@ -897,6 +914,9 @@ const products = [
         isInViewport = entry.isIntersecting;
         if (isInViewport) {
           startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+          startTick();
+        } else {
+          stopTick();
         }
       });
     }, {
@@ -906,10 +926,14 @@ const products = [
     const section = document.getElementById('productos');
     if (section) observer.observe(section);
 
-    // Start tick loop if motion not reduced
-    if (!prefersReducedMotion) {
-      animFrameId = requestAnimationFrame(tick);
-    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopTick();
+      } else {
+        startTime = performance.now() - (progressFraction * AUTOPLAY_DURATION);
+        startTick();
+      }
+    });
   }
 
   // Initialize on load and Astro page transitions

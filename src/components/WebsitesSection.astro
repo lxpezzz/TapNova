@@ -1,0 +1,496 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+// 1. Las 2 Demos (Showroom visual)
+const demos = [
+  {
+    id: 'demo-01',
+    name: 'Demo 01',
+    url: '#demo-01',
+    note: 'Captura Demo 01'
+  },
+  {
+    id: 'demo-02',
+    name: 'Demo 02',
+    url: '#demo-02',
+    note: 'Captura Demo 02'
+  }
+];
+
+// 2. Las 2 Tarifas (Solo lo esencial)
+const plans = [
+  {
+    id: 'landing',
+    name: 'Landing Page',
+    price: 350,
+    popular: false,
+    items: [
+      'Landing diseñada a medida',
+      'Optimizada para móvil',
+      'WhatsApp y llamada directa',
+      'Entrega en 7 días laborables'
+    ],
+    cta: 'Solicitar Web',
+    waMsg: 'Hola TapNova, me interesa la Landing Page de 350 € + IVA.'
+  },
+  {
+    id: 'completa',
+    name: 'Web Completa',
+    price: 490,
+    popular: true,
+    items: [
+      'Hasta 5 secciones',
+      'Carta / catálogo interactivo',
+      'Reservas o contacto integrado',
+      'Optimizada para móvil',
+      'Entrega en 10 días laborales'
+
+    ],
+    cta: 'Solicitar Web',
+    waMsg: 'Hola TapNova, me interesa la Web Completa de 490 € + IVA.'
+  }
+];
+---
+
+<section class={`websites-section ${className}`} id="paginas-web" aria-label="Páginas web TapNova">
+  <!-- Halo ambiental sutil -->
+  <div class="web-ambient-glow" aria-hidden="true"></div>
+
+  <div class="section-container">
+    
+    <!-- Encabezado ultra-limpio -->
+    <header class="section-header text-center">
+      <h2 class="section-title font-display">
+        Webs rápidas. Diseñadas para <em class="websites-title__accent">convertir</em>.
+      </h2>
+      <p class="section-lead">
+        Webs a medida para convertir visitas en llamadas, reservas y clientes. Rápidas, optimizadas para móvil y sin cuotas mensuales.
+      </p>
+    </header>
+
+    <!-- BLOQUE 1: LAS 2 DEMOS (Minimalista, solo la ventana y el botón) -->
+    <div class="demos-compact-strip">
+      {demos.map((demo) => (
+        <a 
+          href={demo.url} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="demo-floating-frame"
+          aria-label={`Abrir ${demo.name}`}
+        >
+          <div class="demo-screen-slot">
+            <!-- Coloca tu captura con: <img src="/tu-captura.webp" alt={demo.name} /> -->
+            <div class="demo-screen-inner">
+              <span class="open-arrow" aria-hidden="true">↗</span>
+              <strong class="demo-label font-display">{demo.name}</strong>
+              <span class="demo-cue">Probar en vivo ↗</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- BLOQUE 2: LAS 2 TARIFAS (El precio manda, 4 líneas clave) -->
+    <div class="plans-compact-row">
+      {plans.map((plan) => (
+        <article class={`plan-box ${plan.popular ? 'plan-featured' : ''}`}>
+          
+          <div class="plan-top">
+            <div class="plan-header-row">
+              <span class="plan-tag font-display">{plan.name}</span>
+              {plan.popular && <span class="badge-pop">MÁS ELEGIDA</span>}
+            </div>
+
+            <!-- Precio Gigante -->
+            <div class="price-giant-line">
+              <span class="curr">€</span>
+              <span class="num font-display">{plan.price}</span>
+              <span class="tax">+ IVA</span>
+            </div>
+            <span class="ownership-hint">Pago único en propiedad · Sin cuotas</span>
+          </div>
+
+          <!-- Solo 4 líneas sin paja -->
+          <ul class="plan-minimal-list">
+            {plan.items.map((item) => (
+              <li>
+                <span class="bullet" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Botón directo -->
+          <div class="plan-footer">
+            <a 
+              href="#contacto" 
+              class={`btn-cta ${plan.popular ? 'btn-white' : 'btn-dark'}`}
+            >
+              <span>{plan.cta}</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .websites-section {
+    position: relative;
+    padding-top: clamp(4rem, 7vw, 7rem);
+    padding-bottom: clamp(4.5rem, 7vw, 7.5rem);
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .web-ambient-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(500px, 60vw, 850px);
+    height: clamp(350px, 40vw, 550px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 157, 36, 0.18) 0%, rgba(223, 145, 247, 0.12) 50%, transparent 70%);
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  /* Header */
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .websites-title__accent {
+    color: #f5a623;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.18em;
+    letter-spacing: -0.04em;
+    display: inline-block;
+    transform: translateY(0.03em);
+  }
+
+  .section-lead {
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    line-height: 1.62;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0.75rem auto 0;
+    text-wrap: balance;
+  }
+
+  /* =========================================================================
+     BLOQUE 1: DEMOS (Muy compacto, 2 recuadros limpios)
+     ========================================================================= */
+  .demos-compact-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 960px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 640px) {
+    .demos-compact-strip {
+      flex-direction: row;
+    }
+  }
+
+  .demo-floating-frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 16 / 9;
+    max-height: 190px;
+    border-radius: var(--radius-lg);
+    background: rgba(14, 14, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-default), border-color 0.25s var(--ease-default);
+  }
+
+  .demo-floating-frame:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 157, 36, 0.4);
+  }
+
+  .demo-screen-slot {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(5, 5, 8, 0.95) 100%);
+  }
+
+  .demo-screen-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .open-arrow {
+    font-size: 1.35rem;
+    color: var(--accent-amber);
+    transition: transform 0.2s ease;
+  }
+
+  .demo-floating-frame:hover .open-arrow {
+    transform: translate(2px, -2px) scale(1.1);
+  }
+
+  .demo-label {
+    font-size: 0.95rem;
+    color: #ffffff;
+  }
+
+  .demo-cue {
+    font-size: 0.72rem;
+    color: var(--accent-amber);
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 157, 36, 0.1);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+  }
+
+  /* =========================================================================
+     BLOQUE 2: PRECIOS (Ultra-limpio, el precio es el rey)
+     ========================================================================= */
+  .plans-compact-row {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 768px) {
+    .plans-compact-row {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  .plan-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    border-radius: var(--radius-xl);
+    background: rgba(14, 14, 18, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    transition: transform 0.25s var(--ease-default), border-color 0.25s var(--ease-default);
+  }
+
+  .plan-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .plan-featured {
+    border-color: rgba(255, 157, 36, 0.45);
+    background: linear-gradient(180deg, rgba(28, 22, 16, 0.9) 0%, rgba(14, 14, 18, 0.9) 100%);
+  }
+
+  .plan-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .plan-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .plan-tag {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .badge-pop {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, #feed7a 0%, #ff8400 100%);
+    color: #050505;
+  }
+
+  /* Precio */
+  .price-giant-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .curr {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .num {
+    font-size: clamp(3.2rem, 4.5vw, 4.2rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-feature-settings: "tnum";
+  }
+
+  .tax {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-amber);
+    margin-left: 0.2rem;
+  }
+
+  .ownership-hint {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+  }
+
+  /* Lista minimalista */
+  .plan-minimal-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-grow: 1;
+  }
+
+  .plan-minimal-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .bullet {
+    color: var(--accent-amber);
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  /* Acciones */
+  .plan-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    width: 100%;
+    max-width: 280px;
+    min-height: 42px;
+  }
+
+  .btn-white {
+    background: #ffffff;
+    color: #050505;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
+  }
+
+  .btn-white:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-dark {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .btn-dark:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .btn-arrow {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-cta:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .wa-link {
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .wa-link:hover {
+    color: #25d366;
+  }
+</style>
