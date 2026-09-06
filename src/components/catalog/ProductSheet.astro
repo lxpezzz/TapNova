@@ -1,0 +1,81 @@
+<div id="product-modal-backdrop" class="product-modal-backdrop" aria-hidden="true" hidden>
+  <aside id="product-sheet-shell" class="product-sheet-shell" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
+    <div class="sheet-drag-handle-bar" aria-hidden="true"><div class="sheet-drag-handle"></div></div>
+    <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Cerrar vista de producto">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="sheet-scrollable-body">
+      <div class="sheet-visual-stage">
+        <img id="modal-product-img" src="" alt="" class="modal-img-element" />
+        <div class="modal-stage-color-badge" id="modal-stage-color-badge" hidden>
+          <span class="stage-color-dot" id="modal-stage-color-dot"></span>
+          <span class="stage-color-name" id="modal-stage-color-name"></span>
+        </div>
+      </div>
+
+      <div class="sheet-content-group">
+        <div class="modal-product-header">
+          <h2 id="modal-product-title" class="modal-title">—</h2>
+          <p id="modal-subtitle" class="modal-sub">—</p>
+        </div>
+        <div class="modal-pricing-box">
+          <div class="modal-price-main">
+            <span id="modal-unit-price-display" class="modal-unit-price">— €</span>
+            <span class="modal-unit-suffix">/ ud</span>
+            <span id="modal-base-strikethrough" class="modal-base-strikethrough" hidden>— €</span>
+          </div>
+          <div id="modal-discount-tag" class="modal-discount-tag" hidden><span id="modal-discount-tag-text">-20% dto.</span></div>
+        </div>
+
+        <div class="modal-section modal-swatches-section" id="modal-swatches-group">
+          <div class="modal-section-label-row">
+            <span class="modal-section-label">Colores disponibles:</span>
+            <span id="modal-active-color-label" class="modal-section-active-val">—</span>
+          </div>
+          <div class="modal-color-chips-row" id="modal-color-swatches-container"></div>
+        </div>
+
+        <div class="modal-section modal-tiers-section">
+          <div class="modal-section-label-row"><span class="modal-section-label">Descuentos por volumen:</span></div>
+          <div class="modal-volume-tiers-row" id="modal-volume-tiers-container">
+            <button type="button" class="volume-tier-chip active" data-tier="1" aria-label="1 a 4 unidades">
+              <span class="tier-qty-badge">1–4 uds</span><span class="tier-calc-val" id="tier-val-1">—</span>
+            </button>
+            <button type="button" class="volume-tier-chip" data-tier="5" aria-label="5 a 9 unidades con 20% descuento">
+              <span class="tier-qty-badge">5–9 uds <em class="tier-em-dto">-20%</em></span><span class="tier-calc-val" id="tier-val-5">—</span>
+            </button>
+            <button type="button" class="volume-tier-chip" data-tier="10" aria-label="10 o más unidades con 30% descuento">
+              <span class="tier-qty-badge">10+ uds <em class="tier-em-dto">-30%</em></span><span class="tier-calc-val" id="tier-val-10">—</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-quantity-row">
+          <div class="modal-qty-stepper">
+            <button type="button" id="modal-qty-minus" class="modal-qty-btn" aria-label="Disminuir unidad">−</button>
+            <span id="modal-qty-val" class="modal-qty-display">1</span>
+            <button type="button" id="modal-qty-plus" class="modal-qty-btn" aria-label="Aumentar unidad">+</button>
+          </div>
+          <span class="modal-qty-subtotal-hint" id="modal-qty-total-hint">Total: — €</span>
+        </div>
+
+        <div class="modal-specs-minimal">
+          <div class="spec-line-clean"><span class="spec-k">Materiales:</span><span id="modal-materials-val" class="spec-v">—</span></div>
+          <div class="spec-line-clean"><span class="spec-k">Tecnología:</span><span id="modal-tech-val" class="spec-v">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-sticky-footer">
+      <button type="button" id="modal-add-to-cart-btn" class="modal-add-cart-hero-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span id="modal-cta-text">Añadir 1 al carrito · — €</span>
+      </button>
+    </div>
+  </aside>
+</div>

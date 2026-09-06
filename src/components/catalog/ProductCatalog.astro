@@ -1,0 +1,39 @@
+---
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
+import CatalogHeader from './CatalogHeader.astro';
+import CatalogNavigation from './CatalogNavigation.astro';
+import CatalogProductList from './CatalogProductList.astro';
+import ProductSheet from './ProductSheet.astro';
+import CartDrawer from './CartDrawer.astro';
+import './product-catalog.css';
+
+const productCount = CATALOG_PRODUCTS.length;
+const categoryCounts = Object.fromEntries(
+  CATALOG_CATEGORIES.map(({ id }) => [
+    id,
+    CATALOG_PRODUCTS.filter((product) => product.categoryId === id).length
+  ])
+);
+---
+
+<main id="b2b-marketplace" class="b2b-marketplace-page">
+  <div class="catalog-atmospheric-overlay" aria-hidden="true"></div>
+  <CatalogHeader totalProducts={productCount} />
+  <CatalogNavigation variant="mobile" categories={CATALOG_CATEGORIES} counts={categoryCounts} totalProducts={productCount} />
+
+  <div class="marketplace-editorial-container">
+    <div class="section-container wide-layout">
+      <div class="catalog-grid-layout">
+        <CatalogNavigation variant="sidebar" categories={CATALOG_CATEGORIES} counts={categoryCounts} totalProducts={productCount} />
+        <CatalogProductList />
+      </div>
+    </div>
+  </div>
+
+  <CartDrawer />
+  <ProductSheet />
+</main>
+
+<script>
+  import './product-catalog';
+</script>

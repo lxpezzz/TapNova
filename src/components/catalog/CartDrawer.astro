@@ -1,0 +1,58 @@
+<button type="button" id="desktop-floating-cart-btn" class="desktop-floating-cart-btn" aria-label="Ver carrito de presupuesto B2B">
+  <div class="floating-cart-icon-box">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+    </svg>
+    <span id="desktop-cart-badge-count" class="cart-badge-counter">0</span>
+  </div>
+  <div class="floating-cart-info">
+    <span class="floating-cart-kicker">Ver Carrito</span>
+    <span id="desktop-cart-total-display" class="floating-cart-total">0,00 €</span>
+  </div>
+</button>
+
+<div id="b2b-cart-backdrop" class="b2b-cart-backdrop" aria-hidden="true" hidden>
+  <aside id="b2b-cart-drawer" class="b2b-cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title-group">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cart-title-icon" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <h2 id="cart-drawer-title" class="cart-drawer-title">Carrito de Presupuesto</h2>
+        <span id="cart-drawer-count-badge" class="cart-header-count">0</span>
+      </div>
+      <button type="button" id="cart-drawer-close-btn" class="cart-close-btn" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div id="cart-empty-state" class="cart-empty-box">
+        <div class="cart-empty-icon-circle">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h3 class="cart-empty-title">Tu carrito está vacío</h3>
+        <p class="cart-empty-desc">Explora el catálogo y añade portacuentas, expositores o tarjetas para configurar el presupuesto de tu restaurante.</p>
+      </div>
+      <div id="cart-items-container" class="cart-items-container"></div>
+    </div>
+
+    <div id="cart-drawer-footer" class="cart-drawer-footer" hidden>
+      <div class="cart-disclaimer-notice">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="notice-info-icon" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <p class="notice-text">No pagarás nada ahora. Al enviar el carrito abrirás WhatsApp con tu pedido preparado para que podamos confirmar personalización, disponibilidad, envío y precio final.</p>
+      </div>
+      <div class="cart-totals-breakdown">
+        <div class="total-row"><span class="total-k">Subtotal (Base imponible)</span><span id="cart-subtotal-val" class="total-v">0,00 €</span></div>
+        <div class="total-row"><span class="total-k">IVA estimado (21%)</span><span id="cart-iva-val" class="total-v">0,00 €</span></div>
+        <div class="total-row final-total-row">
+          <div class="total-final-labels"><span class="total-final-k">Total estimado</span><span class="cart-microcopy-hint">Total orientativo. El precio final se confirma por WhatsApp.</span></div>
+          <span id="cart-total-val" class="total-final-v">0,00 €</span>
+        </div>
+      </div>
+      <a id="cart-send-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer" class="cart-whatsapp-cta-btn">Enviar pedido por WhatsApp →</a>
+    </div>
+  </aside>
+</div>

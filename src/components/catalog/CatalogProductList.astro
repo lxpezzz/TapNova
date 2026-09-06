@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
+---
+
+<div class="catalog-main-feed">
+  <div id="empty-search-state" class="empty-state-card" hidden>
+    <span class="empty-icon">✦</span>
+    <h3 class="empty-title">No se encontraron productos</h3>
+    <p class="empty-desc">
+      No hay resultados para este término. Prueba a buscar "titanio", "nogal", "piel" o selecciona otra categoría.
+    </p>
+    <button type="button" id="reset-search-btn" class="btn-solid-white">Ver todos los productos</button>
+  </div>
+
+  <div class="catalog-sections-wrap" id="catalog-sections-wrap">
+    {CATALOG_CATEGORIES.map((category) => {
+      const products = CATALOG_PRODUCTS.filter((product) => product.categoryId === category.id);
+      if (!products.length) return null;
+
+      return (
+        <section class="catalog-category-section" id={category.id} data-section-category={category.id}>
+          <div class="category-header-editorial">
+            <div class="cat-header-titles">
+              <span class="cat-zone-badge">{category.zone}</span>
+              <h2 class="cat-section-title">{category.name}</h2>
+              <p class="cat-section-desc">{category.description}</p>
+            </div>
+            <span class="cat-section-count">{products.length} modelos</span>
+          </div>
+
+          <div class="mobile-swipe-hint" aria-hidden="true">
+            <span class="swipe-hint-txt">Desliza horizontalmente para explorar modelos</span>
+            <span class="swipe-hint-arr">→</span>
+          </div>
+
+          <div class="products-editorial-showcase">
+            {products.map((product) => (
+              <article
+                class="product-editorial-item"
+                id={`card-${product.id}`}
+                data-product-card
+                data-category-id={product.categoryId}
+                data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} ${product.tags.join(' ')}`.toLowerCase()}
+                data-product-json={JSON.stringify(product)}
+                tabindex="0"
+                role="button"
+                aria-label={`Ver opciones de color y detalles para ${product.name}`}
+              >
+                <div class="product-visual-stage">
+                  <Image
+                    src={product.image}
+                    alt={product.imageAlt}
+                    width={640}
+                    height={520}
+                    widths={[360, 520, 640, 800]}
+                    sizes="(max-width: 640px) 82vw, (max-width: 960px) 70vw, (max-width: 1280px) 36vw, 24vw"
+                    format="webp"
+                    quality={92}
+                    loading="lazy"
+                    decoding="async"
+                    class="product-stage-img"
+                  />
+                </div>
+                <div class="product-editorial-info">
+                  <div class="product-headline-row">
+                    <h3 class="product-item-title">{product.name}</h3>
+                    <span class="product-item-price">{product.price} €</span>
+                  </div>
+                  <p class="product-item-descriptor">{product.subtitle}</p>
+                  <div class="product-footer-row">
+                    <div class="product-variant-swatches" title={`${product.colors.length} acabados disponibles`}>
+                      {product.colors.map((color) => (
+                        <span class="variant-dot" style={`background-color: ${color.hex};`} title={color.name}></span>
+                      ))}
+                      <span class="variant-count-text">{product.colors.length} acabados</span>
+                    </div>
+                    <button type="button" class="product-add-to-cart-btn" aria-label={`Añadir ${product.name} al carrito`}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                      </svg>
+                      <span>Añadir al carrito</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+
+  <div class="catalog-packs-bridge">
+    <div class="packs-bridge-card">
+      <div class="bridge-text">
+        <span class="bridge-tag">COMBINACIÓN EN PACK</span>
+        <h3 class="bridge-title">¿Prefieres un pack completo listo para el servicio?</h3>
+        <p class="bridge-p">Nuestros packs combinan portacuentas, expositores, tarjetas y regalo de Google Maps desde 290 €.</p>
+      </div>
+      <a href="/#precios" class="btn-solid-white bridge-btn"><span>Ver packs recomendados</span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>

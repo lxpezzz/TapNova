@@ -1,0 +1,60 @@
+---
+import type { CatalogCategory } from '../../data/catalogData';
+
+interface Props {
+  categories: CatalogCategory[];
+  counts: Record<string, number>;
+  totalProducts: number;
+  variant: 'mobile' | 'sidebar';
+}
+
+const { categories, counts, totalProducts, variant } = Astro.props;
+---
+
+{variant === 'mobile' && <div class="mobile-category-bar" id="mobile-category-bar">
+  <div class="section-container wide-layout">
+    <div class="mobile-category-scroll-track" role="tablist" aria-label="Filtrar por categoría">
+      <button type="button" class="mobile-cat-pill active" data-category="todos" role="tab" aria-selected="true">
+        <span>Todos</span><span class="cat-pill-count">{totalProducts}</span>
+      </button>
+      {categories.map((category) => (
+        <button type="button" class="mobile-cat-pill" data-category={category.id} role="tab" aria-selected="false">
+          <span>{category.shortLabel}</span><span class="cat-pill-count">{counts[category.id] || 0}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>}
+
+{variant === 'sidebar' && <aside class="catalog-sidebar" aria-label="Categorías de productos">
+  <div class="sidebar-sticky-box">
+    <div class="sidebar-header-row">
+      <span class="sidebar-kicker">Catálogo B2B</span>
+      <h2 class="sidebar-title">Categorías</h2>
+    </div>
+    <nav class="sidebar-nav" role="tablist" aria-label="Categorías de productos">
+      <button type="button" class="sidebar-cat-link active" data-category="todos" role="tab" aria-selected="true">
+        <span class="sidebar-link-indicator" aria-hidden="true"></span>
+        <span class="sidebar-link-text">Todos los soportes</span>
+        <span class="sidebar-link-count">{totalProducts}</span>
+      </button>
+      {categories.map((category) => (
+        <button type="button" class="sidebar-cat-link" data-category={category.id} role="tab" aria-selected="false">
+          <span class="sidebar-link-indicator" aria-hidden="true"></span>
+          <span class="sidebar-link-text">{category.name}</span>
+          <span class="sidebar-link-count">{counts[category.id] || 0}</span>
+        </button>
+      ))}
+    </nav>
+    <div class="sidebar-sample-box">
+      <span class="sample-badge">Muestras Físicas</span>
+      <p class="sample-p">¿Quieres comprobar los acabados en madera, titanio o metacrilato para tu sala?</p>
+      <a
+        href="https://wa.me/34910000000?text=Hola%20TapNova%2C%20quisiera%20solicitar%20un%20pack%20de%20muestra%20f%C3%ADsica%20para%20mi%20restaurante."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sample-cta-btn"
+      >Pedir muestra gratis →</a>
+    </div>
+  </div>
+</aside>}

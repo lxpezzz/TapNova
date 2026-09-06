@@ -8,11 +8,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  showMobileStickyCta?: boolean;
 }
 
 const {
   title = SITE_METADATA.title,
-  description = SITE_METADATA.description
+  description = SITE_METADATA.description,
+  showMobileStickyCta = true,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, SITE_METADATA.url).toString();
@@ -48,12 +50,7 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap"
-    />
+
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -83,6 +80,6 @@ const jsonLd = {
     <CosmicNebulaBackground />
     <slot />
     <CookieBanner />
-    <MobileStickyCta />
+    {showMobileStickyCta && <MobileStickyCta />}
   </body>
 </html>

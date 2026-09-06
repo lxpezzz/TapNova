@@ -1,154 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+import { PHYSICAL_PRODUCTS } from '../data/productsData';
 
-import portacuentasImg from '../assets/showcase/portacuentas-context.webp';
-import expositorImg from '../assets/showcase/expositor-context.webp';
-import tarjetasImg from '../assets/showcase/tarjetas-context.webp';
-import pegatinasImg from '../assets/showcase/pegatinas-context.webp';
-import posavasosImg from '../assets/products/pegatina.webp';
-
-const products = [
-  {
-    id: 'portacuentas',
-    index: '01',
-    tabLabel: 'Portacuentas',
-    glowClass: 'glow-amber',
-    title: 'Donde termina el servicio, empieza la reseña.',
-    lead: 'El momento de la cuenta es uno de los puntos más naturales para pedir una reseña. TapNova integra QR y NFC directamente en el portacuentas para hacerlo fácil y inmediato.',
-    image: portacuentasImg,
-    imageAlt: 'Portacuentas inteligente de piel y titanio para mesas de restaurante',
-    specs: [
-      {
-        icon: 'nfc',
-        label: 'NFC + QR',
-        value: 'Dos formas de acceder desde cualquier móvil.'
-      },
-      {
-        icon: 'shield',
-        label: 'Acabado premium',
-        value: 'Diseñado para integrarse en la experiencia del restaurante.'
-      },
-      {
-        icon: 'clock',
-        label: 'Acceso directo a Google',
-        value: 'Sin apps, registros ni búsquedas.'
-      }
-    ],
-    ctaText: 'Solicitar información'
-  },
-  {
-    id: 'expositores',
-    index: '02',
-    tabLabel: 'Expositores',
-    glowClass: 'glow-purple',
-    title: 'Haz visible la reseña en el momento de espera.',
-    lead: 'En barra, recepción o mostrador, el expositor TapNova convierte un momento de espera en una oportunidad para dejar una reseña sin interrumpir la experiencia.',
-    image: expositorImg,
-    imageAlt: 'Expositor de madera de nogal macizo con chip NFC y QR para barra de restaurante',
-    specs: [
-      {
-        icon: 'nfc',
-        label: 'NFC + QR',
-        value: 'Dos formas de acceder desde cualquier móvil.'
-      },
-      {
-        icon: 'shield',
-        label: 'Acabado premium',
-        value: 'Un formato pensado para encajar en el espacio del local.'
-      },
-      {
-        icon: 'eye',
-        label: 'Siempre a la vista',
-        value: 'Ideal para barra, recepción y zonas de espera.'
-      }
-    ],
-    ctaText: 'Solicitar información'
-  },
-  {
-    id: 'tarjetas',
-    index: '03',
-    tabLabel: 'Tarjetas NFC',
-    glowClass: 'glow-purple',
-    title: 'Una buena experiencia merece ser compartida.',
-    lead: 'Una tarjeta NFC ligera y personalizada para que tu equipo aproveche el momento exacto en que un cliente valora positivamente el servicio.',
-    image: tarjetasImg,
-    imageAlt: 'Tarjeta inteligente contactless para personal de sala en restaurante',
-    specs: [
-      {
-        icon: 'card',
-        label: 'Siempre a mano',
-        value: 'Formato compacto para llevar durante todo el servicio.'
-      },
-      {
-        icon: 'shield',
-        label: 'Resistente al uso diario',
-        value: 'Preparada para roces, líquidos y trabajo continuo.'
-      },
-      {
-        icon: 'sparkle',
-        label: 'Personalizada para tu negocio',
-        value: 'Diseño con tu identidad visual y acceso directo a Google.'
-      }
-    ],
-    ctaText: 'Solicitar información'
-  },
-  {
-    id: 'pegatinas',
-    index: '04',
-    tabLabel: 'Pegatinas QR',
-    glowClass: 'glow-amber',
-    title: 'Una reseña puede empezar en cualquier rincón.',
-    lead: 'Soportes adhesivos con QR y NFC para escaparates, cristales, terrazas y zonas de paso. Una forma discreta de mantener la reseña siempre al alcance del cliente.',
-    image: pegatinasImg,
-    imageAlt: 'Pegatinas y placas adhesivas impermeables con código QR grabado para restaurantes',
-    specs: [
-      {
-        icon: 'sun',
-        label: 'Resistentes al exterior',
-        value: 'Preparados para sol, humedad y uso diario.'
-      },
-      {
-        icon: 'sticker',
-        label: 'Fijación segura',
-        value: 'Se adhieren a cristal, metal, madera y otras superficies.'
-      },
-      {
-        icon: 'qr',
-        label: 'Lectura rápida',
-        value: 'QR y NFC accesibles en segundos desde cualquier móvil.'
-      }
-    ],
-    ctaText: 'Solicitar información'
-  },
-  {
-    id: 'posavasos',
-    index: '05',
-    tabLabel: 'Posavasos',
-    glowClass: 'glow-amber',
-    title: 'Cada mesa, una puerta a tu negocio digital.',
-    lead: 'Posavasos con QR y NFC para conectar al cliente con reseñas, carta, promociones, redes sociales o cualquier contenido que quieras activar desde la mesa.',
-    image: posavasosImg,
-    imageAlt: 'Posavasos inteligente con chip NFC integrado para bares y terrazas',
-    specs: [
-      {
-        icon: 'qr',
-        label: 'QR',
-        value: 'Acceso directo a reseñas, carta, promociones o redes.'
-      },
-      {
-        icon: 'eye',
-        label: 'Presencia constante',
-        value: 'Disponible para el cliente durante toda la experiencia.'
-      },
-      {
-        icon: 'nfc',
-        label: 'Siempre en la mesa',
-        value: 'Un punto de contacto natural durante toda la consumición.'
-      }
-    ],
-    ctaText: 'Solicitar información'
-  }
-];
+const products = PHYSICAL_PRODUCTS;
 ---
 
 <div class="product-showcase-collection" id="productos">
@@ -182,7 +36,7 @@ const products = [
               data-product-index={idx}
             >
               <span class="tab-index-num">{product.index}</span>
-              <span class="tab-label-text">{product.tabLabel}</span>
+              <span class="tab-label-text">{product.shortName}</span>
               
               <!-- Realtime Countdown Progress Indicator -->
               <span class="tab-progress-track" aria-hidden="true">
@@ -221,6 +75,11 @@ const products = [
 
               <!-- Editorial Column -->
               <div class="showcase-copy-col">
+                <div class="showcase-zone-meta">
+                  <span class="product-zone-pill">{product.zone}</span>
+                  <span class="product-price-pill">Desde {product.basePrice} €</span>
+                </div>
+
                 <h3 class="showcase-title font-display">
                   {product.title}
                 </h3>
@@ -277,9 +136,12 @@ const products = [
                 </div>
 
                 <div class="showcase-cta-group">
-                  <a href="#contacto" class="btn-solid-white">
-                    <span>{product.ctaText}</span>
+                  <a href={`/productos#prod-${product.id}`} class="btn-solid-white">
+                    <span>Ver acabados y comprar</span>
                     <span class="btn-icon" aria-hidden="true">→</span>
+                  </a>
+                  <a href="/productos" class="btn-all-products-link">
+                    <span>Explorar catálogo completo</span>
                   </a>
                 </div>
               </div>
@@ -729,8 +591,50 @@ const products = [
     color: var(--text-secondary);
   }
 
+  .showcase-zone-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .product-zone-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent-amber);
+    background: rgba(255, 157, 36, 0.1);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+  }
+
+  .product-price-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #feed7a;
+    font-feature-settings: "tnum";
+  }
+
   .showcase-cta-group {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-all-products-link {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .btn-all-products-link:hover {
+    color: #ffffff;
   }
 
   /* -------------------------------------------------------------------------

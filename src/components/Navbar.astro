@@ -49,7 +49,68 @@
     <nav class="desktop-nav" aria-label="Navegación principal">
       <ul class="nav-list">
         <li><a href="/#explainer" class="nav-link">Cómo funciona</a></li>
-        <li><a href="/#productos" class="nav-link">Productos</a></li>
+        
+        <!-- Dropdown de Productos Desktop -->
+        <li class="nav-item-dropdown" id="nav-dropdown-item">
+          <a
+            href="/productos"
+            class="nav-link nav-dropdown-trigger"
+            id="nav-dropdown-trigger"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span>Productos</span>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="dropdown-chevron"
+              aria-hidden="true"
+            >
+              <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <!-- Menú Flotante Minimalista -->
+          <div class="nav-dropdown-menu" id="nav-dropdown-menu" role="menu" aria-label="Categorías de productos">
+            <ul class="dropdown-list">
+              <li role="none">
+                <a href="/catalogo#portacuentas" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Portacuentas</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="/catalogo#portamenus" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Portamenús</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="/catalogo#expositores" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Expositores NFC + QR</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="/catalogo#tarjetas" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Tarjetas NFC</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="/catalogo#posavasos" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Posavasos</span>
+                </a>
+              </li>
+              <li role="none">
+                <a href="/catalogo#pegatinas" class="dropdown-link" role="menuitem">
+                  <span class="dropdown-label">Pegatinas QR</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <li><a href="/#seo-local" class="nav-link">SEO Local</a></li>
         <li><a href="/#paginas-web" class="nav-link">Webs</a></li>
         <li><a href="/#precios" class="nav-link">Precios</a></li>
@@ -63,9 +124,36 @@
         href="/#contacto"
         class="btn-primary btn-nav-cta hidden sm:inline-flex"
       >
-        <span>Solicitar información</span>
+        <span>Solicitar presupuesto</span>
         <span class="btn-icon" aria-hidden="true">→</span>
       </a>
+
+      <!-- Mobile Cart Button (arriba a la derecha, a la izquierda de las 3 rayitas) -->
+      <button
+        type="button"
+        class="mobile-header-cart-btn"
+        id="mobile-header-cart-btn"
+        aria-label="Ver carrito de presupuesto"
+      >
+        <div class="mobile-cart-icon-box">
+          <svg
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="mobile-nav-cart-badge" id="mobile-nav-cart-badge">0</span>
+        </div>
+      </button>
 
       <!-- Mobile Hamburger Button -->
       <button
@@ -86,9 +174,59 @@
   <div class="mobile-nav-overlay" id="mobile-nav" aria-hidden="true">
     <div class="mobile-nav-content">
       <ul class="mobile-nav-list">
-        <li style="--stagger: 0;">
-          <a href="/#productos" class="mobile-link">Productos</a>
+        <!-- Acordeón de Productos Mobile -->
+        <li class="mobile-accordion-item" style="--stagger: 0;">
+          <button
+            type="button"
+            class="mobile-accordion-btn"
+            id="mobile-accordion-btn"
+            aria-expanded="false"
+            aria-controls="mobile-accordion-panel"
+          >
+            <span>Productos</span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 10 10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              class="mobile-accordion-icon"
+              aria-hidden="true"
+            >
+              <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="mobile-accordion-panel" id="mobile-accordion-panel" hidden>
+            <ul class="mobile-subnav-list">
+              <li>
+                <a href="/productos" class="mobile-sublink primary-cat-link">
+                  <span>Ver todo el catálogo</span>
+                  <span class="arrow-sub" aria-hidden="true">→</span>
+                </a>
+              </li>
+              <li>
+                <a href="/catalogo#portacuentas" class="mobile-sublink">Portacuentas</a>
+              </li>
+              <li>
+                <a href="/catalogo#portamenus" class="mobile-sublink">Portamenús</a>
+              </li>
+              <li>
+                <a href="/catalogo#expositores" class="mobile-sublink">Expositores NFC + QR</a>
+              </li>
+              <li>
+                <a href="/catalogo#tarjetas" class="mobile-sublink">Tarjetas NFC</a>
+              </li>
+              <li>
+                <a href="/catalogo#posavasos" class="mobile-sublink">Posavasos</a>
+              </li>
+              <li>
+                <a href="/catalogo#pegatinas" class="mobile-sublink">Pegatinas QR</a>
+              </li>
+            </ul>
+          </div>
         </li>
+
         <li style="--stagger: 1;">
           <a href="/#explainer" class="mobile-link">Cómo funciona</a>
         </li>
@@ -188,24 +326,118 @@
     align-items: center;
     gap: 2rem;
     list-style: none;
+    font-family: var(--font-inter);
   }
 
   .nav-link {
     font-size: 0.95rem;
     color: var(--text-secondary);
     font-weight: 500;
-    transition: color 0.2s var(--ease-default);
+    font-family: var(--font-inter);
+    transition: color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    outline: none;
   }
 
-  .nav-link:hover {
+  .nav-link:hover,
+  .nav-link:focus-visible {
     color: #ffffff;
+  }
+
+  /* DROPDOWN DESKTOP MINIMALISTA */
+  .nav-item-dropdown {
+    position: relative;
+    padding: 0.5rem 0;
+  }
+
+  .dropdown-chevron {
+    transition: transform 0.2s ease, stroke 0.15s ease;
+    color: var(--text-secondary);
+  }
+
+  .nav-item-dropdown:hover .dropdown-chevron,
+  .nav-item-dropdown:focus-within .dropdown-chevron {
+    transform: rotate(180deg);
+    color: #ffffff;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 220px;
+    background: #0d0d12;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 0.45rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 120;
+  }
+
+  /* Abrir al hacer hover o focus-within */
+  .nav-item-dropdown:hover .nav-dropdown-menu,
+  .nav-item-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(2px);
+  }
+
+  .dropdown-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: var(--font-inter);
+    transition: color 0.15s ease, background 0.15s ease;
+    outline: none;
+  }
+
+  .dropdown-link:hover,
+  .dropdown-link:focus-visible {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Naranja TapNova en hover/foco de ítem */
+  .dropdown-link:hover .dropdown-label,
+  .dropdown-link:focus-visible .dropdown-label {
+    color: var(--accent-orange);
   }
 
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 1.15rem;
+    gap: 0.65rem;
     pointer-events: auto;
+  }
+
+  @media (min-width: 960px) {
+    .header-actions {
+      gap: 1.15rem;
+    }
   }
 
   .btn-nav-cta {
@@ -220,6 +452,82 @@
     .btn-nav-cta {
       display: inline-flex;
     }
+  }
+
+  /* Botón de Carrito Móvil Header */
+  .mobile-header-cart-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
+    color: #ffffff;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 110;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-header-cart-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 132, 0, 0.4);
+    transform: scale(1.04);
+  }
+
+  .mobile-header-cart-btn:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 959px) {
+    .mobile-header-cart-btn {
+      display: flex;
+    }
+  }
+
+  .mobile-cart-icon-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: color 0.18s ease;
+  }
+
+  .mobile-header-cart-btn:hover .mobile-cart-icon-box {
+    color: var(--accent-orange);
+  }
+
+  .mobile-nav-cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e4e4e7;
+    font-size: 0.65rem;
+    font-weight: 750;
+    font-family: var(--font-inter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-nav-cart-badge.has-items {
+    background: var(--accent-orange);
+    color: #050508;
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 10px rgba(255, 132, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
   }
 
   .mobile-toggle {
@@ -302,6 +610,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-secondary);
+    font-family: var(--font-inter);
     transition:
       color 0.2s var(--ease-default),
       transform 0.3s var(--ease-default);
@@ -311,7 +620,8 @@
     opacity: 0;
   }
 
-  .mobile-nav-overlay.open .mobile-link {
+  .mobile-nav-overlay.open .mobile-link,
+  .mobile-nav-overlay.open .mobile-accordion-btn {
     transform: translateY(0);
     opacity: 1;
     transition-delay: calc(var(--stagger) * 0.04s);
@@ -319,6 +629,95 @@
 
   .mobile-link:hover {
     color: #ffffff;
+  }
+
+  /* ACORDEÓN MOBILE DE PRODUCTOS */
+  .mobile-accordion-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-accordion-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: var(--font-inter);
+    color: var(--text-secondary);
+    text-align: left;
+    padding: 0;
+    min-height: 44px;
+    cursor: pointer;
+    transform: translateY(14px);
+    opacity: 0;
+    transition: color 0.2s var(--ease-default), transform 0.3s var(--ease-default);
+  }
+
+  .mobile-accordion-btn:hover,
+  .mobile-accordion-btn.is-open {
+    color: #ffffff;
+  }
+
+  .mobile-accordion-icon {
+    transition: transform 0.25s ease;
+    color: var(--text-muted);
+  }
+
+  .mobile-accordion-btn.is-open .mobile-accordion-icon {
+    transform: rotate(180deg);
+    color: var(--accent-orange);
+  }
+
+  .mobile-accordion-panel {
+    overflow: hidden;
+    padding: 0.5rem 0 0.5rem 0.75rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-accordion-panel[hidden] {
+    display: none;
+  }
+
+  .mobile-subnav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .mobile-sublink {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--font-inter);
+    color: #a1a1aa;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.15s ease;
+  }
+
+  .mobile-sublink:hover {
+    color: var(--accent-orange);
+  }
+
+  .mobile-sublink.primary-cat-link {
+    color: #ffffff;
+    font-weight: 600;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 0.25rem;
+  }
+
+  .arrow-sub {
+    color: var(--accent-orange);
+    font-size: 0.9rem;
   }
 
   .mobile-nav-footer {
@@ -337,6 +736,8 @@
     const header = document.getElementById("site-header");
     const toggle = document.getElementById("mobile-menu-toggle");
     const mobileNav = document.getElementById("mobile-nav");
+    const accordionBtn = document.getElementById("mobile-accordion-btn");
+    const accordionPanel = document.getElementById("mobile-accordion-panel");
 
     if (!header || !toggle || !mobileNav) return;
     if (header.dataset.initialized) return;
@@ -350,9 +751,26 @@
       mobileNav?.setAttribute("aria-hidden", isOpen ? "false" : "true");
       mobileNav?.classList.toggle("open", isOpen);
       document.body.style.overflow = isOpen ? "hidden" : "";
+
+      if (!isOpen && accordionPanel && accordionBtn) {
+        accordionBtn.classList.remove("is-open");
+        accordionBtn.setAttribute("aria-expanded", "false");
+        accordionPanel.hidden = true;
+      }
     }
 
     toggle.addEventListener("click", () => toggleMenu());
+
+    // Acordeón Mobile al tocar "Productos"
+    if (accordionBtn && accordionPanel) {
+      accordionBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isExpanded = accordionBtn.getAttribute("aria-expanded") === "true";
+        accordionBtn.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+        accordionBtn.classList.toggle("is-open", !isExpanded);
+        accordionPanel.hidden = isExpanded;
+      });
+    }
 
     mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => toggleMenu(true));
@@ -366,6 +784,43 @@
         toggleMenu(true);
       }
     });
+
+    // -----------------------------------------------------------------------
+    // Sincronización del badge de carrito móvil y acción de apertura
+    // -----------------------------------------------------------------------
+    const cartBadge = document.getElementById("mobile-nav-cart-badge");
+    const mobileCartBtn = document.getElementById("mobile-header-cart-btn");
+
+    function updateNavCartBadge() {
+      try {
+        const raw = localStorage.getItem('tapnova_b2b_cart_v1');
+        const items = raw ? JSON.parse(raw) : [];
+        const count = items.reduce((acc: number, item: any) => acc + (item.quantity || 1), 0);
+        if (cartBadge) {
+          cartBadge.textContent = count.toString();
+          cartBadge.classList.toggle('has-items', count > 0);
+        }
+      } catch (e) {
+        if (cartBadge) cartBadge.textContent = '0';
+      }
+    }
+
+    updateNavCartBadge();
+    window.addEventListener('storage', updateNavCartBadge);
+    window.addEventListener('tapnova:cart-updated', updateNavCartBadge);
+
+    if (mobileCartBtn && !mobileCartBtn.dataset.bound) {
+      mobileCartBtn.dataset.bound = "true";
+      mobileCartBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const cartBackdrop = document.getElementById('b2b-cart-backdrop');
+        if (cartBackdrop) {
+          window.dispatchEvent(new CustomEvent('tapnova:open-cart'));
+        } else {
+          window.location.href = '/productos#cart';
+        }
+      });
+    }
   }
 
   initHeader();

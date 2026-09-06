@@ -1,5 +1,9 @@
 @import "@fontsource-variable/plus-jakarta-sans";
 @import "@fontsource-variable/syne";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource-variable/literata";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/inter-tight";
 
 :root {
   /* Clyde-inspired dark palette */
@@ -38,6 +42,9 @@
   /* Typography */
   --font-sans: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Syne Variable', Georgia, serif;
+  --font-literata: 'Literata Variable', Georgia, serif;
+  --font-inter: 'Inter Variable', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-inter-tight: 'Inter Tight Variable', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Easings & Radii */
   --ease-default: cubic-bezier(0.32, 0.72, 0, 1);
