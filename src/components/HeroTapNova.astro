@@ -1,8 +1,11 @@
 ---
-import ProductStage from "./ProductStage.astro";
+import { Image } from "astro:assets";
 import ArrowRight from "./ArrowRight.astro";
 import ProductEcosystem from "./ProductEcosystem.astro";
-import PortacuentasFeatures from "./PortacuentasFeatures.astro";
+
+import portacuentasImg from "../assets/hero/portacuentas-hero.webp";
+import expositorImg from "../assets/hero/expositor-hero.webp";
+import tarjetaNfcImg from "../assets/hero/tarjetas-nfc.webp";
 ---
 
 <!-- Master Sticky Sequence Section -->
@@ -17,46 +20,94 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     <div class="hero-ambient-canvas" aria-hidden="true"></div>
 
     <div class="hero-stage-inner hero-container">
-      <!-- 1. Initial Editorial Copy (Lateral on desktop, top on mobile) -->
-      <div class="hero-initial-copy" id="hero-initial-copy">
-        <h1 class="copy-headline font-display">
-          Más reseñas. En el momento <span class="hero-title__accent"
-            >perfecto.</span
-          >
-        </h1>
-        <p class="copy-desc">
-          Convierte los puntos de contacto de tu negocio en oportunidades para
-          conseguir reseñas con <strong>QR y NFC</strong>.
-        </p>
-        <div class="copy-cta-wrap">
-          <a href="#contacto" class="btn-primary">
-            <span>Descubrir cómo funciona</span>
-            <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
-          </a>
-          <span class="copy-trust-hint"
-            >Sin apps · Sin registros · Un toque y listo</span
-          >
+      <!-- 1. Initial Editorial Grid (Text on Left, Supernova Video on Right) -->
+      <div class="hero-main-grid" id="hero-initial-copy">
+        <div class="hero-copy-col">
+          <h1 class="copy-headline font-display">
+            Más reseñas. En el momento <span class="hero-title__accent"
+              >perfecto.</span
+            >
+          </h1>
+          <p class="copy-desc">
+            Convierte los puntos de contacto de tu negocio en oportunidades para
+            conseguir reseñas con <strong>QR y NFC</strong>.
+          </p>
+          <div class="copy-cta-wrap">
+            <a href="#contacto" class="btn-primary">
+              <span>Descubrir cómo funciona</span>
+              <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
+            </a>
+            <span class="copy-trust-hint"
+              >Sin apps · Sin registros · Un toque y listo</span
+            >
+          </div>
+        </div>
+
+        <!-- Right Column: Integrated Cosmic Product Scene -->
+        <div class="hero-supernova-col" aria-hidden="true">
+          <div class="hero-product-scene">
+            <!-- Pure CSS Supernova Halo (Zero video weight, 60fps GPU rendered, seamless cosmic immersion) -->
+            <div class="supernova-halo-container" aria-hidden="true">
+              <div class="supernova-core-burst"></div>
+              <div class="supernova-plasma-ring"></div>
+              <div class="supernova-corona-glow"></div>
+              <div class="supernova-orbital-pulse"></div>
+            </div>
+
+            <!-- Independent Product Layers (Cycling gracefully over the Supernova every 5s) -->
+            <div class="hero-product-stage" aria-label="Productos TapNova en demostración">
+              <div class="hero-product-item item-portacuentas">
+                <div class="product-float-wrap">
+                  <Image
+                    src={portacuentasImg}
+                    alt="Portacuentas con NFC y QR TapNova"
+                    width={520}
+                    quality={92}
+                    loading="eager"
+                    decoding="async"
+                    class="product-img"
+                  />
+                </div>
+              </div>
+              <div class="hero-product-item item-expositor">
+                <div class="product-float-wrap">
+                  <Image
+                    src={expositorImg}
+                    alt="Expositor con NFC y QR TapNova"
+                    width={480}
+                    quality={92}
+                    loading="eager"
+                    decoding="async"
+                    class="product-img"
+                  />
+                </div>
+              </div>
+              <div class="hero-product-item item-tarjeta">
+                <div class="product-float-wrap">
+                  <Image
+                    src={tarjetaNfcImg}
+                    alt="Tarjetas NFC de reseñas TapNova"
+                    width={460}
+                    quality={92}
+                    loading="eager"
+                    decoding="async"
+                    class="product-img"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Subtle ambient particle specks -->
+            <div class="hero-particles" aria-hidden="true">
+              <span class="cosmic-speck speck-1"></span>
+              <span class="cosmic-speck speck-2"></span>
+              <span class="cosmic-speck speck-3"></span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 2. Portacuentas Features & Benefits (Lateral, zero product overlap) -->
-      <PortacuentasFeatures id="hero-portacuentas-desc" />
-
-      <!-- 3. Central Product Stage (Closed -> Open) -->
-      <div class="hero-stage-center" id="hero-stage-center">
-        <div class="hero-stage-motion" id="hero-stage-motion">
-          <ProductStage id="hero-main-product-stage" />
-        </div>
-      </div>
-
-      <div class="hero-mobile-context" aria-live="polite">
-        <span id="hero-mobile-context-closed"
-          >Sin apps · Sin registros · Un toque y listo</span
-        >
-        <span id="hero-mobile-context-open">Pídela en el momento clave</span>
-      </div>
-
-      <!-- 3. Scroll Cue (Visual hint at initial frame) -->
+      <!-- Scroll Cue (Visual hint at initial frame) -->
       <div class="hero-scroll-cue" id="hero-scroll-cue" aria-hidden="true">
         <span class="cue-label">Desliza para explorar</span>
         <div class="cue-indicator">
@@ -158,19 +209,387 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     z-index: 5;
   }
 
-  /* 1. Initial Editorial Copy (Lateral on Desktop) */
-  .hero-initial-copy {
+  /* 1. Initial Editorial Grid (Text + Supernova Video) */
+  .hero-main-grid {
     position: absolute;
-    left: var(--page-inset);
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
-    max-width: clamp(540px, 42vw, 680px);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: min(100% - 2rem, 80rem);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4.5rem);
     z-index: 20;
     pointer-events: auto;
     will-change: transform, opacity;
+  }
+
+  .hero-copy-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
+  }
+
+  /* -------------------------------------------------------------------------
+     Hero Right Column: Seamless Cosmic Product Scene
+     ------------------------------------------------------------------------- */
+  .hero-supernova-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .hero-product-scene {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  /* -------------------------------------------------------------------------
+     Pure CSS Supernova Halo (Zero video weight, 100% fluid GPU layers)
+     ------------------------------------------------------------------------- */
+  .supernova-halo-container {
+    position: absolute;
+    inset: -15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Core burst of the Supernova (Warm luminous heart) */
+  .supernova-core-burst {
+    position: absolute;
+    width: 58%;
+    height: 58%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(254, 237, 122, 0.42) 0%,
+      rgba(255, 157, 36, 0.32) 32%,
+      rgba(255, 132, 0, 0.16) 58%,
+      transparent 76%
+    );
+    filter: blur(14px);
+    transform: translateZ(0);
+    animation: novaCoreBreathe 7s ease-in-out infinite alternate;
+  }
+
+  /* Plasma Ring (The wrapping stellar halo around products) */
+  .supernova-plasma-ring {
+    position: absolute;
+    width: 78%;
+    height: 78%;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(255, 157, 36, 0.38) 0deg,
+      rgba(223, 145, 247, 0.3) 90deg,
+      rgba(254, 237, 122, 0.42) 180deg,
+      rgba(255, 132, 0, 0.32) 270deg,
+      rgba(255, 157, 36, 0.38) 360deg
+    );
+    mask-image: radial-gradient(
+      circle,
+      transparent 42%,
+      rgba(0, 0, 0, 0.9) 60%,
+      transparent 74%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle,
+      transparent 42%,
+      rgba(0, 0, 0, 0.9) 60%,
+      transparent 74%
+    );
+    filter: blur(12px);
+    transform: translateZ(0);
+    animation: novaRingSpin 22s linear infinite;
+  }
+
+  /* Outer Corona Glow (Cosmic dispersion into deep space #050505) */
+  .supernova-corona-glow {
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 157, 36, 0.16) 0%,
+      rgba(223, 145, 247, 0.11) 42%,
+      rgba(224, 86, 253, 0.05) 65%,
+      transparent 76%
+    );
+    filter: blur(28px);
+    transform: translateZ(0);
+    animation: novaCoronaPulse 9s ease-in-out infinite alternate;
+  }
+
+  /* Orbital Pulse wave (Slight flare on product swap every 5s) */
+  .supernova-orbital-pulse {
+    position: absolute;
+    width: 84%;
+    height: 84%;
+    border-radius: 50%;
+    border: 1px solid rgba(254, 237, 122, 0.22);
+    box-shadow: 0 0 35px rgba(255, 157, 36, 0.22),
+                inset 0 0 25px rgba(223, 145, 247, 0.15);
+    transform: translateZ(0);
+    animation: novaOrbitalPulse 15s ease-in-out infinite;
+  }
+
+  @keyframes novaCoreBreathe {
+    0% {
+      opacity: 0.72;
+      transform: scale(0.94);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes novaRingSpin {
+    0% {
+      transform: rotate(0deg) scale(0.97);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.03);
+    }
+    100% {
+      transform: rotate(360deg) scale(0.97);
+    }
+  }
+
+  @keyframes novaCoronaPulse {
+    0% {
+      opacity: 0.65;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes novaOrbitalPulse {
+    0%, 33.33%, 66.66%, 100% {
+      opacity: 0.25;
+      transform: scale(0.94);
+    }
+    5%, 38.33%, 71.66% {
+      opacity: 0.85;
+      transform: scale(1.05);
+    }
+    14%, 47.33%, 80.66% {
+      opacity: 0.35;
+      transform: scale(0.98);
+    }
+  }
+
+  /* 3. Product Stage: Floating layers in the center of the supernova */
+  .hero-product-stage {
+    position: relative;
+    width: 82%;
+    height: 82%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .hero-product-item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.95);
+    will-change: transform, opacity;
+    animation: productCycle 15s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  }
+
+  /* Stagger the 3 products evenly across the 15-second loop (exactamente 5 segundos por producto) */
+  .item-portacuentas {
+    animation-delay: 0s;
+  }
+  .item-expositor {
+    animation-delay: 5s;
+  }
+  .item-tarjeta {
+    animation-delay: 10s;
+  }
+
+  .product-float-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: productLevitation 4.2s ease-in-out infinite alternate;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Natural zero-gravity gentle float */
+  @keyframes productLevitation {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-9px) rotate(0.4deg);
+    }
+    100% {
+      transform: translateY(-16px) rotate(-0.3deg);
+    }
+  }
+
+  .hero-product-item .product-img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 32px rgba(0, 0, 0, 0.85))
+            drop-shadow(0 0 28px rgba(255, 157, 36, 0.22));
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Optical balance for the 3 hero items */
+  .item-portacuentas .product-img {
+    max-width: 94%;
+    max-height: 92%;
+  }
+
+  .item-expositor .product-img {
+    max-width: 86%;
+    max-height: 90%;
+  }
+
+  .item-tarjeta .product-img {
+    max-width: 88%;
+    max-height: 88%;
+  }
+
+  /* 15-second timeline: Each item takes 33.33% (exactamente 5s)
+     - 0% a 5.3% (~0.8s): Entrada ultra suave con opacity + scale + translate
+     - 5.3% a 26.6% (~3.2s): Presencia visible elegante con micro-flotación
+     - 26.6% a 33.33% (~1.0s): Desvanecimiento suave (fade-out + ligera elevación)
+     - 33.33% a 100%: Oculto mientras los otros dos productos se muestran
+  */
+  @keyframes productCycle {
+    0% {
+      opacity: 0;
+      visibility: visible;
+      transform: translateY(12px) scale(0.94);
+    }
+    5.3% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    24% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-3px) scale(1.01);
+    }
+    30% {
+      opacity: 0;
+      visibility: visible;
+      transform: translateY(-10px) scale(1.02);
+    }
+    33.33%, 100% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px) scale(0.94);
+    }
+  }
+
+  /* 4. Ambient Stardust Specks (Very subtle, zero performance cost) */
+  .hero-particles {
+    position: absolute;
+    inset: 15%;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .cosmic-speck {
+    position: absolute;
+    border-radius: 50%;
+    background: #feed7a;
+    box-shadow: 0 0 8px rgba(254, 237, 122, 0.8);
+    opacity: 0.4;
+    will-change: transform, opacity;
+  }
+
+  .speck-1 {
+    top: 20%;
+    right: 18%;
+    width: 3px;
+    height: 3px;
+    animation: speckFloat1 10s ease-in-out infinite alternate;
+  }
+
+  .speck-2 {
+    bottom: 25%;
+    left: 20%;
+    width: 2.5px;
+    height: 2.5px;
+    background: #df91f7;
+    box-shadow: 0 0 6px rgba(223, 145, 247, 0.8);
+    animation: speckFloat2 12s ease-in-out infinite alternate;
+  }
+
+  .speck-3 {
+    top: 68%;
+    right: 26%;
+    width: 2px;
+    height: 2px;
+    animation: speckFloat1 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes speckFloat1 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-10px, -14px);
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes speckFloat2 {
+    0% {
+      transform: translate(0, 0);
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.65;
+    }
+    100% {
+      transform: translate(12px, -8px);
+      opacity: 0.2;
+    }
   }
 
   .copy-eyebrow-badge {
@@ -230,19 +649,21 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
   }
 
   .copy-desc {
-    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
     line-height: 1.62;
     color: var(--text-secondary);
-    max-width: 520px;
+    max-width: 580px;
+    margin: 0 auto;
     letter-spacing: -0.01em;
     text-wrap: balance;
+    text-align: center;
   }
 
   .copy-cta-wrap {
     margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.85rem;
   }
 
@@ -250,31 +671,6 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     font-size: 0.8125rem;
     color: var(--text-muted);
     letter-spacing: 0.01em;
-  }
-
-  /* 2. Central Product Stage */
-  .hero-stage-center {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-stage-center {
-      justify-content: flex-end;
-      padding-right: clamp(1.5rem, 5vw, 5rem);
-    }
-  }
-
-  .hero-stage-motion {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    will-change: transform;
   }
 
   /* 3. Editorial Scroll Cue */
@@ -290,10 +686,6 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     z-index: 20;
     pointer-events: none;
     will-change: opacity;
-  }
-
-  .hero-mobile-context {
-    display: none;
   }
 
   .cue-label {
@@ -422,32 +814,38 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       justify-content: center;
     }
 
-    .hero-initial-copy {
+    .hero-main-grid {
       position: absolute;
-      left: var(--page-inset);
+      left: 50%;
       top: 50%;
-      transform: translateY(-50%);
-      max-width: clamp(500px, 40vw, 600px);
-      display: flex;
-      flex-direction: column;
-      gap: 1.35rem;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: min(100% - 4rem, 76rem);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: clamp(2.5rem, 5vw, 5rem);
       z-index: 20;
       pointer-events: auto;
       will-change: transform, opacity;
     }
 
-    .hero-stage-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding-right: clamp(1.5rem, 5vw, 5rem);
-      z-index: 10;
+    .hero-copy-col {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .copy-headline {
+      text-align: left;
+    }
+
+    .copy-desc {
+      text-align: left;
+      margin: 0;
+    }
+
+    .copy-cta-wrap {
+      align-items: flex-start;
     }
 
     .hero-bridge-inner {
@@ -511,7 +909,8 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       box-sizing: border-box;
     }
 
-    /* 1. Copy Headline & CTA */
+    /* 1. Copy Headline & CTA Grid */
+    .hero-main-grid,
     .hero-initial-copy {
       position: relative;
       top: auto;
@@ -524,12 +923,90 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.85rem;
+      gap: 1.5rem;
       z-index: 20;
       order: 1;
       box-sizing: border-box;
       opacity: 1;
       pointer-events: auto;
+    }
+
+    .hero-copy-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.85rem;
+      width: 100%;
+    }
+
+    .hero-supernova-col {
+      width: 100%;
+      max-width: min(100%, 380px);
+      margin: 0.25rem auto 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-product-scene {
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .supernova-halo-container {
+      inset: -8%;
+    }
+
+    .supernova-core-burst {
+      width: 65%;
+      height: 65%;
+      filter: blur(10px);
+      opacity: 0.85;
+      animation: none; /* Cero cálculos continuos de escala en móvil */
+    }
+
+    .supernova-plasma-ring {
+      width: 82%;
+      height: 82%;
+      filter: blur(8px);
+      animation-duration: 28s; /* Rotación ultraligera a baja tasa */
+    }
+
+    .supernova-corona-glow {
+      filter: blur(20px);
+      opacity: 0.8;
+      animation: none; /* Cero repintado de corona */
+    }
+
+    .supernova-orbital-pulse {
+      display: none; /* Simplificado en móvil para evitar redraw */
+    }
+
+    .hero-product-stage {
+      width: 88%;
+      height: 88%;
+    }
+
+    .product-float-wrap {
+      animation: productLevitationMobile 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes productLevitationMobile {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero-product-item .product-img {
+      filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.8));
+    }
+
+    .hero-particles {
+      display: none; /* Desactivado en móvil */
     }
 
     .copy-eyebrow-badge {
@@ -587,98 +1064,9 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       text-align: center;
     }
 
-    /* 2. Protagonista: Portacuentas con Halo */
-    .hero-stage-center {
-      position: relative;
-      top: auto;
-      left: auto;
-      transform: none;
-      width: 100%;
-      max-width: 320px;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      margin: 0.5rem auto 0;
-      z-index: 10;
-      pointer-events: auto;
-      order: 2;
-    }
-
-    .hero-stage-motion {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transform: none !important;
-    }
-
-    :global(#hero-main-product-stage.product-stage-container) {
-      width: min(100%, 300px);
-      height: min(75vw, 300px);
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    :global(#layer-portacuentas-closed) {
-      display: none !important;
-      opacity: 0 !important;
-    }
-
-    :global(#layer-portacuentas-open) {
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: none !important;
-    }
-
-    /* 3. Portacuentas Features */
-    :global(.portacuentas-desc-panel) {
-      order: 3;
-      position: relative;
-      top: auto;
-      right: auto;
-      left: auto;
-      width: 100%;
-      max-width: 28rem;
-      margin: 0 auto;
-      opacity: 1;
-      pointer-events: auto;
-      transform: none;
-      text-align: center;
-    }
-
-    :global(.portacuentas-desc-panel .desc-header) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.4rem;
-    }
-
-    :global(.portacuentas-desc-panel .desc-headline) {
-      font-size: clamp(1.25rem, 4.8vw, 1.55rem);
-      text-align: center;
-      color: #ffffff;
-    }
-
-    :global(.portacuentas-desc-panel .desc-intro) {
-      display: block;
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: var(--text-secondary);
-      text-align: center;
-      margin: 0 auto;
-    }
-
     /* Elementos de escritorio ocultos en flujo móvil */
     :global(#hero-ecosystem-stage),
     .hero-bridge-inner {
-      display: none !important;
-    }
-
-    .hero-mobile-context {
       display: none !important;
     }
 
@@ -724,6 +1112,45 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
 
     .copy-headline {
       font-size: clamp(2.4rem, 5.5vw, 3.2rem);
+    }
+
+    .hero-product-scene {
+      max-width: 420px;
+    }
+  }
+
+  /* =========================================================================
+     ACCESSIBILITY: prefers-reduced-motion
+     Displays static supernova halo and shows only main product (portacuentas)
+     ========================================================================= */
+  @media (prefers-reduced-motion: reduce) {
+    .supernova-core-burst,
+    .supernova-plasma-ring,
+    .supernova-corona-glow,
+    .supernova-orbital-pulse {
+      animation: none !important;
+      opacity: 0.85;
+    }
+
+    .hero-particles {
+      display: none !important;
+    }
+
+    .product-float-wrap {
+      animation: none !important;
+      transform: none !important;
+    }
+
+    .hero-product-item {
+      animation: none !important;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .item-portacuentas {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
     }
   }
 </style>

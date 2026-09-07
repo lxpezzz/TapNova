@@ -20,19 +20,11 @@ export function initHeroScroll(): () => void {
   media.add('(min-width: 1024px)', () => {
     const heroCopy = document.getElementById('hero-initial-copy');
     const scrollCue = document.getElementById('hero-scroll-cue');
-    const productStage = document.getElementById('hero-stage-motion');
-    const halo = document.getElementById('stage-organic-halo');
-    const closedLayer = document.getElementById('layer-portacuentas-closed');
-    const openLayer = document.getElementById('layer-portacuentas-open');
-    const description = document.getElementById('hero-portacuentas-desc');
     const ecosystem = document.getElementById('hero-ecosystem-stage');
     const ecosystemHeader = document.getElementById('hero-ecosystem-stage-header');
     const constellation = document.getElementById('hero-ecosystem-stage-grid');
     const satellites = gsap.utils.toArray<HTMLElement>('#hero-ecosystem-stage .orbital-satellite');
 
-    gsap.set(openLayer, { autoAlpha: 0, rotateY: 16, scale: 0.98, force3D: true });
-    gsap.set(closedLayer, { autoAlpha: 1, rotateY: 0, scale: 1, force3D: true });
-    gsap.set(description, { autoAlpha: 0, y: 24, pointerEvents: 'none' });
     gsap.set(ecosystem, { autoAlpha: 0, pointerEvents: 'none' });
     // GSAP conserva explícitamente el centrado CSS al animar el transform.
     gsap.set(ecosystemHeader, { autoAlpha: 0, xPercent: -50, yPercent: -50, y: 20 });
@@ -58,25 +50,19 @@ export function initHeroScroll(): () => void {
 
     timeline
       .to([heroCopy, scrollCue], { autoAlpha: 0, y: -20, duration: 0.3, ease: 'power2.inOut' }, 0.04)
-      .to(closedLayer, { rotateY: -16, autoAlpha: 0, scale: 0.97, duration: 0.36, ease: 'power1.inOut' }, 0.14)
-      .to(openLayer, { rotateY: 0, autoAlpha: 1, scale: 1, duration: 0.4, ease: 'power1.out' }, 0.18)
-      .to(halo, { scale: 1.1, duration: 0.4, ease: 'power1.out' }, 0.18)
-      .to(description, { autoAlpha: 1, y: 0, pointerEvents: 'auto', duration: 0.32, ease: 'power2.out' }, 0.34)
-      .to([description, productStage], { autoAlpha: 0, y: -14, duration: 0.24, ease: 'power2.inOut' }, 1.16)
-      .to(halo, { autoAlpha: 0, scale: 0.94, duration: 0.24, ease: 'power2.inOut' }, 1.18)
-      .set(ecosystem, { autoAlpha: 1, pointerEvents: 'auto' }, 1.44)
-      .to(ecosystemHeader, { autoAlpha: 1, y: 0, duration: 0.38, ease: 'power2.out' }, 1.5)
-      .to(ecosystemHeader, { autoAlpha: 0, y: -16, duration: 0.28, ease: 'power2.inOut' }, 2.24)
-      .to(constellation, { autoAlpha: 1, scale: 1, duration: 0.42, ease: 'power2.out' }, 2.36)
+      .set(ecosystem, { autoAlpha: 1, pointerEvents: 'auto' }, 0.38)
+      .to(ecosystemHeader, { autoAlpha: 1, y: 0, duration: 0.38, ease: 'power2.out' }, 0.44)
+      .to(ecosystemHeader, { autoAlpha: 0, y: -16, duration: 0.28, ease: 'power2.inOut' }, 1.15)
+      .to(constellation, { autoAlpha: 1, scale: 1, duration: 0.42, ease: 'power2.out' }, 1.25)
       .to(satellites, {
         autoAlpha: 1,
         scale: 1,
         duration: 0.32,
         stagger: 0.1,
         ease: 'power2.out',
-      }, 2.52)
+      }, 1.4)
       // Mantiene la constelación visible durante el tramo final del scroll.
-      .to({}, { duration: 0.9 }, 3.3);
+      .to({}, { duration: 0.9 }, 2.1);
 
     return () => timeline.kill();
   });
