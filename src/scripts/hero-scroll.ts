@@ -3,6 +3,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Evita recálculos bruscos en móviles por aparición/ocultamiento de la barra de navegación
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 export function initHeroScroll(): () => void {
   const sequence = document.getElementById('hero-sequence');
   if (!sequence || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -71,43 +74,6 @@ export function initHeroScroll(): () => void {
       }, 2.52)
       // Mantiene la constelación visible durante el tramo final del scroll.
       .to({}, { duration: 0.9 }, 3.3);
-
-    return () => timeline.kill();
-  });
-
-  media.add('(max-width: 1023px)', () => {
-    const heroCopy = document.getElementById('hero-initial-copy');
-    const scrollCue = document.getElementById('hero-scroll-cue');
-    const productStage = document.getElementById('hero-stage-motion');
-    const closedLayer = document.getElementById('layer-portacuentas-closed');
-    const openLayer = document.getElementById('layer-portacuentas-open');
-    const description = document.getElementById('hero-portacuentas-desc');
-    const closedContext = document.getElementById('hero-mobile-context-closed');
-    const openContext = document.getElementById('hero-mobile-context-open');
-
-    gsap.set(openLayer, { autoAlpha: 0, scale: 0.97, force3D: true });
-    gsap.set(closedLayer, { autoAlpha: 1, scale: 1, force3D: true });
-    gsap.set(description, { autoAlpha: 0, y: 20, pointerEvents: 'none' });
-    gsap.set(openContext, { autoAlpha: 0, y: 6 });
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: sequence,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.8,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    timeline
-      .to([heroCopy, scrollCue], { autoAlpha: 0, y: -20, duration: 0.24, ease: 'power2.inOut' }, 0.08)
-      .to(closedLayer, { autoAlpha: 0, scale: 0.96, duration: 0.3, ease: 'power1.inOut' }, 0.22)
-      .to(closedContext, { autoAlpha: 0, y: -6, duration: 0.2, ease: 'power1.inOut' }, 0.22)
-      .to(openLayer, { autoAlpha: 1, scale: 1, duration: 0.34, ease: 'power2.out' }, 0.28)
-      .to([description, openContext], { autoAlpha: 1, y: 0, pointerEvents: 'auto', duration: 0.32, ease: 'power2.out' }, 0.34)
-      .to(productStage, { y: -84, scale: 0.86, duration: 0.42, ease: 'power2.out' }, 0.54)
-      .to({}, { duration: 0.1 }, 0.98);
 
     return () => timeline.kill();
   });

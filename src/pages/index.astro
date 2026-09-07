@@ -32,21 +32,10 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <style>
-  /* El final del relato móvil ya tiene su propio cierre visual. Reducimos el
-     espacio de transición para que la cinta conecte ambos bloques. */
-  @media (max-width: 1023px) {
-    .hero-to-explainer-bridge {
-      margin-top: -10rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-  }
-
-  @media (max-width: 479px) {
-    .hero-to-explainer-bridge {
-      margin-top: -7rem;
-      margin-bottom: 1.75rem;
-    }
+  .hero-to-explainer-bridge {
+    position: relative;
+    z-index: 1;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
   }
 </style>

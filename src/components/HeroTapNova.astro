@@ -478,10 +478,10 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     .hero-sequence {
       position: relative;
       width: 100%;
-      min-height: 100svh;
+      min-height: auto;
       height: auto;
       overflow-x: clip;
-      padding: max(5.5rem, env(safe-area-inset-top)) 0 4rem;
+      padding: max(5rem, calc(env(safe-area-inset-top) + 3.5rem)) 0 2rem;
       background-color: transparent;
     }
 
@@ -500,18 +500,18 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
 
     .hero-stage-inner {
       position: relative;
-      width: min(100% - 32px, 430px);
+      width: min(100% - 32px, 480px);
       margin-inline: auto;
       padding: 0 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2.25rem;
+      gap: 1.75rem;
       height: auto;
       box-sizing: border-box;
     }
 
-    /* 1. Copy Headline & CTA (Rule 2 & 16) */
+    /* 1. Copy Headline & CTA */
     .hero-initial-copy {
       position: relative;
       top: auto;
@@ -524,9 +524,12 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
       z-index: 20;
       order: 1;
+      box-sizing: border-box;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .copy-eyebrow-badge {
@@ -535,11 +538,13 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     }
 
     .copy-headline {
-      font-size: clamp(2.1rem, 9.2vw, 3.2rem);
+      font-size: clamp(2rem, 8vw, 2.75rem);
       line-height: 1.12;
       width: 100%;
       letter-spacing: -0.025em;
       text-wrap: balance;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .desktop-break {
@@ -547,19 +552,21 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     }
 
     .copy-desc {
-      font-size: clamp(0.95rem, 3.7vw, 1.08rem);
+      display: block;
+      font-size: clamp(0.95rem, 3.7vw, 1.05rem);
       line-height: 1.5;
-      max-width: 22rem;
+      max-width: 24rem;
       margin: 0 auto;
       color: var(--text-secondary);
       text-wrap: balance;
+      text-align: center;
     }
 
     .copy-cta-wrap {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 0.25rem;
+      margin-top: 0.35rem;
       gap: 0.6rem;
       width: 100%;
     }
@@ -574,22 +581,26 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
     }
 
     .copy-trust-hint {
+      display: block;
       font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+      text-align: center;
     }
 
-    /* 2. Protagonista: Portacuentas con Halo (Rule 4 & 5) */
+    /* 2. Protagonista: Portacuentas con Halo */
     .hero-stage-center {
       position: relative;
       top: auto;
       left: auto;
       transform: none;
       width: 100%;
+      max-width: 320px;
       height: auto;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0;
-      margin: 0.5rem 0;
+      margin: 0.5rem auto 0;
       z-index: 10;
       pointer-events: auto;
       order: 2;
@@ -603,246 +614,104 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       transform: none !important;
     }
 
-    /* 3. Portacuentas Features (Rule 6 & 7) */
+    :global(#hero-main-product-stage.product-stage-container) {
+      width: min(100%, 300px);
+      height: min(75vw, 300px);
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    :global(#layer-portacuentas-closed) {
+      display: none !important;
+      opacity: 0 !important;
+    }
+
+    :global(#layer-portacuentas-open) {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+    }
+
+    /* 3. Portacuentas Features */
     :global(.portacuentas-desc-panel) {
       order: 3;
-      width: 100%;
-    }
-
-    /* 4. TapNova Core Ecosistema (Rule 9, 10, 11, 12) */
-    :global(.ecosystem-stage-container) {
-      order: 4;
-      width: 100%;
-    }
-
-    /* 5. Bridge Statement (Rule 16) */
-    .hero-bridge-inner {
-      position: relative;
-      top: auto;
-      left: auto;
-      transform: none;
-      width: 100%;
-      max-width: 32rem;
-      margin: 1.5rem auto 0;
-      padding: 0;
-      opacity: 1;
-      pointer-events: auto;
-      text-align: center;
-      z-index: 20;
-      order: 5;
-    }
-
-    .bridge-statement {
-      font-size: clamp(1.65rem, 6.5vw, 2.2rem);
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-    }
-
-    .bridge-sub {
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
-      line-height: 1.55;
-      margin-top: 0.75rem;
-    }
-
-    .hero-scroll-cue {
-      bottom: max(1.1rem, calc(env(safe-area-inset-bottom) + 0.75rem));
-      display: flex !important;
-      gap: 0.35rem;
-    }
-
-    .hero-scroll-cue .cue-label {
-      font-size: 0.62rem;
-    }
-
-    .hero-scroll-cue .cue-indicator {
-      height: 18px;
-    }
-  }
-
-  /* Tablet adjustment: 640px to 1023px (Rule 24) */
-  @media (min-width: 640px) and (max-width: 1023px) {
-    .hero-stage-inner {
-      width: min(100% - 48px, 680px);
-      gap: 3rem;
-    }
-
-    .copy-headline {
-      font-size: clamp(2.6rem, 5.5vw, 3.4rem);
-    }
-  }
-
-  /* Móvil: el hero narra una sola idea por vez. */
-  @media (max-width: 1023px) {
-    .hero-sequence {
-      min-height: 150svh;
-      height: 150svh;
-      overflow: clip;
-      padding: 0;
-    }
-
-    .hero-stage {
-      position: sticky;
-      top: 0;
-      height: 100svh;
-      min-height: 100svh;
-      overflow: hidden;
-      display: block;
-    }
-
-    .hero-stage-inner {
-      display: block;
-      height: 100%;
-      padding: 0;
-    }
-
-    .hero-initial-copy {
-      position: absolute;
-      top: max(5.5rem, env(safe-area-inset-top));
-      left: 0;
-      width: 100vw;
-      max-width: none;
-      margin-left: calc((100% - 100vw) / 2);
-      transform: none;
-    }
-
-    .copy-headline {
-      font-size: clamp(1.55rem, 6.4vw, 2rem);
-    }
-
-    .copy-desc,
-    .copy-trust-hint {
-      display: none;
-    }
-
-    .hero-stage-center {
-      position: absolute;
-      top: 57%;
-      left: 50%;
-      width: 100%;
-      height: 60%;
-      margin: 0 auto;
-      transform: translate(-50%, -50%);
-    }
-
-    .hero-stage-motion {
-      will-change: transform;
-    }
-
-    .hero-mobile-context {
-      position: absolute;
-      right: 1rem;
-      bottom: max(3.5rem, calc(env(safe-area-inset-bottom) + 3rem));
-      left: 1rem;
-      display: grid;
-      place-items: center;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1.4;
-      text-align: center;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      z-index: 20;
-      pointer-events: none;
-    }
-
-    .hero-mobile-context span {
-      grid-area: 1 / 1;
-      will-change: transform, opacity;
-    }
-
-    #hero-mobile-context-open {
-      opacity: 0;
-    }
-
-    :global(.portacuentas-desc-panel) {
-      position: absolute;
-      top: 12%;
-      right: 0;
-      left: 0;
-      width: min(100%, 23rem);
-      margin: 0 auto;
-      opacity: 0;
-      pointer-events: none;
-      transform: none;
-      will-change: transform, opacity;
-    }
-
-    :global(.portacuentas-desc-panel .desc-intro) {
-      display: none;
-    }
-
-    :global(.portacuentas-desc-panel .desc-header) {
-      gap: 0;
-    }
-
-    :global(#hero-ecosystem-stage),
-    .hero-bridge-inner {
-      display: none !important;
-    }
-
-    .hero-mobile-followup {
-      display: block;
-      width: min(100% - 32px, 430px);
-      margin: 0 auto;
-      padding: 0.25rem 0 0.5rem;
-    }
-
-    .hero-mobile-bridge {
-      max-width: 32rem;
-      margin: 0.75rem auto 0;
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
-    .hero-sequence {
-      min-height: 0;
-      height: auto;
-      overflow: visible;
-      padding: max(5.5rem, env(safe-area-inset-top)) 0 2rem;
-    }
-
-    .hero-stage {
-      position: relative;
-      height: auto;
-      min-height: 0;
-      overflow: visible;
-    }
-
-    .hero-stage-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      height: auto;
-    }
-
-    .hero-initial-copy,
-    .hero-stage-center,
-    :global(.portacuentas-desc-panel) {
       position: relative;
       top: auto;
       right: auto;
       left: auto;
       width: 100%;
-      height: auto;
+      max-width: 28rem;
+      margin: 0 auto;
       opacity: 1;
       pointer-events: auto;
       transform: none;
+      text-align: center;
     }
 
-    .hero-initial-copy {
-      order: 1;
+    :global(.portacuentas-desc-panel .desc-header) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.4rem;
     }
-    .hero-stage-center {
-      order: 2;
+
+    :global(.portacuentas-desc-panel .desc-headline) {
+      font-size: clamp(1.25rem, 4.8vw, 1.55rem);
+      text-align: center;
+      color: #ffffff;
     }
-    :global(.portacuentas-desc-panel) {
-      order: 3;
-    }
-    .copy-desc,
-    .copy-trust-hint {
+
+    :global(.portacuentas-desc-panel .desc-intro) {
       display: block;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    /* Elementos de escritorio ocultos en flujo móvil */
+    :global(#hero-ecosystem-stage),
+    .hero-bridge-inner {
+      display: none !important;
+    }
+
+    .hero-mobile-context {
+      display: none !important;
+    }
+
+    .hero-scroll-cue {
+      display: none !important;
+    }
+
+    /* Ecosistema y Bridge en móvil tras el hero */
+    .hero-mobile-followup {
+      display: block;
+      width: min(100% - 32px, 480px);
+      margin: 2rem auto 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .hero-mobile-bridge {
+      max-width: 32rem;
+      margin: 1.5rem auto 0;
+      text-align: center;
+    }
+  }
+
+  /* Tablet adjustment: 640px to 1023px */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .hero-stage-inner {
+      width: min(100% - 48px, 680px);
+      gap: 2.5rem;
+    }
+
+    .copy-headline {
+      font-size: clamp(2.4rem, 5.5vw, 3.2rem);
     }
   }
 </style>
