@@ -1,5 +1,6 @@
 ---
 import { SITE_METADATA } from '../data/siteData';
+import ArrowRight from './ArrowRight.astro';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -52,10 +53,11 @@ const currentYear = new Date().getFullYear();
         <div class="footer-nav-col">
           <span class="footer-col-title">Crecimiento Digital</span>
           <ul class="footer-links-list">
-            <li><a href="/#seo-local">Posicionamiento SEO Local</a></li>
+            <li><a href="/seo-local">Posicionamiento SEO Local</a></li>
             <li><a href="/#explainer">Cómo funciona el tap</a></li>
-            <li><a href="/#precios">Tarifas & Configurador</a></li>
-            <li><a href="/#precios">Páginas Web Gastronómicas</a></li>
+            <li><a href="/#paginas-web">Páginas Web Gastronómicas</a></li>
+            <li><a href="/#packs">Packs recomendados</a></li>
+            <li><a href="/preguntas-frecuentes">Preguntas frecuentes</a></li>
           </ul>
         </div>
 
@@ -106,7 +108,7 @@ const currentYear = new Date().getFullYear();
 
       <a href="#site-header" class="back-to-top-btn" aria-label="Volver arriba">
         <span>Subir</span>
-        <span class="top-arrow" aria-hidden="true">↑</span>
+        <span class="top-arrow" aria-hidden="true"><ArrowRight direction="up" /></span>
       </a>
     </div>
 

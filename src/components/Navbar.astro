@@ -1,55 +1,76 @@
 ---
-
+import ArrowRight from './ArrowRight.astro';
 ---
 
 <header class="site-header" id="site-header">
   <div class="header-inner">
     <!-- Logo -->
     <a href="/" class="brand-logo" aria-label="TapNova — Inicio">
-      <span class="logo-mark">
-        <svg
-          viewBox="0 0 24 24"
+      <svg
+        class="brand-logo-vector"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 760 180"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient
+            id="header-star-gradient"
+            x1="40"
+            y1="145"
+            x2="150"
+            y2="28"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0" stop-color="#ff8a16"></stop>
+            <stop offset=".45" stop-color="#ec4b88"></stop>
+            <stop offset="1" stop-color="#a936f1"></stop>
+          </linearGradient>
+          <linearGradient
+            id="header-nova-gradient"
+            x1="322"
+            y1="45"
+            x2="585"
+            y2="138"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0" stop-color="#ff8612"></stop>
+            <stop offset=".38" stop-color="#f15d78"></stop>
+            <stop offset="1" stop-color="#a238ed"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          d="M96.4 21.4 117 79.5l61.8.8-49.1 37.5 17.7 59.2-51-35-50.9 35 17.7-59.2-49.2-37.5 61.9-.8z"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="logo-svg"
-          aria-hidden="true"
+          stroke="url(#header-star-gradient)"
+          stroke-linejoin="round"
+          stroke-width="13"></path>
+        <text
+          class="brand-logo-tap"
+          x="195"
+          y="141"
+          fill="#fff"
+          font-family="Arial Black, Inter, Arial, sans-serif"
+          font-size="112"
+          font-weight="900"
+          letter-spacing="-2">Tap</text
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="url(#logo-grad)"
-            stroke-width="1.75"></circle>
-          <path
-            d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12"
-            stroke="#ffffff"
-            stroke-width="1.75"
-            stroke-linecap="round"></path>
-          <circle cx="12" cy="12" r="1.5" fill="#ff9d24"></circle>
-          <defs>
-            <linearGradient
-              id="logo-grad"
-              x1="2"
-              y1="2"
-              x2="22"
-              y2="22"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#feed7a"></stop>
-              <stop offset="0.5" stop-color="#ff8400"></stop>
-              <stop offset="1" stop-color="#df91f7"></stop>
-            </linearGradient>
-          </defs>
-        </svg>
-      </span>
-      <span class="brand-text">TapNova</span>
+        <text
+          x="420"
+          y="141"
+          fill="url(#header-nova-gradient)"
+          font-family="Arial Black, Inter, Arial, sans-serif"
+          font-size="112"
+          font-weight="900"
+          letter-spacing="-2">Nova</text
+        >
+      </svg>
     </a>
 
     <!-- Desktop Nav Links -->
     <nav class="desktop-nav" aria-label="Navegación principal">
       <ul class="nav-list">
         <li><a href="/#explainer" class="nav-link">Cómo funciona</a></li>
-        
+
         <!-- Dropdown de Productos Desktop -->
         <li class="nav-item-dropdown" id="nav-dropdown-item">
           <a
@@ -60,50 +81,68 @@
             aria-expanded="false"
           >
             <span>Productos</span>
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              class="dropdown-chevron"
-              aria-hidden="true"
-            >
-              <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <ArrowRight direction="down" class="dropdown-chevron" />
           </a>
 
           <!-- Menú Flotante Minimalista -->
-          <div class="nav-dropdown-menu" id="nav-dropdown-menu" role="menu" aria-label="Categorías de productos">
+          <div
+            class="nav-dropdown-menu"
+            id="nav-dropdown-menu"
+            role="menu"
+            aria-label="Categorías de productos"
+          >
             <ul class="dropdown-list">
               <li role="none">
-                <a href="/catalogo#portacuentas" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#portacuentas"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Portacuentas</span>
                 </a>
               </li>
               <li role="none">
-                <a href="/catalogo#portamenus" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#portamenus"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Portamenús</span>
                 </a>
               </li>
               <li role="none">
-                <a href="/catalogo#expositores" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#expositores"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Expositores NFC + QR</span>
                 </a>
               </li>
               <li role="none">
-                <a href="/catalogo#tarjetas" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#tarjetas"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Tarjetas NFC</span>
                 </a>
               </li>
               <li role="none">
-                <a href="/catalogo#posavasos" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#posavasos"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Posavasos</span>
                 </a>
               </li>
               <li role="none">
-                <a href="/catalogo#pegatinas" class="dropdown-link" role="menuitem">
+                <a
+                  href="/catalogo#pegatinas"
+                  class="dropdown-link"
+                  role="menuitem"
+                >
                   <span class="dropdown-label">Pegatinas QR</span>
                 </a>
               </li>
@@ -111,9 +150,9 @@
           </div>
         </li>
 
-        <li><a href="/#seo-local" class="nav-link">SEO Local</a></li>
+        <li><a href="/seo-local" class="nav-link">SEO Local</a></li>
         <li><a href="/#paginas-web" class="nav-link">Webs</a></li>
-        <li><a href="/#precios" class="nav-link">Precios</a></li>
+        <li><a href="/preguntas-frecuentes" class="nav-link">Preguntas frecuentes</a></li>
         <li><a href="/#contacto" class="nav-link">Contacto</a></li>
       </ul>
     </nav>
@@ -125,7 +164,7 @@
         class="btn-primary btn-nav-cta hidden sm:inline-flex"
       >
         <span>Solicitar presupuesto</span>
-        <span class="btn-icon" aria-hidden="true">→</span>
+        <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
       </a>
 
       <!-- Mobile Cart Button (arriba a la derecha, a la izquierda de las 3 rayitas) -->
@@ -151,7 +190,8 @@
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
-          <span class="mobile-nav-cart-badge" id="mobile-nav-cart-badge">0</span>
+          <span class="mobile-nav-cart-badge" id="mobile-nav-cart-badge">0</span
+          >
         </div>
       </button>
 
@@ -184,44 +224,49 @@
             aria-controls="mobile-accordion-panel"
           >
             <span>Productos</span>
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 10 10"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              class="mobile-accordion-icon"
-              aria-hidden="true"
-            >
-              <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <ArrowRight direction="down" class="mobile-accordion-icon" />
           </button>
-          <div class="mobile-accordion-panel" id="mobile-accordion-panel" hidden>
+          <div
+            class="mobile-accordion-panel"
+            id="mobile-accordion-panel"
+            hidden
+          >
             <ul class="mobile-subnav-list">
               <li>
                 <a href="/productos" class="mobile-sublink primary-cat-link">
                   <span>Ver todo el catálogo</span>
-                  <span class="arrow-sub" aria-hidden="true">→</span>
+                  <span class="arrow-sub" aria-hidden="true"><ArrowRight /></span>
                 </a>
               </li>
               <li>
-                <a href="/catalogo#portacuentas" class="mobile-sublink">Portacuentas</a>
+                <a href="/catalogo#portacuentas" class="mobile-sublink"
+                  >Portacuentas</a
+                >
               </li>
               <li>
-                <a href="/catalogo#portamenus" class="mobile-sublink">Portamenús</a>
+                <a href="/catalogo#portamenus" class="mobile-sublink"
+                  >Portamenús</a
+                >
               </li>
               <li>
-                <a href="/catalogo#expositores" class="mobile-sublink">Expositores NFC + QR</a>
+                <a href="/catalogo#expositores" class="mobile-sublink"
+                  >Expositores NFC + QR</a
+                >
               </li>
               <li>
-                <a href="/catalogo#tarjetas" class="mobile-sublink">Tarjetas NFC</a>
+                <a href="/catalogo#tarjetas" class="mobile-sublink"
+                  >Tarjetas NFC</a
+                >
               </li>
               <li>
-                <a href="/catalogo#posavasos" class="mobile-sublink">Posavasos</a>
+                <a href="/catalogo#posavasos" class="mobile-sublink"
+                  >Posavasos</a
+                >
               </li>
               <li>
-                <a href="/catalogo#pegatinas" class="mobile-sublink">Pegatinas QR</a>
+                <a href="/catalogo#pegatinas" class="mobile-sublink"
+                  >Pegatinas QR</a
+                >
               </li>
             </ul>
           </div>
@@ -231,13 +276,13 @@
           <a href="/#explainer" class="mobile-link">Cómo funciona</a>
         </li>
         <li style="--stagger: 2;">
-          <a href="/#seo-local" class="mobile-link">SEO Local</a>
+          <a href="/seo-local" class="mobile-link">SEO Local</a>
         </li>
         <li style="--stagger: 3;">
           <a href="/#paginas-web" class="mobile-link">Páginas Web</a>
         </li>
         <li style="--stagger: 4;">
-          <a href="/#precios" class="mobile-link">Precios</a>
+          <a href="/#packs" class="mobile-link">Packs</a>
         </li>
         <li style="--stagger: 5;">
           <a href="/#contacto" class="mobile-link">Contacto</a>
@@ -246,7 +291,7 @@
       <div class="mobile-nav-footer">
         <a href="/#contacto" class="btn-solid-white mobile-cta">
           <span>Solicitar información</span>
-          <span class="btn-icon" aria-hidden="true">→</span>
+          <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
         </a>
       </div>
     </div>
@@ -287,28 +332,22 @@
   .brand-logo {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-    color: var(--text-primary);
+    width: clamp(10rem, 15vw, 11rem);
+    min-width: 0;
+    line-height: 0;
   }
 
-  .logo-mark {
-    width: 2.1rem;
-    height: 2.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-svg {
+  .brand-logo-vector {
+    display: block;
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-width: none;
   }
 
-  .brand-text {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #ffffff;
+  @media (max-width: 639px) {
+    .brand-logo {
+      width: 11rem;
+    }
   }
 
   .desktop-nav {
@@ -354,7 +393,10 @@
   }
 
   .dropdown-chevron {
-    transition: transform 0.2s ease, stroke 0.15s ease;
+    font-size: 0.625rem;
+    transition:
+      transform 0.2s ease,
+      stroke 0.15s ease;
     color: var(--text-secondary);
   }
 
@@ -378,7 +420,10 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s;
     z-index: 120;
   }
 
@@ -411,7 +456,9 @@
     font-size: 0.8125rem;
     font-weight: 500;
     font-family: var(--font-inter);
-    transition: color 0.15s ease, background 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
     outline: none;
   }
 
@@ -469,7 +516,10 @@
     cursor: pointer;
     position: relative;
     z-index: 110;
-    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    transition:
+      transform 0.18s ease,
+      background 0.18s ease,
+      border-color 0.18s ease;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -527,7 +577,9 @@
     background: var(--accent-orange);
     color: #050508;
     border-color: var(--accent-orange);
-    box-shadow: 0 0 10px rgba(255, 132, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.6);
+    box-shadow:
+      0 0 10px rgba(255, 132, 0, 0.6),
+      0 2px 6px rgba(0, 0, 0, 0.6);
   }
 
   .mobile-toggle {
@@ -654,7 +706,9 @@
     cursor: pointer;
     transform: translateY(14px);
     opacity: 0;
-    transition: color 0.2s var(--ease-default), transform 0.3s var(--ease-default);
+    transition:
+      color 0.2s var(--ease-default),
+      transform 0.3s var(--ease-default);
   }
 
   .mobile-accordion-btn:hover,
@@ -663,6 +717,7 @@
   }
 
   .mobile-accordion-icon {
+    font-size: 0.875rem;
     transition: transform 0.25s ease;
     color: var(--text-muted);
   }
@@ -765,8 +820,12 @@
     if (accordionBtn && accordionPanel) {
       accordionBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const isExpanded = accordionBtn.getAttribute("aria-expanded") === "true";
-        accordionBtn.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+        const isExpanded =
+          accordionBtn.getAttribute("aria-expanded") === "true";
+        accordionBtn.setAttribute(
+          "aria-expanded",
+          isExpanded ? "false" : "true",
+        );
         accordionBtn.classList.toggle("is-open", !isExpanded);
         accordionPanel.hidden = isExpanded;
       });
@@ -793,31 +852,34 @@
 
     function updateNavCartBadge() {
       try {
-        const raw = localStorage.getItem('tapnova_b2b_cart_v1');
+        const raw = localStorage.getItem("tapnova_b2b_cart_v1");
         const items = raw ? JSON.parse(raw) : [];
-        const count = items.reduce((acc: number, item: any) => acc + (item.quantity || 1), 0);
+        const count = items.reduce(
+          (acc: number, item: any) => acc + (item.quantity || 1),
+          0,
+        );
         if (cartBadge) {
           cartBadge.textContent = count.toString();
-          cartBadge.classList.toggle('has-items', count > 0);
+          cartBadge.classList.toggle("has-items", count > 0);
         }
       } catch (e) {
-        if (cartBadge) cartBadge.textContent = '0';
+        if (cartBadge) cartBadge.textContent = "0";
       }
     }
 
     updateNavCartBadge();
-    window.addEventListener('storage', updateNavCartBadge);
-    window.addEventListener('tapnova:cart-updated', updateNavCartBadge);
+    window.addEventListener("storage", updateNavCartBadge);
+    window.addEventListener("tapnova:cart-updated", updateNavCartBadge);
 
     if (mobileCartBtn && !mobileCartBtn.dataset.bound) {
       mobileCartBtn.dataset.bound = "true";
       mobileCartBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        const cartBackdrop = document.getElementById('b2b-cart-backdrop');
+        const cartBackdrop = document.getElementById("b2b-cart-backdrop");
         if (cartBackdrop) {
-          window.dispatchEvent(new CustomEvent('tapnova:open-cart'));
+          window.dispatchEvent(new CustomEvent("tapnova:open-cart"));
         } else {
-          window.location.href = '/productos#cart';
+          window.location.href = "/productos#cart";
         }
       });
     }

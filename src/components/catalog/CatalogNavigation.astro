@@ -1,5 +1,6 @@
 ---
 import type { CatalogCategory } from '../../data/catalogData';
+import ArrowRight from '../ArrowRight.astro';
 
 interface Props {
   categories: CatalogCategory[];
@@ -54,7 +55,7 @@ const { categories, counts, totalProducts, variant } = Astro.props;
         target="_blank"
         rel="noopener noreferrer"
         class="sample-cta-btn"
-      >Pedir muestra gratis →</a>
+      ><span>Pedir muestra gratis</span><ArrowRight /></a>
     </div>
   </div>
 </aside>}

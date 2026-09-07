@@ -1,4 +1,5 @@
 ---
+import ArrowRight from './ArrowRight.astro';
 interface Props {
   class?: string;
 }
@@ -85,9 +86,9 @@ const plans = [
           <div class="demo-screen-slot">
             <!-- Coloca tu captura con: <img src="/tu-captura.webp" alt={demo.name} /> -->
             <div class="demo-screen-inner">
-              <span class="open-arrow" aria-hidden="true">↗</span>
+              <span class="open-arrow" aria-hidden="true"><ArrowRight direction="up-right" /></span>
               <strong class="demo-label font-display">{demo.name}</strong>
-              <span class="demo-cue">Probar en vivo ↗</span>
+              <span class="demo-cue"><span>Probar en vivo</span><ArrowRight direction="up-right" /></span>
             </div>
           </div>
         </a>
@@ -131,7 +132,7 @@ const plans = [
               class={`btn-cta ${plan.popular ? 'btn-white' : 'btn-dark'}`}
             >
               <span>{plan.cta}</span>
-              <span class="btn-arrow" aria-hidden="true">→</span>
+              <span class="btn-arrow" aria-hidden="true"><ArrowRight /></span>
             </a>
           </div>
 
@@ -280,6 +281,9 @@ const plans = [
   }
 
   .demo-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
     font-size: 0.72rem;
     color: var(--accent-amber);
     font-weight: 600;

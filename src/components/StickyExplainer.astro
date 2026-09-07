@@ -1,4 +1,5 @@
 ---
+import ArrowRight from './ArrowRight.astro';
 import { Image } from 'astro:assets';
 import { EXPLAINER_STEPS } from '../data/siteData';
 
@@ -125,7 +126,7 @@ const stepVisuals = [
             <div class="mobile-step-body">
               <h3 class="mobile-step-title font-display">{step.title}</h3>
               <p class="mobile-step-desc">{step.description}</p>
-                <span class="btn-icon" aria-hidden="true">→</span>
+                <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
             </div>
           </article>
         ))}

@@ -12,5 +12,6 @@ export default defineConfig({
   })],
   redirects: {
     '/catalogo': '/productos',
+    '/faq': '/preguntas-frecuentes',
   },
 });

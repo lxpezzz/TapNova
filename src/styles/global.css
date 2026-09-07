@@ -116,6 +116,10 @@ p, li, a {
   overflow-wrap: break-word;
 }
 
+h1 {
+  text-align: center;
+}
+
 button {
   font: inherit;
   color: inherit;
@@ -126,6 +130,10 @@ button {
 
 .font-display {
   font-family: var(--font-display);
+}
+
+.text-center {
+  text-align: center;
 }
 
 .eyebrow {

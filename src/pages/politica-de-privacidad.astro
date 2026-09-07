@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import ArrowRight from '../components/ArrowRight.astro';
 import { SITE_METADATA } from '../data/siteData';
 
 const lastUpdated = "2 de septiembre de 2026";
@@ -19,7 +20,7 @@ const lastUpdated = "2 de septiembre de 2026";
       <!-- Top Centered Breadcrumb Button -->
       <nav class="legal-breadcrumb-nav text-center" aria-label="Ruta de navegación">
         <a href="/" class="back-home-btn">
-          <span class="btn-arrow" aria-hidden="true">←</span>
+          <span class="btn-arrow" aria-hidden="true"><ArrowRight direction="left" /></span>
           <span>Volver al inicio</span>
         </a>
       </nav>
@@ -218,7 +219,7 @@ const lastUpdated = "2 de septiembre de 2026";
       <div class="legal-bottom-action text-center">
         <a href="/" class="btn-solid-white">
           <span>Volver a la página principal</span>
-          <span class="btn-icon" aria-hidden="true">→</span>
+          <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
         </a>
       </div>
 
@@ -332,6 +333,7 @@ const lastUpdated = "2 de septiembre de 2026";
     letter-spacing: -0.03em;
     max-width: 960px;
     text-wrap: balance;
+    text-align: center;
   }
 
   .legal-main-sub {

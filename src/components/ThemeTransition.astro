@@ -1,0 +1,99 @@
+---
+interface Props {
+  direction: 'dark-to-light' | 'light-to-dark';
+  id?: string;
+  class?: string;
+}
+
+const { direction, id, class: className = '' } = Astro.props;
+---
+
+<div
+  id={id}
+  class={`theme-transition theme-transition--${direction} ${className}`}
+  aria-hidden="true"
+  data-theme-transition={direction}
+>
+  <div class="theme-transition__gradient"></div>
+</div>
+
+<style>
+  .theme-transition {
+    position: relative;
+    width: 100%;
+    height: clamp(90px, 12vw, 140px);
+    pointer-events: none;
+    z-index: 10;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    overflow: hidden;
+  }
+
+  .theme-transition__gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Dark to Light: smoothly transitions from dark into light porcelain (#f8f9fa) */
+  .theme-transition--dark-to-light .theme-transition__gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 5, 5, 0) 0%,
+      rgba(248, 249, 250, 0.4) 40%,
+      rgba(248, 249, 250, 0.85) 75%,
+      #f8f9fa 100%
+    );
+  }
+
+  /* Light to Dark: smoothly transitions from light porcelain (#f8f9fa) into dark (#050505) */
+  .theme-transition--light-to-dark .theme-transition__gradient {
+    background: linear-gradient(
+      to bottom,
+      #f8f9fa 0%,
+      rgba(248, 249, 250, 0.85) 25%,
+      rgba(5, 5, 5, 0.5) 70%,
+      rgba(5, 5, 5, 1) 100%
+    );
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  function initThemeTransitions() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const transitions = document.querySelectorAll<HTMLElement>('[data-theme-transition]');
+    transitions.forEach((el) => {
+      const grad = el.querySelector<HTMLElement>('.theme-transition__gradient');
+      if (!grad) return;
+
+      gsap.fromTo(
+        grad,
+        { opacity: 0.7 },
+        {
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            end: 'bottom 20%',
+            scrub: 0.5,
+          },
+        }
+      );
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeTransitions);
+  } else {
+    initThemeTransitions();
+  }
+  document.addEventListener('astro:page-load', initThemeTransitions);
+</script>

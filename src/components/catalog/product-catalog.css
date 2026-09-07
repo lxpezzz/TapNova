@@ -65,7 +65,7 @@
   }
 
   .header-left {
-    max-width: 680px;
+    max-width: 860px;
   }
 
   .b2b-breadcrumb {
@@ -101,11 +101,21 @@
   }
 
   .marketplace-title {
-    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    font-size: clamp(1.35rem, 2.2vw, 2.2rem);
     font-weight: 620;
     line-height: 1.15;
     color: #ffffff;
     margin: 0 0 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .marketplace-title {
+      font-size: clamp(1.15rem, 4.4vw, 1.4rem);
+      white-space: normal;
+      text-wrap: balance;
+    }
   }
 
   .marketplace-sub {
@@ -1933,4 +1943,600 @@
   .cart-whatsapp-cta-btn:hover {
     opacity: 0.92;
     transform: translateY(-1px);
+  }
+
+  /* =========================================================================
+     PRUEBA VISUAL: SECCIÓN DE PRODUCTOS EN FONDO CLARO (LIGHT THEME LUXURY)
+     Blanco roto / crema suave (#F5F3EF), micro-estrellas y halos cósmicos sutiles,
+     aire visual arquitectónico, tarjetas de alta definición y transición hacia el footer.
+     ========================================================================= */
+
+  .b2b-marketplace-page[data-theme="light"] {
+    background: linear-gradient(
+      to bottom,
+      #F5F3EF 0%,
+      #F5F3EF calc(100% - clamp(280px, 32vw, 440px)),
+      rgba(245, 243, 239, 0.98) calc(100% - clamp(240px, 28vw, 380px)),
+      rgba(245, 243, 239, 0.88) calc(100% - clamp(190px, 22vw, 300px)),
+      rgba(245, 243, 239, 0.65) calc(100% - clamp(140px, 16vw, 220px)),
+      rgba(245, 243, 239, 0.35) calc(100% - clamp(90px, 10vw, 140px)),
+      rgba(245, 243, 239, 0.10) calc(100% - clamp(40px, 5vw, 60px)),
+      transparent 100%
+    );
+    color: #141416;
+    padding-bottom: 0;
+    position: relative;
+  }
+
+  /* Capa de atmósfera cósmica adaptada a fondo claro con difuminado inferior suave */
+  .b2b-marketplace-page[data-theme="light"] .catalog-atmospheric-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 350px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 350px), transparent 100%);
+  }
+
+  /* -------------------------------------------------------------------------
+     AURAS CÓSMICAS BIPOLARES (NARANJA + MORADO) & CANVAS DE PARTÍCULAS
+     ------------------------------------------------------------------------- */
+  .b2b-marketplace-page[data-theme="light"] .bipolar-aurora-chamber {
+    position: absolute;
+    inset: -6%;
+    width: 112%;
+    height: 112%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bipolar-gas {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform, opacity;
+    border-radius: 50%;
+  }
+
+  /* Nube 1: Naranja Solar Fuego (Izquierda / Centro) */
+  .b2b-marketplace-page[data-theme="light"] .gas-orange-flame {
+    top: 6%;
+    left: -8%;
+    width: clamp(560px, 58vw, 1000px);
+    height: clamp(560px, 58vw, 1000px);
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 132, 0, 0.20) 0%,
+      rgba(255, 157, 36, 0.12) 35%,
+      rgba(255, 132, 0, 0.035) 62%,
+      transparent 78%
+    );
+    filter: blur(85px);
+    animation: driftBipolarOrange 28s ease-in-out infinite alternate;
+  }
+
+  /* Nube 2: Orquídea / Púrpura Cósmico (Derecha / Centro) */
+  .b2b-marketplace-page[data-theme="light"] .gas-purple-orchid {
+    top: 20%;
+    right: -8%;
+    width: clamp(580px, 62vw, 1060px);
+    height: clamp(580px, 62vw, 1060px);
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(223, 145, 247, 0.22) 0%,
+      rgba(168, 85, 247, 0.14) 38%,
+      rgba(147, 51, 234, 0.045) 64%,
+      transparent 80%
+    );
+    filter: blur(90px);
+    animation: driftBipolarPurple 32s ease-in-out infinite alternate;
+  }
+
+  /* Nube 3: Guardería Ámbar Secundaria (Zona Media-Inferior Izquierda) */
+  .b2b-marketplace-page[data-theme="light"] .gas-amber-nursery {
+    top: 54%;
+    left: -4%;
+    width: clamp(480px, 50vw, 860px);
+    height: clamp(480px, 50vw, 860px);
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(254, 237, 122, 0.16) 0%,
+      rgba(255, 132, 0, 0.10) 38%,
+      rgba(255, 157, 36, 0.03) 60%,
+      transparent 75%
+    );
+    filter: blur(80px);
+    animation: driftBipolarOrange 34s ease-in-out infinite alternate-reverse;
+  }
+
+  /* Nube 4: Filamento Magenta / Violeta Secundario (Zona Inferior Derecha) */
+  .b2b-marketplace-page[data-theme="light"] .gas-magenta-filament {
+    top: 66%;
+    right: 2%;
+    width: clamp(500px, 52vw, 900px);
+    height: clamp(500px, 52vw, 900px);
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(224, 86, 253, 0.16) 0%,
+      rgba(223, 145, 247, 0.09) 40%,
+      transparent 74%
+    );
+    filter: blur(85px);
+    animation: driftBipolarPurple 29s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes driftBipolarOrange {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(4%, 3%, 0) scale(1.08);
+    }
+    100% {
+      transform: translate3d(-3%, -2%, 0) scale(0.95);
+    }
+  }
+
+  @keyframes driftBipolarPurple {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(-4%, 4%, 0) scale(1.06);
+    }
+    100% {
+      transform: translate3d(3%, -3%, 0) scale(0.96);
+    }
+  }
+
+  /* Canvas de partículas vivas en movimiento continuo */
+  .catalog-stardust-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Header & Breadcrumb */
+  .b2b-marketplace-page[data-theme="light"] .marketplace-header {
+    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .b2b-breadcrumb {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .b2b-breadcrumb .back-link {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .b2b-breadcrumb .back-link:hover {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .b2b-breadcrumb .curr {
+    color: #141416;
+    font-weight: 600;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .b2b-breadcrumb .sep {
+    opacity: 0.45;
+    color: #a1a1aa;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .marketplace-title {
+    color: #141416;
+    font-weight: 640;
+    letter-spacing: -0.025em;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .marketplace-sub {
+    color: #52525b;
+  }
+
+  /* Buscador de catálogo */
+  .b2b-marketplace-page[data-theme="light"] .catalog-search-input {
+    background: #ffffff;
+    border: 1px solid rgba(24, 24, 27, 0.12);
+    color: #141416;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .catalog-search-input::placeholder {
+    color: #8e8e98;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .catalog-search-input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 3px rgba(255, 132, 0, 0.12);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .search-icon {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .clear-search-btn {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .clear-search-btn:hover {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .search-counter-badge {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .search-counter-badge strong {
+    color: #141416;
+  }
+
+  /* Barra móvil sticky de categorías */
+  .b2b-marketplace-page[data-theme="light"] .mobile-category-bar {
+    background: rgba(245, 243, 239, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .mobile-cat-pill {
+    background: #ffffff;
+    border: 1px solid rgba(24, 24, 27, 0.1);
+    color: #52525b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .mobile-cat-pill:hover {
+    color: #141416;
+    border-color: rgba(24, 24, 27, 0.22);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .mobile-cat-pill.active {
+    color: #141416;
+    background: rgba(255, 132, 0, 0.12);
+    border-color: var(--accent-orange);
+    font-weight: 600;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .cat-pill-count {
+    background: rgba(24, 24, 27, 0.06);
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .mobile-cat-pill.active .cat-pill-count {
+    background: rgba(255, 132, 0, 0.22);
+    color: #c25e00;
+  }
+
+  /* Sidebar desktop */
+  .b2b-marketplace-page[data-theme="light"] .sidebar-header-row {
+    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-kicker {
+    color: #c25e00;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-title {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-cat-link {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-cat-link:hover {
+    color: #141416;
+    background: rgba(24, 24, 27, 0.04);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-cat-link.active {
+    color: #141416;
+    background: rgba(255, 132, 0, 0.1);
+    font-weight: 600;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-link-count {
+    color: #71717a;
+    background: rgba(24, 24, 27, 0.06);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-cat-link.active .sidebar-link-count {
+    color: #c25e00;
+    background: rgba(255, 132, 0, 0.22);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sidebar-sample-box {
+    background: #ffffff;
+    border: 1px solid rgba(24, 24, 27, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sample-badge {
+    color: #c25e00;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sample-p {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sample-cta-btn {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .sample-cta-btn:hover {
+    color: var(--accent-orange);
+  }
+
+  /* Encabezados de categorías y espaciado editorial */
+  .b2b-marketplace-page[data-theme="light"] .catalog-sections-wrap {
+    gap: clamp(5rem, 8vw, 8rem);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .category-header-editorial {
+    border-bottom: 1px solid rgba(24, 24, 27, 0.08);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .cat-zone-badge {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .cat-section-title {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .cat-section-desc {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .cat-section-count {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .mobile-swipe-hint {
+    color: #71717a;
+  }
+
+  /* Escenario Visual & Tarjetas de Producto (Estilo Estudio con Contraste Naranja + Morado) */
+  .b2b-marketplace-page[data-theme="light"] .product-visual-stage {
+    position: relative;
+    background: radial-gradient(
+      ellipse at 38% 32%,
+      rgba(255, 132, 0, 0.08) 0%,
+      rgba(223, 145, 247, 0.07) 48%,
+      #ffffff 82%
+    );
+    border-radius: 22px;
+    border: 1px solid rgba(24, 24, 27, 0.07);
+    box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.03), 0 0 35px -8px rgba(255, 132, 0, 0.07);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background 0.35s ease;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-editorial-item:hover .product-visual-stage {
+    background: radial-gradient(
+      ellipse at 42% 35%,
+      rgba(255, 132, 0, 0.14) 0%,
+      rgba(223, 145, 247, 0.13) 54%,
+      #ffffff 88%
+    );
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.08), 0 0 45px -5px rgba(255, 132, 0, 0.22), 0 0 35px -5px rgba(223, 145, 247, 0.16);
+    border-color: rgba(255, 132, 0, 0.38);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-stage-img {
+    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.10));
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-editorial-item:hover .product-stage-img {
+    transform: scale(1.045);
+    filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.14));
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-item-title {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-item-price {
+    color: #c25e00;
+    font-weight: 700;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-item-descriptor {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .variant-dot {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .variant-count-text {
+    color: #71717a;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-add-to-cart-btn {
+    background: rgba(255, 132, 0, 0.08);
+    border: 1px solid rgba(255, 132, 0, 0.3);
+    color: #141416;
+    font-weight: 600;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .product-add-to-cart-btn:hover {
+    background: var(--accent-orange);
+    color: #ffffff;
+    border-color: var(--accent-orange);
+    box-shadow: 0 4px 14px rgba(255, 132, 0, 0.28);
+  }
+
+  /* Las dos familias principales se presentan como una selección editorial,
+     no como un conjunto de tarjetas genéricas. */
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .products-editorial-showcase {
+    grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .products-editorial-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.75rem);
+    max-width: 58rem;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-visual-stage,
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .product-visual-stage {
+    aspect-ratio: 1 / 1.04;
+    padding: 0;
+    border: 0;
+    border-radius: 14px;
+    background: #12100f;
+    box-shadow: 0 14px 32px -20px rgba(31, 20, 14, 0.52);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-editorial-item:first-child .product-visual-stage {
+    aspect-ratio: 1 / 0.9;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-stage-img,
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .product-stage-img {
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-editorial-item:hover .product-visual-stage,
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .product-editorial-item:hover .product-visual-stage {
+    transform: translateY(-3px);
+    border-color: transparent;
+    box-shadow: 0 20px 38px -22px rgba(31, 20, 14, 0.66), 0 0 0 1px rgba(255, 132, 0, 0.35);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-editorial-item:hover .product-stage-img,
+  .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .product-editorial-item:hover .product-stage-img {
+    transform: scale(1.025);
+    filter: none;
+  }
+
+  @media (max-width: 960px) {
+    .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .products-editorial-showcase,
+    .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .products-editorial-showcase {
+      display: flex;
+      max-width: none;
+    }
+
+    .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-visual-stage,
+    .b2b-marketplace-page[data-theme="light"] [data-section-category="expositores"] .product-visual-stage,
+    .b2b-marketplace-page[data-theme="light"] [data-section-category="portacuentas"] .product-editorial-item:first-child .product-visual-stage {
+      aspect-ratio: 1 / 1.03;
+    }
+  }
+
+  /* Estado sin resultados */
+  .b2b-marketplace-page[data-theme="light"] .empty-state-card {
+    background: #ffffff;
+    border: 1px solid rgba(24, 24, 27, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .empty-title {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .empty-desc {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] #reset-search-btn {
+    background: #141416;
+    color: #ffffff;
+  }
+
+  /* Bloque Packs Bridge */
+  .b2b-marketplace-page[data-theme="light"] .packs-bridge-card {
+    background: #ffffff;
+    border: 1px solid rgba(24, 24, 27, 0.08);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bridge-tag {
+    color: #c25e00;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bridge-title {
+    color: #141416;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bridge-p {
+    color: #52525b;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bridge-btn {
+    background: #141416;
+    color: #ffffff;
+  }
+
+  .b2b-marketplace-page[data-theme="light"] .bridge-btn:hover {
+    background: var(--accent-orange);
+    color: #000000;
+    box-shadow: 0 6px 20px rgba(255, 132, 0, 0.3);
+  }
+
+  /* -------------------------------------------------------------------------
+     TRANSICIÓN FLUIDA Y ORGÁNICA AL FOOTER (CANVAS CLARO -> COSMOS DEL FOOTER)
+     El fondo claro se disuelve suavemente hacia 'transparent', revelando de forma
+     natural la nebulosa viva global del sitio sin juntas, cortes ni tonos turbios.
+     ------------------------------------------------------------------------- */
+  .catalog-to-footer-transition {
+    position: relative;
+    width: 100%;
+    height: clamp(240px, 28vw, 380px);
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    overflow: visible;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Resplandor de horizonte cósmico (ámbar solar y orquídea violeta) */
+  .transition-horizon-glow {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(500px, 75vw, 1100px);
+    height: clamp(160px, 22vw, 300px);
+    background: radial-gradient(
+      ellipse 65% 50% at 50% 50%,
+      rgba(255, 132, 0, 0.18) 0%,
+      rgba(223, 145, 247, 0.12) 42%,
+      rgba(254, 237, 122, 0.04) 65%,
+      transparent 80%
+    );
+    filter: blur(55px);
+    pointer-events: none;
+  }
+
+  /* Línea de horizonte etérea difuminada */
+  .transition-horizon-line {
+    position: absolute;
+    top: 22%;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 132, 0, 0.16) 25%,
+      rgba(254, 237, 122, 0.32) 50%,
+      rgba(223, 145, 247, 0.20) 75%,
+      transparent 100%
+    );
+    filter: blur(0.5px);
+    opacity: 0.6;
   }

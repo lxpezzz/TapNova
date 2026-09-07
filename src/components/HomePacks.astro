@@ -1,0 +1,475 @@
+---
+const packs = [
+  {
+    name: 'Tap Start',
+    eyebrow: 'Barra & Terraza',
+    price: '290',
+    saving: 'Ahorras 50 €',
+    description: 'La base elegante para activar reseñas continuas en barra, mesas altas y terraza.',
+    features: [
+      '1 expositor de madera de nogal para barra o caja',
+      '50 posavasos NFC impermeables con QR',
+      '10 pegatinas QR de resina epoxi de alta resistencia',
+      'Configuración directa con tu perfil de Google Reviews'
+    ],
+    cta: 'Elegir Tap Start',
+    icon: 'layers',
+    featured: false
+  },
+  {
+    name: 'Tap Pro',
+    eyebrow: 'El más elegido',
+    price: '890',
+    saving: 'Ahorras 260 €',
+    description: 'La sala conectada: soportes nobles en mesa y visibilidad local desde el primer servicio.',
+    features: [
+      '12 portacuentas inteligentes de piel y titanio grabado',
+      '2 expositores de nogal para recepción y barra',
+      '5 tarjetas NFC contactless para el equipo de sala',
+      '1 mes de optimización de SEO Local en Google Maps incluido'
+    ],
+    cta: 'Elegir Tap Pro',
+    icon: 'spark',
+    featured: true
+  },
+  {
+    name: 'Tap Galaxy',
+    eyebrow: 'Ecosistema 360°',
+    price: '1.790',
+    saving: 'Ahorras 460 €',
+    description: 'Un ecosistema integral para unir servicio en mesa, presencia online y captación constante.',
+    features: [
+      '20 portacuentas en piel y titanio + 3 expositores de nogal',
+      '8 tarjetas de personal + 100 posavasos impermeables',
+      '25 pegatinas epoxi para puntos exteriores y cristal',
+      'Página web gastronómica con reservas + 3 meses de SEO Local'
+    ],
+    cta: 'Elegir Tap Galaxy',
+    icon: 'orbit',
+    featured: false
+  }
+];
+---
+
+<section class="home-packs-section" id="packs" aria-labelledby="packs-title">
+  <!-- Atmospheric Cosmic Backlight Glow -->
+  <div class="packs-ambient-halo" aria-hidden="true"></div>
+
+  <div class="section-container">
+    <header class="home-packs-header text-center">
+      <span class="home-packs-eyebrow">EQUIPAMIENTO COMPLETO · LLAVE EN MANO</span>
+      <h2 class="home-packs-title font-display" id="packs-title">
+        Elige el sistema que encaja con tu sala.
+      </h2>
+      <p class="home-packs-lead">
+        Hardware en propiedad, grabado a láser y configuración técnica listos para empezar a captar reseñas con la máxima elegancia.
+      </p>
+    </header>
+
+    <div class="home-packs-grid">
+      {packs.map((pack) => (
+        <article class={`home-pack-card ${pack.featured ? 'is-featured' : ''}`}>
+          
+          {pack.featured && (
+            <div class="featured-top-badge" aria-label="Pack más popular">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>Más elegido</span>
+            </div>
+          )}
+
+          <div class="home-pack-header-row">
+            <div class="home-pack-icon-frame" aria-hidden="true">
+              {pack.icon === 'layers' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z"/>
+                  <path d="m4 12 8 4.5 8-4.5"/>
+                  <path d="m4 16.5 8 4.5 8-4.5"/>
+                </svg>
+              )}
+              {pack.icon === 'spark' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 2 1.85 7.15L21 11l-7.15 1.85L12 20l-1.85-7.15L3 11l7.15-1.85L12 2Z"/>
+                </svg>
+              )}
+              {pack.icon === 'orbit' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="2.75"/>
+                  <ellipse cx="12" cy="12" rx="9" ry="4.25" transform="rotate(-35 12 12)"/>
+                  <path d="M18.5 5.4h.01" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              )}
+            </div>
+
+            <span class="zone-badge">{pack.eyebrow}</span>
+          </div>
+
+          <h3 class="home-pack-name font-display">{pack.name}</h3>
+          <p class="home-pack-desc">{pack.description}</p>
+
+          <div class="home-pack-pricing-block">
+            <div class="price-main-line">
+              <span class="price-figure font-display">{pack.price} €</span>
+              <span class="price-tag">pago único</span>
+            </div>
+            <div class="price-sub-line">
+              <span class="saving-chip">{pack.saving}</span>
+              <span class="deductible-note">100% deducible</span>
+            </div>
+          </div>
+
+          <div class="features-separator" aria-hidden="true"></div>
+
+          <ul class="home-pack-features-list" aria-label={`Equipamiento incluido en ${pack.name}`}>
+            {pack.features.map((feature) => (
+              <li>
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="home-pack-action-wrap">
+            <a 
+              href="#contacto" 
+              class={pack.featured ? 'btn-solid-white pack-cta-btn' : 'btn-primary pack-cta-btn'}
+            >
+              <span>{pack.cta}</span>
+              <span class="btn-icon" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* -------------------------------------------------------------------------
+     HOME PACKS SECTION — INTEGRATED COSMIC AESTHETIC
+     ------------------------------------------------------------------------- */
+  .home-packs-section {
+    position: relative;
+    padding-top: clamp(4.5rem, 8vw, 7.5rem);
+    padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+    background: transparent;
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  /* Soft Cosmic Backlight */
+  .packs-ambient-halo {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(500px, 80vw, 1200px);
+    height: clamp(350px, 50vw, 700px);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 140, 0, 0.08) 0%,
+      rgba(223, 145, 247, 0.04) 45%,
+      transparent 75%
+    );
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  .home-packs-header {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto clamp(3rem, 5vw, 4.25rem);
+  }
+
+  .home-packs-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-amber);
+    margin-bottom: 0.85rem;
+  }
+
+  .home-packs-title {
+    font-size: clamp(2.15rem, 3.8vw, 3.3rem);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin-bottom: 1.1rem;
+    text-wrap: balance;
+  }
+
+  .home-packs-lead {
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.68);
+    max-width: 620px;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  /* Grid Layout */
+  .home-packs-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+    max-width: 1240px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  @media (min-width: 1024px) {
+    .home-packs-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Card Shell: Sleek Luxury Glass */
+  .home-pack-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(20px, 2.2vw, 26px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    padding: clamp(1.75rem, 2.2vw, 2.25rem);
+    transition: transform 0.35s var(--ease-default), border-color 0.35s var(--ease-default), background 0.35s var(--ease-default), box-shadow 0.35s var(--ease-default);
+  }
+
+  .home-pack-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.065) 0%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 26px 50px -15px rgba(0, 0, 0, 0.65), 0 0 35px -8px rgba(255, 140, 0, 0.12);
+  }
+
+  /* Featured Card Special High-End Treatment */
+  .home-pack-card.is-featured {
+    border-color: rgba(255, 157, 36, 0.35);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 157, 36, 0.07) 0%,
+      rgba(255, 255, 255, 0.025) 50%,
+      rgba(223, 145, 247, 0.04) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 237, 122, 0.22), 0 24px 50px -15px rgba(0, 0, 0, 0.6), 0 0 40px -10px rgba(255, 140, 0, 0.2);
+  }
+
+  .home-pack-card.is-featured:hover {
+    border-color: rgba(255, 157, 36, 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 237, 122, 0.32), 0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 50px -5px rgba(255, 140, 0, 0.28);
+  }
+
+  /* Featured Top Badge */
+  .featured-top-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(10, 10, 14, 0.75);
+    border: 1px solid rgba(255, 157, 36, 0.35);
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #feed7a;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ff8400;
+    box-shadow: 0 0 8px #ff8400;
+    animation: pulseDot 2.2s infinite ease-in-out;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.7; }
+  }
+
+  /* Topline */
+  .home-pack-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .home-pack-icon-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(255, 157, 36, 0.1);
+    border: 1px solid rgba(255, 157, 36, 0.22);
+    color: var(--accent-amber);
+  }
+
+  .zone-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-amber);
+    background: rgba(255, 157, 36, 0.08);
+    border: 1px solid rgba(255, 157, 36, 0.18);
+    padding: 0.26rem 0.65rem;
+    border-radius: var(--radius-pill);
+  }
+
+  /* Pack Typography */
+  .home-pack-name {
+    font-size: clamp(1.65rem, 2.2vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+  }
+
+  .home-pack-desc {
+    font-size: 0.92rem;
+    line-height: 1.58;
+    color: rgba(255, 255, 255, 0.68);
+    margin-bottom: 1.4rem;
+    min-height: 48px;
+  }
+
+  /* Pricing */
+  .home-pack-pricing-block {
+    padding-top: 1.15rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 1.25rem;
+  }
+
+  .price-main-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .price-figure {
+    font-size: clamp(2.1rem, 3vw, 2.65rem);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .price-tag {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: lowercase;
+  }
+
+  .price-sub-line {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .saving-chip {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #ff9d24;
+    background: rgba(255, 157, 36, 0.12);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .deductible-note {
+    font-size: 0.74rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .features-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Features List */
+  .home-pack-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.85rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    flex-grow: 1;
+  }
+
+  .home-pack-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .check-icon {
+    color: var(--accent-amber);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  /* Buttons */
+  .home-pack-action-wrap {
+    margin-top: auto;
+  }
+
+  .pack-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Responsive Mobile Tweaks */
+  @media (max-width: 1023px) {
+    .home-packs-grid {
+      max-width: 480px;
+    }
+    .home-pack-desc {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .home-pack-card {
+      padding: 1.5rem 1.25rem;
+    }
+    .featured-top-badge {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+</style>

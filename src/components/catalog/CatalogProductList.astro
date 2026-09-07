@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets';
+import ArrowRight from '../ArrowRight.astro';
 import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
 ---
 
 <div class="catalog-main-feed">
   <div id="empty-search-state" class="empty-state-card" hidden>
-    <span class="empty-icon">✦</span>
+    <span class="empty-icon">○</span>
     <h3 class="empty-title">No se encontraron productos</h3>
     <p class="empty-desc">
       No hay resultados para este término. Prueba a buscar "titanio", "nogal", "piel" o selecciona otra categoría.
@@ -31,7 +32,7 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
 
           <div class="mobile-swipe-hint" aria-hidden="true">
             <span class="swipe-hint-txt">Desliza horizontalmente para explorar modelos</span>
-            <span class="swipe-hint-arr">→</span>
+            <span class="swipe-hint-arr"><ArrowRight /></span>
           </div>
 
           <div class="products-editorial-showcase">
@@ -100,7 +101,7 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
         <h3 class="bridge-title">¿Prefieres un pack completo listo para el servicio?</h3>
         <p class="bridge-p">Nuestros packs combinan portacuentas, expositores, tarjetas y regalo de Google Maps desde 290 €.</p>
       </div>
-      <a href="/#precios" class="btn-solid-white bridge-btn"><span>Ver packs recomendados</span><span aria-hidden="true">→</span></a>
+      <a href="/#packs" class="btn-solid-white bridge-btn"><span>Ver packs recomendados</span><ArrowRight /></a>
     </div>
   </div>
 </div>

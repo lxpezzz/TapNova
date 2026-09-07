@@ -1,0 +1,909 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ArrowRight from '../components/ArrowRight.astro';
+import seoLocalImg from '../assets/showcase/seo-local-context.webp';
+import { SITE_METADATA } from '../data/siteData';
+
+const benefits = [
+  {
+    title: 'Captar clientes que ya quieren salir a comer',
+    description: 'No es publicidad pesada en redes sociales. Quien busca en Google Maps ya tiene hambre y está decidiendo dónde ir en ese preciso momento. Aparecer ahí es captar comensales con intención real de consumo.',
+    metric: '82%',
+    metricLabel: 'de búsquedas en Maps terminan en visita en menos de 24 horas'
+  },
+  {
+    title: 'Multiplicar llamadas, rutas y reservas directas',
+    description: 'Google Maps pone botones directos para «Cómo llegar», «Llamar» y «Reservar mesa». Un perfil bien posicionado canaliza reservas directas a tu local sin intermediarios ni comisiones abusivas por cubierto.',
+    metric: 'x3',
+    metricLabel: 'más clics hacia el teléfono y la ruta frente a perfiles sin optimizar'
+  },
+  {
+    title: 'Generar confianza inmediata antes de entrar',
+    description: 'Nadie entra a ciegas a un restaurante. Un perfil cuidado con fotos nítidas, la carta actualizada y reseñas recientes respondidas con cercanía transmite la seguridad que el comensal necesita para elegirte.',
+    metric: '4.8 ★',
+    metricLabel: 'puntuación media objetivo para dominar la búsqueda local'
+  }
+];
+
+const workSteps = [
+  {
+    number: '01',
+    title: 'Auditoría inicial y puesta a punto de tu ficha de Google',
+    description: 'Revisamos a fondo tu perfil de Google Business Profile. Corregimos categorías principales y secundarias, actualizamos horarios de cocina y festivos, sincronizamos la carta y eliminamos duplicados o errores que penalizan tu visibilidad en la zona.'
+  },
+  {
+    number: '02',
+    title: 'Conexión directa con la sala mediante hardware TapNova',
+    description: 'El factor más determinante para Google es el flujo constante de reseñas auténticas. Integramos nuestros portacuentas y expositores NFC en tu local para que los comensales satisfechos dejen su valoración en 2 segundos antes de levantarse de la mesa.'
+  },
+  {
+    number: '03',
+    title: 'Respuesta profesional y personalizada a cada opinión',
+    description: 'Nos encargamos de responder a todas las reseñas de tu restaurante. Agradecemos las positivas con cariño y tono cercano, y gestionamos las críticas con templanza y argumentos constructivos que protegen tu imagen pública ante futuros clientes.'
+  },
+  {
+    number: '04',
+    title: 'Informes mensuales claros, sin jerga ni tecnicismos',
+    description: 'Nada de documentos ilegibles de 40 páginas con gráficos confusos. Cada mes te enviamos un resumen muy directo: cuántas personas te han visto en Maps, cuántas han pedido la ruta para llegar a tu puerta y cuántas han llamado para reservar.'
+  }
+];
+
+const faqItems = [
+  {
+    question: '¿En cuánto tiempo se notan los resultados de visibilidad?',
+    answer: 'Los primeros cambios técnicos (corrección de datos, categorías y respuestas) se reflejan en pocos días. Las mejoras en posicionamiento suelen consolidarse entre las 4 y 8 semanas, a medida que Google registra un ritmo constante de opiniones verificadas y mayor interacción de los usuarios.'
+  },
+  {
+    question: '¿Tengo que daros mis contraseñas personales de Google?',
+    answer: 'No. El proceso es 100% seguro. Solo nos concedes acceso como administrador o gestor desde tu panel de Google Business Profile. Tú mantienes en todo momento la propiedad legal y el control total de tu cuenta.'
+  },
+  {
+    question: '¿Qué diferencia hay entre pagar anuncios en Google y hacer SEO Local?',
+    answer: 'Los anuncios patrocinados requieren pagar por cada clic; en cuanto dejas de pagar, tu negocio desaparece de los resultados. El SEO Local construye una reputación orgánica sólida y una autoridad en Maps que permanece en el tiempo y no te cuesta dinero cada vez que un comensal te descubre.'
+  },
+  {
+    question: '¿Hay algún tipo de permanencia o compromiso de meses?',
+    answer: 'Ninguna. Confiamos en el valor real de nuestro trabajo. Nuestro servicio de SEO Local se gestiona mes a mes, pudiendo pausarlo o cancelarlo cuando consideres oportuno.'
+  }
+];
+---
+
+<Layout
+  title="SEO Local para Restaurantes — TapNova"
+  description="Explicación clara y sencilla de qué es el SEO Local, por qué es imprescindible para un restaurante y cómo trabajamos el posicionamiento en Google Maps para llenar tus mesas."
+>
+  <Navbar />
+
+  <main class="seo-page-main" id="main-content">
+    <!-- Ambient Cosmic Atmosphere -->
+    <div class="seo-ambient-glow" aria-hidden="true"></div>
+
+    <div class="section-container">
+      
+      <!-- Back Navigation -->
+      <div class="seo-nav-back">
+        <a href="/" class="back-link">
+          <span class="back-arrow" aria-hidden="true"><ArrowRight direction="left" /></span>
+          <span>Volver al inicio</span>
+        </a>
+      </div>
+
+      <!-- Hero Header -->
+      <header class="seo-main-header text-center">
+        <h1 class="seo-main-title font-display">
+          Aparecer en Google Maps cuando alguien busca dónde comer cerca de ti.
+        </h1>
+        <p class="seo-main-lead">
+          El SEO local no es magia técnica ni jerga incomprensible. Es el trabajo constante para que tu restaurante esté bien visible, con información impecable y reseñas al día en el momento exacto en que alguien decide dónde sentarse a la mesa.
+        </p>
+      </header>
+
+      <!-- 1. ¿QUÉ ES EL SEO LOCAL? (METÁFORA SENCILLA) -->
+      <section class="seo-section-wrap" aria-label="Qué es el SEO Local">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title font-display">
+            ¿Qué es el SEO Local explicado de forma sencilla?
+          </h2>
+          <p class="section-subtitle">
+            Imagina tu local en la avenida principal en lugar de un callejón escondido sin iluminación ni cartel.
+          </p>
+        </div>
+
+        <div class="seo-block-shell">
+          <div class="seo-split-layout">
+            <div class="seo-split-visual">
+              <div class="visual-frame-box">
+                <Image
+                  src={seoLocalImg}
+                  alt="Optimización de ficha de restaurante en Google Maps en un teléfono móvil"
+                  width={780}
+                  height={585}
+                  quality={90}
+                  class="split-feature-img"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+            <div class="seo-split-copy">
+              <p class="copy-paragraph">
+                Imagina tu local en la vida real: puedes tener la cocina más cuidada y el interiorismo más bonito del barrio, pero si tu puerta estuviese escondida en un callejón oscuro sin cartel ni iluminación, nadie que pase por la avenida principal sabría que existes.
+              </p>
+
+              <p class="copy-paragraph">
+                En el teléfono de tus clientes ocurre exactamente lo mismo. Cada día, cientos de personas abren Google Maps en tu zona y escriben <strong class="highlight-text">«dónde comer cerca»</strong>, <strong class="highlight-text">«mejor italiano»</strong> o <strong class="highlight-text">«restaurante con terraza»</strong>.
+              </p>
+
+              <p class="copy-paragraph">
+                El <strong>SEO Local</strong> es el conjunto de acciones técnicas y de reputación necesarias para colocar tu restaurante en primera fila de ese mapa, justo delante de los ojos de quien ya tiene hambre y está a pocos metros de tu puerta.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ¿PARA QUÉ SIRVE? -->
+      <section class="seo-section-wrap" aria-label="Para qué sirve el SEO Local">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title font-display">
+            ¿Para qué sirve y qué impacto tiene en tu día a día?
+          </h2>
+          <p class="section-subtitle">
+            El objetivo no es acumular números vacíos, sino llenar mesas y generar reservas directas sin pagar comisiones por cada comensal.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          {benefits.map((b) => (
+            <article class="benefit-card">
+              <div class="card-metric-block">
+                <span class="metric-number font-display">{b.metric}</span>
+                <span class="metric-text">{b.metricLabel}</span>
+              </div>
+              <h3 class="card-title font-display">{b.title}</h3>
+              <p class="card-desc">{b.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- 3. ¿POR QUÉ ES TOTALMENTE NECESARIO? COMPARATIVA -->
+      <section class="seo-section-wrap" aria-label="Por qué es necesario">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title font-display">
+            Tener buena comida ya no es suficiente si nadie te encuentra.
+          </h2>
+          <p class="section-subtitle">
+            La diferencia entre un local que trabaja su presencia local y uno que la deja al azar.
+          </p>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- Tarjeta 1: Sin SEO -->
+          <div class="comparison-card card-negative">
+            <div class="comparison-header">
+              <span class="comparison-icon" aria-hidden="true">✕</span>
+              <h3 class="comparison-title font-display">Sin gestión de SEO Local</h3>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <span class="bullet-cross">✕</span>
+                <span>Google no sabe cuáles son tus platos estrella ni tus puntos fuertes.</span>
+              </li>
+              <li>
+                <span class="bullet-cross">✕</span>
+                <span>Fotos viejas, borrosas o poco apetecibles subidas por clientes hace años.</span>
+              </li>
+              <li>
+                <span class="bullet-cross">✕</span>
+                <span>Reseñas negativas o dudas de clientes sin responder que generan desconfianza.</span>
+              </li>
+              <li>
+                <span class="bullet-cross">✕</span>
+                <span>En días festivos o puentes tus horarios son dudosos y la gente prefiere no arriesgarse.</span>
+              </li>
+              <li>
+                <span class="bullet-cross">✕</span>
+                <span>Locales de la competencia aparecen por delante de ti aunque su servicio sea inferior.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta 2: Con TapNova -->
+          <div class="comparison-card card-positive">
+            <div class="comparison-header">
+              <span class="comparison-icon" aria-hidden="true">✓</span>
+              <h3 class="comparison-title font-display">Con SEO Local gestionado por TapNova</h3>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <span class="bullet-check">✓</span>
+                <span>Información 100% precisa, fotos de alta calidad y horarios de servicio sincronizados.</span>
+              </li>
+              <li>
+                <span class="bullet-check">✓</span>
+                <span>Flujo constante de reseñas 5 estrellas generadas desde la mesa con nuestros soportes NFC.</span>
+              </li>
+              <li>
+                <span class="bullet-check">✓</span>
+                <span>Cada opinión respondida con tono profesional, cercano y cuidando la reputación de tu sala.</span>
+              </li>
+              <li>
+                <span class="bullet-check">✓</span>
+                <span>Palabras clave estratégicas de tus platos añadidas de forma natural a la ficha.</span>
+              </li>
+              <li>
+                <span class="bullet-check">✓</span>
+                <span>Máxima probabilidad de aparecer en los 3 primeros puestos de Google Maps de tu zona.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CÓMO TRABAJAMOS NOSOTROS EL SEO LOCAL -->
+      <section class="seo-section-wrap" aria-label="Cómo trabajamos el SEO Local">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title font-display">
+            Cómo trabajamos el SEO Local en TapNova paso a paso.
+          </h2>
+          <p class="section-subtitle">
+            Un método transparente y centrado en la hostelería real, combinando presencia digital con soportes físicos en mesa.
+          </p>
+        </div>
+
+        <div class="process-steps-list">
+          {workSteps.map((step) => (
+            <article class="step-row-card">
+              <div class="step-num-badge font-display">{step.number}</div>
+              <div class="step-content-body">
+                <h3 class="step-title font-display">{step.title}</h3>
+                <p class="step-desc">{step.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- 5. PREGUNTAS FRECUENTES SOBRE SEO LOCAL -->
+      <section class="seo-section-wrap" aria-label="Dudas frecuentes sobre SEO Local">
+        <div class="section-title-wrap text-center">
+          <h2 class="section-title font-display">
+            Dudas habituales antes de empezar.
+          </h2>
+        </div>
+
+        <div class="mini-faq-list">
+          {faqItems.map((item) => (
+            <details class="mini-faq-item">
+              <summary class="mini-faq-question">
+                <span>{item.question}</span>
+                <span class="faq-chevron" aria-hidden="true">
+                  <ArrowRight direction="down" />
+                </span>
+              </summary>
+              <div class="mini-faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- 6. AUDITORÍA GRATUITA Y CONTACTO DIRECTO -->
+      <div class="seo-action-card text-center">
+        <h2 class="action-card-title font-display">
+          ¿Quieres saber cómo está la ficha de tu restaurante en Google ahora mismo?
+        </h2>
+        <p class="action-card-lead">
+          Revisamos tu perfil de Google Maps sin coste y te decimos qué puntos están fallando, en qué posición sales en tu barrio y qué margen real de crecimiento tienes.
+        </p>
+
+        <div class="action-buttons-wrap">
+          <a
+            href={`https://wa.me/34600000000?text=${encodeURIComponent('Hola TapNova, me gustaría solicitar una auditoría gratuita de Google Maps para mi restaurante')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-solid-white action-btn"
+          >
+            <span>Pedir auditoría gratuita por WhatsApp</span>
+            <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
+          </a>
+
+          <a href={`mailto:${SITE_METADATA.email}?subject=${encodeURIComponent('Auditoría SEO Local para restaurante')}`} class="btn-primary action-btn">
+            <span>Contactar por correo</span>
+            <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* -------------------------------------------------------------------------
+     SEO LOCAL DEDICATED PAGE — HIGH-END COSMIC EDITORIAL STYLE
+     ------------------------------------------------------------------------- */
+  .seo-page-main {
+    position: relative;
+    padding-top: clamp(7rem, 10vw, 9.5rem);
+    padding-bottom: clamp(5rem, 8vw, 8rem);
+    background: transparent;
+    color: var(--text-primary);
+    overflow: hidden;
+    min-height: 90vh;
+  }
+
+  /* Ambient Cosmic Glow */
+  .seo-ambient-glow {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(500px, 80vw, 1200px);
+    height: clamp(380px, 50vw, 700px);
+    background: radial-gradient(
+      ellipse at center,
+      rgba(223, 145, 247, 0.07) 0%,
+      rgba(255, 140, 0, 0.05) 50%,
+      transparent 75%
+    );
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Back Navigation */
+  .seo-nav-back {
+    position: relative;
+    z-index: 2;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s var(--ease-default), transform 0.2s var(--ease-default);
+  }
+
+  .back-link:hover {
+    color: #ffffff;
+    transform: translateX(-2px);
+  }
+
+  .back-arrow {
+    transition: transform 0.2s var(--ease-default);
+  }
+
+  .back-link:hover .back-arrow {
+    transform: translateX(-3px);
+  }
+
+  /* Main Hero Header */
+  .seo-main-header {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin: 0 auto clamp(3.5rem, 6vw, 5.5rem);
+    text-align: center;
+  }
+
+  .seo-main-title {
+    font-size: clamp(2.35rem, 4.4vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
+    text-align: center;
+  }
+
+  .seo-main-lead {
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.7);
+    text-wrap: balance;
+    max-width: 740px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Common Block Shell */
+  .seo-block-shell {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: clamp(22px, 2.5vw, 30px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 45px -15px rgba(0, 0, 0, 0.5);
+    padding: clamp(2rem, 4.5vw, 3.75rem);
+    margin-bottom: 0;
+  }
+
+  /* Split Layout */
+  .seo-split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .seo-split-layout {
+      grid-template-columns: 1.1fr 1.2fr;
+    }
+  }
+
+  .visual-frame-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(30, 25, 35, 0.6) 0%, rgba(10, 10, 14, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .split-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .block-heading {
+    font-size: clamp(1.85rem, 2.8vw, 2.45rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
+  }
+
+  .copy-paragraph {
+    font-size: clamp(0.96rem, 1.1vw, 1.05rem);
+    line-height: 1.68;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 1.1rem;
+  }
+
+  .copy-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .highlight-text {
+    color: var(--accent-amber);
+    font-weight: 600;
+  }
+
+  /* Section Wraps */
+  .seo-section-wrap {
+    position: relative;
+    z-index: 2;
+    margin-bottom: clamp(4.5rem, 7vw, 7rem);
+  }
+
+  .section-title-wrap {
+    max-width: 760px;
+    margin: 0 auto clamp(2.5rem, 4.5vw, 3.75rem);
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3.2vw, 2.65rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin-bottom: 0.9rem;
+    text-wrap: balance;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    text-wrap: balance;
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+  }
+
+  @media (min-width: 900px) {
+    .benefits-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .benefit-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: clamp(18px, 2vw, 24px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px -15px rgba(0, 0, 0, 0.45);
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    transition: transform 0.3s var(--ease-default), border-color 0.3s var(--ease-default);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .card-metric-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .metric-number {
+    font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--accent-amber);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.04em;
+  }
+
+  .metric-text {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+  }
+
+  .card-title {
+    font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  /* Comparison Grid */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  @media (min-width: 900px) {
+    .comparison-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .comparison-card {
+    border-radius: 24px;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-negative {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .card-positive {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 157, 36, 0.06) 0%,
+      rgba(255, 255, 255, 0.025) 50%,
+      rgba(223, 145, 247, 0.035) 100%
+    );
+    border: 1px solid rgba(255, 157, 36, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 237, 122, 0.2), 0 20px 45px -15px rgba(0, 0, 0, 0.5), 0 0 35px -10px rgba(255, 140, 0, 0.15);
+  }
+
+  .comparison-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .comparison-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .card-negative .comparison-icon {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .card-positive .comparison-icon {
+    background: rgba(255, 157, 36, 0.18);
+    color: var(--accent-amber);
+    border: 1px solid rgba(255, 157, 36, 0.35);
+  }
+
+  .comparison-title {
+    font-size: clamp(1.25rem, 1.7vw, 1.45rem);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+  }
+
+  .comparison-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .comparison-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .bullet-cross {
+    color: rgba(255, 255, 255, 0.35);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .bullet-check {
+    color: var(--accent-amber);
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  /* Process Steps List */
+  .process-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .step-row-card {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+    transition: transform 0.25s var(--ease-default), border-color 0.25s var(--ease-default);
+  }
+
+  .step-row-card:hover {
+    transform: translateX(4px);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .step-num-badge {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--accent-amber);
+    background: rgba(255, 157, 36, 0.09);
+    border: 1px solid rgba(255, 157, 36, 0.25);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .step-title {
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  .step-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  /* Mini FAQ List */
+  .mini-faq-list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mini-faq-item {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.015) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s var(--ease-default);
+  }
+
+  .mini-faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .mini-faq-item[open] {
+    border-color: rgba(255, 157, 36, 0.3);
+  }
+
+  .mini-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .mini-faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+    transition: transform 0.25s var(--ease-default), background 0.25s var(--ease-default), color 0.25s var(--ease-default);
+  }
+
+  .mini-faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    background: rgba(255, 157, 36, 0.18);
+    color: var(--accent-amber);
+  }
+
+  .mini-faq-answer {
+    padding: 0 1.5rem 1.35rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .mini-faq-answer p {
+    font-size: 0.94rem;
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.72);
+    padding-top: 0.85rem;
+  }
+
+  /* Free Audit Final Action Card */
+  .seo-action-card {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 24px 50px -15px rgba(0, 0, 0, 0.6);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .action-card-title {
+    font-size: clamp(1.75rem, 3vw, 2.45rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+    text-align: center;
+  }
+
+  .action-card-lead {
+    font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 650px;
+    margin: 0 auto 2rem;
+    text-wrap: balance;
+    text-align: center;
+  }
+
+  .action-buttons-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .action-btn {
+    padding: 0.82rem 1.6rem;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 640px) {
+    .step-row-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .action-buttons-wrap {
+      flex-direction: column;
+      width: 100%;
+    }
+    .action-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

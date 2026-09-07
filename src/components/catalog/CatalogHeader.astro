@@ -1,4 +1,5 @@
 ---
+import ArrowRight from '../ArrowRight.astro';
 interface Props {
   totalProducts: number;
 }
@@ -11,7 +12,7 @@ const { totalProducts } = Astro.props;
     <div class="header-content-row">
       <div class="header-left">
         <nav class="b2b-breadcrumb" aria-label="Navegación secundaria">
-          <a href="/" class="back-link"><span aria-hidden="true">←</span><span>Inicio</span></a>
+          <a href="/" class="back-link"><ArrowRight direction="left" /><span>Inicio</span></a>
           <span class="sep">/</span>
           <span class="curr">Catálogo de Productos</span>
         </nav>
