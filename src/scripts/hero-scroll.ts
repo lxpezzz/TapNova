@@ -7,6 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 export function initHeroScroll(): () => void {
+  if (typeof window === 'undefined' || window.innerWidth < 1024) {
+    return () => {};
+  }
   const sequence = document.getElementById('hero-sequence');
   if (!sequence || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return () => {};

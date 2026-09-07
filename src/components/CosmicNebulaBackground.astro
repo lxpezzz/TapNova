@@ -58,6 +58,9 @@ const { class: className = '' } = Astro.props;
     background-color: var(--bg-black, #050505);
     user-select: none;
     -webkit-user-select: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
   /* Deep Space Substrate: Subtle radial space curvature */
@@ -384,6 +387,39 @@ const { class: className = '' } = Astro.props;
     }
   }
 
+  /* Mobile Hardware Optimization (< 1024px):
+     Eliminates 7 massive GPU blur layers, mix-blend-mode raster thrashing,
+     SVG feTurbulence filter re-renders, and 60fps canvas animation on mobile phones.
+     Provides clean, silky smooth 120Hz native scrolling with zero flicker. */
+  @media (max-width: 1023px) {
+    .nebula-clouds-chamber {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      will-change: auto;
+      transform: none !important;
+      background:
+        radial-gradient(ellipse at 85% 15%, rgba(255, 157, 36, 0.15) 0%, rgba(254, 237, 122, 0.08) 30%, transparent 65%),
+        radial-gradient(ellipse at 15% 40%, rgba(223, 145, 247, 0.14) 0%, rgba(147, 51, 234, 0.06) 35%, transparent 65%),
+        radial-gradient(ellipse at 80% 85%, rgba(255, 132, 0, 0.12) 0%, rgba(224, 86, 253, 0.05) 30%, transparent 60%);
+    }
+
+    .nebula-gas {
+      display: none !important;
+      animation: none !important;
+      filter: none !important;
+      will-change: auto !important;
+    }
+
+    .nebula-grain-overlay {
+      display: none !important;
+    }
+
+    .nebula-stardust-canvas {
+      display: none !important;
+    }
+  }
+
   /* Accessibility: Prefers Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
     .gas-amber-gold,
@@ -405,6 +441,9 @@ const { class: className = '' } = Astro.props;
   // High-performance, lightweight Cosmic Stardust & Particle Drift Engine
   // Operates entirely off-main-thread when possible, with micro-draw footprint (< 0.2ms per frame)
   (() => {
+    // En móviles desactivamos el bucle canvas para garantizar máximo rendimiento y cero parpadeos
+    if (typeof window === 'undefined' || window.innerWidth < 1024) return;
+
     const canvas = document.getElementById('nebula-stardust-canvas') as HTMLCanvasElement | null;
     const chamber = document.getElementById('nebula-chamber');
     if (!canvas) return;

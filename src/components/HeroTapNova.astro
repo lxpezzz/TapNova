@@ -686,6 +686,18 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
       display: none !important;
     }
 
+    .hero-ambient-canvas {
+      width: min(100%, 340px);
+      height: 340px;
+      filter: none;
+      background: radial-gradient(
+        circle,
+        rgba(255, 157, 36, 0.12) 0%,
+        rgba(223, 145, 247, 0.06) 45%,
+        transparent 70%
+      );
+    }
+
     /* Ecosistema y Bridge en móvil tras el hero */
     .hero-mobile-followup {
       display: block;
@@ -722,6 +734,10 @@ import PortacuentasFeatures from "./PortacuentasFeatures.astro";
   let cleanup: (() => void) | null = null;
 
   function init() {
+    // En móviles (< 1024px) el hero utiliza flujo nativo CSS sin GSAP ni ScrollTrigger
+    if (typeof window === "undefined" || window.innerWidth < 1024) {
+      return;
+    }
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }

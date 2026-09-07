@@ -117,16 +117,33 @@ const { class: className = '', id = 'hero-organic-halo' } = Astro.props;
 
   @media (max-width: 1023px) {
     .organic-halo-container {
-      width: min(115vw, 520px);
-      height: min(115vw, 520px);
+      width: min(100%, 340px);
+      height: min(100%, 340px);
       aspect-ratio: 1;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      will-change: auto;
+    }
+
+    .supernova-aura {
+      animation: none;
+      filter: none;
+      background: radial-gradient(
+        circle,
+        rgba(223, 145, 247, 0.12) 0%,
+        rgba(255, 132, 0, 0.08) 44%,
+        transparent 70%
+      );
+    }
+
+    .supernova-motion {
+      animation: none;
     }
 
     .supernova-shell {
-      opacity: 0.32;
+      animation: none;
+      opacity: 0.28;
     }
   }
 

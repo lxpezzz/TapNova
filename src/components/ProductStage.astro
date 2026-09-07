@@ -117,13 +117,25 @@ const { class: className = '', id = 'hero-main-product-stage' } = Astro.props;
     }
 
     .layer-closed {
-      display: flex;
+      display: none !important;
+      opacity: 0 !important;
     }
 
     .layer-open {
-      opacity: 0;
-      pointer-events: none;
-      transform: none;
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto;
+      transform: none !important;
+    }
+
+    .product-3d-wrapper {
+      will-change: auto;
+      transform: none !important;
+    }
+
+    .product-layer {
+      will-change: auto;
     }
   }
 </style>
