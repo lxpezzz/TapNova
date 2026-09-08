@@ -344,6 +344,10 @@ import ArrowRight from './ArrowRight.astro';
     max-width: none;
   }
 
+  .brand-logo-tap {
+    transition: fill 0.25s ease;
+  }
+
   @media (max-width: 639px) {
     .brand-logo {
       width: 11rem;
@@ -784,9 +788,257 @@ import ArrowRight from './ArrowRight.astro';
     width: 100%;
     justify-content: center;
   }
+
+  /* =========================================================================
+     CABECERA ADAPTATIVA: MODO CLARO (SECCIÓN DE PRODUCTOS / FONDOS CLAROS)
+     - Logo Tap: Negro (#000000)
+     - Enlaces navegación (Cómo funciona -> Contacto): Gris oscuro (#374151)
+     - CTA "Solicitar presupuesto": En oscuro (#0d0d12 con texto blanco)
+     - Botones móviles (hamburguesa y carrito): Adaptados con alto contraste
+     ========================================================================= */
+
+  /* 1. Logo: Tap en negro */
+  .site-header--light .brand-logo-tap,
+  :global(body:has([data-theme="light"])) .site-header .brand-logo-tap,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .brand-logo-tap {
+    fill: #000000 !important;
+  }
+
+  /* 2. Items de navegación: de 'Cómo funciona' hasta 'Contacto' en gris oscuro */
+  .site-header--light .nav-link,
+  :global(body:has([data-theme="light"])) .site-header .nav-link,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-link {
+    color: #374151;
+  }
+
+  .site-header--light .nav-link:hover,
+  .site-header--light .nav-link:focus-visible,
+  :global(body:has([data-theme="light"])) .site-header .nav-link:hover,
+  :global(body:has([data-theme="light"])) .site-header .nav-link:focus-visible,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-link:hover,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-link:focus-visible {
+    color: #000000;
+  }
+
+  .site-header--light .dropdown-chevron,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-chevron,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-chevron {
+    color: #4b5563;
+  }
+
+  .site-header--light .nav-item-dropdown:hover .dropdown-chevron,
+  .site-header--light .nav-item-dropdown:focus-within .dropdown-chevron,
+  :global(body:has([data-theme="light"])) .site-header .nav-item-dropdown:hover .dropdown-chevron,
+  :global(body:has([data-theme="light"])) .site-header .nav-item-dropdown:focus-within .dropdown-chevron,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-item-dropdown:hover .dropdown-chevron,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-item-dropdown:focus-within .dropdown-chevron {
+    color: #000000;
+  }
+
+  /* Menú flotante de categorías en modo claro */
+  .site-header--light .nav-dropdown-menu,
+  :global(body:has([data-theme="light"])) .site-header .nav-dropdown-menu,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .nav-dropdown-menu {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  }
+
+  .site-header--light .dropdown-link,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-link,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-link {
+    color: #4b5563;
+  }
+
+  .site-header--light .dropdown-link:hover,
+  .site-header--light .dropdown-link:focus-visible,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-link:hover,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-link:focus-visible,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-link:hover,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-link:focus-visible {
+    color: #000000;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .site-header--light .dropdown-link:hover .dropdown-label,
+  .site-header--light .dropdown-link:focus-visible .dropdown-label,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-link:hover .dropdown-label,
+  :global(body:has([data-theme="light"])) .site-header .dropdown-link:focus-visible .dropdown-label,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-link:hover .dropdown-label,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .dropdown-link:focus-visible .dropdown-label {
+    color: var(--accent-orange);
+  }
+
+  /* 3. Botón 'Solicitar presupuesto' en oscuro */
+  .site-header--light .btn-nav-cta,
+  :global(body:has([data-theme="light"])) .site-header .btn-nav-cta,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .btn-nav-cta {
+    background: #0d0d12 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  .site-header--light .btn-nav-cta:hover,
+  :global(body:has([data-theme="light"])) .site-header .btn-nav-cta:hover,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .btn-nav-cta:hover {
+    background: #1e1e24 !important;
+    border-color: rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.24) !important;
+    transform: translateY(-1px);
+    color: #ffffff !important;
+  }
+
+  .site-header--light .btn-nav-cta .btn-icon,
+  :global(body:has([data-theme="light"])) .site-header .btn-nav-cta .btn-icon,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .btn-nav-cta .btn-icon {
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
+  }
+
+  .site-header--light .btn-nav-cta:hover .btn-icon,
+  :global(body:has([data-theme="light"])) .site-header .btn-nav-cta:hover .btn-icon,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .btn-nav-cta:hover .btn-icon {
+    background: rgba(255, 255, 255, 0.26) !important;
+    transform: translateX(2px);
+  }
+
+  /* 4. Controles Mobile en modo claro (Hamburguesa y Carrito) */
+  .site-header--light .mobile-toggle,
+  :global(body:has([data-theme="light"])) .site-header .mobile-toggle,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .mobile-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .site-header--light .hamburger-line,
+  :global(body:has([data-theme="light"])) .site-header .hamburger-line,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .hamburger-line {
+    background: #18181b;
+  }
+
+  .site-header--light .mobile-header-cart-btn,
+  :global(body:has([data-theme="light"])) .site-header .mobile-header-cart-btn,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .mobile-header-cart-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #18181b;
+  }
+
+  .site-header--light .mobile-cart-icon-box,
+  :global(body:has([data-theme="light"])) .site-header .mobile-cart-icon-box,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .mobile-cart-icon-box {
+    color: #18181b;
+  }
+
+  .site-header--light .mobile-nav-cart-badge,
+  :global(body:has([data-theme="light"])) .site-header .mobile-nav-cart-badge,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .mobile-nav-cart-badge {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.16);
+    color: #18181b;
+  }
+
+  .site-header--light .mobile-nav-cart-badge.has-items,
+  :global(body:has([data-theme="light"])) .site-header .mobile-nav-cart-badge.has-items,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header .mobile-nav-cart-badge.has-items {
+    background: var(--accent-orange);
+    color: #050508;
+    border-color: var(--accent-orange);
+  }
+
+  /* Fondo sutil con desenfoque al hacer scroll en secciones claras */
+  .site-header--light.scrolled,
+  :global(body:has([data-theme="light"])) .site-header.scrolled,
+  :global(body:has(.b2b-marketplace-page[data-theme="light"])) .site-header.scrolled {
+    background: rgba(245, 243, 239, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
 </style>
 
 <script>
+  function isElementLuminant(el: HTMLElement): boolean {
+    if (
+      el.dataset.theme === "light" ||
+      el.dataset.headerTheme === "light" ||
+      el.classList.contains("light-theme")
+    ) {
+      return true;
+    }
+    try {
+      const style = window.getComputedStyle(el);
+      const bg = style.backgroundColor;
+      const rgbMatch = bg.match(
+        /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/,
+      );
+      if (rgbMatch) {
+        const r = parseInt(rgbMatch[1], 10);
+        const g = parseInt(rgbMatch[2], 10);
+        const b = parseInt(rgbMatch[3], 10);
+        const a = rgbMatch[4] !== undefined ? parseFloat(rgbMatch[4]) : 1;
+        if (a > 0.25) {
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          if (luminance > 0.6) return true;
+        }
+      }
+    } catch (err) {}
+    return false;
+  }
+
+  function updateHeaderTheme() {
+    const header = document.getElementById("site-header");
+    if (!header) return;
+
+    const isScrolled = window.scrollY > 20;
+    header.classList.toggle("scrolled", isScrolled);
+
+    // Si la página completa es /productos o el main tiene tema claro
+    const lightMain = document.querySelector(
+      'main[data-theme="light"], .b2b-marketplace-page[data-theme="light"]',
+    );
+    const isProductPage =
+      window.location.pathname.startsWith("/productos") ||
+      window.location.pathname.startsWith("/catalogo");
+
+    // Buscar si el footer (oscuro) está tocando el header
+    const headerRect = header.getBoundingClientRect();
+    const headerCheckY = headerRect.top + Math.min(headerRect.height / 2, 35);
+
+    const footer = document.querySelector(".site-footer, footer");
+    if (footer) {
+      const fRect = footer.getBoundingClientRect();
+      if (fRect.top <= headerCheckY) {
+        header.classList.remove("site-header--light");
+        return;
+      }
+    }
+
+    if (lightMain || isProductPage) {
+      header.classList.add("site-header--light");
+      return;
+    }
+
+    // Detección por secciones en páginas mixtas (por ejemplo si section#productos o cualquier bloque tiene fondo claro)
+    const lightCandidates = document.querySelectorAll<HTMLElement>(
+      '[data-theme="light"], [data-header-theme="light"], #productos, .featured-products-section',
+    );
+
+    let foundLightSection = false;
+    for (const el of lightCandidates) {
+      if (isElementLuminant(el)) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= headerCheckY && rect.bottom > headerCheckY) {
+          foundLightSection = true;
+          break;
+        }
+      }
+    }
+
+    header.classList.toggle("site-header--light", foundLightSection);
+  }
+
   function initHeader() {
     const header = document.getElementById("site-header");
     const toggle = document.getElementById("mobile-menu-toggle");
@@ -795,8 +1047,14 @@ import ArrowRight from './ArrowRight.astro';
     const accordionPanel = document.getElementById("mobile-accordion-panel");
 
     if (!header || !toggle || !mobileNav) return;
+
+    updateHeaderTheme();
+
     if (header.dataset.initialized) return;
     header.dataset.initialized = "true";
+
+    window.addEventListener("scroll", updateHeaderTheme, { passive: true });
+    window.addEventListener("resize", updateHeaderTheme, { passive: true });
 
     function toggleMenu(forceClose = false) {
       const isOpen = forceClose
