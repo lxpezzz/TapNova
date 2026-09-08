@@ -1090,16 +1090,15 @@ import tarjetaNfcImg from "../assets/hero/tarjetas-nfc.webp";
     .hero-mobile-followup {
       display: block;
       width: min(100% - 32px, 480px);
-      margin: 2rem auto 0;
+      margin: 1rem auto 0;
       padding: 0;
       box-sizing: border-box;
       overflow: hidden;
     }
 
+    /* Ocultamos el bridge statement en móvil para que el carrusel conecte directamente con el marquee y el ciclo completo */
     .hero-mobile-bridge {
-      max-width: 32rem;
-      margin: 1.5rem auto 0;
-      text-align: center;
+      display: none !important;
     }
   }
 
