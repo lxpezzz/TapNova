@@ -1,45 +1,285 @@
 <div id="product-modal-backdrop" class="product-modal-backdrop" aria-hidden="true" hidden>
   <aside id="product-sheet-shell" class="product-sheet-shell" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
-    <div class="sheet-drag-handle-bar" aria-hidden="true"><div class="sheet-drag-handle"></div></div>
     <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Cerrar vista de producto">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
 
-    <div class="sheet-scrollable-body">
-      <div class="sheet-visual-stage">
-        <img id="modal-product-img" src="" alt="" class="modal-img-element" />
-        <div class="modal-stage-color-badge" id="modal-stage-color-badge" hidden>
-          <span class="stage-color-dot" id="modal-stage-color-dot"></span>
-          <span class="stage-color-name" id="modal-stage-color-name"></span>
+    <div class="product-modal-grid">
+      <!-- Columna Izquierda: Imagen (aprox 40%) -->
+      <div class="modal-media-col">
+        <div class="sheet-visual-stage">
+          <img id="modal-product-img" src="" alt="" class="modal-img-element" />
+          <div class="modal-stage-color-badge" id="modal-stage-color-badge" hidden>
+            <span class="stage-color-dot" id="modal-stage-color-dot"></span>
+            <span class="stage-color-name" id="modal-stage-color-name"></span>
+          </div>
         </div>
       </div>
 
-      <div class="sheet-content-group">
+      <!-- Columna Derecha: Información y Configuración (aprox 60%) -->
+      <div class="modal-info-col">
+        <!-- 1. Nombre -->
         <div class="modal-product-header">
           <h2 id="modal-product-title" class="modal-title">—</h2>
+          <!-- 2. Mini descripción -->
           <p id="modal-subtitle" class="modal-sub">—</p>
         </div>
+
+        <!-- 3. Precio -->
         <div class="modal-pricing-box">
           <div class="modal-price-main">
             <span id="modal-unit-price-display" class="modal-unit-price">— €</span>
             <span class="modal-unit-suffix">/ ud</span>
             <span id="modal-base-strikethrough" class="modal-base-strikethrough" hidden>— €</span>
           </div>
-          <div id="modal-discount-tag" class="modal-discount-tag" hidden><span id="modal-discount-tag-text">-20% dto.</span></div>
+          <div id="modal-discount-tag" class="modal-discount-tag" hidden>
+            <span id="modal-discount-tag-text">-20% dto.</span>
+          </div>
         </div>
 
+        <!-- 4. Selector 1 cara / 2 caras (solo expositores o si aplica) -->
+        <div class="modal-section modal-sides-section" id="modal-sides-group" hidden>
+          <div class="modal-section-label-row">
+            <span class="modal-section-label">Configuración:</span>
+            <span id="modal-active-sides-label" class="modal-section-active-val">1 cara</span>
+          </div>
+          <div class="modal-sides-chips-row" id="modal-sides-container" role="radiogroup" aria-label="Seleccionar número de caras">
+            <button type="button" class="modal-side-chip is-selected" data-side="1 cara" role="radio" aria-checked="true">
+              <div class="side-chip-header">
+                <span class="side-chip-bullet" aria-hidden="true"></span>
+                <span class="side-chip-title">1 cara</span>
+              </div>
+              <span class="side-chip-sub">Lectura frontal</span>
+            </button>
+            <button type="button" class="modal-side-chip" data-side="2 caras" role="radio" aria-checked="false">
+              <div class="side-chip-header">
+                <span class="side-chip-bullet" aria-hidden="true"></span>
+                <span class="side-chip-title">2 caras</span>
+              </div>
+              <span class="side-chip-sub">Doble cara interactiva</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Opciones de función/destino por cara para Expositores (Reseñas, Instagram, WhatsApp, Otro) con iconos SVG -->
+        <div class="modal-section modal-destination-section" id="modal-destination-group" hidden>
+          <!-- Modo 1 Cara: una sola elección -->
+          <div id="modal-dest-single-block" class="modal-dest-block">
+            <div class="modal-section-label-row">
+              <span class="modal-section-label">Función del expositor (1 cara):</span>
+              <span id="modal-active-dest-single-label" class="modal-section-active-val">Reseñas</span>
+            </div>
+            <div class="modal-dest-chips-row" role="radiogroup" aria-label="Función de la cara">
+              <button type="button" class="modal-dest-chip is-selected" data-dest-single="Reseñas" role="radio" aria-checked="true">
+                <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.19 0 10.04 0 12s.45 3.81 1.25 5.42l4.03-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                <span class="dest-chip-label">Reseñas</span>
+              </button>
+              <button type="button" class="modal-dest-chip" data-dest-single="Instagram" role="radio" aria-checked="false">
+                <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ig-grad-single" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#f09433"/>
+                      <stop offset="30%" stop-color="#e6683c"/>
+                      <stop offset="60%" stop-color="#dc2743"/>
+                      <stop offset="85%" stop-color="#cc2366"/>
+                      <stop offset="100%" stop-color="#bc1888"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-single)" stroke-width="2.2"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#ig-grad-single)" stroke-width="2.2"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#ig-grad-single)" stroke-width="2.2"/>
+                </svg>
+                <span class="dest-chip-label">Instagram</span>
+              </button>
+              <button type="button" class="modal-dest-chip" data-dest-single="WhatsApp" role="radio" aria-checked="false">
+                <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span class="dest-chip-label">WhatsApp</span>
+              </button>
+              <button type="button" class="modal-dest-chip" data-dest-single="Otro" role="radio" aria-checked="false">
+                <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span class="dest-chip-label">Otro</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Modo 2 Caras: dos elecciones obligatorias (Cara 1 y Cara 2) -->
+          <div id="modal-dest-dual-block" class="modal-dest-block" hidden>
+            <div class="modal-dest-side-subblock">
+              <div class="modal-section-label-row">
+                <span class="modal-section-label">Función Cara 1 (Frontal):</span>
+                <span id="modal-active-dest-side1-label" class="modal-section-active-val">Reseñas</span>
+              </div>
+              <div class="modal-dest-chips-row" role="radiogroup" aria-label="Función de la cara 1">
+                <button type="button" class="modal-dest-chip is-selected" data-dest-side1="Reseñas" role="radio" aria-checked="true">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.19 0 10.04 0 12s.45 3.81 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                  <span class="dest-chip-label">Reseñas</span>
+                </button>
+                <button type="button" class="modal-dest-chip" data-dest-side1="Instagram" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="ig-grad-side1" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#f09433"/>
+                        <stop offset="30%" stop-color="#e6683c"/>
+                        <stop offset="60%" stop-color="#dc2743"/>
+                        <stop offset="85%" stop-color="#cc2366"/>
+                        <stop offset="100%" stop-color="#bc1888"/>
+                      </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-side1)" stroke-width="2.2"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#ig-grad-side1)" stroke-width="2.2"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#ig-grad-side1)" stroke-width="2.2"/>
+                  </svg>
+                  <span class="dest-chip-label">Instagram</span>
+                </button>
+                <button type="button" class="modal-dest-chip" data-dest-side1="WhatsApp" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                  <span class="dest-chip-label">WhatsApp</span>
+                </button>
+                <button type="button" class="modal-dest-chip" data-dest-side1="Otro" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  <span class="dest-chip-label">Otro</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="modal-dest-side-subblock">
+              <div class="modal-section-label-row">
+                <span class="modal-section-label">Función Cara 2 (Trasera):</span>
+                <span id="modal-active-dest-side2-label" class="modal-section-active-val">Instagram</span>
+              </div>
+              <div class="modal-dest-chips-row" role="radiogroup" aria-label="Función de la cara 2">
+                <button type="button" class="modal-dest-chip" data-dest-side2="Reseñas" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.19 0 10.04 0 12s.45 3.81 1.25 5.42l4.03-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                  <span class="dest-chip-label">Reseñas</span>
+                </button>
+                <button type="button" class="modal-dest-chip is-selected" data-dest-side2="Instagram" role="radio" aria-checked="true">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="ig-grad-side2" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#f09433"/>
+                        <stop offset="30%" stop-color="#e6683c"/>
+                        <stop offset="60%" stop-color="#dc2743"/>
+                        <stop offset="85%" stop-color="#cc2366"/>
+                        <stop offset="100%" stop-color="#bc1888"/>
+                      </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-side2)" stroke-width="2.2"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#ig-grad-side2)" stroke-width="2.2"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#ig-grad-side2)" stroke-width="2.2"/>
+                  </svg>
+                  <span class="dest-chip-label">Instagram</span>
+                </button>
+                <button type="button" class="modal-dest-chip" data-dest-side2="WhatsApp" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                  <span class="dest-chip-label">WhatsApp</span>
+                </button>
+                <button type="button" class="modal-dest-chip" data-dest-side2="Otro" role="radio" aria-checked="false">
+                  <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                  <span class="dest-chip-label">Otro</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opciones de función para Tarjetas NFC (Reseñas, WhatsApp, Contacto, Instagram, Menú, Web) -->
+        <div class="modal-section modal-card-destination-section" id="modal-card-destination-group" hidden>
+          <div class="modal-section-label-row">
+            <span class="modal-section-label">Función de la tarjeta NFC:</span>
+            <span id="modal-active-card-dest-label" class="modal-section-active-val">Reseñas</span>
+          </div>
+          <div class="modal-dest-chips-row modal-dest-chips-grid-6" role="radiogroup" aria-label="Función de la tarjeta NFC">
+            <button type="button" class="modal-dest-chip is-selected" data-card-dest="Reseñas" role="radio" aria-checked="true">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.34 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.19 0 10.04 0 12s.45 3.81 1.25 5.42l4.03-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+              <span class="dest-chip-label">Reseñas</span>
+            </button>
+            <button type="button" class="modal-dest-chip" data-card-dest="WhatsApp" role="radio" aria-checked="false">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span class="dest-chip-label">WhatsApp</span>
+            </button>
+            <button type="button" class="modal-dest-chip" data-card-dest="Contacto" role="radio" aria-checked="false">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span class="dest-chip-label">Contacto</span>
+            </button>
+            <button type="button" class="modal-dest-chip" data-card-dest="Instagram" role="radio" aria-checked="false">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="ig-grad-card" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#f09433"/>
+                    <stop offset="30%" stop-color="#e6683c"/>
+                    <stop offset="60%" stop-color="#dc2743"/>
+                    <stop offset="85%" stop-color="#cc2366"/>
+                    <stop offset="100%" stop-color="#bc1888"/>
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-card)" stroke-width="2.2"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#ig-grad-card)" stroke-width="2.2"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="url(#ig-grad-card)" stroke-width="2.2"/>
+              </svg>
+              <span class="dest-chip-label">Instagram</span>
+            </button>
+            <button type="button" class="modal-dest-chip" data-card-dest="Menú" role="radio" aria-checked="false">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <span class="dest-chip-label">Menú</span>
+            </button>
+            <button type="button" class="modal-dest-chip" data-card-dest="Web" role="radio" aria-checked="false">
+              <svg class="dest-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span class="dest-chip-label">Web</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. Acabado / Color -->
         <div class="modal-section modal-swatches-section" id="modal-swatches-group">
           <div class="modal-section-label-row">
-            <span class="modal-section-label">Colores disponibles:</span>
+            <span class="modal-section-label">Acabado disponible:</span>
             <span id="modal-active-color-label" class="modal-section-active-val">—</span>
           </div>
           <div class="modal-color-chips-row" id="modal-color-swatches-container"></div>
         </div>
 
+        <!-- 6. Cantidad -->
+        <div class="modal-section modal-qty-section">
+          <div class="modal-section-label-row">
+            <span class="modal-section-label">Cantidad:</span>
+          </div>
+          <div class="modal-quantity-row">
+            <div class="modal-qty-stepper">
+              <button type="button" id="modal-qty-minus" class="modal-qty-btn" aria-label="Disminuir unidad">−</button>
+              <span id="modal-qty-val" class="modal-qty-display">1</span>
+              <button type="button" id="modal-qty-plus" class="modal-qty-btn" aria-label="Aumentar unidad">+</button>
+            </div>
+            <span class="modal-qty-subtotal-hint" id="modal-qty-total-hint">Total: — €</span>
+          </div>
+        </div>
+
+        <!-- 7. Descuento por volumen -->
         <div class="modal-section modal-tiers-section">
-          <div class="modal-section-label-row"><span class="modal-section-label">Descuentos por volumen:</span></div>
+          <div class="modal-section-label-row">
+            <span class="modal-section-label">Descuentos por volumen:</span>
+          </div>
           <div class="modal-volume-tiers-row" id="modal-volume-tiers-container">
             <button type="button" class="volume-tier-chip active" data-tier="1" aria-label="1 a 4 unidades">
               <span class="tier-qty-badge">1–4 uds</span><span class="tier-calc-val" id="tier-val-1">—</span>
@@ -53,29 +293,34 @@
           </div>
         </div>
 
-        <div class="modal-quantity-row">
-          <div class="modal-qty-stepper">
-            <button type="button" id="modal-qty-minus" class="modal-qty-btn" aria-label="Disminuir unidad">−</button>
-            <span id="modal-qty-val" class="modal-qty-display">1</span>
-            <button type="button" id="modal-qty-plus" class="modal-qty-btn" aria-label="Aumentar unidad">+</button>
-          </div>
-          <span class="modal-qty-subtotal-hint" id="modal-qty-total-hint">Total: — €</span>
-        </div>
+        <!-- 8. Botón Añadir al carrito y elementos complementarios -->
+        <div class="modal-actions-box">
+          <button type="button" id="modal-add-to-cart-btn" class="modal-add-cart-hero-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span id="modal-cta-text">Añadir 1 al carrito · — €</span>
+          </button>
 
-        <div class="modal-specs-minimal">
-          <div class="spec-line-clean"><span class="spec-k">Materiales:</span><span id="modal-materials-val" class="spec-v">—</span></div>
-          <div class="spec-line-clean"><span class="spec-k">Tecnología:</span><span id="modal-tech-val" class="spec-v">—</span></div>
+          <!-- 9. Línea discreta -->
+          <p class="modal-guarantee-line">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>NFC + QR personalizados · Garantía 2 años</span>
+          </p>
+
+          <!-- 10. Enlace secundario "Ver especificaciones" & specs compactas -->
+          <div class="modal-specs-accordion">
+            <button type="button" id="modal-specs-toggle-btn" class="modal-specs-link-btn" aria-expanded="false">
+              <span>Ver especificaciones</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="specs-chevron" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div id="modal-specs-drawer" class="modal-specs-compact" hidden>
+              <div class="spec-line-clean"><span class="spec-k">Materiales:</span><span id="modal-materials-val" class="spec-v">—</span></div>
+              <div class="spec-line-clean"><span class="spec-k">Tecnología:</span><span id="modal-tech-val" class="spec-v">—</span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="sheet-sticky-footer">
-      <button type="button" id="modal-add-to-cart-btn" class="modal-add-cart-hero-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span id="modal-cta-text">Añadir 1 al carrito · — €</span>
-      </button>
     </div>
   </aside>
 </div>

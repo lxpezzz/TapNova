@@ -15,6 +15,8 @@ interface CartItem {
   price: number;
   colorName: string | null;
   colorHex: string | null;
+  sidesName?: string | null;
+  destinationSummary?: string | null;
   quantity: number;
 }
 
@@ -83,6 +85,17 @@ function initProductCatalog() {
     swatchesGroup: byId('modal-swatches-group', root),
     swatches: byId('modal-color-swatches-container', root),
     activeColor: byId('modal-active-color-label', root),
+    sidesGroup: byId('modal-sides-group', root),
+    sidesContainer: byId('modal-sides-container', root),
+    activeSides: byId('modal-active-sides-label', root),
+    destGroup: byId('modal-destination-group', root),
+    destSingleBlock: byId('modal-dest-single-block', root),
+    destDualBlock: byId('modal-dest-dual-block', root),
+    destSingleLabel: byId('modal-active-dest-single-label', root),
+    destSide1Label: byId('modal-active-dest-side1-label', root),
+    destSide2Label: byId('modal-active-dest-side2-label', root),
+    cardDestGroup: byId('modal-card-destination-group', root),
+    cardDestLabel: byId('modal-active-card-dest-label', root),
     colorBadge: byId('modal-stage-color-badge', root),
     colorDot: byId<HTMLElement>('modal-stage-color-dot', root),
     colorName: byId('modal-stage-color-name', root),
@@ -93,6 +106,8 @@ function initProductCatalog() {
     quantityPlus: byId<HTMLButtonElement>('modal-qty-plus', root),
     materials: byId('modal-materials-val', root),
     technology: byId('modal-tech-val', root),
+    specsToggle: byId<HTMLButtonElement>('modal-specs-toggle-btn', root),
+    specsDrawer: byId('modal-specs-drawer', root),
     addToCart: byId<HTMLButtonElement>('modal-add-to-cart-btn', root),
     addToCartText: byId('modal-cta-text', root),
     cartBackdrop: byId('b2b-cart-backdrop', root),
@@ -118,6 +133,11 @@ function initProductCatalog() {
   let searchQuery = '';
   let selectedProduct: ClientProduct | null = null;
   let selectedColor: ProductColorOption | null = null;
+  let selectedSides = '1 cara';
+  let selectedDestSingle = 'Reseñas';
+  let selectedDestSide1 = 'Reseñas';
+  let selectedDestSide2 = 'Instagram';
+  let selectedCardDest = 'Reseñas';
   let modalQuantity = 1;
   let cart: CartItem[] = [];
   let touchOrigin: { x: number; y: number } | null = null;
@@ -177,8 +197,10 @@ function initProductCatalog() {
 
   const whatsappUrl = (subtotal: number, vat: number, total: number) => {
     const lines = cart.map((item) => {
-      const finish = item.colorName ? ` (Acabado: ${item.colorName})` : '';
-      return `• ${item.quantity}x ${item.name}${finish} — ${formatEuro(item.price)} / ud = ${formatEuro(item.price * item.quantity)}`;
+      const sides = item.sidesName ? ` [${item.sidesName}]` : '';
+      const dest = item.destinationSummary ? ` (${item.destinationSummary})` : '';
+      const finish = item.colorName ? ` [Acabado: ${item.colorName}]` : '';
+      return `• ${item.quantity}x ${item.name}${sides}${dest}${finish} — ${formatEuro(item.price)} / ud = ${formatEuro(item.price * item.quantity)}`;
     });
     const message = [
       '¡Hola TapNova! 👋 Quisiera solicitar presupuesto para el siguiente pedido de mi restaurante:',
@@ -222,12 +244,21 @@ function initProductCatalog() {
     const card = document.createElement('div');
     card.className = 'cart-item-card';
     card.dataset.itemId = item.id;
-    const variant = item.colorName
+    const sidesBadge = item.sidesName
+      ? `<span class="cart-item-sides-tag">${item.sidesName}</span>`
+      : '';
+    const destBadge = item.destinationSummary
+      ? `<span class="cart-item-dest-tag">${item.destinationSummary}</span>`
+      : '';
+    const colorBadge = item.colorName
       ? `<span class="cart-item-variant"><span class="cart-variant-dot" style="background-color:${item.colorHex || '#555'}"></span><span>${item.colorName}</span></span>`
+      : '';
+    const variantRow = (sidesBadge || destBadge || colorBadge)
+      ? `<div class="cart-item-variants-row">${sidesBadge}${destBadge}${colorBadge}</div>`
       : '';
     card.innerHTML = `
       <img src="${item.imageSrc}" alt="${item.imageAlt}" class="cart-item-img">
-      <div class="cart-item-details"><h4 class="cart-item-name" title="${item.name}">${item.name}</h4>${variant}<span class="cart-item-unit-price">${formatEuro(item.price)} / ud</span></div>
+      <div class="cart-item-details"><h4 class="cart-item-name" title="${item.name}">${item.name}</h4>${variantRow}<span class="cart-item-unit-price">${formatEuro(item.price)} / ud</span></div>
       <div class="cart-item-actions">
         <button type="button" class="cart-item-delete-btn" data-cart-action="delete" data-id="${item.id}" aria-label="Eliminar ${item.name}">✕</button>
         <div class="cart-item-stepper"><button type="button" class="cart-stepper-btn" data-cart-action="dec" data-id="${item.id}" aria-label="Disminuir unidad">−</button><span class="cart-stepper-qty">${item.quantity}</span><button type="button" class="cart-stepper-btn" data-cart-action="inc" data-id="${item.id}" aria-label="Aumentar unidad">+</button></div>
@@ -255,13 +286,6 @@ function initProductCatalog() {
     if (refs.clearSearch) refs.clearSearch.hidden = searchQuery.length === 0;
   }
 
-  const centerCategory = (control: HTMLElement) => {
-    const track = control.closest<HTMLElement>('.mobile-category-scroll-track');
-    if (!track) return;
-    const left = control.offsetLeft - track.clientWidth / 2 + control.offsetWidth / 2;
-    track.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-  };
-
   const scrollToCatalog = () => {
     if (!refs.sectionsWrap) return;
     const offset = window.innerWidth <= 960 ? 125 : 90;
@@ -275,7 +299,6 @@ function initProductCatalog() {
       const active = control.dataset.category === category;
       control.classList.toggle('active', active);
       control.setAttribute('aria-selected', String(active));
-      if (active && control.classList.contains('mobile-cat-pill')) centerCategory(control);
     });
     filterCatalog();
     if (scroll) scrollToCatalog();
@@ -346,7 +369,68 @@ function initProductCatalog() {
     ([1, 5, 10] as const).forEach((quantity) => {
       setText(byId(`tier-val-${quantity}`, root), `${formatEuro(unitPriceFor(product.price, quantity), false)} / ud`);
     });
-    renderColors(product);
+    const isExpositor = Boolean(product.hasSidesOption || product.categoryId === 'expositores');
+    const isTarjeta = product.categoryId === 'tarjetas';
+    if (refs.sidesGroup) refs.sidesGroup.hidden = !isExpositor;
+    if (refs.destGroup) refs.destGroup.hidden = !isExpositor;
+    if (refs.cardDestGroup) refs.cardDestGroup.hidden = !isTarjeta;
+
+    if (isTarjeta) {
+      selectedCardDest = 'Reseñas';
+      setText(refs.cardDestLabel, 'Reseñas');
+      all<HTMLButtonElement>('[data-card-dest]', refs.cardDestGroup || root).forEach((chip) => {
+        const isSel = chip.dataset.cardDest === 'Reseñas';
+        chip.classList.toggle('is-selected', isSel);
+        chip.setAttribute('aria-checked', String(isSel));
+      });
+    }
+
+    selectedSides = '1 cara';
+    setText(refs.activeSides, '1 cara');
+    all('.modal-side-chip', refs.sidesContainer || root).forEach((chip) => {
+      const isSelected = chip.dataset.side === '1 cara';
+      chip.classList.toggle('is-selected', isSelected);
+      chip.setAttribute('aria-checked', String(isSelected));
+    });
+
+    // Reset destinations for expositor
+    selectedDestSingle = 'Reseñas';
+    selectedDestSide1 = 'Reseñas';
+    selectedDestSide2 = 'Instagram';
+    setText(refs.destSingleLabel, 'Reseñas');
+    setText(refs.destSide1Label, 'Reseñas');
+    setText(refs.destSide2Label, 'Instagram');
+    if (refs.destSingleBlock) refs.destSingleBlock.hidden = false;
+    if (refs.destDualBlock) refs.destDualBlock.hidden = true;
+
+    all<HTMLButtonElement>('[data-dest-single]', refs.destSingleBlock || root).forEach((chip) => {
+      const isSel = chip.dataset.destSingle === 'Reseñas';
+      chip.classList.toggle('is-selected', isSel);
+      chip.setAttribute('aria-checked', String(isSel));
+    });
+    all<HTMLButtonElement>('[data-dest-side1]', refs.destDualBlock || root).forEach((chip) => {
+      const isSel = chip.dataset.destSide1 === 'Reseñas';
+      chip.classList.toggle('is-selected', isSel);
+      chip.setAttribute('aria-checked', String(isSel));
+    });
+    all<HTMLButtonElement>('[data-dest-side2]', refs.destDualBlock || root).forEach((chip) => {
+      const isSel = chip.dataset.destSide2 === 'Instagram';
+      chip.classList.toggle('is-selected', isSel);
+      chip.setAttribute('aria-checked', String(isSel));
+    });
+
+    if (refs.specsDrawer) refs.specsDrawer.hidden = true;
+    if (refs.specsToggle) refs.specsToggle.setAttribute('aria-expanded', 'false');
+
+    // No se va a poder elegir el color en los expositores ni en tarjetas (solo color negro)
+    if (isExpositor || isTarjeta) {
+      if (refs.swatchesGroup) refs.swatchesGroup.hidden = true;
+      if (refs.colorBadge) refs.colorBadge.hidden = true;
+      selectedColor = isTarjeta ? (product.colors[0] || null) : null;
+    } else {
+      renderColors(product);
+    }
+
     updateModalPrice();
     openOverlay(refs.productBackdrop);
   }
@@ -361,7 +445,26 @@ function initProductCatalog() {
 
   function addSelectedProduct() {
     if (!selectedProduct) return;
-    const id = `${selectedProduct.id}__${selectedColor?.name || 'default'}`;
+    const isExpositor = Boolean(selectedProduct.hasSidesOption || selectedProduct.categoryId === 'expositores');
+    const isTarjeta = selectedProduct.categoryId === 'tarjetas';
+    const sidesPart = isExpositor ? `__${selectedSides}` : '';
+
+    let destinationSummary: string | null = null;
+    let destPart = '';
+    if (isExpositor) {
+      if (selectedSides === '2 caras') {
+        destinationSummary = `Cara 1: ${selectedDestSide1} · Cara 2: ${selectedDestSide2}`;
+        destPart = `__${selectedDestSide1}__${selectedDestSide2}`;
+      } else {
+        destinationSummary = `Función: ${selectedDestSingle}`;
+        destPart = `__${selectedDestSingle}`;
+      }
+    } else if (isTarjeta) {
+      destinationSummary = `Función: ${selectedCardDest}`;
+      destPart = `__${selectedCardDest}`;
+    }
+
+    const id = `${selectedProduct.id}__${selectedColor?.name || 'default'}${sidesPart}${destPart}`;
     const existing = cart.find((item) => item.id === id);
     if (existing) {
       existing.quantity += modalQuantity;
@@ -373,6 +476,8 @@ function initProductCatalog() {
         imageAlt: selectedProduct.imageAlt, basePrice: selectedProduct.price,
         price: unitPriceFor(selectedProduct.price, modalQuantity),
         colorName: selectedColor?.name || null, colorHex: selectedColor?.hex || null,
+        sidesName: isExpositor ? selectedSides : null,
+        destinationSummary,
         quantity: modalQuantity
       });
     }
@@ -415,6 +520,65 @@ function initProductCatalog() {
       all('.modal-color-chip', refs.swatches || root).forEach((chip) => chip.classList.toggle('is-selected', chip === color));
       setText(refs.activeColor, selectedColor?.name || '—');
       return updateColorBadge(selectedColor);
+    }
+    const sideChip = target.closest<HTMLButtonElement>('[data-side]');
+    if (sideChip && selectedProduct) {
+      selectedSides = sideChip.dataset.side || '1 cara';
+      all('.modal-side-chip', refs.sidesContainer || root).forEach((chip) => {
+        const isSelected = chip === sideChip;
+        chip.classList.toggle('is-selected', isSelected);
+        chip.setAttribute('aria-checked', String(isSelected));
+      });
+      setText(refs.activeSides, selectedSides);
+
+      const isDual = selectedSides === '2 caras';
+      if (refs.destSingleBlock) refs.destSingleBlock.hidden = isDual;
+      if (refs.destDualBlock) refs.destDualBlock.hidden = !isDual;
+      return;
+    }
+    const destSingleBtn = target.closest<HTMLButtonElement>('[data-dest-single]');
+    if (destSingleBtn) {
+      selectedDestSingle = destSingleBtn.dataset.destSingle || 'Reseñas';
+      all<HTMLButtonElement>('[data-dest-single]', refs.destSingleBlock || root).forEach((btn) => {
+        const isSel = btn === destSingleBtn;
+        btn.classList.toggle('is-selected', isSel);
+        btn.setAttribute('aria-checked', String(isSel));
+      });
+      setText(refs.destSingleLabel, selectedDestSingle);
+      return;
+    }
+    const destSide1Btn = target.closest<HTMLButtonElement>('[data-dest-side1]');
+    if (destSide1Btn) {
+      selectedDestSide1 = destSide1Btn.dataset.destSide1 || 'Reseñas';
+      all<HTMLButtonElement>('[data-dest-side1]', refs.destDualBlock || root).forEach((btn) => {
+        const isSel = btn === destSide1Btn;
+        btn.classList.toggle('is-selected', isSel);
+        btn.setAttribute('aria-checked', String(isSel));
+      });
+      setText(refs.destSide1Label, selectedDestSide1);
+      return;
+    }
+    const destSide2Btn = target.closest<HTMLButtonElement>('[data-dest-side2]');
+    if (destSide2Btn) {
+      selectedDestSide2 = destSide2Btn.dataset.destSide2 || 'Instagram';
+      all<HTMLButtonElement>('[data-dest-side2]', refs.destDualBlock || root).forEach((btn) => {
+        const isSel = btn === destSide2Btn;
+        btn.classList.toggle('is-selected', isSel);
+        btn.setAttribute('aria-checked', String(isSel));
+      });
+      setText(refs.destSide2Label, selectedDestSide2);
+      return;
+    }
+    const cardDestBtn = target.closest<HTMLButtonElement>('[data-card-dest]');
+    if (cardDestBtn) {
+      selectedCardDest = cardDestBtn.dataset.cardDest || 'Reseñas';
+      all<HTMLButtonElement>('[data-card-dest]', refs.cardDestGroup || root).forEach((btn) => {
+        const isSel = btn === cardDestBtn;
+        btn.classList.toggle('is-selected', isSel);
+        btn.setAttribute('aria-checked', String(isSel));
+      });
+      setText(refs.cardDestLabel, selectedCardDest);
+      return;
     }
     const tier = target.closest<HTMLButtonElement>('[data-tier]');
     if (tier) {
@@ -475,6 +639,12 @@ function initProductCatalog() {
     updateModalPrice();
   }, listenerOptions);
   refs.addToCart?.addEventListener('click', addSelectedProduct, listenerOptions);
+  refs.specsToggle?.addEventListener('click', () => {
+    if (!refs.specsDrawer) return;
+    const isHidden = refs.specsDrawer.hidden;
+    refs.specsDrawer.hidden = !isHidden;
+    refs.specsToggle?.setAttribute('aria-expanded', String(isHidden));
+  }, listenerOptions);
   refs.productClose?.addEventListener('click', () => closeOverlay(refs.productBackdrop), listenerOptions);
   refs.cartClose?.addEventListener('click', () => closeOverlay(refs.cartBackdrop), listenerOptions);
   refs.floatingCart?.addEventListener('click', () => openOverlay(refs.cartBackdrop), listenerOptions);

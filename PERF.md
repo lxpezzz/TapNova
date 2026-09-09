@@ -11,6 +11,8 @@ Measurements use `npm run build` on the same machine and production mode.
 | Skip the desktop sticky-explainer handler below 992 px | Scroll calculations ran on mobile against a hidden track | No explainer scroll handler on mobile | Kept: removes redundant mobile work |
 | Suspend the product-showcase animation outside its viewport, while paused, and in background tabs | One `requestAnimationFrame` loop remained scheduled for the entire visit | No animation frames are scheduled unless the rotating showcase is visible and active | Kept: preserves the cycle while removing unnecessary main-thread work |
 | Move the Cormorant font request out of the generated CSS `@import` chain and preconnect to its origins | Font connection and stylesheet were discovered while parsing the main stylesheet | Font stylesheet is discovered directly from the document head, with connections started early | Kept: preserves typography and shortens the font-request critical path |
+| Remove unreferenced catalogue styles and costly animated aura filters | `/productos` CSS: 59,008 B | 50,203 B | Kept: 14.9% less transferred CSS; appearance is preserved with static auras. |
+| Defer rendering of catalogue categories outside the initial viewport | Mobile style/layout work: 1,060 ms; LCP: 2.59 s | 971 ms; 2.43 s | Kept: 8.4% less style/layout work and 162 ms faster LCP in the same local Lighthouse configuration. |
 
 ## Verification
 

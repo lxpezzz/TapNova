@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import ArrowRight from '../ArrowRight.astro';
 import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
 ---
 
@@ -19,26 +18,345 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
       const products = CATALOG_PRODUCTS.filter((product) => product.categoryId === category.id);
       if (!products.length) return null;
 
+      if (category.id === 'portacuentas') {
+        const basicos = products.filter((p) => p.gama === 'basicos');
+        const premium = products.filter((p) => p.gama === 'premium');
+        const basicosPrice = basicos[0]?.price || 49;
+        const premiumPrice = premium[0]?.price || 79;
+
+        return (
+          <section class="catalog-category-section section-portacuentas portacuentas-apple-section" id={category.id} data-section-category={category.id}>
+            <!-- 1. Encabezado general “Portacuentas Inteligentes” -->
+            <div class="category-header-editorial portacuentas-main-header">
+              <div class="cat-header-titles">
+                <h2 class="cat-section-title">{category.name}</h2>
+                <p class="cat-section-desc">{category.description}</p>
+              </div>
+            </div>
+
+            <!-- 2. Subcategoría “BÁSICOS”, con una breve descripción y el precio de la gama mostrado una sola vez en el encabezado -->
+            <div class="portacuentas-gama-block">
+              <div class="gama-header-row">
+                <div class="gama-header-info">
+                  <h3 class="gama-title">BÁSICOS</h3>
+                  <p class="gama-desc">Piel vegana hidrorepelente con grabado directo en bajo relieve y chip NFC de lectura instantánea.</p>
+                </div>
+                <div class="gama-price-callout">
+                  <span class="gama-price-val">{basicosPrice} € <span class="gama-price-unit">/ ud</span></span>
+                </div>
+              </div>
+
+              <!-- 3. Grid de productos básicos -->
+              <div class="portacuentas-apple-grid">
+                {basicos.map((product) => (
+                  <article
+                    class="portacuentas-apple-card"
+                    id={`card-${product.id}`}
+                    data-product-card
+                    data-category-id={product.categoryId}
+                    data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} ${product.tags.join(' ')}`.toLowerCase()}
+                    data-product-json={JSON.stringify(product)}
+                    tabindex="0"
+                    role="button"
+                    aria-label={`Ver producto ${product.name}`}
+                  >
+                    <div class="apple-card-visual">
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt}
+                        width={640}
+                        height={580}
+                        widths={[360, 520, 640]}
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 24vw"
+                        format="webp"
+                        quality={92}
+                        loading="lazy"
+                        decoding="async"
+                        class="apple-card-img"
+                      />
+                    </div>
+                    <div class="apple-card-meta">
+                      <h4 class="apple-card-title">{product.name}</h4>
+                      <p class="apple-card-sub">{product.subtitle}</p>
+                      <span class="apple-card-cta">
+                        <span>Ver producto</span>
+                        <span class="cta-arrow" aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <!-- 4. Subcategoría “PREMIUM”, con una breve descripción y el precio de la gama mostrado una sola vez en el encabezado -->
+            <div class="portacuentas-gama-block portacuentas-gama-premium">
+              <div class="gama-header-row">
+                <div class="gama-header-info">
+                  <h3 class="gama-title">PREMIUM</h3>
+                  <p class="gama-desc">Materiales nobles con placa de aleación de titanio cepillado antihuellas y ensamblaje de sala.</p>
+                </div>
+                <div class="gama-price-callout">
+                  <span class="gama-price-val">{premiumPrice} € <span class="gama-price-unit">/ ud</span></span>
+                </div>
+              </div>
+
+              <!-- 5. Grid de productos premium -->
+              <div class="portacuentas-apple-grid">
+                {premium.map((product) => (
+                  <article
+                    class="portacuentas-apple-card"
+                    id={`card-${product.id}`}
+                    data-product-card
+                    data-category-id={product.categoryId}
+                    data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} ${product.tags.join(' ')}`.toLowerCase()}
+                    data-product-json={JSON.stringify(product)}
+                    tabindex="0"
+                    role="button"
+                    aria-label={`Ver producto ${product.name}`}
+                  >
+                    <div class="apple-card-visual">
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt}
+                        width={640}
+                        height={580}
+                        widths={[360, 520, 640]}
+                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 24vw"
+                        format="webp"
+                        quality={92}
+                        loading="lazy"
+                        decoding="async"
+                        class="apple-card-img"
+                      />
+                    </div>
+                    <div class="apple-card-meta">
+                      <h4 class="apple-card-title">{product.name}</h4>
+                      <p class="apple-card-sub">{product.subtitle}</p>
+                      <span class="apple-card-cta">
+                        <span>Ver producto</span>
+                        <span class="cta-arrow" aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      // --- 2. SECCIÓN PORTAMENÚS PERSONALIZADOS ---
+      if (category.id === 'portamenus') {
+        const commonPrice = products[0]?.price || 49;
+
+        return (
+          <section class="catalog-category-section section-portamenus portamenus-apple-section" id={category.id} data-section-category={category.id}>
+            <!-- Encabezado: título “Portamenús personalizados”, descripción, precio único común y “Personalización incluida” -->
+            <div class="category-header-editorial portamenus-main-header">
+              <div class="portamenus-header-row">
+                <div class="cat-header-titles">
+                  <h2 class="cat-section-title">Portamenús personalizados</h2>
+                  <p class="cat-section-desc">Formatos para carta física o interactiva con NFC y QR, fabricados a medida y adaptados a la imagen de tu restaurante.</p>
+                </div>
+                <div class="portamenus-price-callout">
+                  <span class="portamenus-price-val">{commonPrice} € <span class="portamenus-price-unit">/ ud</span></span>
+                  <span class="portamenus-price-note">Personalización incluida</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grid de 3 columnas iguales en desktop, 2 en tablet y 1 en móvil -->
+            <div class="portamenus-trio-grid">
+              {products.slice(0, 3).map((product) => (
+                <article
+                  class="portamenus-trio-card"
+                  id={`card-${product.id}`}
+                  data-product-card
+                  data-category-id={product.categoryId}
+                  data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} ${product.tags.join(' ')}`.toLowerCase()}
+                  data-product-json={JSON.stringify(product)}
+                  tabindex="0"
+                  role="button"
+                  aria-label={`Ver producto ${product.name}`}
+                >
+                  <div class="apple-card-visual portamenus-card-visual">
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt}
+                      width={680}
+                      height={600}
+                      widths={[360, 520, 680]}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 380px"
+                      format="webp"
+                      quality={92}
+                      loading="lazy"
+                      decoding="async"
+                      class="apple-card-img"
+                    />
+                  </div>
+                  <div class="apple-card-meta portamenus-card-meta">
+                    <h4 class="apple-card-title">{product.name}</h4>
+                    <p class="apple-card-sub">{product.subtitle}</p>
+                    <span class="apple-card-cta">
+                      <span>Ver producto</span>
+                      <span class="cta-arrow" aria-hidden="true">→</span>
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        );
+      }
+
+      // --- 3. SECCIÓN EXPOSITORES DE BARRA & CAJA ---
+      if (category.id === 'expositores') {
+        const basicos = products.filter((p) => p.gama === 'basicos');
+        const premium = products.filter((p) => p.gama === 'premium');
+        const basicosPrice = basicos[0]?.price;
+        const premiumPrice = premium[0]?.price;
+
+        return (
+          <section class="catalog-category-section section-expositores expositores-apple-section" id={category.id} data-section-category={category.id}>
+            <!-- 1. Encabezado general “Expositores” -->
+            <div class="category-header-editorial expositores-main-header">
+              <div class="cat-header-titles">
+                <h2 class="cat-section-title">Expositores</h2>
+                <p class="cat-section-desc">{category.description}</p>
+              </div>
+            </div>
+
+            <!-- 2. Subcategoría “BÁSICO”, con una breve descripción y el precio de la gama mostrado una sola vez en el encabezado -->
+            <div class="expositores-gama-block">
+              <div class="gama-header-row">
+                <div class="gama-header-info">
+                  <h3 class="gama-title">BÁSICO</h3>
+                  <p class="gama-desc">Presencia mínima en aluminio anodizado sobre peana antideslizante para cobro ágil y mostrador TPV.</p>
+                </div>
+                {basicosPrice && (
+                  <div class="gama-price-callout">
+                    <span class="gama-price-val">{basicosPrice} € <span class="gama-price-unit">/ ud</span></span>
+                  </div>
+                )}
+              </div>
+
+              <!-- 3. Grid de modelos básicos -->
+              <div class="expositores-apple-grid">
+                {basicos.map((product) => (
+                  <article
+                    class="expositores-apple-card"
+                    id={`card-${product.id}`}
+                    data-product-card
+                    data-category-id={product.categoryId}
+                    data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} ${product.tags.join(' ')}`.toLowerCase()}
+                    data-product-json={JSON.stringify(product)}
+                    tabindex="0"
+                    role="button"
+                    aria-label={`Ver producto ${product.name}`}
+                  >
+                    <div class="apple-card-visual expositores-card-visual">
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt}
+                        width={720}
+                        height={640}
+                        widths={[360, 520, 720]}
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 540px"
+                        format="webp"
+                        quality={94}
+                        loading="lazy"
+                        decoding="async"
+                        class="apple-card-img expositores-card-img"
+                      />
+                    </div>
+                    <div class="apple-card-meta expositores-card-meta">
+                      <span class="expositor-sides-note">Disponible en 1 o 2 caras</span>
+                      <h4 class="apple-card-title expositores-card-title">{product.name}</h4>
+                      <p class="apple-card-sub expositores-card-sub">{product.subtitle}</p>
+                      <span class="apple-card-cta">
+                        <span>Ver producto</span>
+                        <span class="cta-arrow" aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <!-- 4. Subcategoría “PREMIUM”, con una breve descripción y el precio de la gama mostrado una sola vez en el encabezado -->
+            <div class="expositores-gama-block expositores-gama-premium">
+              <div class="gama-header-row">
+                <div class="gama-header-info">
+                  <h3 class="gama-title">PREMIUM</h3>
+                  <p class="gama-desc">Mecanizado artesanal en bloque de madera noble de nogal con ángulo de 65° y antena NFC de largo alcance.</p>
+                </div>
+                {premiumPrice && (
+                  <div class="gama-price-callout">
+                    <span class="gama-price-val">{premiumPrice} € <span class="gama-price-unit">/ ud</span></span>
+                  </div>
+                )}
+              </div>
+
+              <!-- 5. Grid de modelos premium -->
+              <div class="expositores-apple-grid">
+                {premium.map((product) => (
+                  <article
+                    class="expositores-apple-card"
+                    id={`card-${product.id}`}
+                    data-product-card
+                    data-category-id={product.categoryId}
+                    data-search-terms={`${product.name} ${product.shortName} ${product.materials} ${product.tech} 1 cara 2 caras ${product.tags.join(' ')}`.toLowerCase()}
+                    data-product-json={JSON.stringify(product)}
+                    tabindex="0"
+                    role="button"
+                    aria-label={`Ver producto ${product.name}`}
+                  >
+                    <div class="apple-card-visual expositores-card-visual">
+                      <Image
+                        src={product.image}
+                        alt={product.imageAlt}
+                        width={720}
+                        height={640}
+                        widths={[360, 520, 720]}
+                        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 540px"
+                        format="webp"
+                        quality={94}
+                        loading="lazy"
+                        decoding="async"
+                        class="apple-card-img expositores-card-img"
+                      />
+                    </div>
+                    <div class="apple-card-meta expositores-card-meta">
+                      <span class="expositor-sides-note">Disponible en 1 o 2 caras</span>
+                      <h4 class="apple-card-title expositores-card-title">{product.name}</h4>
+                      <p class="apple-card-sub expositores-card-sub">{product.subtitle}</p>
+                      <span class="apple-card-cta">
+                        <span>Ver producto</span>
+                        <span class="cta-arrow" aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      // --- 4. SECCIONES GENERALES (TARJETAS, POSAVASOS, PEGATINAS) CON ESTÉTICA APPLE STORE ---
       return (
-        <section class="catalog-category-section" id={category.id} data-section-category={category.id}>
+        <section class={`catalog-category-section section-${category.id}`} id={category.id} data-section-category={category.id}>
           <div class="category-header-editorial">
             <div class="cat-header-titles">
-              <span class="cat-zone-badge">{category.zone}</span>
               <h2 class="cat-section-title">{category.name}</h2>
               <p class="cat-section-desc">{category.description}</p>
             </div>
-            <span class="cat-section-count">{products.length} modelos</span>
           </div>
 
-          <div class="mobile-swipe-hint" aria-hidden="true">
-            <span class="swipe-hint-txt">Desliza horizontalmente para explorar modelos</span>
-            <span class="swipe-hint-arr"><ArrowRight /></span>
-          </div>
-
-          <div class="products-editorial-showcase">
+          <div class="category-apple-grid">
             {products.map((product) => (
               <article
-                class="product-editorial-item"
+                class="catalog-apple-card"
                 id={`card-${product.id}`}
                 data-product-card
                 data-category-id={product.categoryId}
@@ -46,45 +364,30 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
                 data-product-json={JSON.stringify(product)}
                 tabindex="0"
                 role="button"
-                aria-label={`Ver opciones de color y detalles para ${product.name}`}
+                aria-label={`Ver producto ${product.name}`}
               >
-                <div class="product-visual-stage">
+                <div class="apple-card-visual">
                   <Image
                     src={product.image}
                     alt={product.imageAlt}
                     width={640}
-                    height={520}
-                    widths={[360, 520, 640, 800]}
-                    sizes="(max-width: 640px) 82vw, (max-width: 960px) 70vw, (max-width: 1280px) 36vw, 24vw"
+                    height={580}
+                    widths={[360, 520, 640]}
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 500px"
                     format="webp"
                     quality={92}
                     loading="lazy"
                     decoding="async"
-                    class="product-stage-img"
+                    class="apple-card-img"
                   />
                 </div>
-                <div class="product-editorial-info">
-                  <div class="product-headline-row">
-                    <h3 class="product-item-title">{product.name}</h3>
-                    <span class="product-item-price">{product.price} €</span>
-                  </div>
-                  <p class="product-item-descriptor">{product.subtitle}</p>
-                  <div class="product-footer-row">
-                    <div class="product-variant-swatches" title={`${product.colors.length} acabados disponibles`}>
-                      {product.colors.map((color) => (
-                        <span class="variant-dot" style={`background-color: ${color.hex};`} title={color.name}></span>
-                      ))}
-                      <span class="variant-count-text">{product.colors.length} acabados</span>
-                    </div>
-                    <button type="button" class="product-add-to-cart-btn" aria-label={`Añadir ${product.name} al carrito`}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <path d="M16 10a4 4 0 0 1-8 0"></path>
-                      </svg>
-                      <span>Añadir al carrito</span>
-                    </button>
-                  </div>
+                <div class="apple-card-meta">
+                  <h4 class="apple-card-title">{product.name}</h4>
+                  <p class="apple-card-sub">{product.subtitle}</p>
+                  <span class="apple-card-cta">
+                    <span>Ver producto</span>
+                    <span class="cta-arrow" aria-hidden="true">→</span>
+                  </span>
                 </div>
               </article>
             ))}
@@ -92,16 +395,5 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
         </section>
       );
     })}
-  </div>
-
-  <div class="catalog-packs-bridge">
-    <div class="packs-bridge-card">
-      <div class="bridge-text">
-        <span class="bridge-tag">COMBINACIÓN EN PACK</span>
-        <h3 class="bridge-title">¿Prefieres un pack completo listo para el servicio?</h3>
-        <p class="bridge-p">Nuestros packs combinan portacuentas, expositores, tarjetas y regalo de Google Maps desde 290 €.</p>
-      </div>
-      <a href="/#packs" class="btn-solid-white bridge-btn"><span>Ver packs recomendados</span><ArrowRight /></a>
-    </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 import portacuentasImg from '../assets/showcase/portacuentas-context.webp';
 import portacuentasClosedImg from '../assets/products/portacuentas-closed.webp';
 import portacuentasOpenImg from '../assets/products/portacuentas-open.webp';
+import portacuentasHeroImg from '../assets/hero/portacuentas-hero.webp';
+import portacuentasWebp from '../assets/products/portacuentas.webp';
 import expositorImg from '../assets/showcase/expositor-context.webp';
 import expositorStudioImg from '../assets/products/expositor.webp';
 import tarjetasImg from '../assets/showcase/tarjetas-context.webp';
@@ -27,6 +29,8 @@ export interface CatalogCategory {
 export interface CatalogProduct {
   id: string;
   categoryId: string;
+  gama?: 'basicos' | 'premium';
+  hasSidesOption?: boolean;
   name: string;
   shortName: string;
   subtitle: string;
@@ -90,13 +94,124 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
 ];
 
 export const CATALOG_PRODUCTS: CatalogProduct[] = [
-  // --- 1. PORTACUENTAS ---
+  // --- 1. PORTACUENTAS (Gamas Básicos & Premium) ---
+  // BÁSICOS (Precio uniforme: 49 € / ud)
+  {
+    id: 'portacuentas-piel-lisa',
+    categoryId: 'portacuentas',
+    gama: 'basicos',
+    name: 'Portacuentas Piel Lisa',
+    shortName: 'Piel Lisa',
+    subtitle: 'Piel vegana hidrorepelente con tacto suave y acabado mate.',
+    price: 49,
+    priceSuffix: '€ / ud',
+    priceNote: 'desde 37 € por volumen',
+    image: portacuentasClosedImg,
+    imageAlt: 'Portacuentas de piel lisa mate TapNova',
+    materials: 'Piel vegana hidrorepelente de tacto suave y acabado mate.',
+    tech: 'Chip NFC de contacto directo + micro-QR interno',
+    zone: 'Zona 01 · La Mesa',
+    volumeTiers: [
+      { qty: '1 - 9 uds', price: '49 €/ud' },
+      { qty: '10 - 19 uds', price: '42 €/ud (-14%)' },
+      { qty: '20+ uds', price: '37 €/ud (-24%)' }
+    ],
+    tags: ['portacuentas', 'basico', 'piel', 'lisa', 'mesa', 'cuenta', 'nfc', 'qr'],
+    colors: [
+      { id: 'negro-mate', name: 'Negro Mate', hex: '#1e1e24' },
+      { id: 'marron-cognac', name: 'Marrón Cognac', hex: '#9e5927' },
+      { id: 'azul-marino', name: 'Azul Marino', hex: '#22385c' }
+    ]
+  },
+  {
+    id: 'portacuentas-formato-libro',
+    categoryId: 'portacuentas',
+    gama: 'basicos',
+    name: 'Portacuentas Formato Libro',
+    shortName: 'Formato Libro',
+    subtitle: 'Apertura clásica en dos cuerpos con solapa para ticket.',
+    price: 49,
+    priceSuffix: '€ / ud',
+    priceNote: 'desde 37 € por volumen',
+    image: portacuentasOpenImg,
+    imageAlt: 'Portacuentas abierto formato libro para mesa de restaurante',
+    materials: 'Estructura rígida con forro de piel sintética y solapa ticket.',
+    tech: 'Chip NFC central de alta velocidad + código QR',
+    zone: 'Zona 01 · La Mesa',
+    volumeTiers: [
+      { qty: '1 - 9 uds', price: '49 €/ud' },
+      { qty: '10 - 19 uds', price: '42 €/ud (-14%)' },
+      { qty: '20+ uds', price: '37 €/ud (-24%)' }
+    ],
+    tags: ['portacuentas', 'basico', 'libro', 'abierto', 'solapa', 'mesa', 'nfc'],
+    colors: [
+      { id: 'negro-ebano', name: 'Negro Ébano', hex: '#1e1e24' },
+      { id: 'cuero-habana', name: 'Cuero Habana', hex: '#8a4f28' },
+      { id: 'gris-grafito', name: 'Gris Grafito', hex: '#505563' }
+    ]
+  },
+  {
+    id: 'portacuentas-slim-pocket',
+    categoryId: 'portacuentas',
+    gama: 'basicos',
+    name: 'Portacuentas Slim Pocket',
+    shortName: 'Slim Pocket',
+    subtitle: 'Perfil ultrafino optimizado para servicio ágil de sala.',
+    price: 49,
+    priceSuffix: '€ / ud',
+    priceNote: 'desde 37 € por volumen',
+    image: portacuentasWebp,
+    imageAlt: 'Portacuentas compacto ultrafino de piel',
+    materials: 'Núcleo flexible antirrotura con revestimiento impermeable.',
+    tech: 'Antena NFC circular ultrafina de respuesta inmediata',
+    zone: 'Zona 01 · La Mesa',
+    volumeTiers: [
+      { qty: '1 - 9 uds', price: '49 €/ud' },
+      { qty: '10 - 19 uds', price: '42 €/ud (-14%)' },
+      { qty: '20+ uds', price: '37 €/ud (-24%)' }
+    ],
+    tags: ['portacuentas', 'basico', 'slim', 'compacto', 'bolsillo', 'mesa', 'nfc'],
+    colors: [
+      { id: 'negro-carbon', name: 'Negro Carbón', hex: '#1e1e24' },
+      { id: 'camel-natural', name: 'Camel Natural', hex: '#b5824c' }
+    ]
+  },
+  {
+    id: 'portacuentas-cuero-clasico',
+    categoryId: 'portacuentas',
+    gama: 'basicos',
+    name: 'Portacuentas Cuero Clásico',
+    shortName: 'Cuero Clásico',
+    subtitle: 'Cosido perimetral reforzado y grabado láser en bajo relieve.',
+    price: 49,
+    priceSuffix: '€ / ud',
+    priceNote: 'desde 37 € por volumen',
+    image: portacuentasClosedImg,
+    imageAlt: 'Portacuentas cerrado con pespunte perimetral reforzado',
+    materials: 'Piel tratada con pespunte perimetral reforzado al tono.',
+    tech: 'Sensor NFC pasivo 13.56 MHz bajo solapa',
+    zone: 'Zona 01 · La Mesa',
+    volumeTiers: [
+      { qty: '1 - 9 uds', price: '49 €/ud' },
+      { qty: '10 - 19 uds', price: '42 €/ud (-14%)' },
+      { qty: '20+ uds', price: '37 €/ud (-24%)' }
+    ],
+    tags: ['portacuentas', 'basico', 'cuero', 'clasico', 'pespunte', 'mesa', 'nfc'],
+    colors: [
+      { id: 'marron-cafe', name: 'Marrón Café', hex: '#63391d' },
+      { id: 'negro-mate', name: 'Negro Mate', hex: '#1e1e24' },
+      { id: 'verde-oliva', name: 'Verde Oliva', hex: '#3d4a36' }
+    ]
+  },
+
+  // PREMIUM (Precio uniforme: 79 € / ud)
   {
     id: 'portacuentas-titanio',
     categoryId: 'portacuentas',
+    gama: 'premium',
     name: 'Portacuentas Piel & Placa Titanio',
-    shortName: 'Portacuentas Titanio',
-    subtitle: 'El buque insignia de sala con placa de titanio cepillado antihuellas.',
+    shortName: 'Piel & Titanio',
+    subtitle: 'Frontal en titanio aeroespacial cepillado antihuellas.',
     price: 79,
     priceSuffix: '€ / ud',
     priceNote: 'desde 59 € por volumen',
@@ -111,7 +226,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
       { qty: '10 - 19 uds', price: '69 €/ud (-13%)' },
       { qty: '20+ uds', price: '59 €/ud (-25%)' }
     ],
-    tags: ['portacuentas', 'titanio', 'piel', 'mesa', 'cuenta', 'nfc', 'qr'],
+    tags: ['portacuentas', 'premium', 'titanio', 'piel', 'mesa', 'cuenta', 'nfc', 'qr'],
     colors: [
       { id: 'negro-ebano', name: 'Negro Ébano', hex: '#1e1e24' },
       { id: 'cuero-habana', name: 'Cuero Habana', hex: '#8a4f28' },
@@ -119,80 +234,101 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ]
   },
   {
-    id: 'portacuentas-clasico',
+    id: 'portacuentas-nogal-titanio',
     categoryId: 'portacuentas',
-    name: 'Portacuentas Piel Lisa Premium',
-    shortName: 'Portacuentas Piel',
-    subtitle: 'Diseño sobrio cerrado con grabado directo en bajo relieve.',
-    price: 69,
+    gama: 'premium',
+    name: 'Portacuentas Nogal & Titanio',
+    shortName: 'Nogal & Titanio',
+    subtitle: 'Cuerpo en madera noble de nogal con placa metálica grabada.',
+    price: 79,
     priceSuffix: '€ / ud',
-    priceNote: 'desde 54 € por volumen',
-    image: portacuentasClosedImg,
-    imageAlt: 'Portacuentas de piel lisa cerrada TapNova',
-    materials: 'Piel vegana hidrorepelente de tacto suave y acabado mate.',
-    tech: 'Chip NFC de contacto directo + micro-QR interno',
+    priceNote: 'desde 59 € por volumen',
+    image: portacuentasHeroImg,
+    imageAlt: 'Portacuentas de madera noble de nogal con herraje metálico',
+    materials: 'Madera maciza de nogal español con placa de aleación cepillada.',
+    tech: 'Antena NFC embutida en madera maciza sin cortes visibles',
     zone: 'Zona 01 · La Mesa',
-    highlightBadge: 'Clásico de Sala',
     volumeTiers: [
-      { qty: '1 - 9 uds', price: '69 €/ud' },
-      { qty: '10 - 19 uds', price: '59 €/ud' },
-      { qty: '20+ uds', price: '54 €/ud' }
+      { qty: '1 - 9 uds', price: '79 €/ud' },
+      { qty: '10 - 19 uds', price: '69 €/ud (-13%)' },
+      { qty: '20+ uds', price: '59 €/ud (-25%)' }
     ],
-    tags: ['portacuentas', 'piel', 'cerrado', 'clasico', 'nfc', 'mesa'],
+    tags: ['portacuentas', 'premium', 'nogal', 'madera', 'titanio', 'mesa', 'nfc'],
     colors: [
-      { id: 'negro-mate', name: 'Negro Mate', hex: '#1e1e24' },
-      { id: 'marron-cognac', name: 'Marrón Cognac', hex: '#9e5927' },
-      { id: 'azul-marino', name: 'Azul Marino', hex: '#22385c' }
+      { id: 'nogal-oscuro', name: 'Nogal Oscuro', hex: '#422817' },
+      { id: 'roble-ahumado', name: 'Roble Ahumado', hex: '#634b35' }
     ]
   },
   {
-    id: 'portacuentas-abierto',
+    id: 'portacuentas-bandeja-titanio',
     categoryId: 'portacuentas',
-    name: 'Portacuentas Formato Bandeja',
-    shortName: 'Portacuentas Bandeja',
-    subtitle: 'Apertura panorámica con clip para ticket y lectura frontal.',
-    price: 74,
+    gama: 'premium',
+    name: 'Portacuentas Formato Bandeja Titanio',
+    shortName: 'Bandeja Titanio',
+    subtitle: 'Bandeja rígida con clip magnético y lectura frontal NFC.',
+    price: 79,
     priceSuffix: '€ / ud',
-    priceNote: 'desde 57 € por volumen',
+    priceNote: 'desde 59 € por volumen',
     image: portacuentasOpenImg,
-    imageAlt: 'Portacuentas abierto con sujeción de ticket y chip NFC',
+    imageAlt: 'Portacuentas formato bandeja con clip de titanio y NFC',
     materials: 'Estructura rígida forrada con piel hidrorepelente y herraje metálico.',
     tech: 'NFC central de lectura rápida + QR en cabecera',
     zone: 'Zona 01 · La Mesa',
     volumeTiers: [
-      { qty: '1 - 9 uds', price: '74 €/ud' },
-      { qty: '10 - 19 uds', price: '64 €/ud' },
-      { qty: '20+ uds', price: '57 €/ud' }
+      { qty: '1 - 9 uds', price: '79 €/ud' },
+      { qty: '10 - 19 uds', price: '69 €/ud (-13%)' },
+      { qty: '20+ uds', price: '59 €/ud (-25%)' }
     ],
-    tags: ['portacuentas', 'bandeja', 'abierto', 'ticket', 'mesa'],
+    tags: ['portacuentas', 'premium', 'bandeja', 'abierto', 'ticket', 'mesa', 'titanio'],
     colors: [
-      { id: 'negro-aluminio', name: 'Negro & Aluminio', hex: '#1e1e24' },
-      { id: 'camel-laton', name: 'Camel & Dorado', hex: '#b5824c' }
+      { id: 'negro-titanio', name: 'Negro & Titanio', hex: '#1e1e24' },
+      { id: 'camel-oro', name: 'Camel & Oro', hex: '#b5824c' }
+    ]
+  },
+  {
+    id: 'portacuentas-signature',
+    categoryId: 'portacuentas',
+    gama: 'premium',
+    name: 'Portacuentas Edición Signature',
+    shortName: 'Edición Signature',
+    subtitle: 'Piel texturizada con inserción de titanio y chip de alta ganancia.',
+    price: 79,
+    priceSuffix: '€ / ud',
+    priceNote: 'desde 59 € por volumen',
+    image: portacuentasImg,
+    imageAlt: 'Portacuentas edición Signature con acabado artesanal',
+    materials: 'Piel de grano selecto con inserción de titanio electropulido.',
+    tech: 'Chip NFC NTAG216 de alta ganancia con respuesta instantánea',
+    zone: 'Zona 01 · La Mesa',
+    volumeTiers: [
+      { qty: '1 - 9 uds', price: '79 €/ud' },
+      { qty: '10 - 19 uds', price: '69 €/ud (-13%)' },
+      { qty: '20+ uds', price: '59 €/ud (-25%)' }
+    ],
+    tags: ['portacuentas', 'premium', 'signature', 'titanio', 'piel', 'mesa', 'nfc'],
+    colors: [
+      { id: 'negro-obsidiana', name: 'Negro Obsidiana', hex: '#111115' },
+      { id: 'burdeos-reserva', name: 'Burdeos Reserva', hex: '#4a1521' },
+      { id: 'azul-cobalto', name: 'Azul Cobalto', hex: '#162b4d' }
     ]
   },
 
-  // --- 2. PORTAMENÚS & CARTAS ---
+  // --- 2. PORTAMENÚS & CARTAS PERSONALIZADOS ---
   {
     id: 'portamenu-mesa',
     categoryId: 'portamenus',
     name: 'Portamenú de Mesa NFC + QR',
     shortName: 'Portamenú Mesa',
-    subtitle: 'Soporte compacto para centro de mesa con acceso a carta y reseñas.',
+    subtitle: 'Soporte compacto para centro de mesa con acceso instantáneo a carta.',
     price: 49,
     priceSuffix: '€ / ud',
-    priceNote: 'desde 39 € por volumen',
+    priceNote: 'Personalización incluida',
     image: portacuentasClosedImg,
-    imageAlt: 'Portamenú rígido con chip NFC y QR para mesas',
+    imageAlt: 'Portamenú rígido personalizado con chip NFC y QR para mesas',
     materials: 'Cuerpo compuesto con recubrimiento hidrófugo y base pesada antivuelco.',
     tech: 'Doble chip NFC bidireccional + QR grabado de alto contraste',
     zone: 'Zona 01 · La Mesa',
-    highlightBadge: 'Doble función',
-    volumeTiers: [
-      { qty: '1 - 9 uds', price: '49 €/ud' },
-      { qty: '10 - 24 uds', price: '44 €/ud' },
-      { qty: '25+ uds', price: '39 €/ud' }
-    ],
-    tags: ['portamenus', 'carta', 'menu', 'mesa', 'nfc', 'qr'],
+    tags: ['portamenus', 'carta', 'menu', 'mesa', 'nfc', 'qr', 'personalizado'],
     colors: [
       { id: 'grafito', name: 'Grafito Mate', hex: '#3d404b' },
       { id: 'nogal-oscuro', name: 'Nogal Natural', hex: '#5c3d24' }
@@ -202,48 +338,49 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     id: 'portamenu-barra',
     categoryId: 'portamenus',
     name: 'Atril de Carta para Barra',
-    shortName: 'Atril de Carta',
-    subtitle: 'Exhibición vertical de carta y bebidas en formato atril.',
-    price: 59,
+    shortName: 'Atril Barra',
+    subtitle: 'Exhibición vertical de carta y bebidas en madera tratada antideslizante.',
+    price: 49,
     priceSuffix: '€ / ud',
-    priceNote: 'precio unitario',
+    priceNote: 'Personalización incluida',
     image: expositorStudioImg,
-    imageAlt: 'Atril portamenú de barra en madera noble',
+    imageAlt: 'Atril portamenú de barra en madera noble personalizada',
     materials: 'Madera de nogal tratada con ranura de fijación y placa grabada.',
     tech: 'Antena NFC vertical + QR de acceso a carta interactiva',
     zone: 'Zona 02 · Barra & Caja',
-    tags: ['portamenus', 'atril', 'barra', 'carta', 'nogal'],
+    tags: ['portamenus', 'atril', 'barra', 'carta', 'nogal', 'personalizado'],
     colors: [
       { id: 'nogal-natural', name: 'Nogal Natural', hex: '#5c3d24' },
       { id: 'roble-tostado', name: 'Roble Tostado', hex: '#7c5636' }
     ]
   },
-
-  // --- 3. EXPOSITORES ---
   {
-    id: 'expositor-nogal-pro',
-    categoryId: 'expositores',
-    name: 'Expositor de Nogal Macizo',
-    shortName: 'Expositor Nogal',
-    subtitle: 'Mecanizado artesanal en bloque de nogal noble con inclinación a 65°.',
-    price: 69,
+    id: 'portamenu-caballete',
+    categoryId: 'portamenus',
+    name: 'Portamenú Caballete Doble Cara',
+    shortName: 'Portamenú Caballete',
+    subtitle: 'Ángulo ergonómico de 75° con visibilidad simultánea en dos caras.',
+    price: 49,
     priceSuffix: '€ / ud',
-    priceNote: 'precio unitario',
-    image: expositorImg,
-    imageAlt: 'Expositor de nogal macizo con chip NFC y marcaje láser',
-    materials: 'Bloque macizo de madera de nogal pulido a mano con aceite hidrófugo.',
-    tech: 'Antena NFC de campo medio (lectura a 3-4 cm) + Marcaje láser indeleble',
-    zone: 'Zona 02 · Barra, Recepción & Caja',
-    highlightBadge: 'Madera Noble',
-    tags: ['expositor', 'nogal', 'madera', 'barra', 'caja', 'recepcion', 'nfc'],
+    priceNote: 'Personalización incluida',
+    image: portacuentasOpenImg,
+    imageAlt: 'Portamenú caballete doble cara personalizado para restaurante',
+    materials: 'Acrílico fundido de alta densidad y estructura sellada hidrorrepelente.',
+    tech: 'Doble chip NFC integrado (uno por cara) + QR láser indeleble',
+    zone: 'Zona 01 · Mesa & Terraza',
+    tags: ['portamenus', 'caballete', 'doble cara', 'carta', 'menu', 'personalizado'],
     colors: [
-      { id: 'nogal-americano', name: 'Nogal Americano', hex: '#5c3d24' },
-      { id: 'roble-oscuro', name: 'Roble Oscuro', hex: '#422b1a' }
+      { id: 'negro-mate', name: 'Negro Mate TapNova', hex: '#1e1e24' },
+      { id: 'blanco-puro', name: 'Blanco Nieve', hex: '#f5f5f7' }
     ]
   },
+
+  // --- 3. EXPOSITORES (BÁSICO & PREMIUM) ---
   {
     id: 'expositor-sobremesa',
     categoryId: 'expositores',
+    gama: 'basicos',
+    hasSidesOption: true,
     name: 'Expositor Compacto Mostrador',
     shortName: 'Expositor Compacto',
     subtitle: 'Presencia mínima para barras con espacio ajustado o caja TPV.',
@@ -253,12 +390,35 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     image: expositorStudioImg,
     imageAlt: 'Expositor compacto para mostrador de restaurante',
     materials: 'Aluminio anodizado negro mate sobre peana antideslizante.',
-    tech: 'NFC instantáneo + QR óptico frontal',
+    tech: 'NFC instantáneo + QR óptico frontal (disponible en 1 o 2 caras)',
     zone: 'Zona 02 · Barra & Caja',
-    tags: ['expositor', 'compacto', 'tpv', 'barra', 'caja'],
+    tags: ['expositor', 'basico', 'compacto', 'tpv', 'barra', 'caja', 'nfc', 'qr', '1 cara', '2 caras'],
     colors: [
       { id: 'negro-anodizado', name: 'Negro Anodizado', hex: '#22252c' },
       { id: 'plata-satinada', name: 'Plata Satinada', hex: '#b5b9c0' }
+    ]
+  },
+  {
+    id: 'expositor-nogal-pro',
+    categoryId: 'expositores',
+    gama: 'premium',
+    hasSidesOption: true,
+    name: 'Expositor de Nogal Macizo',
+    shortName: 'Expositor Nogal',
+    subtitle: 'Mecanizado artesanal en bloque de nogal noble con inclinación a 65°.',
+    price: 69,
+    priceSuffix: '€ / ud',
+    priceNote: 'precio unitario',
+    image: expositorImg,
+    imageAlt: 'Expositor de nogal macizo con chip NFC y marcaje láser',
+    materials: 'Bloque macizo de madera de nogal pulido a mano con aceite hidrófugo.',
+    tech: 'Antena NFC de campo medio (lectura a 3-4 cm) + Marcaje láser indeleble (1 o 2 caras)',
+    zone: 'Zona 02 · Barra, Recepción & Caja',
+    highlightBadge: 'Madera Noble',
+    tags: ['expositor', 'premium', 'nogal', 'madera', 'barra', 'caja', 'recepcion', 'nfc', '1 cara', '2 caras'],
+    colors: [
+      { id: 'nogal-americano', name: 'Nogal Americano', hex: '#5c3d24' },
+      { id: 'roble-oscuro', name: 'Roble Oscuro', hex: '#422b1a' }
     ]
   },
 
@@ -285,8 +445,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     ],
     tags: ['tarjeta', 'nfc', 'camarero', 'equipo', 'contactless', 'sala'],
     colors: [
-      { id: 'negro-mate', name: 'Negro Mate TapNova', hex: '#1e1e24' },
-      { id: 'blanco-puro', name: 'Blanco Nieve', hex: '#f5f5f7' }
+      { id: 'negro-mate', name: 'Negro Mate', hex: '#18181b' }
     ]
   },
   {
@@ -306,8 +465,7 @@ export const CATALOG_PRODUCTS: CatalogProduct[] = [
     highlightBadge: 'Metal Premium',
     tags: ['tarjeta', 'aluminio', 'metal', 'laser', 'nfc', 'qr'],
     colors: [
-      { id: 'negro-espacial', name: 'Negro Espacial', hex: '#202127' },
-      { id: 'oro-champagne', name: 'Oro Champagne', hex: '#cfab69' }
+      { id: 'negro-aluminio', name: 'Negro Anodizado', hex: '#18181b' }
     ]
   },
 

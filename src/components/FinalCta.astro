@@ -1,434 +1,663 @@
 ---
 import ArrowRight from './ArrowRight.astro';
-import { Image } from 'astro:assets';
-import ctaSymbolImg from '../assets/products/cta-symbol.webp';
-import { SITE_METADATA } from '../data/siteData';
 ---
 
 <section class="final-cta-section" id="contacto" aria-label="Contacto con el equipo de TapNova">
-  <!-- Subtle Atmospheric Halo -->
-  <div class="cta-atmospheric-halo" aria-hidden="true"></div>
+  <!-- Macro Halo Cósmico de Fondo -->
+  <div class="cta-supernova-glow" aria-hidden="true"></div>
 
   <div class="section-container">
-    <div class="zone-card-shell final-cta-card">
-      
-      <!-- Left: Sculptural 3D Emblem with Calm Breathing Aura -->
-      <div class="cta-visual-stage">
-        <div class="symbol-halo-back" aria-hidden="true"></div>
-        <div class="symbol-floater">
-          <Image 
-            src={ctaSymbolImg} 
-            alt="Emblema escultórico TapNova"
-            width={480}
-            height={480}
-            quality={92}
-            class="cta-symbol-image"
-          />
-        </div>
-      </div>
+    <!-- Grid Principal de Contacto (2 Columnas Transparentes) -->
+    <div class="cta-stage-grid">
 
-      <!-- Right: Quiet Luxury Statement & Effortless Contact -->
-      <div class="cta-content-column">
-        <h2 class="cta-heading font-display">
-          Tu sala cuida cada detalle.<br/>
-          Tu reputación en Google también debería.
-        </h2>
-
-        <p class="cta-description">
-          Diseñamos y grabamos cada soporte para integrarse con la categoría y el interiorismo de tu espacio. Hablemos de tu restaurante sin compromisos ni presiones comerciales.
-        </p>
-
-        <!-- Minimalist Single-Line Contact Form -->
-        <form class="cta-quiet-form" id="quiet-contact-form">
-          <div class="quiet-input-container">
-            <input 
-              type="text" 
-              name="contact_info"
-              id="quiet-input-field"
-              placeholder="Nombre de tu local, email o teléfono..." 
-              required 
-              aria-label="Nombre de tu local, email o teléfono"
-              class="quiet-input"
-            />
-            <button type="submit" class="btn-solid-white quiet-submit-btn">
-              <span>Iniciar conversación</span>
-              <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
-            </button>
+      <!-- ===================================================================
+           COLUMNA IZQUIERDA: LOGO VECTORIAL TAPNOVA + DECLARACIÓN
+           =================================================================== -->
+      <div class="cta-stage-left">
+          
+          <!-- Logotipo Vectorial TapNova a la Izquierda -->
+          <div class="brand-wordmark-wrap">
+            <svg
+              class="brand-vector-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 670 180"
+              role="img"
+              aria-label="TapNova"
+            >
+              <defs>
+                <linearGradient id="ctaStarGrad" x1="40" y1="145" x2="150" y2="28" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ff8a16"/>
+                  <stop offset="45%" stop-color="#ec4b88"/>
+                  <stop offset="100%" stop-color="#a936f1"/>
+                </linearGradient>
+                <linearGradient id="ctaNovaGrad" x1="322" y1="45" x2="585" y2="138" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#ff8612"/>
+                  <stop offset="38%" stop-color="#f15d78"/>
+                  <stop offset="100%" stop-color="#a238ed"/>
+                </linearGradient>
+              </defs>
+              <path
+                d="M96.4 21.4 117 79.5l61.8.8-49.1 37.5 17.7 59.2-51-35-50.9 35 17.7-59.2-49.2-37.5 61.9-.8z"
+                fill="none"
+                stroke="url(#ctaStarGrad)"
+                stroke-linejoin="round"
+                stroke-width="13"
+              />
+              <text x="195" y="130" fill="#fff" font-family="Arial Black, Inter, Arial, sans-serif" font-size="112" font-weight="900" letter-spacing="-8">Tap</text>
+              <text x="374" y="130" fill="url(#ctaNovaGrad)" font-family="Arial Black, Inter, Arial, sans-serif" font-size="112" font-weight="900" letter-spacing="-8">Nova</text>
+            </svg>
           </div>
 
-          <!-- Gentle Feedback Message -->
-          <div class="quiet-feedback-msg" id="quiet-feedback-msg" aria-live="polite" hidden>
-            <span class="feedback-icon">✓</span>
-            <span>Mensaje recibido. Un especialista de sala contactará contigo con total discreción.</span>
+          <!-- Declaración de Marca (Editorial, Sin Clutter) -->
+          <div class="brand-editorial-block">
+            <h2 class="editorial-heading font-display">
+              Tu sala cuida cada detalle.<br />
+              <span class="gradient-text">Tu reputación en Google también.</span>
+            </h2>
+            <p class="editorial-sub">
+              Soportes de alta gama grabados a láser con la identidad de tu restaurante. Hablemos de tu local sin compromisos comerciales.
+            </p>
           </div>
-        </form>
 
-        <!-- Direct Discreet Channels -->
-        <div class="cta-discreet-footer">
-          <span class="footer-hint">¿Prefieres escribir directamente?</span>
-          <div class="footer-links">
+          <!-- Línea Directa de WhatsApp (Píldora Háptica) -->
+          <div class="hotline-pill-wrapper">
             <a 
               href="https://wa.me/34600000000?text=Hola%20TapNova%2C%20me%20gustar%C3%ADa%20hablar%20con%20vosotros%20sobre%20mi%20restaurante" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="discreet-link whatsapp-link"
+              class="hotline-pill"
             >
-              <span class="wa-dot" aria-hidden="true">💬</span>
-              <span>WhatsApp directo</span>
+              <span class="pulse-laser-dot" aria-hidden="true"></span>
+              <span class="hotline-text">Línea directa WhatsApp · Respuesta en ~15 min</span>
+              <span class="hotline-arrow" aria-hidden="true">↗</span>
             </a>
-            <span class="discreet-sep" aria-hidden="true">·</span>
-            <a href={`mailto:${SITE_METADATA.email}`} class="discreet-link">
-              <span>{SITE_METADATA.email}</span>
-            </a>
-            <span class="discreet-sep" aria-hidden="true">·</span>
-            <span class="discreet-address">Madrid, España</span>
           </div>
+
         </div>
 
-      </div>
+        <!-- ===================================================================
+             COLUMNA DERECHA: FORMULARIO DE 4 CAMPOS CON ACABADO DE PRECISIÓN
+             =================================================================== -->
+        <div class="cta-stage-right">
+          <div class="form-title-group">
+            <h3 class="chamber-headline font-display">Hablemos de tu restaurante</h3>
+            <p class="chamber-sub">Completa los 4 datos y un especialista de sala preparará tu propuesta a medida.</p>
+          </div>
 
+            <form class="precision-contact-form" id="precision-contact-form" novalidate>
+              <div class="inputs-matrix">
+                
+                <!-- 1. Nombre -->
+                <div class="matrix-field">
+                  <label for="field-nombre" class="matrix-label">
+                    <span>Nombre</span>
+                    <span class="field-asterisk">*</span>
+                  </label>
+                  <div class="matrix-input-wrap">
+                    <input 
+                      type="text" 
+                      id="field-nombre" 
+                      name="nombre" 
+                      class="matrix-input" 
+                      placeholder="Tu nombre" 
+                      required 
+                      autocomplete="name"
+                    />
+                  </div>
+                </div>
+
+                <!-- 2. Nombre del Restaurante -->
+                <div class="matrix-field">
+                  <label for="field-restaurante" class="matrix-label">
+                    <span>Restaurante</span>
+                    <span class="field-asterisk">*</span>
+                  </label>
+                  <div class="matrix-input-wrap">
+                    <input 
+                      type="text" 
+                      id="field-restaurante" 
+                      name="restaurante" 
+                      class="matrix-input" 
+                      placeholder="Nombre de tu local" 
+                      required 
+                      autocomplete="organization"
+                    />
+                  </div>
+                </div>
+
+                <!-- 3. Teléfono -->
+                <div class="matrix-field">
+                  <label for="field-telefono" class="matrix-label">
+                    <span>Teléfono</span>
+                    <span class="field-asterisk">*</span>
+                  </label>
+                  <div class="matrix-input-wrap">
+                    <input 
+                      type="tel" 
+                      id="field-telefono" 
+                      name="telefono" 
+                      class="matrix-input" 
+                      placeholder="+34 600 000 000" 
+                      required 
+                      autocomplete="tel"
+                    />
+                  </div>
+                </div>
+
+                <!-- 4. Correo Electrónico -->
+                <div class="matrix-field">
+                  <label for="field-email" class="matrix-label">
+                    <span>Correo</span>
+                    <span class="field-asterisk">*</span>
+                  </label>
+                  <div class="matrix-input-wrap">
+                    <input 
+                      type="email" 
+                      id="field-email" 
+                      name="email" 
+                      class="matrix-input" 
+                      placeholder="contacto@restaurante.com" 
+                      required 
+                      autocomplete="email"
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Spectacular Button-in-Button CTA -->
+              <div class="cta-button-enclosure">
+                <button type="submit" class="kinetic-cta-btn" id="precision-submit-btn">
+                  <span class="btn-text-label">Solicitar propuesta a medida</span>
+                  <span class="btn-trailing-disc" aria-hidden="true">
+                    <ArrowRight />
+                  </span>
+                </button>
+              </div>
+
+              <p class="chamber-security-note">
+                <span>🔒 100% Confidencial</span>
+                <span class="dot-sep">·</span>
+                <span>Asignación de especialista en sala</span>
+                <span class="dot-sep">·</span>
+                <span>Sin spam</span>
+              </p>
+
+              <!-- Feedback Banner de Confirmación -->
+              <div class="precision-success-banner" id="precision-success-banner" hidden>
+                <div class="success-icon-disc">✓</div>
+                <div class="success-copy">
+                  <strong class="success-heading">Solicitud recibida con éxito</strong>
+                  <p class="success-desc">Un especialista de sala te enviará la propuesta y catálogo adaptado a tu local.</p>
+                </div>
+              </div>
+
+            </form>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <style>
+  /* -------------------------------------------------------------------------
+     SECCIÓN CONTENEDORA & ESPACIO CÓSMICO
+     ------------------------------------------------------------------------- */
   .final-cta-section {
     position: relative;
-    padding-top: clamp(4.5rem, 8vw, 8.5rem);
+    padding-top: clamp(4rem, 7vw, 7.5rem);
     padding-bottom: clamp(5rem, 9vw, 9.5rem);
     background: transparent;
-    /* El halo inferior debe continuar bajo el footer; recortarlo aquí crea
-       una junta horizontal visible al terminar la sección. */
     overflow: visible;
   }
 
-  /* Subtle Deep Space Ambient Glow */
-  .cta-atmospheric-halo {
+  /* Halo Supernova en el fondo cósmico */
+  .cta-supernova-glow {
     position: absolute;
-    bottom: -20%;
+    bottom: -15%;
     left: 20%;
-    width: clamp(500px, 60vw, 850px);
-    height: clamp(400px, 45vw, 650px);
-    background: radial-gradient(circle, rgba(255, 157, 36, 0.16) 0%, rgba(223, 145, 247, 0.1) 50%, transparent 70%);
-    filter: blur(90px);
+    width: clamp(550px, 65vw, 950px);
+    height: clamp(450px, 50vw, 750px);
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 140, 0, 0.18) 0%,
+      rgba(223, 145, 247, 0.11) 45%,
+      transparent 72%
+    );
+    filter: blur(100px);
     pointer-events: none;
+    z-index: 0;
   }
 
-  /* Double-Bezel Card Shell (Matching ProductShowcase & PricingSection) */
-  .final-cta-card {
+  /* -------------------------------------------------------------------------
+     GRID PRINCIPAL DE CONTACTO (2 Columnas)
+     ------------------------------------------------------------------------- */
+  .cta-stage-grid {
     position: relative;
-    background: rgba(12, 12, 16, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: clamp(1.75rem, 3vw, 2.5rem);
-    padding: clamp(2.5rem, 5vw, 5rem);
+    z-index: 2;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     gap: clamp(2.5rem, 5vw, 5rem);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    z-index: 2;
   }
 
-  @media (min-width: 992px) {
-    .final-cta-card {
-      grid-template-columns: 0.9fr 1.3fr;
+  @media (min-width: 960px) {
+    .cta-stage-grid {
+      grid-template-columns: 0.95fr 1.15fr;
     }
   }
 
-  /* Left: 3D Emblem Stage */
-  .cta-visual-stage {
-    position: relative;
+  /* -------------------------------------------------------------------------
+     COLUMNA IZQUIERDA: MARCA + DECLARACIÓN EDITORIAL
+     ------------------------------------------------------------------------- */
+  .cta-stage-left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    max-width: 420px;
-    margin: 0 auto;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .symbol-halo-back {
-    position: absolute;
-    inset: 12%;
+  /* Logo Vectorial TapNova */
+  .brand-wordmark-wrap {
+    width: clamp(13.5rem, 19vw, 17.5rem);
+    line-height: 0;
+  }
+
+  .brand-vector-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5));
+  }
+
+  /* Declaración Editorial */
+  .brand-editorial-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .editorial-heading {
+    font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #feed7a 0%, #ff9d24 50%, #df91f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .editorial-sub {
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 440px;
+    text-wrap: pretty;
+  }
+
+  /* Línea Directa WhatsApp */
+  .hotline-pill-wrapper {
+    padding-top: 0.5rem;
+  }
+
+  .hotline-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 1.1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    color: #e4e4e7;
+    font-size: 0.8125rem;
+    font-family: var(--font-inter);
+    text-decoration: none;
+    transition: all 0.25s var(--ease-default);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+
+  .hotline-pill:hover {
+    background: rgba(37, 211, 102, 0.08);
+    border-color: rgba(37, 211, 102, 0.35);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.15);
+  }
+
+  .pulse-laser-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 157, 36, 0.25) 0%, rgba(223, 145, 247, 0.18) 45%, transparent 70%);
-    filter: blur(45px);
-    pointer-events: none;
+    background: #25d366;
+    box-shadow: 0 0 8px #25d366;
+    flex-shrink: 0;
+    animation: laserPulseDot 2s infinite ease-in-out;
   }
 
-  .symbol-floater {
-    position: relative;
-    width: 90%;
-    height: 90%;
+  @keyframes laserPulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+  }
+
+  .hotline-arrow {
+    color: #25d366;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+  }
+
+  .hotline-pill:hover .hotline-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  /* -------------------------------------------------------------------------
+     COLUMNA DERECHA: FORMULARIO DE ALTA PRECISIÓN
+     ------------------------------------------------------------------------- */
+  .cta-stage-right {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: ctaLogoFloat 8s ease-in-out infinite alternate;
-  }
-
-  .cta-symbol-image {
+    flex-direction: column;
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85));
   }
 
-  @keyframes ctaLogoFloat {
-    0% {
-      transform: translateY(-5px) rotate(-0.75deg);
-    }
-    100% {
-      transform: translateY(5px) rotate(1deg);
-    }
+  .form-title-group {
+    margin-bottom: 1.6rem;
   }
 
-  /* Right: Editorial Column */
-  .cta-content-column {
+  .chamber-headline {
+    font-size: clamp(1.5rem, 2.4vw, 2.05rem);
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 0.4rem 0;
+    letter-spacing: -0.025em;
+  }
+
+  .chamber-sub {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .precision-contact-form {
     display: flex;
     flex-direction: column;
     gap: 1.35rem;
   }
 
-  .cta-eyebrow-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.95rem;
-    border-radius: var(--radius-pill);
-    background: rgba(255, 157, 36, 0.08);
-    border: 1px solid rgba(255, 157, 36, 0.22);
-    width: fit-content;
+  /* Grid 2x2 de Campos */
+  .inputs-matrix {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-amber);
-    box-shadow: 0 0 8px var(--accent-amber);
+  @media (min-width: 600px) {
+    .inputs-matrix {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
-  .badge-text {
-    color: var(--accent-amber);
-    font-size: 0.75rem;
+  .matrix-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .matrix-label {
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    color: #d4d4d8;
+    font-family: var(--font-inter);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
-  .cta-heading {
-    font-size: clamp(2.2rem, 3.8vw, 3.5rem);
-    line-height: 1.14;
-    font-weight: 500;
+  .field-asterisk {
+    color: var(--accent-orange);
+  }
+
+  .matrix-input-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .matrix-input {
+    width: 100%;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 0 1rem;
     color: #ffffff;
-    letter-spacing: -0.03em;
-    text-wrap: balance;
+    font-size: 0.9rem;
+    font-family: var(--font-inter);
+    outline: none;
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: 
+      border-color 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+      background 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+      box-shadow 0.25s cubic-bezier(0.32, 0.72, 0, 1);
   }
 
-  .cta-description {
-    font-size: clamp(1.02rem, 1.25vw, 1.18rem);
-    line-height: 1.62;
-    color: var(--text-secondary);
-    max-width: 580px;
-    text-wrap: pretty;
+  .matrix-input::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+    font-size: 0.85rem;
+  }
+
+  .matrix-input:focus {
+    border-color: var(--accent-amber);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 
+      0 0 18px rgba(255, 157, 36, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   /* -------------------------------------------------------------------------
-     Quiet Luxury Integrated Input Bar
+     KINETIC BUTTON-IN-BUTTON CTA ARCHITECTURE
      ------------------------------------------------------------------------- */
-  .cta-quiet-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    margin-top: 0.5rem;
+  .cta-button-enclosure {
+    margin-top: 0.25rem;
   }
 
-  .quiet-input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-pill);
-    padding: 0.35rem;
-    transition: border-color 0.25s var(--ease-default), background 0.25s var(--ease-default);
-  }
-
-  @media (min-width: 640px) {
-    .quiet-input-container {
-      flex-direction: row;
-      align-items: center;
-      padding: 0.4rem 0.45rem 0.4rem 1.25rem;
-    }
-  }
-
-  .quiet-input-container:focus-within {
-    border-color: rgba(255, 157, 36, 0.45);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 20px rgba(255, 157, 36, 0.15);
-  }
-
-  .quiet-input {
+  .kinetic-cta-btn {
     width: 100%;
-    background: transparent;
-    border: none;
-    color: #ffffff;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.65rem 0.5rem 1.65rem;
+    background: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-pill);
+    color: #050508;
     font-size: 0.95rem;
-    font-family: inherit;
+    font-family: var(--font-inter);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 
+      0 8px 24px rgba(255, 255, 255, 0.14),
+      0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: 
+      transform 0.2s cubic-bezier(0.32, 0.72, 0, 1),
+      box-shadow 0.2s cubic-bezier(0.32, 0.72, 0, 1),
+      background 0.2s ease;
     outline: none;
-    padding: 0.65rem 0.85rem;
   }
 
-  .quiet-input::placeholder {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+  .kinetic-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+      0 12px 32px rgba(255, 255, 255, 0.24),
+      0 4px 10px rgba(0, 0, 0, 0.5);
   }
 
-  .quiet-submit-btn {
-    white-space: nowrap;
+  .kinetic-cta-btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn-text-label {
+    letter-spacing: -0.01em;
+  }
+
+  /* Button-in-Button Disc */
+  .btn-trailing-disc {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 50%;
+    background: #050508;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    font-size: 0.85rem;
+    transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
     flex-shrink: 0;
   }
 
-  /* Gentle Feedback */
-  .quiet-feedback-msg {
+  .kinetic-cta-btn:hover .btn-trailing-disc {
+    transform: translateX(3px);
+  }
+
+  /* Security / Trust Footnote */
+  .chamber-security-note {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-md);
-    background: rgba(37, 211, 102, 0.08);
-    border: 1px solid rgba(37, 211, 102, 0.25);
-    color: #25d366;
-    font-size: 0.84rem;
+    justify-content: center;
+    gap: 0.65rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+    flex-wrap: wrap;
   }
 
-  .feedback-icon {
-    font-weight: bold;
+  .dot-sep {
+    color: rgba(255, 255, 255, 0.2);
   }
 
-  /* Discreet Footer Line */
-  .cta-discreet-footer {
+  /* Feedback de Éxito */
+  .precision-success-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: rgba(37, 211, 102, 0.09);
+    border: 1px solid rgba(37, 211, 102, 0.32);
+    animation: successFadeUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .success-icon-disc {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #050508;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .success-copy {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
-    margin-top: 0.35rem;
-    padding-top: 1.15rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    gap: 0.2rem;
   }
 
-  .footer-hint {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    font-size: 0.84rem;
-  }
-
-  .discreet-link {
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .discreet-link:hover {
+  .success-heading {
     color: #ffffff;
+    font-size: 0.88rem;
   }
 
-  .whatsapp-link {
-    color: #25d366;
-    font-weight: 500;
+  .success-desc {
+    color: #a1a1aa;
+    font-size: 0.82rem;
+    margin: 0;
+    line-height: 1.45;
   }
 
-  .whatsapp-link:hover {
-    color: #40ea85;
+  @keyframes successFadeUp {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .discreet-sep {
-    color: rgba(255, 255, 255, 0.15);
-  }
-
-  .discreet-address {
-    color: var(--text-muted);
-  }
-
-  /* Mobile Adaptations (< 768px) */
+  /* -------------------------------------------------------------------------
+     ADAPTACIONES MÓVILES (< 768px)
+     ------------------------------------------------------------------------- */
   @media (max-width: 767px) {
-    .final-cta-card {
-      padding: 1.75rem 1.35rem;
-      border-radius: var(--radius-lg);
-      gap: 2rem;
+    .cta-stage-grid {
+      gap: 1.75rem;
     }
 
-    .cta-visual-stage {
-      max-width: 240px;
+    .cta-stage-left {
+      gap: 0.85rem;
     }
 
-    .cta-heading {
-      font-size: clamp(1.8rem, 6vw, 2.25rem);
+    .brand-wordmark-wrap {
+      width: clamp(10.5rem, 44vw, 13rem);
     }
 
-    .quiet-input-container {
-      border-radius: var(--radius-lg);
-      padding: 0.75rem;
+    .editorial-heading {
+      font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+      line-height: 1.2;
     }
 
-    .quiet-input {
-      padding: 0.35rem 0.5rem;
-    }
-
-    .quiet-submit-btn {
-      width: 100%;
-    }
-
-    .footer-links {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.4rem;
-    }
-
-    .discreet-sep {
+    /* En móvil: experiencia ultra limpia, solo mini CTA y formulario */
+    .editorial-sub,
+    .hotline-pill-wrapper,
+    .form-title-group {
       display: none;
+    }
+
+    .precision-contact-form {
+      gap: 1rem;
+    }
+
+    .kinetic-cta-btn {
+      min-height: 50px;
     }
   }
 </style>
 
 <script>
-  function initQuietContact() {
-    const form = document.getElementById('quiet-contact-form') as HTMLFormElement | null;
-    const feedback = document.getElementById('quiet-feedback-msg');
-    if (!form || form.dataset.initialized) return;
-    form.dataset.initialized = 'true';
+  function initPrecisionContact() {
+    const form = document.getElementById('precision-contact-form') as HTMLFormElement | null;
+    const banner = document.getElementById('precision-success-banner');
+
+    if (!form || form.dataset.bound) return;
+    form.dataset.bound = 'true';
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const input = document.getElementById('quiet-input-field') as HTMLInputElement | null;
-      const val = input?.value.trim() || '';
 
-      if (feedback) {
-        feedback.hidden = false;
-        form.querySelector<HTMLButtonElement>('.quiet-submit-btn')?.setAttribute('disabled', 'true');
-      }
+      const nombre = (document.getElementById('field-nombre') as HTMLInputElement)?.value.trim() || '';
+      const restaurante = (document.getElementById('field-restaurante') as HTMLInputElement)?.value.trim() || '';
+      const telefono = (document.getElementById('field-telefono') as HTMLInputElement)?.value.trim() || '';
+      const email = (document.getElementById('field-email') as HTMLInputElement)?.value.trim() || '';
 
-      // Smoothly opens direct WhatsApp with the user's reference
-      const waUrl = `https://wa.me/34600000000?text=${encodeURIComponent(
-        `Hola TapNova, me pongo en contacto desde mi restaurante (${val}) para hablar sobre vuestros soportes de sala.`
-      )}`;
+      if (!nombre || !restaurante || !telefono || !email) return;
 
+      if (banner) banner.hidden = false;
+      const btn = document.getElementById('precision-submit-btn') as HTMLButtonElement | null;
+      if (btn) btn.disabled = true;
+
+      // Generar enlace directo de WhatsApp con los datos formateados
+      const text = `Hola TapNova, soy ${nombre} de ${restaurante}. Solicito propuesta a medida para mi restaurante. Tel: ${telefono}, Email: ${email}.`;
+      const waUrl = `https://wa.me/34600000000?text=${encodeURIComponent(text)}`;
       window.open(waUrl, '_blank');
     });
   }
 
-  initQuietContact();
-  document.addEventListener('astro:page-load', initQuietContact);
+  initPrecisionContact();
+  document.addEventListener('astro:page-load', initPrecisionContact);
 </script>
