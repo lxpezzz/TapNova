@@ -90,6 +90,84 @@ export const CATALOG_CATEGORIES: CatalogCategory[] = [
     shortLabel: 'Pegatinas QR',
     description: 'Adhesivos de resina epoxi con relieve para cristal, exterior y mesas.',
     zone: 'Exterior & Cristales'
+  },
+  {
+    id: 'packs',
+    name: 'Packs de Hostelería',
+    shortLabel: 'Packs',
+    description: 'Sistemas completos llave en mano con portacuentas, expositores y tecnología listos para sala.',
+    zone: 'Equipamiento Integral'
+  }
+];
+
+export interface CatalogPack {
+  id: string;
+  name: string;
+  eyebrow: string;
+  price: string;
+  saving: string;
+  description: string;
+  features: string[];
+  cta: string;
+  icon: 'layers' | 'spark' | 'orbit';
+  featured: boolean;
+  whatsappMessage: string;
+}
+
+export const CATALOG_PACKS: CatalogPack[] = [
+  {
+    id: 'pack-tap-start',
+    name: 'Tap Start',
+    eyebrow: 'Barra & Terraza',
+    price: '290',
+    saving: 'Ahorras 50 €',
+    description: 'La base elegante para activar reseñas continuas en barra, mostrador y mesas de terraza.',
+    features: [
+      '1 expositor de madera de nogal para barra o caja TPV',
+      '50 posavasos NFC impermeables con QR grabado',
+      '10 pegatinas QR de resina epoxi de alta resistencia',
+      'Configuración directa con tu perfil de Google Reviews'
+    ],
+    cta: 'Elegir Tap Start',
+    icon: 'layers',
+    featured: false,
+    whatsappMessage: '¡Hola TapNova! 👋 Quiero solicitar presupuesto y disponibilidad del Pack Tap Start (290 €) para mi restaurante.'
+  },
+  {
+    id: 'pack-tap-pro',
+    name: 'Tap Pro',
+    eyebrow: 'El más elegido',
+    price: '890',
+    saving: 'Ahorras 260 €',
+    description: 'La sala conectada: soportes nobles en mesa y visibilidad local desde el primer servicio.',
+    features: [
+      '12 portacuentas inteligentes de piel y titanio grabado',
+      '2 expositores de nogal para recepción y barra',
+      '5 tarjetas NFC contactless para el equipo de sala',
+      '1 mes de optimización de SEO Local en Google Maps incluido'
+    ],
+    cta: 'Elegir Tap Pro',
+    icon: 'spark',
+    featured: true,
+    whatsappMessage: '¡Hola TapNova! 👋 Quiero solicitar presupuesto y disponibilidad del Pack Tap Pro (890 €) para mi restaurante.'
+  },
+  {
+    id: 'pack-tap-galaxy',
+    name: 'Tap Galaxy',
+    eyebrow: 'Ecosistema 360°',
+    price: '1.790',
+    saving: 'Ahorras 460 €',
+    description: 'Un ecosistema integral para unir servicio en mesa, presencia online y captación constante.',
+    features: [
+      '20 portacuentas en piel y titanio + 3 expositores de nogal',
+      '8 tarjetas de personal + 100 posavasos impermeables',
+      '25 pegatinas epoxi para puntos exteriores y cristal',
+      'Página web gastronómica con reservas + 3 meses de SEO Local'
+    ],
+    cta: 'Elegir Tap Galaxy',
+    icon: 'orbit',
+    featured: false,
+    whatsappMessage: '¡Hola TapNova! 👋 Quiero solicitar presupuesto y disponibilidad del Pack Tap Galaxy (1.790 €) para mi restaurante.'
   }
 ];
 

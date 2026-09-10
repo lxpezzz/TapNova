@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import seoLocalImg from "../assets/showcase/seo-local-context.webp";
 import SeoRadarConsole from "./SeoRadarConsole.astro";
+import ArrowRight from "./ArrowRight.astro";
 ---
 
 <section
@@ -22,6 +23,12 @@ import SeoRadarConsole from "./SeoRadarConsole.astro";
         Una buena reputación no sirve de mucho si nadie la ve. TapNova la
         convierte en presencia local.
       </p>
+      <div class="seo-cta-wrap">
+        <a href="/seo-local" class="btn-primary seo-cta-btn">
+          <span>Obtener más información</span>
+          <span class="btn-icon" aria-hidden="true"><ArrowRight /></span>
+        </a>
+      </div>
     </div>
 
     <!-- Main Content: Contextual Visual + Editorial Pillars -->
@@ -168,6 +175,55 @@ import SeoRadarConsole from "./SeoRadarConsole.astro";
     margin-right: auto;
     text-align: center;
     text-wrap: balance;
+  }
+
+  .seo-cta-wrap {
+    margin-top: 1.75rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .seo-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.78rem 1.45rem;
+    padding-right: 0.75rem;
+    min-height: 48px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s var(--ease-default),
+                background 0.3s var(--ease-default),
+                border-color 0.3s var(--ease-default),
+                box-shadow 0.3s var(--ease-default);
+  }
+
+  .seo-cta-btn:hover {
+    box-shadow: 0 0 25px rgba(223, 145, 247, 0.16), 0 6px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .seo-cta-btn:active {
+    transform: scale(0.97);
+  }
+
+  @media (max-width: 639px) {
+    .seo-cta-wrap {
+      margin-top: 1.25rem;
+    }
+
+    .seo-cta-btn {
+      width: min(100%, 290px);
+      justify-content: center;
+      gap: 0.75rem;
+      padding-left: 1.15rem;
+      padding-right: 0.65rem;
+      font-size: 0.92rem;
+      min-height: 48px;
+    }
   }
 
   /* Showcase Split */

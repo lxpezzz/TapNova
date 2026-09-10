@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, CATALOG_PACKS } from '../../data/catalogData';
 ---
 
 <div class="catalog-main-feed">
@@ -16,7 +16,7 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
   <div class="catalog-sections-wrap" id="catalog-sections-wrap">
     {CATALOG_CATEGORIES.map((category) => {
       const products = CATALOG_PRODUCTS.filter((product) => product.categoryId === category.id);
-      if (!products.length) return null;
+      if (!products.length && category.id !== 'packs') return null;
 
       if (category.id === 'portacuentas') {
         const basicos = products.filter((p) => p.gama === 'basicos');
@@ -343,7 +343,148 @@ import { CATALOG_CATEGORIES, CATALOG_PRODUCTS } from '../../data/catalogData';
         );
       }
 
-      // --- 4. SECCIONES GENERALES (TARJETAS, POSAVASOS, PEGATINAS) CON ESTÉTICA APPLE STORE ---
+      // --- 4. SECCIÓN PACKS DE HOSTELERÍA & PACK A TU MEDIDA ---
+      if (category.id === 'packs') {
+        return (
+          <section class="catalog-category-section section-packs" id={category.id} data-section-category={category.id}>
+            <!-- Encabezado editorial -->
+            <div class="category-header-editorial packs-main-header">
+              <div class="cat-header-titles">
+                <h2 class="cat-section-title">{category.name}</h2>
+                <p class="cat-section-desc">{category.description}</p>
+              </div>
+            </div>
+
+            <!-- Grid de los 3 Packs de Hostelería -->
+            <div class="packs-catalog-grid">
+              {CATALOG_PACKS.map((pack) => (
+                <article
+                  class={`pack-catalog-card ${pack.featured ? 'is-featured' : ''}`}
+                  id={`card-${pack.id}`}
+                  data-product-card
+                  data-category-id="packs"
+                  data-search-terms={`${pack.name} pack hosteleria ${pack.eyebrow} ${pack.description} ${pack.features.join(' ')}`.toLowerCase()}
+                >
+                  {pack.featured && (
+                    <div class="pack-featured-badge" aria-label="Pack más popular">
+                      <span class="pack-live-dot" aria-hidden="true"></span>
+                      <span>Más elegido</span>
+                    </div>
+                  )}
+
+                  <div class="pack-card-topbar">
+                    <div class="pack-icon-wrapper" aria-hidden="true">
+                      {pack.icon === 'layers' && (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z"/>
+                          <path d="m4 12 8 4.5 8-4.5"/>
+                          <path d="m4 16.5 8 4.5 8-4.5"/>
+                        </svg>
+                      )}
+                      {pack.icon === 'spark' && (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="m12 2 1.85 7.15L21 11l-7.15 1.85L12 20l-1.85-7.15L3 11l7.15-1.85L12 2Z"/>
+                        </svg>
+                      )}
+                      {pack.icon === 'orbit' && (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="2.75"/>
+                          <ellipse cx="12" cy="12" rx="9" ry="4.25" transform="rotate(-35 12 12)"/>
+                          <path d="M18.5 5.4h.01" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                      )}
+                    </div>
+                    <span class="pack-zone-pill">{pack.eyebrow}</span>
+                  </div>
+
+                  <h3 class="pack-card-title">{pack.name}</h3>
+                  <p class="pack-card-desc">{pack.description}</p>
+
+                  <div class="pack-pricing-block">
+                    <div class="pack-price-main">
+                      <span class="pack-price-num">{pack.price} €</span>
+                      <span class="pack-price-period">pago único</span>
+                    </div>
+                    <div class="pack-price-sub">
+                      <span class="pack-saving-tag">{pack.saving}</span>
+                      <span class="pack-tax-note">100% deducible</span>
+                    </div>
+                  </div>
+
+                  <div class="pack-features-divider" aria-hidden="true"></div>
+
+                  <ul class="pack-features-list" aria-label={`Equipamiento incluido en ${pack.name}`}>
+                    {pack.features.map((feature) => (
+                      <li>
+                        <svg class="pack-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="pack-action-wrap">
+                    <a
+                      href={`https://wa.me/34910000000?text=${encodeURIComponent(pack.whatsappMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={pack.featured ? 'btn-pack-featured' : 'btn-pack-secondary'}
+                    >
+                      <span>{pack.cta}</span>
+                      <span class="btn-arrow" aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <!-- CTA: Pack a tu medida -->
+            <div class="custom-pack-cta-banner">
+              <div class="custom-pack-content">
+                <h3 class="custom-pack-title">Configura tu pack a medida</h3>
+                <p class="custom-pack-desc">
+                  Elige los productos, cantidades y acabados que mejor encajan con tu espacio. Te preparamos un presupuesto cerrado con grabado láser personalizado de tu logotipo y configuración técnica lista para sala.
+                </p>
+                <ul class="custom-pack-features" aria-label="Ventajas del pack a medida">
+                  <li class="custom-feature-item">
+                    <svg class="custom-feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Selección libre de soportes y unidades</span>
+                  </li>
+                  <li class="custom-feature-item">
+                    <svg class="custom-feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Grabado láser personalizado incluido</span>
+                  </li>
+                  <li class="custom-feature-item">
+                    <svg class="custom-feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Tarifa ajustada por volumen para tu sala</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="custom-pack-action">
+                <a
+                  href="https://wa.me/34910000000?text=%C2%A1Hola%20TapNova!%20%F0%9F%91%8B%20Quiero%20configurar%20un%20Pack%20a%20Medida%20para%20mi%20restaurante%20(productos%2C%20cantidades%20y%20grabado%20l%C3%A1ser).%20%C2%BFMe%20pod%C3%A9is%20asesorar%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-custom-pack"
+                >
+                  <span>Solicitar pack a medida</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+                <span class="custom-pack-note">Respuesta en menos de 2 horas</span>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      // --- 5. SECCIONES GENERALES (TARJETAS, POSAVASOS, PEGATINAS) CON ESTÉTICA APPLE STORE ---
       return (
         <section class={`catalog-category-section section-${category.id}`} id={category.id} data-section-category={category.id}>
           <div class="category-header-editorial">

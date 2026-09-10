@@ -11,7 +11,7 @@ const productCount = CATALOG_PRODUCTS.length;
 const categoryCounts = Object.fromEntries(
   CATALOG_CATEGORIES.map(({ id }) => [
     id,
-    CATALOG_PRODUCTS.filter((product) => product.categoryId === id).length
+    id === 'packs' ? 3 : CATALOG_PRODUCTS.filter((product) => product.categoryId === id).length
   ])
 );
 ---
