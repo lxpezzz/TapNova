@@ -1,0 +1,202 @@
+---
+
+import { Image } from "astro:assets";
+import LogoImg from "../../assets/logo/logo-tapnova.webp";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-30 w-full bg-[#0D0A08]/70 backdrop-blur-md border-b border-white/10 pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-6 sm:px-10 lg:px-14 flex items-center justify-between"
+  aria-label="Cabecera principal"
+>
+  <!-- Lado izquierdo: Logotipo TapNova-->
+  <div class="flex items-center gap-4 sm:gap-6">
+    <a
+      href="/"
+      class="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-sm group"
+      aria-label="TapNova Inicio"
+    >
+      <Image
+        src={LogoImg}
+        alt="TapNova"
+        class="h-8 sm:h-12 w-auto brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity duration-200"
+        loading="eager"
+      />
+    </a>    
+  </div>
+
+  <!-- Centro: Enlaces de navegación desktop (discretos, finos y espaciados) -->
+  <nav
+    class="hidden lg:flex items-center gap-8 xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75"
+    aria-label="Navegación principal"
+  >
+    <a href="#productos" class="hover:text-white transition-colors duration-200"
+      >Productos</a
+    >
+    <a
+      href="#soluciones"
+      class="hover:text-white transition-colors duration-200">Soluciones</a
+    >
+    <a href="#seo-local" class="hover:text-white transition-colors duration-200"
+      >SEO Local</a
+    >
+    <a
+      href="#paginas-web"
+      class="hover:text-white transition-colors duration-200">Páginas Web</a
+    >
+  </nav>
+
+  <!-- Lado derecho: Contacto y Botón de acción minimalista -->
+  <div class="flex items-center gap-5 sm:gap-7">
+    <a
+      href="#contacto"
+      class="hidden sm:inline-block text-white/70 hover:text-white text-[12.5px] font-medium tracking-[0.16em] uppercase transition-colors duration-200"
+    >
+      Contacto
+    </a>
+
+    <a
+      href="#productos"
+      class="inline-flex items-center justify-center border border-white/25 bg-white/10 hover:bg-white hover:text-black active:scale-[0.98] backdrop-blur-md text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-4 sm:px-5 py-2 rounded-full transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
+    >
+      Ver productos
+    </a>
+
+    <!-- Botón hamburguesa móvil -->
+    <button
+      id="header-mobile-toggle"
+      type="button"
+      class="lg:hidden flex flex-col items-center justify-center w-9 h-9 -mr-2 rounded-md text-white/85 hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="header-mobile-drawer"
+    >
+      <span class="sr-only">Menú</span>
+      <div class="w-5 flex flex-col gap-1.5 transition-transform duration-200">
+        <span
+          class="block h-[1.5px] w-full bg-white transition-all duration-200 origin-center"
+          id="hdr-bar-top"></span>
+        <span
+          class="block h-[1.5px] w-full bg-white transition-all duration-200 origin-center"
+          id="hdr-bar-bottom"></span>
+      </div>
+    </button>
+  </div>
+</header>
+
+<!-- ========================================================================= -->
+<!-- MENÚ DESPLEGABLE MÓVIL / OVERLAY EDITORIAL A PANTALLA COMPLETA -->
+<!-- ========================================================================= -->
+<div
+  id="header-mobile-drawer"
+  class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl transition-all duration-300 opacity-0 pointer-events-none flex flex-col justify-between p-7 sm:p-10"
+  aria-hidden="true"
+>
+  <!-- Cabecera del drawer -->
+  <div class="flex items-center justify-between">
+    <Image
+      src={LogoImg}
+      alt="TapNova"
+      class="h-7 w-auto brightness-0 invert opacity-95"
+    />
+    <button
+      id="header-drawer-close"
+      type="button"
+      class="text-white/70 hover:text-white text-[13px] tracking-[0.2em] uppercase font-medium px-2 py-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+      aria-label="Cerrar menú"
+    >
+      Cerrar ✕
+    </button>
+  </div>
+
+  <!-- Enlaces principales del menú -->
+  <nav
+    class="flex flex-col gap-5 text-center my-auto text-[20px] sm:text-[24px] font-light tracking-[0.18em] uppercase text-white/80"
+    aria-label="Menú ampliado"
+  >
+    <a
+      href="#productos"
+      class="hdr-drawer-link hover:text-white transition-colors">Productos</a
+    >
+    <a
+      href="#soluciones"
+      class="hdr-drawer-link hover:text-white transition-colors">Soluciones</a
+    >
+    <a
+      href="#seo-local"
+      class="hdr-drawer-link hover:text-white transition-colors">SEO Local</a
+    >
+    <a
+      href="#paginas-web"
+      class="hdr-drawer-link hover:text-white transition-colors">Páginas Web</a
+    >
+    <a
+      href="#muestras"
+      class="hdr-drawer-link hover:text-white transition-colors"
+      >Pedir muestras</a
+    >
+    <a
+      href="#contacto"
+      class="hdr-drawer-link hover:text-white transition-colors">Contacto</a
+    >
+  </nav>
+
+  <!-- Pie del drawer -->
+  <div
+    class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] tracking-[0.16em] uppercase text-white/50"
+  >
+    <span>info@tapnova.es</span>
+    <a
+      href="#productos"
+      class="hdr-drawer-link inline-flex items-center justify-center w-full sm:w-auto bg-white text-black font-medium px-6 py-2.5 rounded-full"
+    >
+      Ver catálogo completo
+    </a>
+  </div>
+</div>
+
+<script>
+  // Control del drawer/menú editorial del Header
+  const mobileToggle = document.getElementById("header-mobile-toggle");
+  const closeBtn = document.getElementById("header-drawer-close");
+  const drawer = document.getElementById("header-mobile-drawer");
+  const drawerLinks = document.querySelectorAll(".hdr-drawer-link");
+
+  function openMenu() {
+    if (!drawer) return;
+    drawer.classList.remove("opacity-0", "pointer-events-none");
+    drawer.classList.add("opacity-100", "pointer-events-auto");
+    drawer.setAttribute("aria-hidden", "false");
+    mobileToggle?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    if (!drawer) return;
+    drawer.classList.add("opacity-0", "pointer-events-none");
+    drawer.classList.remove("opacity-100", "pointer-events-auto");
+    drawer.setAttribute("aria-hidden", "true");
+    mobileToggle?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  mobileToggle?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+
+  drawerLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Cerrar con Escape
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer?.getAttribute("aria-hidden") === "false") {
+      closeMenu();
+    }
+  });
+</script>

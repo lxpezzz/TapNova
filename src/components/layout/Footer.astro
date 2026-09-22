@@ -1,0 +1,164 @@
+---
+// Footer.astro - TapNova
+// Cierre editorial ultra-compacto de la home
+// - Fondo muy oscuro (#0E0B0A)
+// - Contenido real compacto y legible (relative z-10)
+// - Marca de agua "TΛPNOVΛ" en capa inferior, apoyada justo encima de la línea divisoria
+// - Línea divisoria y legales debajo
+import { Image } from "astro:assets";
+import LogoImg from "../../assets/logo/logo-tapnova.webp";
+---
+
+<footer 
+  class="relative w-full bg-[#0E0B0A] text-[#F4F0E8] pt-7 sm:pt-11 md:pt-14 pb-3 sm:pb-6 md:pb-8 overflow-hidden border-t border-white/[0.06] select-none"
+  aria-label="Pie de página"
+>
+  <div class="relative z-10 max-w-[1360px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
+    
+    <!-- BLOQUE SUPERIOR COMPACTO: LOGO + ENLACES (CAPA SUPERIOR Z-10) -->
+    <div class="relative z-10 flex flex-col lg:flex-row justify-between gap-6 sm:gap-8 lg:gap-12">
+      
+      <!-- Columna izquierda: Logo e identidad -->
+      <div class="flex flex-col items-start max-w-[280px]">
+        <a 
+          href="/" 
+          class="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-sm mb-1.5 group" 
+          aria-label="TapNova Inicio"
+        >
+          <Image
+            src={LogoImg}
+            alt="TapNova"
+            class="h-5.5 sm:h-6.5 w-auto brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity duration-200"
+            loading="lazy"
+          />
+        </a>
+        <p class="text-[12px] sm:text-[12.5px] text-[#C7BCB2] leading-snug font-light">
+          Productos físicos y soluciones digitales para negocios HORECA.
+        </p>
+      </div>
+
+      <!-- Columna derecha: 3 grupos de enlaces compactos -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-4 sm:gap-8 lg:gap-12 text-[11.5px] sm:text-[12px] font-light">
+        
+        <!-- GRUPO 1: PRODUCTOS -->
+        <div class="flex flex-col">
+          <span class="text-[10px] sm:text-[10.5px] font-medium tracking-[0.2em] uppercase text-white/60 mb-1.5 sm:mb-2.5">
+            PRODUCTOS
+          </span>
+          <ul class="flex flex-col gap-1 sm:gap-1.5">
+            <li>
+              <a href="#productos" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Posavasos
+              </a>
+            </li>
+            <li>
+              <a href="#productos" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Portacuentas
+              </a>
+            </li>
+            <li>
+              <a href="#productos" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Expositores
+              </a>
+            </li>
+            <li>
+              <a href="#productos" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Tarjetas
+              </a>
+            </li>
+            <li>
+              <a href="/productos" class="text-[#E0D7CC]/90 hover:text-white transition-colors duration-150 py-0.5 inline-block underline underline-offset-4 decoration-white/20 hover:decoration-white">
+                Ver todos los productos
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GRUPO 2: SERVICIOS -->
+        <div class="flex flex-col">
+          <span class="text-[10px] sm:text-[10.5px] font-medium tracking-[0.2em] uppercase text-white/60 mb-1.5 sm:mb-2.5">
+            SERVICIOS
+          </span>
+          <ul class="flex flex-col gap-1 sm:gap-1.5">
+            <li>
+              <a href="/seo-local" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                SEO Local
+              </a>
+            </li>
+            <li>
+              <a href="/paginas-web" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Páginas Web
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GRUPO 3: EMPRESA -->
+        <div class="flex flex-col col-span-2 sm:col-span-1">
+          <span class="text-[10px] sm:text-[10.5px] font-medium tracking-[0.2em] uppercase text-white/60 mb-1.5 sm:mb-2.5">
+            EMPRESA
+          </span>
+          <ul class="flex flex-col gap-1 sm:gap-1.5">
+            <li>
+              <a href="#contacto" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Contacto
+              </a>
+            </li>
+            <li>
+              <a href="#como-funciona" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Cómo funciona
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block">
+                Instagram
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- LÍNEA DIVISORIA Y LEGALES CON TΛPNOVΛ APOYADA JUSTO ENCIMA -->
+    <div class="relative mt-8 sm:mt-12 pt-3 sm:pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-2.5 text-[10.5px] sm:text-[11px] text-[#C7BCB2]/80 font-light">
+      
+      <!-- MARCA GRÁFICA APOYADA JUSTO ENCIMA DE LA LÍNEA -->
+      <div 
+        class="absolute left-1/2 -translate-x-1/2 bottom-full pointer-events-none select-none z-0 flex justify-center items-end leading-none w-screen max-w-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <span class="font-normal uppercase tracking-[0.18em] sm:tracking-[0.22em] text-white/[0.07] sm:text-white/[0.09] whitespace-nowrap select-none tapnova-bg-text">
+          TAPNOVA
+        </span>
+      </div>
+
+      <p class="relative z-10">© 2026 TapNova. Todos los derechos reservados.</p>
+      <div class="relative z-10 flex items-center gap-3.5 sm:gap-5">
+        <a href="#privacidad" class="hover:text-white transition-colors duration-150">Privacidad</a>
+        <span class="text-white/20 select-none" aria-hidden="true">·</span>
+        <a href="#cookies" class="hover:text-white transition-colors duration-150">Cookies</a>
+        <span class="text-white/20 select-none" aria-hidden="true">·</span>
+        <a href="#aviso-legal" class="hover:text-white transition-colors duration-150">Aviso legal</a>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<style>
+  /* En móvil es contenida y discreta; en desktop se despliega como gran marca de agua */
+  .tapnova-bg-text {
+    font-size: clamp(40px, 10vw, 68px);
+    line-height: 0.8;
+  }
+
+  @media (min-width: 640px) {
+    .tapnova-bg-text {
+      font-size: clamp(70px, 13vw, 175px);
+      line-height: 0.8;
+    }
+  }
+</style>

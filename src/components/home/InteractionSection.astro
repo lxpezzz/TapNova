@@ -1,0 +1,95 @@
+---
+// InteractionSection.astro - TapNova
+// Sección compacta inmediatamente posterior a los 3 productos destacados
+// Explica la interacción física -> digital (QR + NFC)
+// - Fondo marrón muy oscuro #211915
+// - Tipografía editorial en 2 líneas
+// - Acciones editoriales tipográficas (Carta · Reseñas · Reservas · Instagram · Contacto · Promociones)
+// - Composición 45% / 55% con fotografía HORECA realista
+---
+
+<section 
+  class="w-full bg-[#211915] text-[#F4F0E8] py-16 sm:py-20 lg:py-24 px-5 sm:px-8 md:px-12 lg:px-16 overflow-hidden"
+  aria-label="Experiencia de interacción QR y NFC TapNova"
+>
+  <div class="max-w-[1360px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 xl:gap-18">
+    
+    <!-- ======================================================================= -->
+    <!-- COLUMNA IZQUIERDA: COPY EDITORIAL (45%) -->
+    <!-- ======================================================================= -->
+    <div class="w-full lg:w-[45%] flex flex-col items-start justify-center">
+      
+      <!-- Eyebrow -->
+      <p class="text-[11px] sm:text-[12px] font-semibold tracking-[0.24em] text-[#A6998D] uppercase mb-3 sm:mb-4">
+        TAPNOVA · QR + NFC
+      </p>
+
+      <!-- Headline en 2 líneas -->
+      <h2 class="text-[#F4F0E8] font-light text-[32px] sm:text-[42px] md:text-[48px] lg:text-[52px] tracking-[-0.025em] leading-[1.08] text-balance mb-4 sm:mb-5">
+        Un producto.<br />Muchas posibilidades.
+      </h2>
+
+      <!-- Subcopy conciso -->
+      <p class="text-[#C7BCB2] text-[15px] sm:text-[16.5px] leading-relaxed max-w-[440px] font-light mb-8 sm:mb-10 text-balance">
+        Conecta cada punto de tu local con la acción que necesita tu cliente.
+      </p>
+
+      <!-- Acciones con tratamiento tipográfico editorial y separadores -->
+      <div 
+        class="flex flex-wrap items-center gap-x-3 sm:gap-x-3.5 gap-y-2 text-[12px] sm:text-[13px] font-normal tracking-[0.14em] uppercase text-[#E0D7CC]/85"
+        role="list"
+        aria-label="Posibilidades de conexión digital"
+      >
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Carta</span>
+        <span class="text-[#A6998D]/40 select-none text-[10px]" aria-hidden="true">·</span>
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Reseñas</span>
+        <span class="text-[#A6998D]/40 select-none text-[10px]" aria-hidden="true">·</span>
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Reservas</span>
+        <span class="text-[#A6998D]/40 select-none text-[10px]" aria-hidden="true">·</span>
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Instagram</span>
+        <span class="text-[#A6998D]/40 select-none text-[10px]" aria-hidden="true">·</span>
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Contacto</span>
+        <span class="text-[#A6998D]/40 select-none text-[10px]" aria-hidden="true">·</span>
+        <span class="hover:text-white transition-colors duration-150 cursor-default" role="listitem">Promociones</span>
+      </div>
+
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- COLUMNA DERECHA: FOTOGRAFÍA DE INTERACCIÓN (55%) -->
+    <!-- ======================================================================= -->
+    <div class="w-full lg:w-[55%] flex justify-center">
+      
+      <div class="group relative w-full aspect-[4/3] max-h-[460px] sm:max-h-[520px] lg:max-h-[560px] rounded-[22px] sm:rounded-[28px] overflow-hidden bg-[#16100D] shadow-[0_20px_50px_rgba(0,0,0,0.45)] border border-white/[0.06]">
+        
+        <!-- Fotografía HORECA: Producto + Smartphone + Interacción -->
+        <picture class="w-full h-full select-none">
+          <source srcset="/images/qr-nfc/qr-nfc-experience.webp" type="image/webp" />
+          <img 
+            src="/images/qr-nfc/qr-nfc-experience.webp" 
+            alt="Cliente interactuando mediante smartphone con posavasos artesanal TapNova en mesa de restaurante" 
+            loading="lazy" 
+            decoding="async"
+            class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+          />
+        </picture>
+
+        <!-- Viñeteado sutil en bordes -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Etiquetas discretas QR y NFC superpuestas -->
+        <div class="absolute top-4 right-4 sm:top-5 sm:right-5 flex items-center gap-1.5 z-10 pointer-events-none" aria-hidden="true">
+          <span class="text-[10px] tracking-[0.2em] font-medium uppercase text-white/85 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-[6px] border border-white/15 shadow-sm">
+            QR
+          </span>
+          <span class="text-[10px] tracking-[0.2em] font-medium uppercase text-white/85 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-[6px] border border-white/15 shadow-sm">
+            NFC
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

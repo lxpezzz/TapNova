@@ -1,0 +1,197 @@
+
+
+<section 
+  id="productos" 
+  class="w-full bg-[#FAF8F5] text-[#2E2019] py-24 sm:py-32 lg:py-40 px-5 sm:px-8 md:px-12 lg:px-16"
+  aria-label="Productos destacados TapNova"
+>
+  <!-- ========================================================================= -->
+  <!-- INTRODUCCIÓN EDITORIAL TIPO NEVA -->
+  <!-- ========================================================================= -->
+  <div class="max-w-[780px] mx-auto text-center mb-16 sm:mb-24 lg:mb-28">
+    <p class="text-[11px] sm:text-[12.5px] tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#6B5E52] leading-[1.9] sm:leading-[2.1] font-normal text-balance">
+      Diseñamos piezas físicas que conectan el mundo tangible de tu local con tu ecosistema digital.<br class="hidden sm:inline" />
+      Reseñas, carta, reservas y experiencias que generan fidelidad en cada servicio.
+    </p>
+
+    <!-- Símbolo / Monograma artesanal sutil -->
+    <div class="mt-8 sm:mt-10 flex justify-center" aria-hidden="true">
+      <svg class="w-8 h-8 text-[#2E2019]/35" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="16" cy="16" r="14" />
+        <path d="M16 2 A14 14 0 0 1 16 30" stroke-width="1.2" />
+        <line x1="8" y1="16" x2="24" y2="16" stroke-width="1" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CONTENEDOR DE PRODUCTOS -->
+  <!-- ========================================================================= -->
+  <div class="max-w-[1360px] mx-auto flex flex-col gap-6 sm:gap-8 lg:gap-10">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- FILA 1: 2 PANELES 50 / 50 -->
+    <!-- --------------------------------------------------------------------- -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+
+      <!-- PANEL IZQUIERDA: PORTACUENTAS QR + NFC -->
+      <article 
+        class="group relative rounded-[24px] sm:rounded-[32px] overflow-hidden min-h-[460px] sm:min-h-[520px] md:min-h-[580px] flex flex-col justify-between p-7 sm:p-9 lg:p-10 bg-[#1A1411] shadow-[0_12px_40px_rgba(46,32,25,0.08)]"
+      >
+        <!-- Fotografía HORECA Lifestyle -->
+        <picture class="absolute inset-0 w-full h-full select-none">
+          <source srcset="/images/products/portacuentas-lifestyle.webp" type="image/webp" />
+          <img 
+            src="/images/products/portacuentas-lifestyle.webp" 
+            alt="Portacuentas artesanal de cuero con tecnología QR y NFC para restaurantes TapNova"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+          />
+        </picture>
+
+        <!-- Viñeteado y sombras superiores/inferiores para legibilidad sin alterar la luz -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/70 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Título superior (Inspirado en FOOD MENU / DRINKS MENU de la referencia) -->
+        <div class="relative z-10 text-center">
+          <h3 class="text-white text-[16px] sm:text-[18px] md:text-[19px] font-medium tracking-[0.16em] uppercase drop-shadow-sm">
+            Portacuentas QR + NFC
+          </h3>
+        </div>
+
+        <!-- Botón CTA inferior tipo cápsula oscura -->
+        <div class="relative z-10 flex justify-center">
+          <a 
+            href="#contacto" 
+            class="inline-flex items-center gap-2 bg-black/80 hover:bg-black text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-5 sm:px-6 py-2.5 rounded-full border border-white/15 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
+          >
+            <span>Ver producto</span>
+            <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- PANEL DERECHA: EXPOSITORES QR + NFC -->
+      <article 
+        class="group relative rounded-[24px] sm:rounded-[32px] overflow-hidden min-h-[460px] sm:min-h-[520px] md:min-h-[580px] flex flex-col justify-between p-7 sm:p-9 lg:p-10 bg-[#1A1411] shadow-[0_12px_40px_rgba(46,32,25,0.08)]"
+      >
+        <!-- Fotografía HORECA Lifestyle -->
+        <picture class="absolute inset-0 w-full h-full select-none">
+          <source srcset="/images/products/expositores-lifestyle.webp" type="image/webp" />
+          <img 
+            src="/images/products/expositores-lifestyle.webp" 
+            alt="Expositor de mesa en madera y bronce cepillado con QR y NFC TapNova"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+          />
+        </picture>
+
+        <!-- Viñeteado y sombras superiores/inferiores -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/70 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Título superior -->
+        <div class="relative z-10 text-center">
+          <h3 class="text-white text-[16px] sm:text-[18px] md:text-[19px] font-medium tracking-[0.16em] uppercase drop-shadow-sm">
+            Expositores QR + NFC
+          </h3>
+        </div>
+
+        <!-- Botón CTA inferior tipo cápsula oscura -->
+        <div class="relative z-10 flex justify-center">
+          <a 
+            href="#contacto" 
+            class="inline-flex items-center gap-2 bg-black/80 hover:bg-black text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-5 sm:px-6 py-2.5 rounded-full border border-white/15 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
+          >
+            <span>Ver producto</span>
+            <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- FILA 2: 1 PANEL GRANDE A TODO EL ANCHO (PROTAGONISTA ABSOLUTO) -->
+    <!-- POSAVASOS PERSONALIZADOS -->
+    <!-- --------------------------------------------------------------------- -->
+    <article 
+      class="group relative rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden min-h-[600px] sm:min-h-[680px] md:min-h-[760px] lg:min-h-[820px] flex flex-col justify-between p-8 sm:p-12 md:p-14 lg:p-16 bg-[#16120E] shadow-[0_16px_50px_rgba(46,32,25,0.12)]"
+    >
+      <!-- Fotografía HORECA Lifestyle Protagonista -->
+      <picture class="absolute inset-0 w-full h-full select-none">
+        <source srcset="/images/products/posavasos-lifestyle.webp" type="image/webp" />
+        <img 
+          src="/images/products/posavasos-lifestyle.webp" 
+          alt="Posavasos personalizados de piel y madera de roble con QR y NFC en mesa de restaurante TapNova"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover object-[center_55%] group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
+        />
+      </picture>
+
+      <!-- Viñeteado cinematográfico profundo -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-black/35 pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-black/15 pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Cabecera del panel: Badge de Producto Destacado -->
+      <div class="relative z-10 flex items-center justify-between">
+        <span class="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white/90 text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.24em] uppercase px-4 py-1.5 rounded-full">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          Producto Destacado
+        </span>
+      </div>
+
+      <!-- Contenido editorial protagonista en la zona inferior -->
+      <div class="relative z-10 max-w-[660px] flex flex-col items-start pt-20">
+        
+        <!-- Título principal -->
+        <h2 class="text-white font-light text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-[-0.025em] leading-[1.05] text-balance">
+          Posavasos personalizados
+        </h2>
+
+        <!-- Headline secundaria -->
+        <p class="text-[#E6DCB8] text-[18px] sm:text-[22px] md:text-[25px] font-normal tracking-tight mt-2.5 sm:mt-3 text-balance">
+          Una mesa. Muchas posibilidades.
+        </p>
+
+        <!-- Subcopy -->
+        <p class="text-white/80 text-[14px] sm:text-[16px] leading-relaxed max-w-[500px] font-light mt-3 sm:mt-4 text-balance">
+          Carta, reseñas, reservas y promociones desde el mismo punto.
+        </p>
+
+        <!-- CTA Principal del Posavasos -->
+        <div class="mt-6 sm:mt-8">
+          <a 
+            href="#contacto" 
+            class="inline-flex items-center gap-2.5 bg-[#FAF8F5] hover:bg-white text-[#1C1613] text-[12.5px] sm:text-[13px] font-medium tracking-[0.16em] uppercase px-7 py-3.5 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_6px_24px_rgba(0,0,0,0.35)]"
+          >
+            <span>Ver posavasos</span>
+            <span class="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CIERRE DE LA SECCIÓN: VER TODOS LOS PRODUCTOS -->
+  <!-- ========================================================================= -->
+  <div class="mt-16 sm:mt-24 text-center">
+    <a 
+      href="#productos" 
+      class="group inline-flex items-center gap-2.5 text-[#2E2019] hover:text-black text-[12.5px] sm:text-[13.5px] font-medium tracking-[0.2em] uppercase transition-colors duration-200 py-3 px-6"
+    >
+      <span class="border-b border-[#2E2019]/35 group-hover:border-black transition-colors pb-0.5">
+        Ver todos los productos
+      </span>
+      <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5" aria-hidden="true">
+        →
+      </span>
+    </a>
+  </div>
+
+</section>

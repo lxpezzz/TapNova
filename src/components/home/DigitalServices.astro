@@ -1,0 +1,153 @@
+---
+// DigitalServices.astro - TapNova
+// Sección de servicios digitales inmediatamente posterior a la sección QR + NFC
+// Presenta los 2 servicios digitales: SEO Local y Páginas Web HORECA
+// - Fondo claro cálido (#F4F0E8)
+// - Estética editorial HORECA premium
+// - Introducción centrada
+// - 2 grandes paneles 50/50 con el mismo peso visual
+// - Enlaces a /seo-local y /paginas-web
+---
+
+<section 
+  id="servicios-digitales"
+  class="w-full bg-[#F4F0E8] text-[#2E2019] py-24 sm:py-32 lg:py-36 px-5 sm:px-8 md:px-12 lg:px-16"
+  aria-label="Servicios digitales para hostelería"
+>
+  <!-- ========================================================================= -->
+  <!-- INTRODUCCIÓN EDITORIAL CENTRADA -->
+  <!-- ========================================================================= -->
+  <div class="max-w-[760px] mx-auto text-center mb-16 sm:mb-20 lg:mb-24">
+    
+    <!-- Eyebrow -->
+    <p class="text-[11px] sm:text-[12px] font-semibold tracking-[0.24em] text-[#8C7E72] uppercase mb-3 sm:mb-4">
+      TAPNOVA · SERVICIOS DIGITALES
+    </p>
+
+    <!-- Headline -->
+    <h2 class="text-[#2E2019] font-light text-[32px] sm:text-[44px] md:text-[52px] lg:text-[58px] tracking-[-0.025em] leading-[1.08] text-balance mb-4 sm:mb-5">
+      Tu local también vive fuera de la mesa.
+    </h2>
+
+    <!-- Subcopy breve -->
+    <p class="text-[#6B5E52] text-[15px] sm:text-[17px] leading-relaxed max-w-[560px] mx-auto font-light text-balance">
+      Te ayudamos a convertir búsquedas y visitas online en reservas, llamadas y clientes reales.
+    </p>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- DOS GRANDES BLOQUES 50 / 50 (MISMO PESO VISUAL) -->
+  <!-- ========================================================================= -->
+  <div class="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-7 sm:gap-9 lg:gap-10">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 1: SEO LOCAL -->
+    <!-- --------------------------------------------------------------------- -->
+    <article 
+      class="group relative rounded-[26px] sm:rounded-[34px] overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[640px] flex flex-col justify-between p-7 sm:p-10 lg:p-12 bg-[#1C1613] shadow-[0_16px_45px_rgba(46,32,25,0.08)]"
+    >
+      <!-- Fotografía HORECA a sangre -->
+      <picture class="absolute inset-0 w-full h-full select-none">
+        <source srcset="/images/services/seo-local.webp" type="image/webp" />
+        <img 
+          src="/images/services/seo-local.webp" 
+          alt="Búsqueda local y perfil de restaurante en terraza europea con clientes" 
+          loading="lazy" 
+          decoding="async" 
+          class="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-700 ease-out"
+        />
+      </picture>
+
+      <!-- Viñeteado y gradientes cinematográficos -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/25 pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-black/10 pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Badge superior: Eyebrow -->
+      <div class="relative z-10 flex items-center justify-between">
+        <span class="inline-flex items-center gap-2 bg-black/55 backdrop-blur-md border border-white/20 text-white/90 text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.22em] uppercase px-4 py-1.5 rounded-full shadow-sm">
+          SEO LOCAL
+        </span>
+      </div>
+
+      <!-- Contenido editorial inferior -->
+      <div class="relative z-10 max-w-[540px] flex flex-col items-start pt-24">
+        
+        <!-- Headline -->
+        <h3 class="text-white font-light text-[26px] sm:text-[32px] md:text-[36px] tracking-[-0.015em] leading-[1.14] text-balance mb-3">
+          Que te encuentren antes de decidir dónde ir.
+        </h3>
+
+        <!-- Texto breve -->
+        <p class="text-white/80 text-[14px] sm:text-[15.5px] leading-relaxed font-light mb-6 sm:mb-8 text-balance">
+          Mejoramos la presencia de tu negocio en búsquedas locales para convertir visibilidad en visitas reales.
+        </p>
+
+        <!-- CTA discreto -->
+        <a 
+          href="/seo-local" 
+          class="inline-flex items-center gap-2.5 bg-white/95 hover:bg-white text-[#1C1613] text-[12px] sm:text-[12.5px] font-medium tracking-[0.16em] uppercase px-6 sm:px-7 py-3 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
+        >
+          <span>Descubrir SEO Local</span>
+          <span class="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+        </a>
+
+      </div>
+    </article>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- BLOQUE 2: PÁGINAS WEB HORECA -->
+    <!-- --------------------------------------------------------------------- -->
+    <article 
+      class="group relative rounded-[26px] sm:rounded-[34px] overflow-hidden min-h-[520px] sm:min-h-[580px] md:min-h-[640px] flex flex-col justify-between p-7 sm:p-10 lg:p-12 bg-[#1C1613] shadow-[0_16px_45px_rgba(46,32,25,0.08)]"
+    >
+      <!-- Fotografía HORECA a sangre -->
+      <picture class="absolute inset-0 w-full h-full select-none">
+        <source srcset="/images/services/web-horeca.webp" type="image/webp" />
+        <img 
+          src="/images/services/web-horeca.webp" 
+          alt="Página web gastronómica mostrada en smartphone sobre mesa de restaurante con café" 
+          loading="lazy" 
+          decoding="async" 
+          class="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-700 ease-out"
+        />
+      </picture>
+
+      <!-- Viñeteado y gradientes cinematográficos -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/25 pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute inset-0 bg-black/10 pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Badge superior: Eyebrow -->
+      <div class="relative z-10 flex items-center justify-between">
+        <span class="inline-flex items-center gap-2 bg-black/55 backdrop-blur-md border border-white/20 text-white/90 text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.22em] uppercase px-4 py-1.5 rounded-full shadow-sm">
+          PÁGINAS WEB HORECA
+        </span>
+      </div>
+
+      <!-- Contenido editorial inferior -->
+      <div class="relative z-10 max-w-[540px] flex flex-col items-start pt-24">
+        
+        <!-- Headline -->
+        <h3 class="text-white font-light text-[26px] sm:text-[32px] md:text-[36px] tracking-[-0.015em] leading-[1.14] text-balance mb-3">
+          Tu local también empieza online.
+        </h3>
+
+        <!-- Texto breve -->
+        <p class="text-white/80 text-[14px] sm:text-[15.5px] leading-relaxed font-light mb-6 sm:mb-8 text-balance">
+          Webs rápidas, claras y diseñadas para transformar búsquedas en reservas, llamadas y visitas.
+        </p>
+
+        <!-- CTA discreto -->
+        <a 
+          href="/paginas-web" 
+          class="inline-flex items-center gap-2.5 bg-white/95 hover:bg-white text-[#1C1613] text-[12px] sm:text-[12.5px] font-medium tracking-[0.16em] uppercase px-6 sm:px-7 py-3 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
+        >
+          <span>Ver páginas web</span>
+          <span class="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+        </a>
+
+      </div>
+    </article>
+
+  </div>
+</section>

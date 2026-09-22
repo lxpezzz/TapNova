@@ -1,0 +1,119 @@
+---
+
+import { Image } from "astro:assets";
+import HeroImg from "../../assets/hero/tapnova-hero.webp";
+---
+
+<section
+  class="relative w-full h-[100svh] min-h-[640px] max-h-[1200px] overflow-hidden bg-[#0D0A08] flex flex-col justify-between select-none"
+  aria-label="Presentación TapNova Soluciones HORECA"
+>
+  <!-- ========================================================================= -->
+  <!-- 1. FOTOGRAFÍA HERO FULL-BLEED (ESCENA DE MESA HORECA PREMIUM) -->
+  <!-- ========================================================================= -->
+  <picture
+    class="absolute inset-0 w-full h-full select-none pointer-events-none"
+  >
+    <Image
+      src={HeroImg}
+      alt="Posavasos y portacuentas personalizados de piel y madera para restaurantes TapNova"
+      fetchpriority="high"
+      loading="eager"
+      decoding="async"
+      class="w-full h-full object-cover object-[55%_45%] sm:object-center transition-transform duration-1000 ease-out will-change-transform scale-[1.01]"
+    />
+  </picture>
+
+  <!-- Viñeteado y gradientes sutiles para legibilidad editorial sin romper la luz -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/80 pointer-events-none z-10"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-black/15 pointer-events-none z-10"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. CONTENIDO EDITORIAL CENTRAL (DISCRETO, INTEGRADO EN LA ESCENA) -->
+  <!-- ========================================================================= -->
+  <div
+    class="relative z-20 w-full max-w-[1000px] mx-auto px-6 text-center my-auto pt-6 pb-2 sm:py-6 flex flex-col items-center pointer-events-none"
+  >
+    <!-- Eyebrow sutil -->
+    <p
+      class="animate-hero-fade text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.28em] text-white/60 uppercase mb-2.5 sm:mb-3"
+    >
+      TAPNOVA · SOLUCIONES HORECA
+    </p>
+
+    <!-- Headline editorial refinado (inspirado en la discreción de "THE NEVA FOOD") -->
+    <h1
+      class="animate-hero-slide font-light text-[23px] sm:text-[30px] md:text-[38px] lg:text-[42px] tracking-[0.16em] sm:tracking-[0.2em] text-white uppercase leading-[1.2] text-balance"
+    >
+      DISEÑO FÍSICO.<br class="sm:hidden" /> CONEXIÓN DIGITAL.
+    </h1>
+
+    <!-- Subtexto muy corto y elegante -->
+    <p
+      class="animate-hero-fade text-[13px] sm:text-[14.5px] text-white/70 font-light tracking-[0.04em] max-w-[520px] mx-auto mt-3 sm:mt-4 text-balance leading-relaxed"
+    >
+      Posavasos y portacuentas personalizados con QR y NFC para conectar tu
+      local en el momento perfecto.
+    </p>
+  </div>
+</section>
+
+<style>
+  /* Ocultar barra de scroll en la píldora horizontal en pantallas pequeñas */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Animaciones suaves de entrada editorial */
+  .animate-hero-fade {
+    animation: hFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .animate-hero-slide {
+    animation: hSlide 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+  .animate-hero-bar {
+    animation: hFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+
+  @keyframes hFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hSlide {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-fade,
+    .animate-hero-slide,
+    .animate-hero-bar {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
