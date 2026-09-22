@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 512 512">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#FF8A00"/><stop offset="0.5" stop-color="#EC6A91"/><stop offset="1" stop-color="#8A3FFC"/>
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="104" fill="#010101"/>
-  <path d="M 256.00 90.00 L 301.85 192.90 L 413.88 204.70 L 330.18 280.10 L 353.57 390.30 L 256.00 334.00 L 158.43 390.30 L 181.82 280.10 L 98.12 204.70 L 210.15 192.90 Z" fill="none" stroke="url(#g)" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">TapNova TN symbol</title>
+  <path fill="#20262A" d="M78 118h190v57h-66v226h-57V175H78zM254 118h75l102 126V118h57v283h-70L311 268v133h-57z"/>
 </svg>
