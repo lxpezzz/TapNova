@@ -1,5 +1,4 @@
 ---
-
 import { Image } from "astro:assets";
 import LogoImg from "../../assets/logo/logo-tapnova.webp";
 
@@ -24,14 +23,14 @@ const { class: className = "" } = Astro.props;
     >
       <Image
         src={LogoImg}
-        alt="TapNova"
+        alt="Logo TapNova"
         class="h-8 sm:h-12 w-auto brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity duration-200"
         loading="eager"
         widths={[96, 192]}
         sizes="(max-width: 639px) 96px, 144px"
         quality={70}
       />
-    </a>    
+    </a>
   </div>
 
   <!-- Centro: Enlaces de navegación desktop (discretos, finos y espaciados) -->

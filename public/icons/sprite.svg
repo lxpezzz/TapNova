@@ -1,0 +1,49 @@
+<!-- SVG - TapNova -->
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Instagram -->
+  <symbol id="icon-instagram" viewBox="0 0 24 24">
+    <path
+      d="..."
+      fill="currentColor"
+    />
+  </symbol>
+
+  <!-- Google -->
+  <symbol id="icon-google" viewBox="0 0 24 24">
+    <path
+      d="..."
+      fill="currentColor"
+    />
+  </symbol>
+
+  <!-- NFC -->
+  <symbol id="icon-nfc" viewBox="0 0 24 24">
+    <path
+      d="..."
+      fill="currentColor"
+    />
+  </symbol>
+
+  <!-- Flecha -->
+  <symbol id="icon-arrow" viewBox="0 0 24 24">
+    <path
+      d="..."
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </symbol>
+
+<!-- TapNova -->
+  <symbol id="icon-tapnova" viewBox="0 0 512 512">
+    <path
+        fill="#141414"
+        fill-rule="evenodd"
+        d="M24,40 L217,40 L228,44 L244,58 L281,113 L368,259 L403,322 L405,322 L405,290 L443,254 L443,473 L426,450 L364,351 L249,159 L248,311 L205,329 L189,333 L189,122 L187,116 L176,108 L94,108 L86,106 L75,100 L48,75 L30,53Z M258,40 L463,40 L463,44 L438,75 L413,100 L403,106 L395,108 L322,108 L315,106 L309,101 L273,57 L259,44Z M501,140 L508,149 L509,161 L505,172 L493,189 L452,226 L390,266 L383,254 L434,216 L462,186 L471,166 L468,152 L458,144 L435,139 L398,139 L441,132 L477,132 L491,135Z M315,308 L314,311 L302,317 L248,339 L248,473 L245,473 L193,406 L189,394 L189,358 L151,369 L105,378 L48,380 L20,373 L10,366 L4,354 L6,337 L12,325 L24,309 L46,287 L83,258 L157,213 L159,213 L158,215 L138,227 L98,258 L56,301 L44,322 L42,330 L43,343 L54,355 L71,361 L91,363 L138,359 L177,350 L221,336 L283,311 L306,299 L309,299Z"
+        ></path>
+  </symbol>
+
+</svg>
