@@ -1,4 +1,15 @@
+---
+import { getImage, Image } from "astro:assets";
+import PortacuentasImage from "../../assets/products/portacuentas-lifestyle.webp";
+import ExpositoresImage from "../../assets/products/expositores-lifestyle.webp";
+import PosavasosImage from "../../assets/products/posavasos-lifestyle.webp";
 
+// Mobile receives one deliberately sized source instead of a 2x candidate.
+// This matches the 371 px card width measured by Lighthouse.
+const portacuentasMobile = await getImage({ src: PortacuentasImage, width: 400, quality: 62 });
+const expositoresMobile = await getImage({ src: ExpositoresImage, width: 400, quality: 62 });
+const posavasosMobile = await getImage({ src: PosavasosImage, width: 480, quality: 62 });
+---
 
 <section 
   id="productos" 
@@ -40,10 +51,13 @@
       >
         <!-- Fotografía HORECA Lifestyle -->
         <picture class="absolute inset-0 w-full h-full select-none">
-          <source srcset="/images/products/portacuentas-lifestyle.webp" type="image/webp" />
-          <img 
-            src="/images/products/portacuentas-lifestyle.webp" 
+          <source media="(max-width: 767px)" srcset={portacuentasMobile.src} />
+          <Image
+            src={PortacuentasImage}
             alt="Portacuentas artesanal de cuero con tecnología QR y NFC para restaurantes TapNova"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1023px) calc(100vw - 4rem), (max-width: 1440px) calc((100vw - 10rem) / 2), 680px"
+            quality={62}
             loading="lazy"
             decoding="async"
             class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
@@ -78,10 +92,13 @@
       >
         <!-- Fotografía HORECA Lifestyle -->
         <picture class="absolute inset-0 w-full h-full select-none">
-          <source srcset="/images/products/expositores-lifestyle.webp" type="image/webp" />
-          <img 
-            src="/images/products/expositores-lifestyle.webp" 
+          <source media="(max-width: 767px)" srcset={expositoresMobile.src} />
+          <Image
+            src={ExpositoresImage}
             alt="Expositor de mesa en madera y bronce cepillado con QR y NFC TapNova"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1023px) calc(100vw - 4rem), (max-width: 1440px) calc((100vw - 10rem) / 2), 680px"
+            quality={62}
             loading="lazy"
             decoding="async"
             class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
@@ -121,10 +138,13 @@
     >
       <!-- Fotografía HORECA Lifestyle Protagonista -->
       <picture class="absolute inset-0 w-full h-full select-none">
-        <source srcset="/images/products/posavasos-lifestyle.webp" type="image/webp" />
-        <img 
-          src="/images/products/posavasos-lifestyle.webp" 
+        <source media="(max-width: 767px)" srcset={posavasosMobile.src} />
+        <Image
+          src={PosavasosImage}
           alt="Posavasos personalizados de piel y madera de roble con QR y NFC en mesa de restaurante TapNova"
+          widths={[480, 768, 1024, 1376]}
+          sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1439px) calc(100vw - 8rem), 1360px"
+          quality={62}
           loading="lazy"
           decoding="async"
           class="w-full h-full object-cover object-[center_55%] group-hover:scale-[1.02] transition-transform duration-1000 ease-out"

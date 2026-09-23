@@ -1,7 +1,8 @@
 ---
 
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import HeroImg from "../../assets/hero/tapnova-hero.webp";
+const heroMobile = await getImage({ src: HeroImg, width: 480, quality: 60 });
 ---
 
 <section
@@ -14,12 +15,16 @@ import HeroImg from "../../assets/hero/tapnova-hero.webp";
   <picture
     class="absolute inset-0 w-full h-full select-none pointer-events-none"
   >
+    <source media="(max-width: 767px)" srcset={heroMobile.src} />
     <Image
       src={HeroImg}
       alt="Posavasos y portacuentas personalizados de piel y madera para restaurantes TapNova"
       fetchpriority="high"
       loading="eager"
       decoding="async"
+      widths={[480, 768, 1024, 1376]}
+      sizes="100vw"
+      quality={60}
       class="w-full h-full object-cover object-[55%_45%] sm:object-center transition-transform duration-1000 ease-out will-change-transform scale-[1.01]"
     />
   </picture>

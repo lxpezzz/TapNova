@@ -27,6 +27,9 @@ const { class: className = "" } = Astro.props;
         alt="TapNova"
         class="h-8 sm:h-12 w-auto brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity duration-200"
         loading="eager"
+        widths={[96, 192]}
+        sizes="(max-width: 639px) 96px, 144px"
+        quality={70}
       />
     </a>    
   </div>
@@ -104,6 +107,8 @@ const { class: className = "" } = Astro.props;
       src={LogoImg}
       alt="TapNova"
       class="h-7 w-auto brightness-0 invert opacity-95"
+      width={96}
+      quality={70}
     />
     <button
       id="header-drawer-close"

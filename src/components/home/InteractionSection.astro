@@ -6,6 +6,9 @@
 // - Tipografía editorial en 2 líneas
 // - Acciones editoriales tipográficas (Carta · Reseñas · Reservas · Instagram · Contacto · Promociones)
 // - Composición 45% / 55% con fotografía HORECA realista
+import { getImage, Image } from "astro:assets";
+import InteractionImage from "../../assets/qr-nfc/qr-nfc-experience.webp";
+const interactionMobile = await getImage({ src: InteractionImage, width: 400, quality: 60 });
 ---
 
 <section 
@@ -64,10 +67,13 @@
         
         <!-- Fotografía HORECA: Producto + Smartphone + Interacción -->
         <picture class="w-full h-full select-none">
-          <source srcset="/images/qr-nfc/qr-nfc-experience.webp" type="image/webp" />
-          <img 
-            src="/images/qr-nfc/qr-nfc-experience.webp" 
+          <source media="(max-width: 767px)" srcset={interactionMobile.src} />
+          <Image
+            src={InteractionImage}
             alt="Cliente interactuando mediante smartphone con posavasos artesanal TapNova en mesa de restaurante" 
+            widths={[400, 600, 800]}
+            sizes="(max-width: 1023px) calc(100vw - 2.5rem), (max-width: 1440px) calc((100vw - 10rem) * .55), 748px"
+            quality={60}
             loading="lazy" 
             decoding="async"
             class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
