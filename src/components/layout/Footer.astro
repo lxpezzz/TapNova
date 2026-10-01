@@ -8,7 +8,6 @@
 // - Línea divisoria y legales
 import { Image } from "astro:assets";
 import LogoImg from "../../assets/logo/logo-tapnova.webp";
-const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 ---
 
 <footer
@@ -57,7 +56,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
           <ul class="flex flex-col gap-1 sm:gap-1.5">
             <li>
               <a
-                href="#productos"
+                href="/#productos"
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
                 Posavasos
@@ -65,7 +64,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
             </li>
             <li>
               <a
-                href="#productos"
+                href="/#productos"
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
                 Portacuentas
@@ -73,7 +72,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
             </li>
             <li>
               <a
-                href="#productos"
+                href="/#productos"
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
                 Expositores
@@ -81,7 +80,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
             </li>
             <li>
               <a
-                href="#productos"
+                href="/#productos"
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
                 Tarjetas
@@ -89,7 +88,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
             </li>
             <li>
               <a
-                href="/productos"
+                href="/#productos"
                 class="text-[#E0D7CC]/90 hover:text-white transition-colors duration-150 py-0.5 inline-block underline underline-offset-4 decoration-white/20 hover:decoration-white"
               >
                 Ver todos los productos
@@ -119,7 +118,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
               </li>
               <li>
                 <a
-                  href="/paginas-web"
+                  href="/#paginas-web"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Páginas Web
@@ -138,7 +137,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
             <ul class="flex flex-col gap-1 sm:gap-1.5">
               <li>
                 <a
-                  href={`${homePrefix}#contacto`}
+                  href="/#contacto"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Contacto
@@ -146,22 +145,13 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
               </li>
               <li>
                 <a
-                  href={`${homePrefix}#como-funciona`}
+                  href="/#como-funciona"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Cómo funciona
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
-                >
-                  Instagram
-                </a>
-              </li>
+              <!-- Añadir Instagram cuando se disponga de la URL oficial de TapNova. -->
             </ul>
           </div>
         </div>
@@ -185,22 +175,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
       </div>
 
       <p>© 2026 TapNova. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-3.5 sm:gap-5">
-        <a
-          href={`${homePrefix}#privacidad`}
-          class="hover:text-white transition-colors duration-150">Privacidad</a
-        >
-        <span class="text-white/20 select-none" aria-hidden="true">·</span>
-        <a
-          href={`${homePrefix}#cookies`}
-          class="hover:text-white transition-colors duration-150">Cookies</a
-        >
-        <span class="text-white/20 select-none" aria-hidden="true">·</span>
-        <a
-          href={`${homePrefix}#aviso-legal`}
-          class="hover:text-white transition-colors duration-150">Aviso legal</a
-        >
-      </div>
+      <!-- Añadir los enlaces legales cuando estén disponibles sus páginas reales. -->
     </div>
   </div>
 </footer>

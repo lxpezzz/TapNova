@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Project {
+  name: string;
+  businessType: string;
+  label: 'Demo' | 'Proyecto';
+  image?: ImageMetadata;
+  imageAlt?: string;
+  url?: string;
+}
+
+// Añadir la captura real y la URL de cada demo cuando estén disponibles.
+// Las mismas entradas pueden sustituirse por proyectos de clientes.
+const projects: Project[] = [
+  { name: 'Demo Restaurante', businessType: 'Restaurante', label: 'Demo' },
+  { name: 'Demo Gastrobar', businessType: 'Bar / gastrobar', label: 'Demo' },
+  { name: 'Demo Cafetería', businessType: 'Cafetería', label: 'Demo' },
+];
+---
+
+<section class="web-projects" aria-labelledby="web-projects-heading">
+  <div class="web-projects__inner">
+    <div class="web-projects__intro">
+      <div>
+        <p class="web-projects__eyebrow">DEMOS</p>
+        <h2 id="web-projects-heading" class="web-projects__heading">Así puede verse tu negocio online.</h2>
+      </div>
+      <p class="web-projects__copy">Algunos ejemplos de páginas creadas para mostrar diferentes formas de presentar un negocio HORECA.</p>
+    </div>
+
+    <div class="web-projects__list">
+      {projects.map((project, index) => (
+        <article class="web-projects__project">
+          <div class="web-projects__visual">
+            {project.image ? (
+              <Image src={project.image} alt={project.imageAlt ?? `Página web de ${project.name}`} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 65vw, 100vw" loading="lazy" class="web-projects__image" />
+            ) : (
+              <div class="web-projects__pending">
+                <span class="web-projects__pending-type">{project.businessType}</span>
+                <p>Captura pendiente</p>
+                <span>Demo en preparación</span>
+              </div>
+            )}
+          </div>
+          <div class="web-projects__caption">
+            <span class="web-projects__number" aria-hidden="true">0{index + 1}</span>
+            <div class="web-projects__details">
+              <p class="web-projects__type">{project.label} · {project.businessType}</p>
+              <h3 class="web-projects__name">{project.name}</h3>
+            </div>
+            {project.url ? (
+              <a class="web-projects__link" href={project.url}>{project.label === 'Demo' ? 'Ver demo' : 'Ver proyecto'} <span aria-hidden="true">→</span></a>
+            ) : (
+              <span class="web-projects__unavailable">Enlace pendiente</span>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .web-projects { padding: 56px 20px; background: #F4F0E8; color: #2E2019; }
+  .web-projects__inner { max-width: 1360px; margin-inline: auto; }
+  .web-projects__intro { display: grid; gap: 20px; margin-bottom: 32px; }
+  .web-projects__eyebrow { margin-bottom: 16px; font-size: 11px; font-weight: 600; letter-spacing: .24em; }
+  .web-projects__heading { max-width: 580px; font-size: 32px; font-weight: 300; line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
+  .web-projects__copy { max-width: 430px; font-size: 15px; font-weight: 300; line-height: 1.65; color: #6B5E52; }
+  .web-projects__list { display: grid; gap: 36px; }
+  .web-projects__project { min-width: 0; }
+  .web-projects__visual { aspect-ratio: 3 / 2; overflow: hidden; border-radius: 22px; background: #E7E0D5; }
+  .web-projects__image { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .web-projects__pending { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 20px; text-align: center; color: #6B5E52; }
+  .web-projects__pending-type { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+  .web-projects__pending p { margin-block: 12px 8px; font-size: 25px; font-weight: 300; color: #2E2019; }
+  .web-projects__pending > span:last-child { font-size: 12px; }
+  .web-projects__caption { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 10px; padding-top: 18px; }
+  .web-projects__number { padding-top: 3px; font-size: 11px; color: #6B5E52; }
+  .web-projects__type { margin-bottom: 6px; color: #6B5E52; font-size: 11px; }
+  .web-projects__name { font-size: 24px; font-weight: 300; letter-spacing: -.015em; line-height: 1.2; }
+  .web-projects__link, .web-projects__unavailable { grid-column: 2; font-size: 13px; }
+  .web-projects__link { width: fit-content; padding-block: 12px; text-underline-offset: 5px; }
+  .web-projects__link:hover { text-decoration: underline; }
+  .web-projects__link:focus-visible { outline: 2px solid #2E2019; outline-offset: 5px; border-radius: 2px; }
+  .web-projects__unavailable { color: #6B5E52; }
+  @media (min-width: 640px) {
+    .web-projects { padding: 72px 32px; }
+    .web-projects__heading { font-size: 44px; }
+    .web-projects__copy { font-size: 17px; }
+    .web-projects__list { gap: 56px; }
+    .web-projects__visual { border-radius: 28px; aspect-ratio: 16 / 10; }
+    .web-projects__caption { grid-template-columns: 30px minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+    .web-projects__link, .web-projects__unavailable { grid-column: 3; }
+    .web-projects__name { font-size: 30px; }
+  }
+  @media (min-width: 768px) { .web-projects { padding-inline: 48px; } }
+  @media (min-width: 1024px) {
+    .web-projects { padding: 96px 64px; }
+    .web-projects__intro { grid-template-columns: 1.2fr .8fr; align-items: end; gap: 80px; margin-bottom: 56px; }
+    .web-projects__heading { font-size: 52px; }
+    .web-projects__project { width: 82%; }
+    .web-projects__project:nth-child(even) { margin-left: auto; }
+    .web-projects__list { gap: 72px; }
+  }
+</style>

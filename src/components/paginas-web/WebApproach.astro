@@ -1,0 +1,149 @@
+---
+const moments = [
+  {
+    number: '01',
+    title: 'Entendemos el local.',
+    description: 'Conocemos qué tipo de negocio tienes, qué ofreces y qué necesita saber una persona antes de visitarte o reservar.',
+  },
+  {
+    number: '02',
+    title: 'Ordenamos la información.',
+    description: 'Damos un lugar claro a tu carta, fotografías, horarios, ubicación y formas de contacto para que tus clientes no tengan que buscar de más.',
+  },
+  {
+    number: '03',
+    title: 'Diseñamos alrededor del negocio.',
+    description: 'La web debe reflejar el ambiente y la identidad del local. Organizamos los textos y las imágenes para mostrar qué lo hace tuyo.',
+  },
+  {
+    number: '04',
+    title: 'Facilitamos el siguiente paso.',
+    description: 'Ponemos a mano las reservas, llamadas, WhatsApp, carta, ubicación y contacto, según las opciones que ofrezca tu negocio.',
+  },
+];
+---
+
+<section id="como-trabajamos" class="web-approach" aria-labelledby="web-approach-heading">
+  <div class="web-approach__inner">
+    <h2 id="web-approach-heading" class="web-approach__heading">
+      No empezamos diseñando. Empezamos entendiendo tu negocio.
+    </h2>
+    <ol class="web-approach__moments">
+      {moments.map(({ number, title, description }) => (
+        <li class="web-approach__moment">
+          <span class="web-approach__number" aria-hidden="true">{number}</span>
+          <div>
+            <h3 class="web-approach__title">{title}</h3>
+            <p class="web-approach__copy">{description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .web-approach {
+    padding: 56px 20px;
+    background: #FAF8F5;
+    color: #2E2019;
+    scroll-margin-top: 112px;
+  }
+
+  .web-approach__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+    display: grid;
+    gap: 28px;
+  }
+
+  .web-approach__heading {
+    max-width: 500px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .web-approach__moments {
+    list-style: none;
+  }
+
+  .web-approach__moment {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 22px;
+    border-top: 1px solid rgb(46 32 25 / 15%);
+  }
+
+  .web-approach__number {
+    padding-top: 5px;
+    color: #6B5E52;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .web-approach__title {
+    margin-bottom: 10px;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .web-approach__copy {
+    max-width: 600px;
+    color: #6B5E52;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  @media (min-width: 640px) {
+    .web-approach {
+      padding: 72px 32px;
+    }
+
+    .web-approach__heading {
+      font-size: 44px;
+    }
+
+    .web-approach__title {
+      font-size: 28px;
+    }
+
+    .web-approach__copy {
+      font-size: 17px;
+    }
+
+    .web-approach__moment {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 20px;
+      padding-block: 26px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .web-approach {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .web-approach {
+      padding: 96px 64px;
+    }
+
+    .web-approach__inner {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+    }
+
+    .web-approach__heading {
+      font-size: 52px;
+    }
+  }
+</style>

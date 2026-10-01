@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import ContactImage from '../../../public/images/cta/contact-background.webp';
+---
+
+<section class="web-final-cta" aria-labelledby="web-final-cta-heading">
+  <Image src={ContactImage} alt="" widths={[480, 800, 1440, 1920]} sizes="100vw" loading="lazy" class="web-final-cta__image" />
+  <div class="web-final-cta__inner">
+    <p class="web-final-cta__eyebrow">TAPNOVA · HORECA</p>
+    <h2 id="web-final-cta-heading" class="web-final-cta__heading">Tu negocio también puede tener una web así.</h2>
+    <p class="web-final-cta__copy">Cuéntanos cómo es tu local y qué necesitas. Nosotros nos encargamos de convertirlo en una web clara, atractiva y fácil de usar.</p>
+    <a href="/#contacto" class="web-final-cta__button">Quiero hablar sobre mi web</a>
+  </div>
+</section>
+
+<style>
+  .web-final-cta { position: relative; isolation: isolate; overflow: hidden; padding: 72px 20px; background: #211915; color: #F4F0E8; }
+  .web-final-cta__image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 65%; }
+  .web-final-cta::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgb(20 13 10 / 78%); }
+  .web-final-cta__inner { max-width: 1360px; margin-inline: auto; }
+  .web-final-cta__eyebrow { margin-bottom: 18px; color: #D8CEBF; font-size: 11px; font-weight: 600; letter-spacing: .24em; }
+  .web-final-cta__heading { max-width: 720px; font-size: 36px; font-weight: 300; line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
+  .web-final-cta__copy { max-width: 510px; margin-block: 22px 28px; font-size: 15px; font-weight: 300; line-height: 1.65; color: #D8CEBF; }
+  .web-final-cta__button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; max-width: 100%; padding: 15px 24px; border-radius: 999px; background: #FAF8F5; color: #1C1613; font-size: 11px; font-weight: 500; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; text-align: center; transition: background-color 200ms ease, transform 200ms ease; }
+  .web-final-cta__button:hover { background: #fff; }
+  .web-final-cta__button:active { transform: scale(.98); }
+  .web-final-cta__button:focus-visible { outline: 2px solid #F4F0E8; outline-offset: 5px; }
+  @media (min-width: 640px) {
+    .web-final-cta { padding: 88px 32px; }
+    .web-final-cta__heading { font-size: 48px; }
+    .web-final-cta__copy { font-size: 17px; margin-bottom: 32px; }
+    .web-final-cta__button { padding-inline: 32px; font-size: 12px; }
+  }
+  @media (min-width: 768px) { .web-final-cta { padding-inline: 48px; } }
+  @media (min-width: 1024px) {
+    .web-final-cta { padding: 112px 64px; }
+    .web-final-cta__heading { font-size: 58px; }
+    .web-final-cta__image { object-position: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .web-final-cta__button { transition: none; }
+    .web-final-cta__button:active { transform: none; }
+  }
+</style>

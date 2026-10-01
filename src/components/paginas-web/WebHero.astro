@@ -1,0 +1,215 @@
+---
+import { Image } from 'astro:assets';
+import WebImage from '../../../public/images/services/web-horeca.webp';
+---
+
+<section class="web-hero" aria-labelledby="web-heading">
+  <div class="web-hero__inner">
+    <div class="web-hero__content">
+      <p class="web-hero__eyebrow">Páginas web para HORECA</p>
+      <h1 id="web-heading" class="web-hero__heading">
+        Una web que convierta visitas en clientes.
+      </h1>
+      <p class="web-hero__copy">
+        Creamos páginas claras, rápidas y pensadas para que quien encuentre tu
+        negocio pueda conocerlo, consultar lo que necesita y dar el siguiente paso.
+      </p>
+      <div class="web-hero__actions">
+        <a href="/#contacto" class="web-hero__primary">
+          Quiero mejorar mi web
+        </a>
+        <a href="#como-trabajamos" class="web-hero__secondary">
+          Ver cómo trabajamos <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+      <p class="web-hero__note">
+        Para restaurantes, bares, cafeterías, hoteles y otros negocios de hostelería.
+      </p>
+    </div>
+    <div class="web-hero__visual">
+      <Image
+        src={WebImage}
+        alt="Página de restaurante con carta y opción de reserva en un móvil sobre una mesa junto a un café"
+        widths={[400, 640, 800, 1200]}
+        sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc((100vw - 184px) / 2), 652px"
+        quality={70}
+        loading="eager"
+        fetchpriority="high"
+        class="web-hero__image"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .web-hero {
+    background: #211915;
+    color: #F4F0E8;
+    padding: 44px 20px 48px;
+  }
+
+  .web-hero__inner {
+    display: grid;
+    align-items: center;
+    gap: 28px;
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .web-hero__eyebrow {
+    margin-bottom: 16px;
+    color: #C7BCB2;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .web-hero__heading {
+    max-width: 660px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 1.08;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .web-hero__copy {
+    max-width: 500px;
+    color: #D8CEBF;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .web-hero__actions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .web-hero__primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: #FAF8F5;
+    color: #1C1613;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    transition: background-color 200ms, transform 200ms;
+  }
+
+  .web-hero__primary:hover {
+    background: #FFFFFF;
+  }
+
+  .web-hero__primary:active {
+    transform: scale(0.98);
+  }
+
+  .web-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-size: 13px;
+    text-decoration: underline;
+    text-decoration-color: rgb(244 240 232 / 35%);
+    text-underline-offset: 6px;
+  }
+
+  .web-hero__secondary:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .web-hero__primary:focus-visible,
+  .web-hero__secondary:focus-visible {
+    outline: 2px solid #F4F0E8;
+    outline-offset: 6px;
+  }
+
+  .web-hero__note {
+    max-width: 440px;
+    margin-top: 20px;
+    color: #C7BCB2;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .web-hero__visual {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 22px;
+  }
+
+  .web-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (min-width: 640px) {
+    .web-hero {
+      padding: 64px 32px;
+    }
+
+    .web-hero__heading {
+      font-size: 48px;
+    }
+
+    .web-hero__copy {
+      font-size: 17px;
+    }
+
+    .web-hero__visual {
+      border-radius: 28px;
+      max-height: 460px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .web-hero {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .web-hero {
+      padding: 80px 64px;
+    }
+
+    .web-hero__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .web-hero__heading {
+      font-size: clamp(44px, 4vw, 58px);
+    }
+
+    .web-hero__visual {
+      aspect-ratio: 4 / 3;
+      max-height: 620px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .web-hero__primary {
+      transition: none;
+    }
+
+    .web-hero__primary:active {
+      transform: none;
+    }
+  }
+</style>

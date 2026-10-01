@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+import WebHero from '../components/paginas-web/WebHero.astro';
+import CustomerQuestions from '../components/paginas-web/CustomerQuestions.astro';
+import WebsitePurpose from '../components/paginas-web/WebsitePurpose.astro';
+import WebApproach from '../components/paginas-web/WebApproach.astro';
+import WebProjects from '../components/paginas-web/WebProjects.astro';
+import WebFinalCTA from '../components/paginas-web/WebFinalCTA.astro';
+import SocialImage from '../../public/images/services/web-horeca.webp';
+---
+
+<Layout
+  title="Páginas Web para Restaurantes y Hostelería | TapNova"
+  description="Creamos webs para restaurantes, bares, cafeterías y hoteles que ayudan a conocer el local, consultar la carta, reservar y contactar de forma sencilla."
+  socialImage={SocialImage}
+  socialImageAlt="Página de restaurante con carta y opción de reserva en un móvil sobre una mesa junto a un café"
+>
+  <main>
+    <WebHero />
+    <CustomerQuestions />
+    <WebsitePurpose />
+    <WebApproach />
+    <WebProjects />
+    <WebFinalCTA />
+  </main>
+  <Footer />
+</Layout>

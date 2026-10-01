@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+import CustomerImage from '../../assets/qr-nfc/qr-nfc-experience.webp';
+
+const purposes = [
+  {
+    title: 'Entender tu negocio',
+    description: 'Saber qué tipo de local es, qué ofrece y si encaja con lo que está buscando.',
+  },
+  {
+    title: 'Verlo',
+    description: 'Conocer el ambiente, los espacios y lo que se sirve a través de fotografías del negocio.',
+  },
+  {
+    title: 'Encontrar la información',
+    description: 'Consultar la carta o los servicios, los horarios y la ubicación sin dar vueltas.',
+  },
+  {
+    title: 'Actuar',
+    description: 'Tener a mano cómo reservar, llamar o contactar cuando ya ha decidido.',
+  },
+];
+---
+
+<section class="website-purpose" aria-labelledby="website-purpose-heading">
+  <div class="website-purpose__inner">
+    <h2 id="website-purpose-heading" class="website-purpose__heading">
+      Todo debería estar donde esperas encontrarlo.
+    </h2>
+    <div class="website-purpose__columns">
+      <div class="website-purpose__visual">
+        <Image
+          src={CustomerImage}
+          alt="Cliente consulta la página de un restaurante en su móvil mientras está sentado a la mesa"
+          widths={[400, 640, 800, 1200]}
+          sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc((100vw - 184px) / 2), 652px"
+          quality={65}
+          loading="lazy"
+          decoding="async"
+          class="website-purpose__image"
+        />
+      </div>
+      <div class="website-purpose__objectives">
+        {purposes.map(({ title, description }) => (
+          <div class="website-purpose__objective">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .website-purpose {
+    padding: 56px 20px;
+    background: #211915;
+    color: #F4F0E8;
+  }
+
+  .website-purpose__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .website-purpose__heading {
+    max-width: 900px;
+    margin-bottom: 28px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .website-purpose__columns {
+    display: grid;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .website-purpose__visual {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 22px;
+  }
+
+  .website-purpose__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .website-purpose__objective {
+    padding-block: 18px;
+    border-bottom: 1px solid rgb(244 240 232 / 15%);
+  }
+
+  .website-purpose__objective:first-child {
+    padding-top: 0;
+  }
+
+  .website-purpose__objective:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .website-purpose__objective h3 {
+    margin-bottom: 8px;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .website-purpose__objective p {
+    max-width: 520px;
+    color: #C7BCB2;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  @media (min-width: 640px) {
+    .website-purpose {
+      padding: 72px 32px;
+    }
+
+    .website-purpose__heading {
+      font-size: 44px;
+      margin-bottom: 36px;
+    }
+
+    .website-purpose__visual {
+      max-height: 440px;
+      border-radius: 28px;
+    }
+
+    .website-purpose__objective h3 {
+      font-size: 28px;
+    }
+
+    .website-purpose__objective p {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .website-purpose {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .website-purpose {
+      padding: 96px 64px;
+    }
+
+    .website-purpose__heading {
+      font-size: 52px;
+    }
+
+    .website-purpose__columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .website-purpose__visual {
+      aspect-ratio: 4 / 3;
+      max-height: none;
+    }
+  }
+</style>

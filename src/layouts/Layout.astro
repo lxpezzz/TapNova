@@ -1,16 +1,31 @@
 ---
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
+import type { ImageMetadata } from 'astro';
+import DefaultSocialImage from '../../public/images/cta/contact-background.webp';
 
 interface Props {
 	title?: string;
 	description?: string;
+	socialImage?: ImageMetadata;
+	socialImageAlt?: string;
 }
 
 const { 
 	title = 'TapNova · Soluciones Físicas y Digitales para Restaurantes',
-	description = 'Posavasos y portacuentas personalizados con QR y NFC para conectar tu local con reseñas, carta, reservas y experiencias digitales.'
+	description = 'Posavasos y portacuentas personalizados con QR y NFC para conectar tu local con reseñas, carta, reservas y experiencias digitales.',
+	socialImage = DefaultSocialImage,
+	socialImageAlt = 'Posavasos y portacuentas sobre una mesa de restaurante con una copa y luz cálida de velas'
 } = Astro.props;
+
+if (!Astro.site) {
+	throw new Error('Configura site en astro.config.mjs para generar las URLs de los metadatos.');
+}
+
+// Cada página conserva su ruta; los parámetros y fragmentos no forman parte de la canonical.
+const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(canonicalPath, Astro.site).href;
+const socialImageUrl = new URL(socialImage.src, Astro.site).href;
 ---
 
 <!doctype html>
@@ -23,6 +38,22 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:site_name" content="TapNova" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:width" content={socialImage.width} />
+		<meta property="og:image:height" content={socialImage.height} />
+		<meta property="og:image:alt" content={socialImageAlt} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageUrl} />
+		<meta name="twitter:image:alt" content={socialImageAlt} />
 		<slot name="head" />
 	</head>
 	<body class="bg-[#0D0A08] text-[#FAF8F2] min-h-screen antialiased selection:bg-white selection:text-black">

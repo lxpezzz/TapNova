@@ -1,0 +1,136 @@
+---
+const questions = [
+  '¿Qué tienen en la carta?',
+  '¿Dónde está?',
+  '¿Está abierto?',
+  '¿Puedo reservar?',
+  '¿Cómo contacto?',
+];
+---
+
+<section class="customer-questions" aria-labelledby="customer-questions-heading">
+  <div class="customer-questions__inner">
+    <div>
+      <h2 id="customer-questions-heading" class="customer-questions__heading">
+        Tu cliente no entra en tu web para admirarla.
+      </h2>
+      <p class="customer-questions__statement">Entra porque está buscando algo.</p>
+      <p class="customer-questions__copy">
+        Una buena web responde a esas preguntas rápidamente. La carta, el horario,
+        la ubicación y las formas de reservar o contactar deben ser fáciles de
+        encontrar y de entender.
+      </p>
+    </div>
+    <ul class="customer-questions__list" aria-label="Preguntas de quien visita la web de un local">
+      {questions.map((question) => <li>{question}</li>)}
+    </ul>
+    <p class="customer-questions__closing">Menos buscar. Más decidir.</p>
+  </div>
+</section>
+
+<style>
+  .customer-questions {
+    padding: 56px 20px;
+    background: #F4F0E8;
+    color: #2E2019;
+  }
+
+  .customer-questions__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+    display: grid;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .customer-questions__heading {
+    max-width: 600px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .customer-questions__statement {
+    margin-bottom: 16px;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .customer-questions__copy {
+    max-width: 520px;
+    color: #6B5E52;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .customer-questions__closing {
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .customer-questions__list {
+    list-style: none;
+    font-size: clamp(23px, 2.1vw, 30px);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .customer-questions__list li {
+    padding-block: 14px;
+    border-bottom: 1px solid rgb(46 32 25 / 15%);
+  }
+
+  @media (min-width: 640px) {
+    .customer-questions {
+      padding: 72px 32px;
+    }
+
+    .customer-questions__heading {
+      font-size: 44px;
+    }
+
+    .customer-questions__statement,
+    .customer-questions__closing {
+      font-size: 28px;
+    }
+
+    .customer-questions__copy {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .customer-questions {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .customer-questions {
+      padding: 96px 64px;
+    }
+
+    .customer-questions__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .customer-questions__heading {
+      font-size: 52px;
+    }
+
+    .customer-questions__closing {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
