@@ -23,6 +23,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<slot name="head" />
 	</head>
 	<body class="bg-[#0D0A08] text-[#FAF8F2] min-h-screen antialiased selection:bg-white selection:text-black">
 		<Header />

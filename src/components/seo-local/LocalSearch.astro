@@ -1,0 +1,139 @@
+---
+const searches = [
+  'restaurante cerca de mí',
+  'dónde comer en Benicàssim',
+  'bar de tapas en Castellón',
+];
+---
+
+<section id="que-es-seo-local" class="local-search" aria-labelledby="local-search-heading">
+  <div class="local-search__inner">
+    <div>
+      <h2 id="local-search-heading" class="local-search__heading">
+        ¿Qué es exactamente el SEO Local?
+      </h2>
+      <p class="local-search__intro">
+        Imagina que alguien abre Google porque quiere decidir dónde comer.
+      </p>
+      <ul class="local-search__examples" aria-label="Ejemplos de búsquedas en Google">
+        {searches.map((search) => <li>“{search}”</li>)}
+      </ul>
+    </div>
+    <div class="local-search__explanation">
+      <p>Google tiene que decidir qué negocios enseñar y en qué orden.</p>
+      <p>
+        El SEO Local consiste en trabajar la información y presencia digital de
+        tu negocio para ayudar a Google a entender quién eres, dónde estás y qué
+        ofreces.
+      </p>
+      <p class="local-search__summary">
+        En pocas palabras: hacemos que sea más fácil encontrarte y entender por
+        qué elegir tu local.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .local-search {
+    padding: 56px 20px;
+    background: #F4F0E8;
+    color: #2E2019;
+    scroll-margin-top: 112px;
+  }
+
+  .local-search__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+    display: grid;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .local-search__heading {
+    max-width: 600px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    line-height: 1.08;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .local-search__intro,
+  .local-search__explanation {
+    max-width: 520px;
+    color: #6B5E52;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .local-search__examples {
+    margin-top: 24px;
+    list-style: none;
+    font-size: clamp(19px, 2.1vw, 28px);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .local-search__examples li {
+    padding-block: 14px;
+    border-bottom: 1px solid rgb(46 32 25 / 15%);
+  }
+
+  .local-search__explanation {
+    display: grid;
+    gap: 16px;
+  }
+
+  .local-search__summary {
+    margin-top: 8px;
+    color: #2E2019;
+    font-size: 23px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 640px) {
+    .local-search {
+      padding: 72px 32px;
+    }
+
+    .local-search__heading {
+      font-size: 44px;
+    }
+
+    .local-search__intro,
+    .local-search__explanation {
+      font-size: 17px;
+    }
+
+    .local-search__summary {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .local-search {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .local-search {
+      padding: 96px 64px;
+    }
+
+    .local-search__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .local-search__heading {
+      font-size: 52px;
+    }
+  }
+</style>

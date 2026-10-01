@@ -8,6 +8,7 @@
 // - Línea divisoria y legales
 import { Image } from "astro:assets";
 import LogoImg from "../../assets/logo/logo-tapnova.webp";
+const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 ---
 
 <footer
@@ -137,7 +138,7 @@ import LogoImg from "../../assets/logo/logo-tapnova.webp";
             <ul class="flex flex-col gap-1 sm:gap-1.5">
               <li>
                 <a
-                  href="#contacto"
+                  href={`${homePrefix}#contacto`}
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Contacto
@@ -145,7 +146,7 @@ import LogoImg from "../../assets/logo/logo-tapnova.webp";
               </li>
               <li>
                 <a
-                  href="#como-funciona"
+                  href={`${homePrefix}#como-funciona`}
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Cómo funciona
@@ -186,17 +187,17 @@ import LogoImg from "../../assets/logo/logo-tapnova.webp";
       <p>© 2026 TapNova. Todos los derechos reservados.</p>
       <div class="flex items-center gap-3.5 sm:gap-5">
         <a
-          href="#privacidad"
+          href={`${homePrefix}#privacidad`}
           class="hover:text-white transition-colors duration-150">Privacidad</a
         >
         <span class="text-white/20 select-none" aria-hidden="true">·</span>
         <a
-          href="#cookies"
+          href={`${homePrefix}#cookies`}
           class="hover:text-white transition-colors duration-150">Cookies</a
         >
         <span class="text-white/20 select-none" aria-hidden="true">·</span>
         <a
-          href="#aviso-legal"
+          href={`${homePrefix}#aviso-legal`}
           class="hover:text-white transition-colors duration-150">Aviso legal</a
         >
       </div>

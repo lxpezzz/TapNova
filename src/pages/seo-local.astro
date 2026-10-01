@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+import SeoHero from '../components/seo-local/SeoHero.astro';
+import LocalSearch from '../components/seo-local/LocalSearch.astro';
+import FirstImpression from '../components/seo-local/FirstImpression.astro';
+import TapNovaApproach from '../components/seo-local/TapNovaApproach.astro';
+
+const title = 'SEO Local para Restaurantes y Hostelería | TapNova';
+const description = 'Ayudamos a restaurantes, bares y negocios HORECA a mejorar cómo aparecen en Google y búsquedas cercanas, explicado sin tecnicismos.';
+const siteUrl = Astro.site ?? import.meta.env.PUBLIC_SITE_URL ?? 'https://tapnova.es';
+const canonical = new URL('/seo-local', siteUrl).href;
+const socialImage = new URL('/images/services/seo-local.webp', siteUrl).href;
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="TapNova" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="896" />
+    <meta property="og:image:alt" content="Una persona consulta un mapa y un perfil de restaurante en el móvil desde una terraza" />
+  </Fragment>
+  <main>
+    <SeoHero />
+    <LocalSearch />
+    <FirstImpression />
+    <TapNovaApproach />
+  </main>
+  <Footer />
+</Layout>

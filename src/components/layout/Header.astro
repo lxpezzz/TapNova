@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { class: className = "" } = Astro.props;
+const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 ---
 
 <header
@@ -38,18 +39,18 @@ const { class: className = "" } = Astro.props;
     class="col-start-2 hidden lg:flex items-center gap-8 xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75 justify-self-center"
     aria-label="Navegación principal"
   >
-    <a href="#productos" class="hover:text-white transition-colors duration-200"
+    <a href={`${homePrefix}#productos`} class="hover:text-white transition-colors duration-200"
       >Productos</a
     >
     <a
-      href="#soluciones"
-      class="hover:text-white transition-colors duration-200">Soluciones</a
+      href="/quienes-somos"
+      class="hover:text-white transition-colors duration-200">Quiénes somos</a
     >
-    <a href="#seo-local" class="hover:text-white transition-colors duration-200"
+    <a href={`${homePrefix}#seo-local`} class="hover:text-white transition-colors duration-200"
       >SEO Local</a
     >
     <a
-      href="#paginas-web"
+      href={`${homePrefix}#paginas-web`}
       class="hover:text-white transition-colors duration-200">Páginas Web</a
     >
   </nav>
@@ -57,14 +58,14 @@ const { class: className = "" } = Astro.props;
   <!-- Lado derecho: Contacto y Botón de acción minimalista -->
   <div class="col-start-3 flex items-center gap-5 sm:gap-7 justify-self-end">
     <a
-      href="#contacto"
+      href={`${homePrefix}#contacto`}
       class="hidden sm:inline-block text-white/70 hover:text-white text-[12.5px] font-medium tracking-[0.16em] uppercase transition-colors duration-200"
     >
       Contacto
     </a>
 
     <a
-      href="#productos"
+      href={`${homePrefix}#productos`}
       class="inline-flex items-center justify-center border border-white/25 bg-white/10 hover:bg-white hover:text-black active:scale-[0.98] backdrop-blur-md text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-4 sm:px-5 py-2 rounded-full transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
     >
       Ver productos
@@ -125,28 +126,28 @@ const { class: className = "" } = Astro.props;
     aria-label="Menú ampliado"
   >
     <a
-      href="#productos"
+      href={`${homePrefix}#productos`}
       class="hdr-drawer-link hover:text-white transition-colors">Productos</a
     >
     <a
-      href="#soluciones"
-      class="hdr-drawer-link hover:text-white transition-colors">Soluciones</a
+      href="/quienes-somos"
+      class="hdr-drawer-link hover:text-white transition-colors">Quiénes somos</a
     >
     <a
-      href="#seo-local"
+      href={`${homePrefix}#seo-local`}
       class="hdr-drawer-link hover:text-white transition-colors">SEO Local</a
     >
     <a
-      href="#paginas-web"
+      href={`${homePrefix}#paginas-web`}
       class="hdr-drawer-link hover:text-white transition-colors">Páginas Web</a
     >
     <a
-      href="#muestras"
+      href={`${homePrefix}#muestras`}
       class="hdr-drawer-link hover:text-white transition-colors"
       >Pedir muestras</a
     >
     <a
-      href="#contacto"
+      href={`${homePrefix}#contacto`}
       class="hdr-drawer-link hover:text-white transition-colors">Contacto</a
     >
   </nav>
@@ -157,7 +158,7 @@ const { class: className = "" } = Astro.props;
   >
     <span>info@tapnova.es</span>
     <a
-      href="#productos"
+      href={`${homePrefix}#productos`}
       class="hdr-drawer-link inline-flex items-center justify-center w-full sm:w-auto bg-white text-black font-medium px-6 py-2.5 rounded-full"
     >
       Ver catálogo completo

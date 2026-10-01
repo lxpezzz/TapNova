@@ -1,0 +1,388 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/layout/Footer.astro";
+import AboutImage from "../../public/images/cta/contact-background.webp";
+---
+
+<Layout
+  title="Quiénes somos · TapNova | Productos y servicios para hostelería"
+  description="Creamos productos personalizados con QR y NFC, páginas web y servicios para que encuentren tu local en Google. Conoce qué hacemos para hostelería."
+>
+<main>
+<section
+  id="quienes-somos"
+  class="about"
+  aria-labelledby="about-heading"
+>
+  <div class="about__inner">
+    <div class="about__content">
+      <p class="about__eyebrow">Quiénes somos</p>
+      <h1 id="about-heading" class="about__heading">
+        Conectamos tu local con todo lo que pasa después.
+      </h1>
+      <div class="about__copy">
+        <p>
+          Somos TapNova, una marca especializada en hostelería. Creamos productos
+          personalizados y ofrecemos servicios digitales para restaurantes,
+          bares, cafeterías, hoteles y otros negocios del sector.
+        </p>
+        <p>
+          Conectamos los objetos que tus clientes usan en el local con acciones
+          útiles en su móvil: consultar la carta, dejar una reseña, reservar o
+          contactar contigo. También trabajamos tu presencia en internet para
+          que sea más fácil encontrarte y elegirte.
+        </p>
+      </div>
+      <p class="about__line">Producto físico · QR + NFC · Presencia digital</p>
+    </div>
+
+    <div class="about__visual">
+      <Image
+        src={AboutImage}
+        alt="Posavasos y portacuentas sobre una mesa de restaurante con una copa y luz cálida de velas"
+        widths={[400, 640, 800, 1200]}
+        sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc((100vw - 184px) / 2), 652px"
+        quality={65}
+        loading="eager"
+        decoding="async"
+        class="about__image"
+      />
+    </div>
+  </div>
+</section>
+
+<section class="about-services" aria-labelledby="about-services-heading">
+  <div class="about-services__inner">
+    <p class="about-services__eyebrow">Qué hacemos</p>
+    <h2 id="about-services-heading" class="about-services__heading">
+      De la mesa a la próxima reserva.
+    </h2>
+    <div class="about-services__columns">
+      <div>
+        <h3 class="about-services__title">Productos para tu local.</h3>
+        <p>
+          Posavasos con QR, portacuentas y expositores con QR y NFC, y tarjetas
+          personalizadas. Piezas con la identidad de tu negocio que llevan a tu
+          carta, reseñas, Instagram, promociones o datos de contacto.
+        </p>
+        <p>
+          El cliente escanea el código QR con la cámara del móvil o acerca su
+          móvil a la pieza para abrir el enlace. Eso es NFC: una forma de acceder
+          sin tener que escanear.
+        </p>
+      </div>
+      <div>
+        <h3 class="about-services__title">Tu negocio en internet.</h3>
+        <p>
+          Creamos páginas web para hostelería donde tus clientes pueden conocer
+          el local, consultar la información que necesitan y encontrar cómo
+          reservar o contactar.
+        </p>
+        <p>
+          También ofrecemos SEO Local: trabajamos la presencia de tu negocio
+          en Google para que te encuentren cuando buscan dónde comer, tomar algo
+          o alojarse en tu zona.
+        </p>
+      </div>
+    </div>
+    <div class="about-services__closing">
+      <p>
+        Producto físico, tecnología y presencia digital, con un mismo propósito:
+        facilitar el siguiente paso de tus clientes, dentro y fuera del local.
+      </p>
+      <a href="/#contacto" class="about-services__link">Cuéntanos sobre tu local <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<Footer />
+</Layout>
+
+<style>
+  .about {
+    background: #F4F0E8;
+    color: #2E2019;
+    padding: 56px 20px;
+  }
+
+  .about__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+    display: grid;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .about__content {
+    min-width: 0;
+  }
+
+  .about__eyebrow {
+    margin-bottom: 12px;
+    color: #6B5E52;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .about__heading {
+    max-width: 580px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .about__copy {
+    max-width: 520px;
+    display: grid;
+    gap: 12px;
+    color: #6B5E52;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .about__line {
+    margin-top: 24px;
+    color: #6B5E52;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    text-wrap: balance;
+  }
+
+  .about__visual {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    border-radius: 22px;
+    background: #211915;
+  }
+
+  .about__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 65%;
+    transition: transform 700ms ease-out;
+  }
+
+  @media (min-width: 640px) {
+    .about {
+      padding: 72px 32px;
+    }
+
+    .about__inner {
+      gap: 36px;
+    }
+
+    .about__eyebrow {
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .about__heading {
+      font-size: 42px;
+    }
+
+    .about__copy {
+      font-size: 16px;
+    }
+
+    .about__line {
+      font-size: 12px;
+    }
+
+    .about__visual {
+      border-radius: 28px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      padding-inline: 48px;
+    }
+
+    .about__heading {
+      font-size: 48px;
+    }
+
+    .about__visual {
+      max-height: 440px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about {
+      padding: 96px 64px;
+    }
+
+    .about__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .about__content {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .about__heading {
+      font-size: clamp(42px, 3.6vw, 52px);
+    }
+
+    .about__visual {
+      grid-column: 1;
+      grid-row: 1;
+      aspect-ratio: 4 / 3;
+      max-height: none;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .about__visual:hover .about__image {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about__image {
+      transition: none;
+      transform: none;
+    }
+
+    .about__visual:hover .about__image {
+      transform: none;
+    }
+  }
+
+  .about-services {
+    padding: 56px 20px;
+    background: #211915;
+    color: #C7BCB2;
+  }
+
+  .about-services__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .about-services__eyebrow {
+    margin-bottom: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .about-services__heading {
+    margin-bottom: 32px;
+    color: #F4F0E8;
+    font-size: clamp(32px, 3.6vw, 48px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .about-services__columns {
+    display: grid;
+    gap: 32px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .about-services__columns p {
+    max-width: 560px;
+  }
+
+  .about-services__columns p + p {
+    margin-top: 12px;
+  }
+
+  .about-services__title {
+    margin-bottom: 12px;
+    color: #F4F0E8;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .about-services__closing {
+    display: grid;
+    gap: 20px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgb(244 240 232 / 15%);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  .about-services__closing p {
+    max-width: 660px;
+  }
+
+  .about-services__link {
+    width: fit-content;
+    color: #F4F0E8;
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: rgb(244 240 232 / 35%);
+  }
+
+  .about-services__link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .about-services__link:focus-visible {
+    outline: 2px solid #F4F0E8;
+    outline-offset: 6px;
+  }
+
+  @media (min-width: 640px) {
+    .about-services {
+      padding: 72px 32px;
+    }
+
+    .about-services__columns {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-services {
+      padding-inline: 48px;
+    }
+
+    .about-services__columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-services {
+      padding: 80px 64px;
+    }
+
+    .about-services__columns {
+      gap: 56px;
+    }
+
+    .about-services__closing {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 56px;
+    }
+  }
+</style>

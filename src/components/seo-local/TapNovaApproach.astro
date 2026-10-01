@@ -1,0 +1,148 @@
+---
+const moments = [
+  {
+    number: '01',
+    title: 'Vemos cómo apareces ahora.',
+    description: 'Revisamos tu ficha de Google, tus reseñas, fotografías, información y cómo se presenta actualmente tu negocio.',
+  },
+  {
+    number: '02',
+    title: 'Comparamos tu situación.',
+    description: 'Miramos otros negocios cercanos para entender qué está viendo una persona cuando tiene que elegir entre varios locales.',
+  },
+  {
+    number: '03',
+    title: 'Detectamos qué se puede mejorar.',
+    description: 'Buscamos información incompleta, problemas, oportunidades y aspectos que pueden estar haciendo más difícil que Google entienda bien tu negocio.',
+  },
+  {
+    number: '04',
+    title: 'Te explicamos qué haríamos.',
+    description: 'Ordenamos las mejoras por prioridad y te explicamos en lenguaje normal qué recomendamos cambiar y por qué.',
+  },
+];
+---
+
+<section class="tapnova-approach" aria-labelledby="tapnova-approach-heading">
+  <div class="tapnova-approach__inner">
+    <h2 id="tapnova-approach-heading" class="tapnova-approach__heading">
+      ¿Y qué hacemos nosotros exactamente?
+    </h2>
+    <ol class="tapnova-approach__moments">
+      {moments.map(({ number, title, description }) => (
+        <li class="tapnova-approach__moment">
+          <span class="tapnova-approach__number" aria-hidden="true">{number}</span>
+          <div>
+            <h3 class="tapnova-approach__title">{title}</h3>
+            <p class="tapnova-approach__copy">{description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .tapnova-approach {
+    padding: 56px 20px;
+    background: #FAF8F5;
+    color: #2E2019;
+  }
+
+  .tapnova-approach__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+    display: grid;
+    gap: 28px;
+  }
+
+  .tapnova-approach__heading {
+    max-width: 500px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .tapnova-approach__moments {
+    list-style: none;
+  }
+
+  .tapnova-approach__moment {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 22px;
+    border-top: 1px solid rgb(46 32 25 / 15%);
+  }
+
+  .tapnova-approach__number {
+    padding-top: 5px;
+    color: #6B5E52;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .tapnova-approach__title {
+    margin-bottom: 10px;
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .tapnova-approach__copy {
+    max-width: 600px;
+    color: #6B5E52;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  @media (min-width: 640px) {
+    .tapnova-approach {
+      padding: 72px 32px;
+    }
+
+    .tapnova-approach__heading {
+      font-size: 44px;
+    }
+
+    .tapnova-approach__title {
+      font-size: 28px;
+    }
+
+    .tapnova-approach__copy {
+      font-size: 17px;
+    }
+
+    .tapnova-approach__moment {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 20px;
+      padding-block: 26px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .tapnova-approach {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tapnova-approach {
+      padding: 96px 64px;
+    }
+
+    .tapnova-approach__inner {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+    }
+
+    .tapnova-approach__heading {
+      font-size: 52px;
+    }
+  }
+</style>

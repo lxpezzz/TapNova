@@ -1,0 +1,215 @@
+---
+import { Image } from 'astro:assets';
+import SearchImage from '../../../public/images/services/seo-local.webp';
+---
+
+<section class="seo-hero" aria-labelledby="seo-heading">
+  <div class="seo-hero__inner">
+    <div class="seo-hero__content">
+      <p class="seo-hero__eyebrow">SEO Local para HORECA</p>
+      <h1 id="seo-heading" class="seo-hero__heading">
+        Que te encuentren cuando están buscando dónde ir.
+      </h1>
+      <p class="seo-hero__copy">
+        Trabajamos cómo aparece tu negocio en Google para que más personas puedan
+        descubrirlo cuando buscan restaurantes, bares o locales cerca de ellas.
+      </p>
+      <div class="seo-hero__actions">
+        <a href="/#contacto" class="seo-hero__primary">
+          Quiero mejorar mi presencia en Google
+        </a>
+        <a href="#que-es-seo-local" class="seo-hero__secondary">
+          Entender cómo funciona <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+      <p class="seo-hero__note">
+        Sin tecnicismos. Te explicamos qué vemos, qué hacemos y por qué.
+      </p>
+    </div>
+    <div class="seo-hero__visual">
+      <Image
+        src={SearchImage}
+        alt="Una persona consulta un mapa y un perfil de restaurante en el móvil desde una terraza"
+        widths={[400, 640, 800, 1200]}
+        sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc((100vw - 184px) / 2), 652px"
+        quality={70}
+        loading="eager"
+        fetchpriority="high"
+        class="seo-hero__image"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .seo-hero {
+    background: #211915;
+    color: #F4F0E8;
+    padding: 44px 20px 48px;
+  }
+
+  .seo-hero__inner {
+    display: grid;
+    align-items: center;
+    gap: 28px;
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .seo-hero__eyebrow {
+    margin-bottom: 16px;
+    color: #C7BCB2;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .seo-hero__heading {
+    max-width: 660px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 1.08;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .seo-hero__copy {
+    max-width: 500px;
+    color: #D8CEBF;
+    font-size: 15px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .seo-hero__actions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .seo-hero__primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: #FAF8F5;
+    color: #1C1613;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    transition: background-color 200ms, transform 200ms;
+  }
+
+  .seo-hero__primary:hover {
+    background: #FFFFFF;
+  }
+
+  .seo-hero__primary:active {
+    transform: scale(0.98);
+  }
+
+  .seo-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    font-size: 13px;
+    text-decoration: underline;
+    text-decoration-color: rgb(244 240 232 / 35%);
+    text-underline-offset: 6px;
+  }
+
+  .seo-hero__secondary:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .seo-hero__primary:focus-visible,
+  .seo-hero__secondary:focus-visible {
+    outline: 2px solid #F4F0E8;
+    outline-offset: 6px;
+  }
+
+  .seo-hero__note {
+    max-width: 440px;
+    margin-top: 20px;
+    color: #C7BCB2;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  .seo-hero__visual {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 22px;
+  }
+
+  .seo-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% center;
+  }
+
+  @media (min-width: 640px) {
+    .seo-hero {
+      padding: 64px 32px;
+    }
+
+    .seo-hero__heading {
+      font-size: 48px;
+    }
+
+    .seo-hero__copy {
+      font-size: 17px;
+    }
+
+    .seo-hero__visual {
+      border-radius: 28px;
+      max-height: 460px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .seo-hero {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .seo-hero {
+      padding: 80px 64px;
+    }
+
+    .seo-hero__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .seo-hero__heading {
+      font-size: clamp(44px, 4vw, 58px);
+    }
+
+    .seo-hero__visual {
+      aspect-ratio: 5 / 6;
+      max-height: 620px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .seo-hero__primary {
+      transition: none;
+    }
+
+    .seo-hero__primary:active {
+      transform: none;
+    }
+  }
+</style>
