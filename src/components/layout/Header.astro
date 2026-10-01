@@ -39,15 +39,17 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
     class="col-start-2 hidden lg:flex items-center gap-8 xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75 justify-self-center"
     aria-label="Navegación principal"
   >
-    <a href={`${homePrefix}#productos`} class="hover:text-white transition-colors duration-200"
-      >Productos</a
+    <a
+      href={`${homePrefix}#productos`}
+      class="hover:text-white transition-colors duration-200">Productos</a
     >
     <a
       href="/quienes-somos"
       class="hover:text-white transition-colors duration-200">Quiénes somos</a
     >
-    <a href={`${homePrefix}#seo-local`} class="hover:text-white transition-colors duration-200"
-      >SEO Local</a
+    <a
+      href={`${homePrefix}seo-local`}
+      class="hover:text-white transition-colors duration-200">SEO Local</a
     >
     <a
       href={`${homePrefix}#paginas-web`}
@@ -131,7 +133,8 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
     >
     <a
       href="/quienes-somos"
-      class="hdr-drawer-link hover:text-white transition-colors">Quiénes somos</a
+      class="hdr-drawer-link hover:text-white transition-colors"
+      >Quiénes somos</a
     >
     <a
       href={`${homePrefix}#seo-local`}
