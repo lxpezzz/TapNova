@@ -1,0 +1,226 @@
+[
+  {
+    "width": 1440,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1021,
+        "height": 1033.640625,
+        "width": 1440
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1021,
+        "height": 855.71875,
+        "width": 1440
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1876.71875,
+        "height": 177.921875,
+        "width": 1440
+      },
+      ".ecosystem-intro__title": {
+        "top": 1119.390625,
+        "height": 207.328125,
+        "width": 1000
+      },
+      "#productos": {
+        "top": 2054.640625,
+        "height": 2209,
+        "width": 1440
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 1280,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1021,
+        "height": 991.1875,
+        "width": 1280
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1021,
+        "height": 813.265625,
+        "width": 1280
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1834.265625,
+        "height": 177.921875,
+        "width": 1280
+      },
+      ".ecosystem-intro__title": {
+        "top": 1119.390625,
+        "height": 186.5625,
+        "width": 1000
+      },
+      "#productos": {
+        "top": 2012.1875,
+        "height": 2209,
+        "width": 1280
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 1024,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1027,
+        "height": 859.8125,
+        "width": 1024
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1027,
+        "height": 681.890625,
+        "width": 1024
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1708.890625,
+        "height": 177.921875,
+        "width": 1024
+      },
+      ".ecosystem-intro__title": {
+        "top": 1125.390625,
+        "height": 99.5,
+        "width": 896
+      },
+      "#productos": {
+        "top": 1886.8125,
+        "height": 2209,
+        "width": 1024
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 768,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1021,
+        "height": 929.703125,
+        "width": 768
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1021,
+        "height": 708.9375,
+        "width": 768
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1729.9375,
+        "height": 220.765625,
+        "width": 768
+      },
+      ".ecosystem-intro__title": {
+        "top": 1111.390625,
+        "height": 142.546875,
+        "width": 672
+      },
+      "#productos": {
+        "top": 1950.703125,
+        "height": 2061,
+        "width": 768
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 430,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1009.5,
+        "height": 880.671875,
+        "width": 430
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1009.5,
+        "height": 611.421875,
+        "width": 430
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1620.921875,
+        "height": 269.25,
+        "width": 430
+      },
+      ".ecosystem-intro__title": {
+        "top": 1080.296875,
+        "height": 112.171875,
+        "width": 390
+      },
+      "#productos": {
+        "top": 1890.171875,
+        "height": 2115.734375,
+        "width": 430
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 390,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1009.5,
+        "height": 918.0625,
+        "width": 390
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1009.5,
+        "height": 648.8125,
+        "width": 390
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1658.3125,
+        "height": 269.25,
+        "width": 390
+      },
+      ".ecosystem-intro__title": {
+        "top": 1080.296875,
+        "height": 149.5625,
+        "width": 350
+      },
+      "#productos": {
+        "top": 1927.5625,
+        "height": 2115.734375,
+        "width": 390
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  },
+  {
+    "width": 375,
+    "blocks": {
+      ".ecosystem-intro": {
+        "top": 1009.5,
+        "height": 918.0625,
+        "width": 375
+      },
+      ".ecosystem-intro__pain-stage": {
+        "top": 1009.5,
+        "height": 648.8125,
+        "width": 375
+      },
+      ".ecosystem-intro__solution": {
+        "top": 1658.3125,
+        "height": 269.25,
+        "width": 375
+      },
+      ".ecosystem-intro__title": {
+        "top": 1080.296875,
+        "height": 149.5625,
+        "width": 335
+      },
+      "#productos": {
+        "top": 1927.5625,
+        "height": 2115.734375,
+        "width": 375
+      }
+    },
+    "overflow": [],
+    "pageOverflow": false
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "width": 1440,
+    "viewportHeight": 900,
+    "hero": {
+      "x": 0,
+      "y": 97,
+      "width": 1440,
+      "height": 900
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": -0.00006103515625,
+    "centerOffsetY": 0,
+    "naturalWidth": 1440,
+    "naturalHeight": 803
+  },
+  {
+    "width": 1280,
+    "viewportHeight": 800,
+    "hero": {
+      "x": 0,
+      "y": 97,
+      "width": 1280,
+      "height": 800
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": 0,
+    "centerOffsetY": 0,
+    "naturalWidth": 1280,
+    "naturalHeight": 714
+  },
+  {
+    "width": 1024,
+    "viewportHeight": 768,
+    "hero": {
+      "x": 0,
+      "y": 103,
+      "width": 1024,
+      "height": 768
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": 0,
+    "centerOffsetY": -0.000030517578125,
+    "naturalWidth": 1024,
+    "naturalHeight": 572
+  },
+  {
+    "width": 768,
+    "viewportHeight": 1024,
+    "hero": {
+      "x": 0,
+      "y": 97,
+      "width": 768,
+      "height": 1024
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": -0.000030517578125,
+    "centerOffsetY": 0,
+    "naturalWidth": 768,
+    "naturalHeight": 429
+  },
+  {
+    "width": 430,
+    "viewportHeight": 932,
+    "hero": {
+      "x": 0,
+      "y": 85.5,
+      "width": 430,
+      "height": 932
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": 0,
+    "centerOffsetY": 0.000030517578125,
+    "naturalWidth": 480,
+    "naturalHeight": 268
+  },
+  {
+    "width": 390,
+    "viewportHeight": 844,
+    "hero": {
+      "x": 0,
+      "y": 85.5,
+      "width": 390,
+      "height": 844
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": 0.0000152587890625,
+    "centerOffsetY": -0.000030517578125,
+    "naturalWidth": 480,
+    "naturalHeight": 268
+  },
+  {
+    "width": 375,
+    "viewportHeight": 812,
+    "hero": {
+      "x": 0,
+      "y": 85.5,
+      "width": 375,
+      "height": 812
+    },
+    "objectFit": "cover",
+    "objectPosition": "50% 50%",
+    "centerOffsetX": 0,
+    "centerOffsetY": 0,
+    "naturalWidth": 480,
+    "naturalHeight": 268
+  }
+]
