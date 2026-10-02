@@ -11,7 +11,7 @@ const { class: className = "" } = Astro.props;
 
 <header
   id="site-header"
-  class="sticky top-0 z-30 grid w-full grid-cols-[1fr_auto_1fr] items-center bg-[#0D0A08]/70 backdrop-blur-md border-b border-white/10 pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-6 sm:px-10 lg:px-14"
+  class="sticky top-0 z-30 grid w-full grid-cols-[1fr_auto_1fr] xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[#0D0A08]/70 backdrop-blur-md border-b border-white/10 pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-6 sm:px-10 lg:px-14"
   aria-label="Cabecera principal"
 >
   <!-- Lado izquierdo: Logotipo TapNova-->
@@ -35,7 +35,7 @@ const { class: className = "" } = Astro.props;
 
   <!-- Centro: Enlaces de navegación desktop (discretos, finos y espaciados) -->
   <nav
-    class="col-start-2 hidden lg:flex items-center gap-8 xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75 justify-self-center"
+    class="col-start-2 hidden xl:flex items-center gap-4 xl:gap-[clamp(12px,calc(10vw_-_120px),24px)] 2xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75 justify-self-center"
     aria-label="Navegación principal"
   >
     <a
@@ -53,10 +53,14 @@ const { class: className = "" } = Astro.props;
       href="/quienes-somos"
       class="hover:text-white transition-colors duration-200">Quiénes somos</a
     >
+    <a
+      href="/preguntas-frecuentes"
+      class="hover:text-white transition-colors duration-200">Preguntas frecuentes</a
+    >
   </nav>
 
   <!-- Lado derecho: Contacto y Botón de acción minimalista -->
-  <div class="col-start-3 flex items-center gap-5 sm:gap-7 justify-self-end">
+  <div class="col-start-3 flex items-center gap-5 sm:gap-7 xl:gap-[clamp(12px,calc(10vw_-_116px),28px)] justify-self-end">
     <a
       href="/#contacto"
       class="hidden sm:inline-block text-white/70 hover:text-white text-[12.5px] font-medium tracking-[0.16em] uppercase transition-colors duration-200"
@@ -75,7 +79,7 @@ const { class: className = "" } = Astro.props;
     <button
       id="header-mobile-toggle"
       type="button"
-      class="lg:hidden flex flex-col items-center justify-center w-9 h-9 -mr-2 rounded-md text-white/85 hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
+      class="xl:hidden flex flex-col items-center justify-center w-9 h-9 -mr-2 rounded-md text-white/85 hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
       aria-label="Abrir menú de navegación"
       aria-expanded="false"
       aria-controls="header-mobile-drawer"
@@ -141,6 +145,10 @@ const { class: className = "" } = Astro.props;
       href="/quienes-somos"
       class="hdr-drawer-link hover:text-white transition-colors"
       >Quiénes somos</a
+    >
+    <a
+      href="/preguntas-frecuentes"
+      class="hdr-drawer-link hover:text-white transition-colors">Preguntas frecuentes</a
     >
     <a
       href="/#contacto"

@@ -1,0 +1,109 @@
+---
+import type { Faq } from '../../data/faqs';
+
+interface Props {
+  questions: Faq[];
+}
+
+const { questions } = Astro.props;
+---
+
+<div class="faq-accordion">
+  {questions.map(({ id, question, answer }) => (
+    <details class="faq-accordion__item" id={id}>
+      <summary class="faq-accordion__question">
+        <span>{question}</span>
+        <span class="faq-accordion__indicator" aria-hidden="true"></span>
+      </summary>
+      <p class="faq-accordion__answer">{answer}</p>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-accordion__item {
+    border-top: 1px solid rgb(46 32 25 / 18%);
+    scroll-margin-top: 128px;
+  }
+
+  .faq-accordion__item:last-child {
+    border-bottom: 1px solid rgb(46 32 25 / 18%);
+  }
+
+  .faq-accordion__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 52px;
+    padding-block: 18px;
+    color: #2e2019;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .faq-accordion__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-accordion__question:hover {
+    color: #0d0a08;
+  }
+
+  .faq-accordion__question:focus-visible {
+    outline: 2px solid #6b5e52;
+    outline-offset: 4px;
+  }
+
+  .faq-accordion__indicator {
+    position: relative;
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
+    color: #6b5e52;
+  }
+
+  .faq-accordion__indicator::before,
+  .faq-accordion__indicator::after {
+    position: absolute;
+    inset: 6px 0 auto;
+    height: 1px;
+    background: currentColor;
+    content: '';
+  }
+
+  .faq-accordion__indicator::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-accordion__item[open] .faq-accordion__indicator::after {
+    transform: rotate(0);
+  }
+
+  .faq-accordion__answer {
+    max-width: 680px;
+    margin: 0;
+    padding: 0 38px 20px 0;
+    color: #6b5e52;
+    font-size: 16px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 639px) {
+    .faq-accordion__question {
+      gap: 16px;
+      padding-block: 16px;
+      font-size: 16px;
+    }
+
+    .faq-accordion__answer {
+      padding-right: 0;
+      font-size: 15px;
+    }
+  }
+</style>

@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/layout/Footer.astro';
+import FaqAccordion from '../components/ui/FaqAccordion.astro';
+import { faqCategories } from '../data/faqs';
+---
+
+<Layout
+  title="Preguntas frecuentes sobre productos y servicios | TapNova"
+  description="Resuelve tus dudas sobre TapNova: productos personalizados, QR y NFC, pedidos, SEO Local y páginas web para hostelería."
+>
+  <main>
+    <section class="faq-hero" aria-labelledby="faq-heading">
+      <div class="faq-hero__inner">
+        <p class="faq-hero__eyebrow">PREGUNTAS FRECUENTES</p>
+        <h1 class="faq-hero__heading" id="faq-heading">
+          Todo lo que necesitas saber sobre TapNova.
+        </h1>
+        <p class="faq-hero__text">
+          Productos, personalización, QR y NFC, SEO Local, páginas web y todo lo
+          relacionado con nuestros servicios para hostelería.
+        </p>
+      </div>
+    </section>
+
+    <div class="faq-directory">
+      <div class="faq-directory__inner">
+        <nav class="faq-directory__nav" aria-label="Categorías de preguntas frecuentes">
+          <p class="faq-directory__label">EXPLORAR POR TEMA</p>
+          <ul class="faq-directory__links">
+            {faqCategories.map(({ id, title }) => (
+              <li><a href={`#faq-${id}`}>{title}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <div class="faq-directory__categories">
+          {faqCategories.map(({ id, title, questions }) => (
+            <section class="faq-category" id={`faq-${id}`} aria-labelledby={`faq-${id}-heading`}>
+              <h2 class="faq-category__heading" id={`faq-${id}-heading`}>{title}</h2>
+              <FaqAccordion questions={questions} />
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .faq-hero {
+    padding: 56px 20px;
+    background: #211915;
+    color: #f4f0e8;
+  }
+
+  .faq-hero__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .faq-hero__eyebrow {
+    margin: 0 0 18px;
+    color: #c7bcb2;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+  }
+
+  .faq-hero__heading {
+    max-width: 780px;
+    margin: 0;
+    font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .faq-hero__text {
+    max-width: 600px;
+    margin: 20px 0 0;
+    color: #d8cebf;
+    font-size: 16px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .faq-directory {
+    padding: 40px 20px 64px;
+    background: #faf8f5;
+    color: #2e2019;
+  }
+
+  .faq-directory__inner {
+    display: grid;
+    gap: 40px;
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .faq-directory__label {
+    margin: 0 0 12px;
+    color: #6b5e52;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+  }
+
+  .faq-directory__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .faq-directory__links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgb(46 32 25 / 25%);
+  }
+
+  .faq-directory__links a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .faq-directory__links a:focus-visible {
+    outline: 2px solid #6b5e52;
+    outline-offset: 4px;
+  }
+
+  .faq-category {
+    margin-bottom: 48px;
+    scroll-margin-top: 128px;
+  }
+
+  .faq-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-category__heading {
+    margin: 0 0 20px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  @media (min-width: 640px) {
+    .faq-hero {
+      padding: 72px 32px;
+    }
+
+    .faq-directory {
+      padding: 56px 32px 80px;
+    }
+
+    .faq-directory__links {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .faq-category__heading {
+      font-size: 34px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .faq-hero,
+    .faq-directory {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .faq-hero {
+      padding: 88px 64px;
+    }
+
+    .faq-directory {
+      padding: 64px 64px 96px;
+    }
+
+    .faq-directory__inner {
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 64px;
+    }
+
+    .faq-directory__nav {
+      position: sticky;
+      top: 128px;
+      align-self: start;
+    }
+
+    .faq-directory__links {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .faq-category {
+      margin-bottom: 64px;
+    }
+  }
+</style>

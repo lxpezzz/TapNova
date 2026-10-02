@@ -1,0 +1,198 @@
+[
+  {
+    "width": 1440,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1440,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1440,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1440,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1280,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1280,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1280,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1280,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": true
+  },
+  {
+    "width": 1024,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 1024,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 1024,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 1024,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 768,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 768,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 768,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 768,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 430,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 430,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 430,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 430,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 390,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 390,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 390,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 375,
+    "route": "/",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 375,
+    "route": "/seo-local",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 375,
+    "route": "/paginas-web",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  },
+  {
+    "width": 375,
+    "route": "/preguntas-frecuentes",
+    "overflow": false,
+    "headerOverlap": false,
+    "desktopNav": false
+  }
+]
