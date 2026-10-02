@@ -1,0 +1,152 @@
+---
+import { products, productFilters } from '../../data/products';
+import CatalogProduct from './CatalogProduct.astro';
+---
+
+<section class="product-catalog" aria-labelledby="catalog-heading">
+  <div class="product-catalog__inner">
+    <header class="product-catalog__heading">
+      <h2 id="catalog-heading">Elige tu punto de contacto.</h2>
+      <p class="product-catalog__count" aria-live="polite" aria-atomic="true">{products.length} productos</p>
+    </header>
+    <div class="product-catalog__filters" role="group" aria-label="Filtrar productos" hidden>
+      {productFilters.map(({ id, name }) => (
+        <button type="button" data-filter={id} aria-pressed={id === 'all'} aria-controls="catalog-products">{name}</button>
+      ))}
+    </div>
+    <div class="product-catalog__grid" id="catalog-products">
+      {products.map((product) => <CatalogProduct product={product} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-catalog {
+    padding: 40px 20px 64px;
+    background: #faf8f5;
+    color: #2e2019;
+  }
+
+  .product-catalog__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .product-catalog__heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .product-catalog__heading h2 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .product-catalog__count {
+    margin: 0;
+    color: #6b5e52;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .product-catalog__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-top: 20px;
+  }
+
+  .product-catalog__filters[hidden] {
+    display: none;
+  }
+
+  .product-catalog__filters button {
+    min-height: 44px;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    padding: 0;
+    background: transparent;
+    color: #6b5e52;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .product-catalog__filters button[aria-pressed="true"] {
+    color: #2e2019;
+    border-bottom-color: #2e2019;
+  }
+
+  .product-catalog__filters button:hover {
+    color: #2e2019;
+  }
+
+  .product-catalog__filters button:focus-visible {
+    outline: 2px solid #6b5e52;
+    outline-offset: 4px;
+  }
+
+  .product-catalog__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    margin-top: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .product-catalog {
+      padding: 48px 32px 80px;
+    }
+    .product-catalog__heading h2 {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .product-catalog {
+      padding-inline: 48px;
+    }
+    .product-catalog__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-catalog {
+      padding: 48px 64px 96px;
+    }
+    .product-catalog__grid {
+      gap: 56px 40px;
+      margin-top: 32px;
+    }
+  }
+</style>
+
+<script>
+  const catalog = document.querySelector('.product-catalog');
+  if (catalog) {
+    const filters = catalog.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const items = catalog.querySelectorAll<HTMLElement>('.catalog-product');
+    const count = catalog.querySelector('.product-catalog__count');
+    catalog.querySelector<HTMLElement>('.product-catalog__filters')?.removeAttribute('hidden');
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        let visibleCount = 0;
+        items.forEach((item) => {
+          const visible = filter === 'all' || item.dataset.categories?.split(' ').includes(filter ?? '') === true;
+          item.hidden = !visible;
+          if (visible) visibleCount++;
+        });
+        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        if (count) count.textContent = `${visibleCount} ${visibleCount === 1 ? 'producto' : 'productos'}`;
+      });
+    });
+  }
+</script>

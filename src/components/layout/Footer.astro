@@ -8,6 +8,7 @@
 // - Línea divisoria y legales
 import { Image } from "astro:assets";
 import LogoImg from "../../assets/logo/logo-tapnova.webp";
+import { products } from '../../data/products';
 ---
 
 <footer
@@ -54,41 +55,17 @@ import LogoImg from "../../assets/logo/logo-tapnova.webp";
             PRODUCTOS
           </span>
           <ul class="flex flex-col gap-1 sm:gap-1.5">
-            <li>
+            {products.map((product) => <li>
               <a
-                href="/#productos"
+                href={`/productos/${product.slug}`}
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
-                Posavasos
+                {product.name}
               </a>
-            </li>
+            </li>)}
             <li>
               <a
-                href="/#productos"
-                class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
-              >
-                Portacuentas
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#productos"
-                class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
-              >
-                Expositores
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#productos"
-                class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
-              >
-                Tarjetas
-              </a>
-            </li>
-            <li>
-              <a
-                href="/#productos"
+                href="/productos"
                 class="text-[#E0D7CC]/90 hover:text-white transition-colors duration-150 py-0.5 inline-block underline underline-offset-4 decoration-white/20 hover:decoration-white"
               >
                 Ver todos los productos

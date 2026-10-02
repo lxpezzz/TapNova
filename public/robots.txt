@@ -1,0 +1,138 @@
+# ==================================================
+# TAPNOVA - ROBOTS.TXT
+# Buscadores + motores de respuesta IA
+# ==================================================
+
+# Web pública abierta por defecto
+User-agent: *
+Allow: /
+
+# ==================================================
+# GOOGLE
+# ==================================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+# Gemini / grounding
+User-agent: Google-Extended
+Allow: /
+
+# ==================================================
+# YAHOO
+# ==================================================
+
+User-agent: Slurp
+Allow: /
+
+# ==================================================
+# MICROSOFT / BING
+# ==================================================
+
+User-agent: bingbot
+Allow: /
+
+# ==================================================
+# OPENAI / CHATGPT
+# ==================================================
+
+# ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# ==================================================
+# ANTHROPIC / CLAUDE
+# ==================================================
+
+# Claude Search
+User-agent: Claude-SearchBot
+Allow: /
+
+# Acceso solicitado por usuarios de Claude
+User-agent: Claude-User
+Allow: /
+
+# ==================================================
+# PERPLEXITY
+# ==================================================
+
+User-agent: PerplexityBot
+Allow: /
+
+# ==================================================
+# APPLE
+# ==================================================
+
+# Siri / Spotlight / Safari / Search
+User-agent: Applebot
+Allow: /
+
+# ==================================================
+# SEO CRAWLERS
+# ==================================================
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: BLEXBot
+Allow: /
+
+# ==================================================
+# AI TRAINING
+# No son necesarios para aparecer en búsquedas IA
+# ==================================================
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# ==================================================
+# SITE COPIERS / DESCARGA MASIVA
+# ==================================================
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+# ==================================================
+# SITEMAP
+# ==================================================
+
+Sitemap: https://tapnova.es/sitemap-index.xml

@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/layout/Footer.astro';
+import ProductFamilyPage from '../../components/productos/ProductFamilyPage.astro';
+import { posavasosFamily } from '../../data/product-families';
+import ProductOrderSelection from '../../components/productos/ProductOrderSelection.astro';
+import { posavasosQuantityOffers } from '../../data/order-options';
+
+const family = {
+  ...posavasosFamily,
+  closing: { ...posavasosFamily.closing, href: '#configurar-posavasos' },
+};
+---
+
+<Layout
+  title="Posavasos personalizados para hostelería | TapNova"
+  description="Posavasos personalizados para conectar tu local con reseñas, carta, reservas y contacto. Descubre los modelos Minimalista y Premium de TapNova."
+  socialImage={posavasosFamily.product.image?.src}
+  socialImageAlt={posavasosFamily.product.image?.alt}
+>
+  <main>
+    <ProductFamilyPage family={family}>
+      <ProductOrderSelection slot="selection" family={posavasosFamily} offers={posavasosQuantityOffers} />
+    </ProductFamilyPage>
+  </main>
+  <Footer />
+</Layout>

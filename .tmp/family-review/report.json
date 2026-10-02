@@ -1,0 +1,520 @@
+[
+  {
+    "width": 1440,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 1440,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 1440,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 1440,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 1440,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 1440,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 1280,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 1024,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 768,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 768,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 768,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 768,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 768,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 768,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 430,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 430,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 430,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 430,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 430,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 430,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 390,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 390,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 390,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 390,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 390,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 390,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  },
+  {
+    "width": 375,
+    "slug": "posavasos",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9900,
+      "vatRate": 21,
+      "vatCents": 2079,
+      "totalCents": 11979
+    }
+  },
+  {
+    "width": 375,
+    "slug": "portacuentas",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 10500,
+      "vatRate": 21,
+      "vatCents": 2205,
+      "totalCents": 12705
+    }
+  },
+  {
+    "width": 375,
+    "slug": "expositores",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 9450,
+      "vatRate": 21,
+      "vatCents": 1985,
+      "totalCents": 11435
+    }
+  },
+  {
+    "width": 375,
+    "slug": "portamenus",
+    "quantity": 3,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 13500,
+      "vatRate": 21,
+      "vatCents": 2835,
+      "totalCents": 16335
+    }
+  },
+  {
+    "width": 375,
+    "slug": "tarjetas-qr",
+    "quantity": 250,
+    "estimate": {
+      "kind": "estimated",
+      "currency": "EUR",
+      "netCents": 2500,
+      "vatRate": 21,
+      "vatCents": 525,
+      "totalCents": 3025
+    }
+  },
+  {
+    "width": 375,
+    "slug": "pegatinas-qr",
+    "quantity": 3,
+    "estimate": {
+      "kind": "quote",
+      "currency": "EUR"
+    }
+  }
+]

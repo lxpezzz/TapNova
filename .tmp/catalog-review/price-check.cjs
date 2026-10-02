@@ -1,0 +1,13 @@
+const fs = require('node:fs');
+const ts = require('typescript');
+const assert = require('node:assert/strict');
+const source = ts.createSourceFile('products.ts', fs.readFileSync('src/data/products.ts','utf8'), ts.ScriptTarget.Latest, true);
+const declaration = source.statements.find(node => ts.isFunctionDeclaration(node) && node.name?.text === 'formatProductPrice');
+const javascript = ts.transpile(declaration.getText(source), {module:ts.ModuleKind.CommonJS});
+const moduleExports = {};
+new Function('exports',javascript)(moduleExports);
+assert.equal(moduleExports.formatProductPrice({kind:'fixed',amount:99,vat:'excluded'}),'99 € + IVA');
+assert.equal(moduleExports.formatProductPrice({kind:'from',amount:49,vat:'excluded'}),'Desde 49 € + IVA');
+assert.equal(moduleExports.formatProductPrice({kind:'quote'}),'Consultar');
+assert.equal(moduleExports.formatProductPrice({kind:'fixed',amount:49.5,vat:'included'}),'49,5 € IVA incluido');
+console.log('PASS: fixed, from, quote, decimal amount and VAT labels.');

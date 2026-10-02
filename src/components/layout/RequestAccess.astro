@@ -1,0 +1,45 @@
+---
+import { ShoppingBag } from '@lucide/astro';
+---
+<a class="request-access" href="/tu-solicitud" aria-label="Tu solicitud, 0 productos">
+  <ShoppingBag size={21} stroke-width={1.5} aria-hidden="true" />
+  <span class="request-access__count" aria-hidden="true">0</span>
+</a>
+<style>
+  .request-access {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 40px;
+    color: #f4f0e8;
+  }
+
+  .request-access__count {
+    font-size: 11px;
+    min-width: 12px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .request-access:focus-visible {
+    outline: 2px solid #c7bcb2;
+    outline-offset: 4px;
+  }
+</style>
+<script>
+  import { readRequest } from '../../lib/order-request';
+  function updateRequestCount() {
+    const access = document.querySelector('.request-access');
+    if (!access) return;
+    try {
+      const count = readRequest().length;
+      access.setAttribute('aria-label', `Tu solicitud, ${count} ${count === 1 ? 'producto' : 'productos'}`);
+      const badge = access.querySelector('.request-access__count');
+      if (badge) badge.textContent = String(count);
+    } catch { access.setAttribute('aria-label', 'Tu solicitud, revisa los datos guardados'); }
+  }
+  updateRequestCount();
+  window.addEventListener('tapnova:request-change', updateRequestCount);
+  window.addEventListener('storage', updateRequestCount);
+  window.addEventListener('pageshow', updateRequestCount);
+</script>

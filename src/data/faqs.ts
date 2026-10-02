@@ -137,22 +137,22 @@ export const faqCategories: FaqCategory[] = [
   },
   {
     id: 'tarjetas',
-    title: 'Tarjetas NFC / QR',
+    title: 'Tarjetas QR',
     questions: [
       {
         id: 'tarjetas-funcion',
-        question: '¿Para qué puedo usar una tarjeta NFC o QR?',
+        question: '¿Para qué puedo usar una tarjeta QR?',
         answer: 'Para acercar un enlace a tus clientes: tu web, contacto, reservas o reseñas. El formato y las opciones disponibles se confirman en la propuesta del pedido.',
       },
       {
         id: 'tarjetas-uso',
-        question: '¿Cómo se utiliza una tarjeta NFC?',
-        answer: 'El cliente acerca un móvil compatible a la zona NFC y abre el enlace que aparece. La posición de lectura y los ajustes pueden variar según el teléfono.',
+        question: '¿Cómo se utiliza una tarjeta QR?',
+        answer: 'El cliente escanea el código con la cámara del móvil y abre el enlace que aparece.',
       },
       {
         id: 'tarjetas-qr',
-        question: '¿Conviene que la tarjeta tenga también un QR?',
-        answer: 'El QR ofrece otra forma de acceder al enlace con la cámara, especialmente cuando el móvil no puede leer NFC. La combinación disponible se confirma según la tarjeta elegida.',
+        question: '¿Qué enlace puede abrir la tarjeta?',
+        answer: 'El QR puede llevar a tu carta, reservas, reseñas, redes o contacto. El destino se acuerda antes de preparar el pedido.',
       },
       {
         id: 'tarjetas-personalizacion',
@@ -162,7 +162,7 @@ export const faqCategories: FaqCategory[] = [
       {
         id: 'tarjetas-contactos',
         question: '¿La tarjeta guarda automáticamente un contacto en el móvil?',
-        answer: 'No por el simple hecho de llevar NFC o QR. Eso depende de la página o herramienta a la que enlace, y el cliente debe realizar o aceptar la acción correspondiente.',
+        answer: 'No por el simple hecho de llevar un QR. Eso depende de la página o herramienta a la que enlace, y el cliente debe realizar o aceptar la acción correspondiente.',
       },
     ],
   },

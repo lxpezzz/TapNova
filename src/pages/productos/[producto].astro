@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/layout/Footer.astro';
+import ProductFamilyPage from '../../components/productos/ProductFamilyPage.astro';
+import ProductOrderSelection from '../../components/productos/ProductOrderSelection.astro';
+import { catalogFamilies } from '../../data/catalog-families';
+import type { ProductFamily } from '../../data/product-families';
+import { tarjetasQrQuantityOffers, productUnitPricing } from '../../data/order-options';
+
+export function getStaticPaths() {
+  return catalogFamilies.map((family) => ({ params: { producto: family.product.slug }, props: { family } }));
+}
+
+interface Props { family: ProductFamily }
+const { family } = Astro.props;
+---
+
+<Layout
+  title={`${family.product.name} para hostelería | TapNova`}
+  description={family.introduction}
+  socialImage={family.product.image?.src}
+  socialImageAlt={family.product.image?.alt}
+>
+  <main>
+    <ProductFamilyPage family={family}>
+      <ProductOrderSelection slot="selection" family={family} offers={family.product.slug === 'tarjetas-qr' ? tarjetasQrQuantityOffers : []} unitPricing={productUnitPricing[family.product.slug]} />
+    </ProductFamilyPage>
+  </main>
+  <Footer />
+</Layout>

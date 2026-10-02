@@ -17,11 +17,6 @@ const expositoresMobile = await getImage({
   width: 400,
   quality: 62,
 });
-const posavasosMobile = await getImage({
-  src: PosavasosImage,
-  width: 480,
-  quality: 62,
-});
 ---
 
 <section
@@ -161,37 +156,36 @@ const posavasosMobile = await getImage({
     <!-- POSAVASOS PERSONALIZADOS -->
     <!-- --------------------------------------------------------------------- -->
     <article
-      class="group relative rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden min-h-[600px] sm:min-h-[680px] md:min-h-[760px] lg:min-h-[820px] flex flex-col justify-between p-8 sm:p-12 md:p-14 lg:p-16 bg-[#16120E] shadow-[0_16px_50px_rgba(46,32,25,0.12)]"
+      class="group relative rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden flex flex-col md:justify-between md:min-h-[760px] lg:min-h-[820px] md:p-14 lg:p-16 bg-[#16120E] shadow-[0_16px_50px_rgba(46,32,25,0.12)]"
     >
       <!-- Fotografía HORECA Lifestyle Protagonista -->
-      <picture class="absolute inset-0 w-full h-full select-none">
-        <source media="(max-width: 767px)" srcset={posavasosMobile.src} />
+      <picture class="relative block w-full aspect-[3/2] md:absolute md:inset-0 md:h-full md:aspect-auto select-none">
         <Image
           src={PosavasosImage}
           alt="Posavasos personalizados de piel y madera de roble con QR y NFC en mesa de restaurante TapNova"
           widths={[480, 768, 1024, 1376]}
-          sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1439px) calc(100vw - 8rem), 1360px"
+          sizes="(max-width: 639px) calc(100vw - 2.5rem), (max-width: 767px) calc(100vw - 4rem), (max-width: 1439px) calc(100vw - 8rem), 1360px"
           quality={62}
           loading="lazy"
           decoding="async"
-          class="w-full h-full object-cover object-[center_55%] group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
+          class="w-full h-full object-cover object-center md:object-[center_55%] group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
         />
       </picture>
 
       <!-- Viñeteado cinematográfico profundo -->
       <div
-        class="absolute inset-0 bg-gradient-to-t from-black/92 via-black/45 to-black/35 pointer-events-none"
+        class="absolute inset-x-0 top-0 aspect-[3/2] bg-gradient-to-b from-black/45 via-transparent to-transparent md:inset-0 md:aspect-auto md:bg-gradient-to-t md:from-black/92 md:via-black/45 md:to-black/35 pointer-events-none"
         aria-hidden="true"
       >
       </div>
       <div
-        class="absolute inset-0 bg-black/15 pointer-events-none"
+        class="absolute inset-0 hidden md:block bg-black/15 pointer-events-none"
         aria-hidden="true"
       >
       </div>
 
       <!-- Cabecera del panel: Badge de Producto Destacado -->
-      <div class="relative z-10 flex items-center justify-between">
+      <div class="absolute top-6 left-8 z-10 flex items-center justify-between sm:top-8 sm:left-12 md:relative md:top-auto md:left-auto">
         <span
           class="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white/90 text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.24em] uppercase px-4 py-1.5 rounded-full"
         >
@@ -201,7 +195,7 @@ const posavasosMobile = await getImage({
       </div>
 
       <!-- Contenido editorial protagonista en la zona inferior -->
-      <div class="relative z-10 max-w-[660px] flex flex-col items-start pt-20">
+      <div class="relative z-10 max-w-[660px] flex flex-col items-start px-8 pt-7 pb-8 sm:px-12 sm:pt-8 sm:pb-12 md:p-0 md:pt-20">
         <!-- Título principal -->
         <h2
           class="text-white font-light text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-[-0.025em] leading-[1.05] text-balance"

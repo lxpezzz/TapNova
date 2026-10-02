@@ -1,0 +1,125 @@
+---
+import { products } from '../../data/products';
+interface Props { mobile?: boolean }
+const { mobile = false } = Astro.props;
+---
+
+{mobile ? (
+  <details class="product-navigation product-navigation--mobile">
+    <summary>Productos</summary>
+    <div class="product-navigation__links">
+      <a href="/productos">Todos los productos</a>
+      {products.map((product) => <a href={`/productos/${product.slug}`}>{product.name}</a>)}
+    </div>
+  </details>
+) : (
+  <div class="product-navigation" data-product-navigation>
+    <a href="/productos" class="product-navigation__trigger" aria-controls="desktop-products" aria-expanded="false">Productos</a>
+    <div class="product-navigation__bridge">
+      <div id="desktop-products" class="product-navigation__links">
+        <a href="/productos">Todos los productos</a>
+        {products.map((product) => <a href={`/productos/${product.slug}`}>{product.name}</a>)}
+      </div>
+    </div>
+  </div>
+)}
+
+<style>
+  .product-navigation {
+    position: relative;
+  }
+
+  .product-navigation__trigger {
+    transition: color 180ms;
+  }
+
+  .product-navigation__trigger:hover {
+    color: white;
+  }
+
+  .product-navigation__bridge {
+    position: absolute;
+    top: 100%;
+    left: -24px;
+    width: 300px;
+    padding-top: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 180ms, transform 180ms, visibility 180ms;
+  }
+
+  .product-navigation:is(:hover, :focus-within):not([data-dismissed]) .product-navigation__bridge {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .product-navigation__links {
+    display: grid;
+    padding: 12px;
+    background: #211915;
+    border: 1px solid #ffffff26;
+    box-shadow: 0 16px 32px #0003;
+    text-align: left;
+  }
+
+  .product-navigation__links a {
+    padding: 12px;
+    color: #f4f0e8;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    line-height: 1.4;
+    text-transform: none;
+  }
+
+  .product-navigation__links a:hover {
+    background: #ffffff0d;
+  }
+
+  .product-navigation a:focus-visible, .product-navigation summary:focus-visible {
+    outline: 2px solid #c7bcb2;
+    outline-offset: 3px;
+  }
+
+  .product-navigation--mobile summary {
+    cursor: pointer;
+  }
+
+  .product-navigation--mobile .product-navigation__links {
+    margin-top: 16px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .product-navigation--mobile .product-navigation__links a {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-navigation__bridge {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const navigation = document.querySelector<HTMLElement>('[data-product-navigation]');
+  const trigger = navigation?.querySelector('a');
+  const syncExpanded = () => trigger?.setAttribute('aria-expanded', String(!navigation?.hasAttribute('data-dismissed') && (navigation?.matches(':hover') || navigation?.matches(':focus-within'))));
+  navigation?.addEventListener('mouseenter', () => { navigation.removeAttribute('data-dismissed'); syncExpanded(); });
+  navigation?.addEventListener('mouseleave', syncExpanded);
+  navigation?.addEventListener('focusin', () => { navigation.removeAttribute('data-dismissed'); syncExpanded(); });
+  navigation?.addEventListener('focusout', () => requestAnimationFrame(syncExpanded));
+  navigation?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      trigger?.focus();
+      navigation.setAttribute('data-dismissed', '');
+      syncExpanded();
+    }
+  });
+</script>

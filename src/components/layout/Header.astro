@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import LogoImg from "../../assets/logo/logo-tapnova.webp";
+import ProductNavigation from './ProductNavigation.astro';
+import RequestAccess from './RequestAccess.astro';
 
 interface Props {
   class?: string;
@@ -11,7 +13,7 @@ const { class: className = "" } = Astro.props;
 
 <header
   id="site-header"
-  class="sticky top-0 z-30 grid w-full grid-cols-[1fr_auto_1fr] xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[#0D0A08]/70 backdrop-blur-md border-b border-white/10 pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-6 sm:px-10 lg:px-14"
+  class="sticky top-0 z-30 grid w-full grid-cols-[1fr_auto_1fr] xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center bg-[#0D0A08]/70 backdrop-blur-md border-b border-white/10 pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-6 sm:px-10 lg:px-14 xl:px-8 2xl:px-14"
   aria-label="Cabecera principal"
 >
   <!-- Lado izquierdo: Logotipo TapNova-->
@@ -38,10 +40,7 @@ const { class: className = "" } = Astro.props;
     class="col-start-2 hidden xl:flex items-center gap-4 xl:gap-[clamp(12px,calc(10vw_-_120px),24px)] 2xl:gap-10 text-[12.5px] font-medium tracking-[0.16em] uppercase text-white/75 justify-self-center"
     aria-label="Navegación principal"
   >
-    <a
-      href="/#productos"
-      class="hover:text-white transition-colors duration-200">Productos</a
-    >
+    <ProductNavigation />
     <a
       href="/paginas-web"
       class="hover:text-white transition-colors duration-200">Páginas Web</a
@@ -62,7 +61,7 @@ const { class: className = "" } = Astro.props;
 
   <!-- Lado derecho: Contacto y Botón de acción minimalista -->
   <div
-    class="col-start-3 flex items-center gap-5 sm:gap-7 xl:gap-[clamp(12px,calc(10vw_-_116px),28px)] justify-self-end"
+    class="col-start-3 flex items-center gap-3 sm:gap-5 xl:gap-2 2xl:gap-6 justify-self-end"
   >
     <a
       href="/#contacto"
@@ -72,11 +71,13 @@ const { class: className = "" } = Astro.props;
     </a>
 
     <a
-      href="/#productos"
-      class="inline-flex items-center justify-center border border-white/25 bg-white/10 hover:bg-white hover:text-black active:scale-[0.98] backdrop-blur-md text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-4 sm:px-5 py-2 rounded-full transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
+      href="/productos"
+      class="inline-flex items-center justify-center border border-white/25 bg-white/10 hover:bg-white hover:text-black active:scale-[0.98] backdrop-blur-md text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-4 sm:px-5 xl:px-3 2xl:px-5 py-2 rounded-full transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
     >
       Ver productos
     </a>
+
+    <RequestAccess />
 
     <!-- Botón hamburguesa móvil -->
     <button
@@ -107,6 +108,7 @@ const { class: className = "" } = Astro.props;
   id="header-mobile-drawer"
   class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl transition-all duration-300 opacity-0 pointer-events-none flex flex-col justify-between p-7 sm:p-10"
   aria-hidden="true"
+  inert
 >
   <!-- Cabecera del drawer -->
   <div class="flex items-center justify-between">
@@ -132,10 +134,7 @@ const { class: className = "" } = Astro.props;
     class="flex flex-col gap-5 text-center my-auto text-[20px] sm:text-[24px] font-light tracking-[0.18em] uppercase text-white/80"
     aria-label="Menú ampliado"
   >
-    <a
-      href="/#productos"
-      class="hdr-drawer-link hover:text-white transition-colors">Productos</a
-    >
+    <ProductNavigation mobile />
     <a
       href="/paginas-web"
       class="hdr-drawer-link hover:text-white transition-colors">Páginas Web</a
@@ -164,13 +163,23 @@ const { class: className = "" } = Astro.props;
     class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] tracking-[0.16em] uppercase text-white/50"
   >
     <a
-      href="/#productos"
+      href="/productos"
       class="hdr-drawer-link inline-flex items-center justify-center w-full sm:w-auto bg-white text-black font-medium px-6 py-2.5 rounded-full"
     >
       Ver catálogo completo
     </a>
   </div>
 </div>
+
+<style>
+  #header-mobile-drawer { overflow-y: auto; }
+  #header-mobile-drawer > nav { flex-shrink: 0; padding-block: 32px; }
+  #site-header > div:last-child > a { white-space: nowrap; }
+  @media (max-width: 389px) {
+    #site-header { padding-inline: 16px; }
+    #site-header > div:last-child { gap: 8px; }
+  }
+</style>
 
 <script>
   // Control del drawer/menú editorial del Header
@@ -184,8 +193,10 @@ const { class: className = "" } = Astro.props;
     drawer.classList.remove("opacity-0", "pointer-events-none");
     drawer.classList.add("opacity-100", "pointer-events-auto");
     drawer.setAttribute("aria-hidden", "false");
+    drawer.inert = false;
     mobileToggle?.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+    closeBtn?.focus();
   }
 
   function closeMenu() {
@@ -193,8 +204,10 @@ const { class: className = "" } = Astro.props;
     drawer.classList.add("opacity-0", "pointer-events-none");
     drawer.classList.remove("opacity-100", "pointer-events-auto");
     drawer.setAttribute("aria-hidden", "true");
+    drawer.inert = true;
     mobileToggle?.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
+    mobileToggle?.focus();
   }
 
   mobileToggle?.addEventListener("click", openMenu);
@@ -202,6 +215,15 @@ const { class: className = "" } = Astro.props;
 
   drawerLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+  drawer?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  drawer?.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab') return;
+    const elements = Array.from(drawer.querySelectorAll<HTMLElement>('a, button, summary')).filter((element) => element.getClientRects().length > 0);
+    const first = elements[0];
+    const last = elements.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
   });
 
   // Cerrar con Escape

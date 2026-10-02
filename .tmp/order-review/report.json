@@ -1,0 +1,51 @@
+[
+  {
+    "width": 1440,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 1280,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 1024,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 768,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 430,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 390,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  },
+  {
+    "width": 375,
+    "persistence": true,
+    "keyboard": true,
+    "estimatedPrice": "passed",
+    "outboundRequests": 0
+  }
+]

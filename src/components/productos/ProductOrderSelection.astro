@@ -1,0 +1,545 @@
+---
+import { qrDestinations, type QuantityOffer, type UnitPricing } from '../../data/order-options';
+import type { ProductFamily } from '../../data/product-families';
+import { formatProductPrice } from '../../data/products';
+
+interface Props {
+  family: ProductFamily;
+  offers: QuantityOffer[];
+  unitPricing?: UnitPricing;
+}
+
+const { family, offers, unitPricing } = Astro.props;
+const selectionId = `configurar-${family.product.slug}`;
+const hasModels = family.models.length > 1;
+const hasOffers = offers.length > 0;
+const destinationLabel = family.selection?.destinationLabel ?? 'Destino del QR';
+const config = {
+  productId: family.product.id,
+  models: family.models.map(({ id, name }) => ({ id, name })),
+  offers,
+  requestedQuantity: !hasOffers,
+  unitPricing,
+};
+---
+
+<section class="order-selection" id={selectionId} aria-labelledby="order-heading">
+  <div class="order-selection__inner">
+    <header class="order-selection__heading">
+      <p class="order-selection__eyebrow">TU SOLICITUD</p>
+      <h2 id="order-heading">{family.selection?.heading ?? 'Prepara tus posavasos.'}</h2>
+      <p>{family.selection?.description ?? 'Elige cómo quieres conectar tu mesa con tus clientes.'}</p>
+    </header>
+    <form class="order-selection__form">
+      <div class="order-selection__fields">
+        {hasModels && <fieldset class="order-selection__models">
+          <legend>Modelo</legend>
+          <div class="order-selection__model-options">
+            {family.models.map((model) => (
+              <label>
+                <input type="radio" name="model" value={model.id} required />
+                <span>{model.name}<small>{formatProductPrice(model.price)}</small></span>
+              </label>
+            ))}
+          </div>
+        </fieldset>}
+        <div class="order-selection__field">
+          <label for="order-quantity">Cantidad</label>
+          {hasOffers ? <select id="order-quantity" name="quantity" aria-describedby="order-quantity-note" disabled>
+            <option value="">{hasModels ? 'Elige primero un modelo' : 'Elige una cantidad'}</option>
+          </select> : <input id="order-quantity" name="quantity" type="number" min="1" max={Number.MAX_SAFE_INTEGER} step="1" required inputmode="numeric" aria-describedby="order-quantity-note" />}
+          <p class="order-selection__note" id="order-quantity-note">{hasOffers ? 'Elige un modelo para consultar las cantidades y sus precios.' : 'Indica la cantidad solicitada. Las condiciones y el importe se concretan en la propuesta.'}</p>
+          {unitPricing?.discount && <p class="order-selection__note">{unitPricing.discount.percent} % de descuento a partir de {unitPricing.discount.minimumQuantity} unidades.</p>}
+          {unitPricing?.gift && <p class="order-selection__note">{unitPricing.gift.quantity} unidad de regalo al comprar {unitPricing.gift.minimumQuantity} o más. La cantidad que indiques corresponde a las unidades de compra.</p>}
+        </div>
+        <div class="order-selection__field">
+          <label for="order-qr">{destinationLabel}</label>
+          <select id="order-qr" name="qrDestination" required>
+            <option value="" disabled selected>Elige un destino</option>
+            {qrDestinations.map(({ id, name }) => <option value={id}>{name}</option>)}
+          </select>
+        </div>
+        <div class="order-selection__field">
+          <label for="order-observations">Observaciones <span>(opcional)</span></label>
+          <textarea id="order-observations" name="observations" rows="3" maxlength="1000" placeholder="Quiero incluir el logo y adaptar los colores de mi restaurante."></textarea>
+        </div>
+      </div>
+      <div class="order-selection__summary" aria-labelledby="order-summary-heading">
+        <h3 id="order-summary-heading">Tu selección.</h3>
+        <dl>
+          {!family.singleOption && <div><dt>Modelo</dt><dd data-summary="model">{hasModels ? 'Sin elegir' : 'Por concretar'}</dd></div>}
+          <div><dt>Cantidad</dt><dd data-summary="quantity">Por concretar</dd></div>
+          <div><dt>{destinationLabel === 'Destino QR/NFC' ? destinationLabel : 'Destino QR'}</dt><dd data-summary="qr">Sin elegir</dd></div>
+          <div class="order-selection__price-row"><dt>Precio estimado</dt><dd data-summary="net">Consultar</dd></div>
+          <div><dt>IVA</dt><dd data-summary="vat">Por confirmar</dd></div>
+          <div class="order-selection__total"><dt>Total estimado</dt><dd data-summary="total">Consultar</dd></div>
+        </dl>
+        <p class="order-selection__note">Importes estimados para el modelo y la cantidad seleccionados.</p>
+        <button class="order-selection__submit" type="submit" disabled>Añadir a mi solicitud <span aria-hidden="true">→</span></button>
+        <p class="order-selection__status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <p class="order-selection__error" role="alert" hidden></p>
+        <noscript><p class="order-selection__note">Activa JavaScript para guardar tu selección en este navegador.</p></noscript>
+      </div>
+    </form>
+    <script type="application/json" class="order-selection__config" set:html={JSON.stringify(config).replace(/</g, '\u003c')} />
+  </div>
+</section>
+
+<style>
+  .order-selection {
+    padding: 48px 20px;
+    background: #faf8f5;
+    color: #2e2019;
+    scroll-margin-top: 128px;
+  }
+
+  .order-selection__inner {
+    max-width: 1360px;
+    margin-inline: auto;
+  }
+
+  .order-selection__heading {
+    margin-bottom: 32px;
+  }
+
+  .order-selection__eyebrow {
+    margin: 0 0 16px;
+    color: #6b5e52;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+  }
+
+  .order-selection h2 {
+    margin: 0;
+    font-size: clamp(30px, 3.2vw, 44px);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+  }
+
+  .order-selection__heading > p:last-child {
+    margin: 16px 0 0;
+    color: #6b5e52;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .order-selection__form {
+    display: grid;
+    gap: 40px;
+  }
+
+  .order-selection__fields {
+    display: grid;
+    gap: 28px;
+    min-width: 0;
+  }
+
+  .order-selection__models {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .order-selection legend,
+  .order-selection__field > label {
+    display: block;
+    margin-bottom: 12px;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .order-selection__model-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .order-selection__model-options label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-height: 64px;
+    padding-block: 16px;
+    border-top: 1px solid rgb(46 32 25 / 20%);
+    border-bottom: 1px solid rgb(46 32 25 / 20%);
+    cursor: pointer;
+  }
+
+  .order-selection__model-options label:has(input:checked) {
+    border-bottom: 2px solid #2e2019;
+  }
+
+  .order-selection__model-options input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    accent-color: #2e2019;
+  }
+
+  .order-selection__model-options span {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  .order-selection__model-options small {
+    display: block;
+    margin-top: 6px;
+    color: #6b5e52;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .order-selection__field label span {
+    color: #6b5e52;
+    font-size: 13px;
+  }
+
+  .order-selection input[type="number"],
+  .order-selection select,
+  .order-selection textarea {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgb(46 32 25 / 30%);
+    border-radius: 0;
+    padding: 12px;
+    background: transparent;
+    color: #2e2019;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .order-selection textarea {
+    display: block;
+    resize: vertical;
+  }
+
+  .order-selection textarea::placeholder {
+    color: #6b5e52;
+    opacity: 1;
+  }
+
+  .order-selection select:disabled {
+    opacity: 1;
+    color: #6b5e52;
+  }
+
+  .order-selection__note {
+    margin: 10px 0 0;
+    color: #6b5e52;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .order-selection__summary {
+    min-width: 0;
+    padding-top: 24px;
+    border-top: 1px solid rgb(46 32 25 / 20%);
+    align-self: start;
+  }
+
+  .order-selection__summary h3 {
+    margin: 0 0 24px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .order-selection dl {
+    margin: 0;
+  }
+
+  .order-selection dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-block: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .order-selection dt {
+    color: #6b5e52;
+  }
+
+  .order-selection dd {
+    margin: 0;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .order-selection dl .order-selection__price-row {
+    margin-top: 16px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(46 32 25 / 16%);
+  }
+
+  .order-selection dl .order-selection__total {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgb(46 32 25 / 16%);
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .order-selection__total dt {
+    color: #2e2019;
+  }
+
+  .order-selection__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 24px;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 20px;
+    background: #2e2019;
+    color: #faf8f5;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .order-selection__submit:hover:not(:disabled) {
+    background: #211915;
+  }
+
+  .order-selection__submit:disabled {
+    opacity: 0.65;
+    cursor: default;
+  }
+
+  .order-selection__status,
+  .order-selection__error {
+    margin: 12px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .order-selection__status:empty {
+    margin: 0;
+  }
+
+  .order-selection__status :global(a:focus-visible) {
+    outline: 2px solid #6b5e52;
+    outline-offset: 4px;
+  }
+
+  .order-selection__error[hidden] {
+    display: none;
+  }
+
+  .order-selection input:focus-visible,
+  .order-selection select:focus-visible,
+  .order-selection textarea:focus-visible,
+  .order-selection button:focus-visible {
+    outline: 2px solid #6b5e52;
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 640px) {
+    .order-selection {
+      padding: 56px 32px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .order-selection {
+      padding-inline: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .order-selection {
+      padding: 72px 64px;
+    }
+
+    .order-selection__form {
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr);
+      gap: 64px;
+    }
+
+    .order-selection__summary {
+      position: sticky;
+      top: 128px;
+    }
+  }
+</style>
+
+<script>
+  import { qrDestinations, type QuantityOffer, type QrDestination, type UnitPricing } from '../../data/order-options';
+  import { addRequestSelection, readRequest, updateRequestSelection, estimateQuantityOffer, unitQuantityOffer, type RequestSelection } from '../../lib/order-request';
+
+  interface SelectionConfig {
+    productId: string;
+    models: { id: string; name: string }[];
+    offers: QuantityOffer[];
+    requestedQuantity: boolean;
+    unitPricing?: UnitPricing;
+  }
+
+  const section = document.querySelector<HTMLElement>('.order-selection');
+  const form = section?.querySelector<HTMLFormElement>('form');
+  const configNode = section?.querySelector('.order-selection__config');
+  if (section && form && configNode) {
+    const editingId = new URLSearchParams(window.location.search).get('editar');
+    const config: SelectionConfig = JSON.parse(configNode.textContent ?? '{}');
+    const quantity = form.querySelector<HTMLSelectElement | HTMLInputElement>('[name="quantity"]')!;
+    const destination = form.querySelector<HTMLSelectElement>('[name="qrDestination"]')!;
+    const observations = form.querySelector<HTMLTextAreaElement>('[name="observations"]')!;
+    const submit = form.querySelector<HTMLButtonElement>('[type="submit"]')!;
+    const status = form.querySelector<HTMLElement>('.order-selection__status')!;
+    const error = form.querySelector<HTMLElement>('.order-selection__error')!;
+    const note = form.querySelector<HTMLElement>('#order-quantity-note')!;
+    const money = (cents: number) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+
+    function selectedModel() {
+      if (config.models.length < 2) return config.models[0] ?? { id: null, name: 'Por concretar' };
+      return config.models.find(({ id }) => id === form!.querySelector<HTMLInputElement>('[name="model"]:checked')?.value);
+    }
+
+    function selectedQuantity() {
+      if (!config.requestedQuantity) return selectedOffer()?.quantity ?? null;
+      const value = Number(quantity.value);
+      return quantity.value && Number.isSafeInteger(value) && value > 0 ? value : null;
+    }
+
+    function selectedOffer() {
+      const model = selectedModel();
+      if (config.requestedQuantity && config.unitPricing) {
+        return model?.id ? unitQuantityOffer(config.unitPricing, model.id, Number(quantity.value)) : undefined;
+      }
+      return config.offers.find((offer) => offer.id === quantity.value && offer.modelId === model?.id);
+    }
+
+    function setSummary(field: string, value: string) {
+      const element = form!.querySelector(`[data-summary="${field}"]`);
+      if (element) element.textContent = value;
+    }
+
+    function updateSummary() {
+      const model = selectedModel();
+      const offer = selectedOffer();
+      const estimate = estimateQuantityOffer(offer);
+      const qr = qrDestinations.find(({ id }) => id === destination.value);
+      setSummary('model', model?.name ?? 'Sin elegir');
+      const count = selectedQuantity();
+      setSummary('quantity', count ? `${count} unidades${offer?.giftQuantity ? ` + ${offer.giftQuantity} de regalo` : ''}` : 'Por concretar');
+      setSummary('qr', qr?.name ?? 'Sin elegir');
+      setSummary('net', estimate.kind === 'estimated' ? money(estimate.netCents) : 'Consultar');
+      setSummary('vat', estimate.kind === 'estimated'
+        ? `${money(estimate.vatCents)} (${estimate.vatRate} %)`
+        : offer?.vatRate !== undefined ? `${offer.vatRate} % · Importe por confirmar` : 'Por confirmar');
+      setSummary('total', estimate.kind === 'estimated' ? money(estimate.totalCents) : 'Consultar');
+      if (offer) note.textContent = offer.giftQuantity
+        ? `Recibirás ${offer.quantity + offer.giftQuantity} unidades: ${offer.quantity} de compra y ${offer.giftQuantity} de regalo.`
+        : offer.discountPercent
+        ? `El precio incluye el ${offer.discountPercent} % de descuento para ${offer.quantity} unidades.`
+        : 'El precio corresponde a la cantidad seleccionada.';
+      else if (config.requestedQuantity) note.textContent = config.unitPricing
+        ? 'Precio por unidad. Indica cuántas quieres comprar para calcular el total.'
+        : 'Indica la cantidad solicitada. Las condiciones y el importe se concretan en la propuesta.';
+    }
+
+    function updateQuantities() {
+      if (!(quantity instanceof HTMLSelectElement)) return;
+      const model = selectedModel();
+      const offers = config.offers.filter((offer) => offer.modelId === model?.id);
+      quantity.replaceChildren(new Option(model ? (offers.length ? 'Elige una cantidad' : 'Cantidad por concretar') : 'Elige primero un modelo', ''));
+      offers.forEach((offer) => {
+        const discount = offer.discountPercent ? ` · ${offer.discountPercent} % de descuento` : '';
+        quantity.add(new Option(`${offer.quantity} unidades${discount}`, offer.id));
+      });
+      quantity.disabled = offers.length === 0;
+      quantity.required = offers.length > 0;
+      note.textContent = !model ? 'Elige un modelo para consultar las cantidades y sus precios.'
+        : offers.length ? 'El precio corresponde a la cantidad seleccionada.'
+        : 'Las cantidades y sus precios se concretan en la propuesta. Puedes guardar tu selección con la cantidad por definir.';
+    }
+
+    function clearFeedback() {
+      status.textContent = '';
+      error.textContent = '';
+      error.hidden = true;
+      submit.disabled = false;
+    }
+
+    form.addEventListener('input', () => {
+      clearFeedback();
+      updateSummary();
+    });
+    form.addEventListener('change', (event) => {
+      if (event.target instanceof HTMLInputElement && event.target.name === 'model') updateQuantities();
+      clearFeedback();
+      updateSummary();
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      clearFeedback();
+      if (!form.reportValidity()) return;
+      const model = selectedModel();
+      const qr = qrDestinations.find(({ id }) => id === destination.value);
+      const offer = selectedOffer();
+      const count = selectedQuantity();
+      if (!model || !qr || !count || (!config.requestedQuantity && !offer)) return;
+      const selection: RequestSelection = {
+        productId: config.productId,
+        modelId: config.models.length > 1 ? model.id : null,
+        quantity: count,
+        options: {
+          ...(offer?.giftQuantity ? { 'unidades-de-regalo': String(offer.giftQuantity) } : {}),
+          ...(offer?.discountPercent ? { 'descuento-porcentaje': String(offer.discountPercent) } : {}),
+        },
+        qrDestination: qr.id as QrDestination,
+        observations: observations.value.trim(),
+        estimate: estimateQuantityOffer(offer),
+      };
+      try {
+        if (editingId) updateRequestSelection(editingId, selection);
+        else addRequestSelection(selection);
+        status.textContent = editingId ? 'Cambios guardados en tu solicitud' : 'Añadido a tu solicitud';
+        const requestLink = document.createElement('a');
+        requestLink.href = '/tu-solicitud';
+        requestLink.textContent = ' · Ver tu solicitud →';
+        status.append(requestLink);
+        submit.disabled = true;
+      } catch {
+        error.textContent = 'No se ha podido guardar tu selección en este navegador. Conserva tus opciones e inténtalo de nuevo.';
+        error.hidden = false;
+      }
+    });
+    updateQuantities();
+    if (editingId) {
+      try {
+        const item = readRequest().find((entry) => entry.id === editingId && entry.productId === config.productId);
+        if (!item) throw new Error('No existe la selección.');
+        const radio = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="model"]')).find((input) => input.value === item.modelId);
+        if (radio) radio.checked = true;
+        updateQuantities();
+        if (quantity instanceof HTMLSelectElement) {
+          const offer = config.offers.find((entry) => entry.quantity === item.quantity && entry.modelId === selectedModel()?.id);
+          quantity.value = offer?.id ?? '';
+        } else quantity.value = String(item.quantity ?? '');
+        destination.value = item.qrDestination;
+        observations.value = item.observations;
+        submit.textContent = 'Guardar cambios';
+      } catch {
+        error.textContent = 'No se ha podido recuperar esta selección. Vuelve a Tu solicitud para revisarla.';
+        error.hidden = false;
+      }
+    }
+    updateSummary();
+    submit.disabled = false;
+  }
+</script>
