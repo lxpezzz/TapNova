@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://tapnova.es',
   trailingSlash: 'never',
+  devToolbar: { enabled: false },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

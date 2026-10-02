@@ -1,0 +1,262 @@
+---
+import {
+  House,
+  ShoppingBag,
+  PanelsTopLeft,
+  CircleQuestionMark,
+  MessageCircle,
+} from "@lucide/astro";
+import { contact } from "../../data/contact";
+
+const path = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const productsActive = path === "/productos" || path.startsWith("/productos/");
+const servicesActive = path === "/paginas-web" || path === "/seo-local";
+---
+
+<nav
+  class="mobile-sticky-cta fixed left-1/2 -translate-x-1/2 hidden max-md:grid w-[calc(100%_-_24px)] max-w-[360px] rounded-full"
+  aria-label="Accesos rápidos"
+>
+  <a
+    class="mobile-sticky-cta__access"
+    href="/"
+    aria-current={path === "/" ? "page" : undefined}
+  >
+    <House size={22} stroke-width={1.5} aria-hidden="true" />
+    <span>Inicio</span>
+  </a>
+  <a
+    class="mobile-sticky-cta__access"
+    href="/productos"
+    aria-current={productsActive ? "page" : undefined}
+  >
+    <ShoppingBag size={22} stroke-width={1.5} aria-hidden="true" />
+    <span>Productos</span>
+  </a>
+  <details
+    class="mobile-sticky-cta__services"
+    data-active={String(servicesActive)}
+  >
+    <summary
+      class="mobile-sticky-cta__access"
+      aria-controls="mobile-service-links"
+    >
+      <PanelsTopLeft size={22} stroke-width={1.5} aria-hidden="true" />
+      <span>Servicios</span>
+      {
+        servicesActive && (
+          <span class="mobile-sticky-cta__sr-only">: sección actual</span>
+        )
+      }
+    </summary>
+    <div class="mobile-sticky-cta__selector" id="mobile-service-links">
+      <a
+        href="/paginas-web"
+        aria-current={path === "/paginas-web" ? "page" : undefined}
+        >Páginas web <span aria-hidden="true">→</span></a
+      >
+      <a
+        href="/seo-local"
+        aria-current={path === "/seo-local" ? "page" : undefined}
+        >SEO Local <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </details>
+  <a
+    class="mobile-sticky-cta__access"
+    href="/preguntas-frecuentes"
+    aria-current={path === "/preguntas-frecuentes" ? "page" : undefined}
+  >
+    <CircleQuestionMark size={22} stroke-width={1.5} aria-hidden="true" />
+    <span>Preguntas</span>
+  </a>
+  <a
+    class="mobile-sticky-cta__access"
+    href={contact.whatsappHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`WhatsApp de TapNova, ${contact.phoneLabel}. Se abre en otra pestaña.`}
+  >
+    <MessageCircle size={22} stroke-width={1.5} aria-hidden="true" />
+    <span>WhatsApp</span>
+  </a>
+</nav>
+
+<style>
+  @media (max-width: 767px) {
+    :global(body) {
+      padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+    }
+
+    :global(html) {
+      scroll-padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .mobile-sticky-cta {
+      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      z-index: 60;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      padding: 4px 8px;
+      background: rgb(24 17 13 / 50%);
+      color: #c7bcb2;
+      border: 1px solid #ffffff26;
+      box-shadow: 0 8px 24px #00000029;
+      backdrop-filter: blur(8px);
+    }
+
+    .mobile-sticky-cta__access {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 56px;
+      padding: 6px 2px;
+      border-radius: 28px;
+      font-size: 9.5px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: 0.025em;
+      text-align: center;
+      cursor: pointer;
+      list-style: none;
+      transition: color 160ms;
+    }
+
+    .mobile-sticky-cta__access > span:not(.mobile-sticky-cta__sr-only) {
+      min-height: 21px;
+      display: block;
+    }
+
+    .mobile-sticky-cta__access :global(svg) {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .mobile-sticky-cta__access::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-sticky-cta__access:hover,
+    .mobile-sticky-cta__access[aria-current="page"],
+    .mobile-sticky-cta__services[data-active="true"] > summary,
+    .mobile-sticky-cta__services[open] > summary {
+      color: #faf8f5;
+      font-weight: 600;
+    }
+
+    .mobile-sticky-cta__access[aria-current="page"]::before,
+    .mobile-sticky-cta__services[data-active="true"] > summary::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #faf8f5;
+    }
+
+    .mobile-sticky-cta__services {
+      position: relative;
+      min-width: 0;
+    }
+
+    .mobile-sticky-cta__selector {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      padding: 8px;
+      border-radius: 14px;
+      color: #2e2019;
+      background: #faf8f5;
+      border: 1px solid #2e201926;
+      box-shadow: 0 8px 24px #0003;
+    }
+
+    .mobile-sticky-cta__selector a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 15px 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .mobile-sticky-cta__selector a + a {
+      border-top: 1px solid #2e201926;
+    }
+
+    .mobile-sticky-cta__selector a:hover,
+    .mobile-sticky-cta__selector a[aria-current="page"] {
+      background: #2e20190d;
+      font-weight: 500;
+    }
+
+    .mobile-sticky-cta__access:focus-visible {
+      outline: 2px solid #faf8f5;
+      outline-offset: -5px;
+    }
+
+    .mobile-sticky-cta__selector a:focus-visible {
+      outline: 2px solid #6b5e52;
+      outline-offset: -2px;
+    }
+  }
+
+  .mobile-sticky-cta__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-sticky-cta__access {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const services = document.querySelector<HTMLDetailsElement>(
+    ".mobile-sticky-cta__services",
+  );
+  const trigger = services?.querySelector("summary");
+
+  document.addEventListener("click", (event) => {
+    if (
+      event.target instanceof Node &&
+      !services?.contains(event.target) &&
+      services
+    )
+      services.open = false;
+  });
+
+  services?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && services.open) {
+      event.preventDefault();
+      event.stopPropagation();
+      services.open = false;
+      trigger?.focus();
+    }
+  });
+
+  services?.addEventListener("focusout", () => {
+    requestAnimationFrame(() => {
+      if (!services.contains(document.activeElement)) services.open = false;
+    });
+  });
+
+  window
+    .matchMedia("(min-width: 768px)")
+    .addEventListener("change", (event) => {
+      if (event.matches && services) services.open = false;
+    });
+</script>
