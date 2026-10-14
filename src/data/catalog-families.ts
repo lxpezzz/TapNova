@@ -88,7 +88,7 @@ export const catalogFamilies: ProductFamily[] = [
       personalization[2],
     ],
     galleryTitle: 'Tu carta, con tu identidad.',
-    galleryIntroduction: 'Las fotografías y ejemplos reales de portamenús se incorporarán cuando estén disponibles.',
+    galleryIntroduction: '',
     gallery: [],
     selection: { heading: 'Prepara tus portamenús.', description: 'Cuéntanos la cantidad y cómo quieres presentar tu carta.', destinationLabel: 'Destino QR solicitado' },
     closing: { title: 'La carta empieza antes de leerla.', text: 'Guarda tu selección y cuéntanos qué necesita tu mesa.', button: 'Quiero estos portamenús', href: '#configurar-portamenus' },

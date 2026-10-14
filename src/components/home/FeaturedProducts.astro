@@ -3,7 +3,7 @@ import { getImage, Image } from "astro:assets";
 import PortacuentasImage from "../../assets/products/portacuentas-lifestyle.webp";
 import ExpositoresImage from "../../assets/products/expositores-lifestyle.webp";
 import PosavasosImage from "../../assets/products/posavasos-lifestyle.webp";
-import Icon from "../ui/Icon.astro";  
+import Icon from "../ui/Icon.astro";
 
 // Mobile receives one deliberately sized source instead of a 2x candidate.
 // This matches the 371 px card width measured by Lighthouse.
@@ -88,7 +88,7 @@ const expositoresMobile = await getImage({
         <!-- Botón CTA inferior tipo cápsula oscura -->
         <div class="relative z-10 flex justify-center">
           <a
-            href="#contacto"
+            href="/productos/portacuentas"
             class="inline-flex items-center gap-2 bg-black/80 hover:bg-black text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-5 sm:px-6 py-2.5 rounded-full border border-white/15 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
           >
             <span>Ver producto</span>
@@ -138,7 +138,7 @@ const expositoresMobile = await getImage({
         <!-- Botón CTA inferior tipo cápsula oscura -->
         <div class="relative z-10 flex justify-center">
           <a
-            href="#contacto"
+            href="/productos/expositores"
             class="inline-flex items-center gap-2 bg-black/80 hover:bg-black text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.16em] uppercase px-5 sm:px-6 py-2.5 rounded-full border border-white/15 backdrop-blur-md transition-all duration-200 active:scale-[0.98] shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
           >
             <span>Ver producto</span>
@@ -159,7 +159,9 @@ const expositoresMobile = await getImage({
       class="group relative rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden flex flex-col md:justify-between md:min-h-[760px] lg:min-h-[820px] md:p-14 lg:p-16 bg-[#16120E] shadow-[0_16px_50px_rgba(46,32,25,0.12)]"
     >
       <!-- Fotografía HORECA Lifestyle Protagonista -->
-      <picture class="relative block w-full aspect-[3/2] md:absolute md:inset-0 md:h-full md:aspect-auto select-none">
+      <picture
+        class="relative block w-full aspect-[3/2] md:absolute md:inset-0 md:h-full md:aspect-auto select-none"
+      >
         <Image
           src={PosavasosImage}
           alt="Posavasos personalizados de piel y madera de roble con QR y NFC en mesa de restaurante TapNova"
@@ -185,7 +187,9 @@ const expositoresMobile = await getImage({
       </div>
 
       <!-- Cabecera del panel: Badge de Producto Destacado -->
-      <div class="absolute top-6 left-8 z-10 flex items-center justify-between sm:top-8 sm:left-12 md:relative md:top-auto md:left-auto">
+      <div
+        class="absolute top-6 left-8 z-10 flex items-center justify-between sm:top-8 sm:left-12 md:relative md:top-auto md:left-auto"
+      >
         <span
           class="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white/90 text-[10.5px] sm:text-[11.5px] font-medium tracking-[0.24em] uppercase px-4 py-1.5 rounded-full"
         >
@@ -195,7 +199,9 @@ const expositoresMobile = await getImage({
       </div>
 
       <!-- Contenido editorial protagonista en la zona inferior -->
-      <div class="relative z-10 max-w-[660px] flex flex-col items-start px-8 pt-7 pb-8 sm:px-12 sm:pt-8 sm:pb-12 md:p-0 md:pt-20">
+      <div
+        class="relative z-10 max-w-[660px] flex flex-col items-start px-8 pt-7 pb-8 sm:px-12 sm:pt-8 sm:pb-12 md:p-0 md:pt-20"
+      >
         <!-- Título principal -->
         <h2
           class="text-white font-light text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] tracking-[-0.025em] leading-[1.05] text-balance"
@@ -220,7 +226,7 @@ const expositoresMobile = await getImage({
         <!-- CTA Principal del Posavasos -->
         <div class="mt-6 sm:mt-8">
           <a
-            href="#contacto"
+            href="/productos/posavasos"
             class="inline-flex items-center gap-2.5 bg-[#FAF8F5] hover:bg-white text-[#1C1613] text-[12.5px] sm:text-[13px] font-medium tracking-[0.16em] uppercase px-7 py-3.5 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_6px_24px_rgba(0,0,0,0.35)]"
           >
             <span>Ver posavasos</span>
@@ -239,7 +245,7 @@ const expositoresMobile = await getImage({
   <!-- ========================================================================= -->
   <div class="mt-16 sm:mt-24 text-center">
     <a
-      href="#productos"
+      href="/productos"
       class="group inline-flex items-center gap-2.5 text-[#2E2019] hover:text-black text-[12.5px] sm:text-[13.5px] font-medium tracking-[0.2em] uppercase transition-colors duration-200 py-3 px-6"
     >
       <span

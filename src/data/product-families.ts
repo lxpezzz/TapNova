@@ -1,11 +1,16 @@
 import { products, type Product, type ProductImage, type ProductPrice, type ProductVariant } from './products';
-import DetailImage from '../../public/images/cta/cta-product-detail.webp';
-import InteractionImage from '../assets/qr-nfc/qr-nfc-experience.webp';
+import PosavasosMarcaImage from '../assets/products/posavasos/posavasos-marca.webp';
+import InteractionImage from '../assets/products/posavasos/experiencia-posavaso.webp';
 import { posavasosModelPrices } from './order-options';
+import PosavasosPremium from '../assets/products/posavasos/posavasos-premium.webp';
+import PosavasosMinimalista from '../assets/products/posavasos/posavasos-minimalista.webp';
+
+
 
 export interface FamilyModel extends ProductVariant {
   description: string;
   price: ProductPrice;
+  imageAspectRatio?: string;
 }
 
 export interface ProductFamily {
@@ -20,7 +25,7 @@ export interface ProductFamily {
   uses: string[];
   customization: { title: string; text: string }[];
   galleryIntroduction: string;
-  gallery: (ProductImage & { caption: string })[];
+  gallery: (ProductImage & { caption: string; imageFit?: 'cover' | 'contain' })[];
   closing: { title: string; text: string; button: string; href: string };
 }
 
@@ -28,7 +33,6 @@ const product = products.find(({ id }) => id === 'posavasos-personalizados');
 if (!product?.image) throw new Error('Faltan los datos o la imagen principal de posavasos.');
 
 // Los modelos y el configurador comparten las tarifas confirmadas.
-// Las fotografías de los modelos se añadirán cuando se identifiquen.
 export const posavasosFamily: ProductFamily = {
   product,
   price: product.price,
@@ -38,12 +42,22 @@ export const posavasosFamily: ProductFamily = {
     {
       id: 'minimalista',
       name: 'Minimalista',
+      image: {
+        src: PosavasosMinimalista,
+        alt: 'Posavasos minimalista personalizados de TapNova con código QR para reseñas y datos de contacto',
+      },
+      imageAspectRatio: '1 / 1',
       description: 'Un diseño limpio y directo, con lo esencial para que el cliente identifique y utilice el punto de contacto.',
       price: posavasosModelPrices.minimalista,
     },
     {
       id: 'premium',
       name: 'Premium',
+      image: {
+        src: PosavasosPremium,
+        alt: 'Posavasos Premium personalizados de TapNova con código QR para reseñas y datos de contacto',
+      },
+      imageAspectRatio: '1 / 1',
       description: 'Mayor personalización visual para dar más presencia a la identidad de tu negocio. El diseño y las opciones se concretan según tu pedido.',
       price: posavasosModelPrices.premium,
     },
@@ -66,7 +80,8 @@ export const posavasosFamily: ProductFamily = {
   galleryIntroduction: 'Ejemplos de presentación de posavasos. El diseño final se concreta para tu negocio.',
   gallery: [
     {
-      src: DetailImage,
+      src: PosavasosMarcaImage,
+      imageFit: 'cover',
       alt: 'Detalle de un posavasos con código QR y la marca TapNova',
       caption: 'La marca, en los detalles.',
     },

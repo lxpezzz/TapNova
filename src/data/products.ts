@@ -2,6 +2,7 @@ import type { ImageMetadata } from 'astro';
 import PosavasosImage from '../assets/products/posavasos-lifestyle.webp';
 import PortacuentasImage from '../assets/products/portacuentas-lifestyle.webp';
 import ExpositoresImage from '../assets/products/expositores-lifestyle.webp';
+import PortamenusImage from '../assets/products/portamenu/menu-tapnova.webp';
 import { posavasosModelPrices, portacuentasModelPrices, expositoresModelPrices, portamenusPrice, tarjetasQrPrice, pegatinasQrPrice } from './order-options';
 
 export type ProductPrice =
@@ -38,6 +39,7 @@ export interface Product {
   price: ProductPrice;
   image?: ProductImage;
   featured?: boolean;
+  heroImageFit?: 'cover' | 'contain';
   variants?: ProductVariant[];
 }
 
@@ -88,6 +90,11 @@ export const products: Product[] = [
     description: 'La presentación de tu carta, con la identidad de tu local.',
     categories: ['mesa'],
     price: portamenusPrice.kind === 'fixed' ? { ...portamenusPrice, kind: 'from' } : portamenusPrice,
+    heroImageFit: 'cover',
+    image: {
+      src: PortamenusImage,
+      alt: 'Portamenú personalizado de TapNova',
+    },
   },
   {
     id: 'tarjetas-qr-impresas',

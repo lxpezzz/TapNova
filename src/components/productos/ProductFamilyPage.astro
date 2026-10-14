@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import { formatProductPrice } from '../../data/products';
-import type { ProductFamily } from '../../data/product-families';
+import { Image } from "astro:assets";
+import { formatProductPrice } from "../../data/products";
+import type { ProductFamily } from "../../data/product-families";
 
 interface Props {
   family: ProductFamily;
@@ -13,7 +13,9 @@ const { product } = family;
 
 <section class="family-hero" aria-labelledby="family-heading">
   <div class="family-page__inner">
-    <a class="family-hero__back" href="/productos"><span aria-hidden="true">←</span> Todos los productos</a>
+    <a class="family-hero__back" href="/productos"
+      ><span aria-hidden="true">←</span> Todos los productos</a
+    >
     <div class="family-hero__heading">
       <div>
         <p class="family-page__eyebrow">PRODUCTOS PARA HOSTELERÍA</p>
@@ -24,75 +26,127 @@ const { product } = family;
         <p class="family-hero__price">{formatProductPrice(family.price)}</p>
       </div>
     </div>
-    {product.image ? (
-      <div class="family-hero__visual">
-        <Image
-          src={product.image.src}
-          alt={product.image.alt}
-          widths={[400, 640, 960, 1376]}
-          sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc(100vw - 128px), 1360px"
-          loading="eager"
-          fetchpriority="high"
-          quality={70}
-          class="family-page__image"
-        />
-      </div>
-    ) : (
-      <div class="family-hero__visual family-hero__visual--pending"><p>Fotografía de producto pendiente</p></div>
-    )}
+    {
+      product.image ? (
+        <div
+          class:list={['family-hero__visual', { 'family-hero__visual--compact': product.slug === 'portamenus' }]}
+          style={
+            product.heroImageFit === "contain"
+              ? {
+                  aspectRatio: `${product.image.src.width} / ${product.image.src.height}`,
+                }
+              : undefined
+          }
+        >
+          <Image
+            src={product.image.src}
+            alt={product.image.alt}
+            widths={product.slug === 'portamenus' ? [400, 640, 960, 1376, product.image.src.width] : [400, 640, 960, 1376]}
+            sizes={product.slug === 'portamenus'
+              ? '(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1327px) calc(100vw - 128px), 1200px'
+              : '(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc(100vw - 96px), (max-width: 1487px) calc(100vw - 128px), 1360px'}
+            loading="eager"
+            fetchpriority="high"
+            quality={product.slug === 'portamenus' ? 95 : 70}
+            class:list={[
+              "family-page__image",
+              {
+                "family-page__image--contain":
+                  product.heroImageFit === "contain",
+              },
+            ]}
+          />
+        </div>
+      ) : (
+        <div class="family-hero__visual family-hero__visual--pending">
+          <p>Fotografía de producto pendiente</p>
+        </div>
+      )
+    }
   </div>
 </section>
 
-{!family.singleOption && <section class="family-models family-page__section" aria-labelledby="family-models-heading">
-  <div class="family-page__inner">
-    <header class="family-page__section-heading">
-      <div>
-        <p class="family-page__eyebrow">MODELOS DISPONIBLES</p>
-        <h2 id="family-models-heading">Modelos disponibles.</h2>
+{
+  !family.singleOption && (
+    <section
+      class="family-models family-page__section"
+      aria-labelledby="family-models-heading"
+    >
+      <div class="family-page__inner">
+        <header class="family-page__section-heading">
+          <div>
+            <p class="family-page__eyebrow">MODELOS DISPONIBLES</p>
+            <h2 id="family-models-heading">Modelos disponibles.</h2>
+          </div>
+          <p class="family-page__intro">{family.modelsIntroduction}</p>
+        </header>
+        <div class="family-models__list">
+          {family.models.map((model) => (
+            <article
+              class="family-model"
+              aria-labelledby={`model-${model.id}-heading`}
+            >
+              <div
+                class:list={[
+                  "family-model__visual",
+                  { "family-model__visual--pending": !model.image },
+                ]}
+                style={
+                  model.imageAspectRatio
+                    ? { aspectRatio: model.imageAspectRatio }
+                    : undefined
+                }
+              >
+                {model.image ? (
+                  <Image
+                    src={model.image.src}
+                    alt={model.image.alt}
+                    widths={[400, 640, 960, 1200]}
+                    sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc((100vw - 128px) / 2), (max-width: 1487px) calc((100vw - 168px) / 2), 660px"
+                    loading="lazy"
+                    quality={100}
+                    class="family-page__image"
+                  />
+                ) : (
+                  <p>Imagen del modelo pendiente</p>
+                )}
+              </div>
+              <div class="family-model__heading">
+                <h3 id={`model-${model.id}-heading`}>{model.name}</h3>
+                <p class="family-model__price">
+                  {formatProductPrice(model.price)}
+                </p>
+              </div>
+              <p class="family-model__text">{model.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
-      <p class="family-page__intro">{family.modelsIntroduction}</p>
-    </header>
-    <div class="family-models__list">
-      {family.models.map((model) => (
-        <article class="family-model" aria-labelledby={`model-${model.id}-heading`}>
-          <div class:list={['family-model__visual', { 'family-model__visual--pending': !model.image }]}>
-            {model.image ? (
-              <Image
-                src={model.image.src}
-                alt={model.image.alt}
-                widths={[400, 640, 960, 1200]}
-                sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc((100vw - 128px) / 2), (max-width: 1487px) calc((100vw - 168px) / 2), 660px"
-                loading="lazy"
-                quality={70}
-                class="family-page__image"
-              />
-            ) : (
-              <p>Imagen del modelo pendiente</p>
-            )}
-          </div>
-          <div class="family-model__heading">
-            <h3 id={`model-${model.id}-heading`}>{model.name}</h3>
-            <p class="family-model__price">{formatProductPrice(model.price)}</p>
-          </div>
-          <p class="family-model__text">{model.description}</p>
-        </article>
-      ))}
-    </div>
-  </div>
-</section>}
+    </section>
+  )
+}
 
-<section class="family-uses family-page__section" aria-labelledby="family-uses-heading">
+<section
+  class="family-uses family-page__section"
+  aria-labelledby="family-uses-heading"
+>
   <div class="family-page__inner">
     <p class="family-page__eyebrow">DEL LOCAL AL MÓVIL</p>
     <h2 id="family-uses-heading">Qué puedes hacer con ellos.</h2>
     <ul class="family-uses__list" role="list">
       {family.uses.map((use) => <li>{use}</li>)}
     </ul>
-    <p class="family-uses__note">El destino del enlace se elige según lo que quieras facilitar y las herramientas que utilice tu negocio.</p>
+    <p class="family-uses__note">
+      El destino del enlace se elige según lo que quieras facilitar y las
+      herramientas que utilice tu negocio.
+    </p>
   </div>
 </section>
 
-<section class="family-customization family-page__section" aria-labelledby="family-customization-heading">
+<section
+  class="family-customization family-page__section"
+  aria-labelledby="family-customization-heading"
+>
   <div class="family-page__inner">
     <header class="family-page__section-heading">
       <div>
@@ -101,59 +155,87 @@ const { product } = family;
       </div>
     </header>
     <div class="family-customization__list">
-      {family.customization.map(({ title, text }) => (
-        <div class="family-customization__item">
-          <h3>{title}</h3>
-          <p>{text}</p>
-        </div>
-      ))}
+      {
+        family.customization.map(({ title, text }) => (
+          <div class="family-customization__item">
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
 
-<section class="family-gallery family-page__section" aria-labelledby="family-gallery-heading">
+<section
+  class="family-gallery family-page__section"
+  aria-labelledby="family-gallery-heading"
+>
   <div class="family-page__inner">
     <header class="family-page__section-heading">
       <div>
         <p class="family-page__eyebrow">DETALLE Y CONTEXTO</p>
-        <h2 id="family-gallery-heading">{family.galleryTitle ?? 'En tu mesa, con tu marca.'}</h2>
+        <h2 id="family-gallery-heading">
+          {family.galleryTitle ?? "En tu mesa, con tu marca."}
+        </h2>
       </div>
       <p class="family-page__intro">{family.galleryIntroduction}</p>
     </header>
     <div class="family-gallery__list">
-      {family.gallery.map(({ src, alt, caption }) => (
-        <figure>
-          <div class="family-gallery__visual">
-            <Image
-              src={src}
-              alt={alt}
-              widths={[400, 640, 960, 1200]}
-              sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc((100vw - 128px) / 2), (max-width: 1487px) calc((100vw - 168px) / 2), 660px"
-              loading="lazy"
-              quality={70}
-              class="family-page__image"
-            />
-          </div>
-          <figcaption>{caption}</figcaption>
-        </figure>
-      ))}
-      {family.gallery.length === 0 && (product.image ? (
-        <figure>
-          <div class="family-gallery__visual">
-            <Image src={product.image.src} alt={product.image.alt} widths={[400, 640, 960, 1200]} sizes="(max-width: 767px) calc(100vw - 40px), 660px" loading="lazy" quality={70} class="family-page__image" />
-          </div>
-          <figcaption>Referencia de producto en contexto.</figcaption>
-        </figure>
-      ) : (
-        <div class="family-model__visual--pending"><p>Galería de producto pendiente</p></div>
-      ))}
+      {
+        family.gallery.map(({ src, alt, caption, imageFit }) => (
+          <figure>
+            <div class="family-gallery__visual">
+              <Image
+                src={src}
+                alt={alt}
+                widths={[400, 640, 960, 1200]}
+                sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 767px) calc(100vw - 64px), (max-width: 1023px) calc((100vw - 128px) / 2), (max-width: 1487px) calc((100vw - 168px) / 2), 660px"
+                loading="lazy"
+                quality={100}
+                class:list={[
+                  "family-page__image",
+                  { "family-page__image--contain": imageFit === "contain" },
+                ]}
+              />
+            </div>
+            <figcaption>{caption}</figcaption>
+          </figure>
+        ))
+      }
+      {
+        family.gallery.length === 0 &&
+          (product.image ? (
+            <figure>
+              <div class="family-gallery__visual">
+                <Image
+                  src={product.image.src}
+                  alt={product.image.alt}
+                  widths={[400, 640, 960, 1200]}
+                  sizes="(max-width: 767px) calc(100vw - 40px), 660px"
+                  loading="lazy"
+                  quality={70}
+                  class="family-page__image"
+                />
+              </div>
+              <figcaption>Referencia de producto en contexto.</figcaption>
+            </figure>
+          ) : (
+            <div class="family-model__visual--pending">
+              <p>Galería de producto pendiente</p>
+            </div>
+          ))
+      }
     </div>
   </div>
 </section>
 
 <slot name="selection" />
 
-<section class="family-closing family-page__section" aria-labelledby="family-closing-heading">
+<section
+  class="family-closing family-page__section"
+  aria-labelledby="family-closing-heading"
+>
   <div class="family-page__inner family-closing__inner">
     <div>
       <p class="family-page__eyebrow">HABLEMOS DE TU LOCAL</p>
@@ -161,7 +243,9 @@ const { product } = family;
     </div>
     <div class="family-closing__copy">
       <p>{family.closing.text}</p>
-      <a href={family.closing.href} class="family-closing__button">{family.closing.button}<span aria-hidden="true">→</span></a>
+      <a href={family.closing.href} class="family-closing__button"
+        >{family.closing.button}<span aria-hidden="true">→</span></a
+      >
     </div>
   </div>
 </section>
@@ -216,6 +300,10 @@ const { product } = family;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .family-page__image--contain {
+    object-fit: contain;
   }
 
   .family-hero {
@@ -369,7 +457,7 @@ const { product } = family;
   }
 
   .family-uses__list li:not(:last-child)::after {
-    content: '·';
+    content: "·";
     margin-inline: 12px;
     color: #6b5e52;
   }
@@ -493,8 +581,15 @@ const { product } = family;
     }
 
     .family-hero__visual {
-      aspect-ratio: 2.4;
+      aspect-ratio: 2;
       border-radius: 32px;
+    }
+
+    .family-hero__visual--compact {
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 2.4 / 1;
+      margin-inline: auto;
     }
 
     .family-models__list,
