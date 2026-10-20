@@ -24,7 +24,7 @@ if (!Astro.site) {
 }
 
 // Cada página conserva su ruta; los parámetros y fragmentos no forman parte de la canonical.
-const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonicalPath = `${Astro.url.pathname.replace(/\/+$/, '')}/`;
 const canonical = new URL(canonicalPath, Astro.site).href;
 const socialImageUrl = new URL(socialImage.src, Astro.site).href;
 ---

@@ -57,7 +57,7 @@ import { products } from '../../data/products';
           <ul class="flex flex-col gap-1 sm:gap-1.5">
             {products.map((product) => <li>
               <a
-                href={`/productos/${product.slug}`}
+                href={`/productos/${product.slug}/`}
                 class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
               >
                 {product.name}
@@ -65,7 +65,7 @@ import { products } from '../../data/products';
             </li>)}
             <li>
               <a
-                href="/productos"
+                href="/productos/"
                 class="text-[#E0D7CC]/90 hover:text-white transition-colors duration-150 py-0.5 inline-block underline underline-offset-4 decoration-white/20 hover:decoration-white"
               >
                 Ver todos los productos
@@ -87,7 +87,7 @@ import { products } from '../../data/products';
             <ul class="flex flex-col gap-1 sm:gap-1.5">
               <li>
                 <a
-                  href="/seo-local"
+                  href="/seo-local/"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   SEO Local
@@ -95,7 +95,7 @@ import { products } from '../../data/products';
               </li>
               <li>
                 <a
-                  href="/paginas-web"
+                  href="/paginas-web/"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Páginas Web
@@ -122,7 +122,7 @@ import { products } from '../../data/products';
               </li>
               <li>
                 <a
-                  href="/quienes-somos"
+                  href="/quienes-somos/"
                   class="text-[#E0D7CC]/85 hover:text-white transition-colors duration-150 py-0.5 inline-block"
                 >
                   Quienes somos

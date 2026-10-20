@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import ContactImage from '../../../public/images/cta/contact-background.webp';
+
 // FinalCTA.astro - TapNova
 // CTA final de la home con formulario de contacto integrado en la misma escena fotográfica
 // - Fondo fotográfico a sangre (restaurante premium nocturno con posavasos y portacuentas)
@@ -19,10 +22,10 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS
   <!-- 1. FOTOGRAFÍA FULL-WIDTH DE FONDO (ESCENA NOCTURNA HORECA) -->
   <!-- ========================================================================= -->
   <picture class="absolute inset-0 w-full h-full select-none pointer-events-none">
-    <source srcset="/images/cta/contact-background.webp" type="image/webp" />
-    <source srcset="/images/cta/final-cta-background.webp" type="image/webp" />
-    <img
-      src="/images/cta/contact-background.webp"
+    <Image
+      src={ContactImage}
+      widths={[480, 800, 1200, 1376]}
+      sizes="(max-width: 1023px) 1376px, 100vw"
       alt="Ambiente nocturno de restaurante premium con posavasos artesanal y portacuentas de cuero TapNova"
       loading="lazy"
       decoding="async"

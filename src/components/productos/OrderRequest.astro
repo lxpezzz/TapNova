@@ -24,13 +24,13 @@ const canSend = Boolean(accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE');
     <div class="order-request__empty" hidden>
       <h2>Todo empieza con un producto.</h2>
       <p>Aún no has añadido productos a tu solicitud.</p>
-      <a class="order-request__button" href="/productos">Descubrir productos →</a>
+      <a class="order-request__button" href="/productos/">Descubrir productos →</a>
     </div>
     <div class="order-request__content" hidden>
       <div>
         <div class="order-request__list" aria-label="Productos de tu solicitud"></div>
         {!final && <div class="order-request__tools">
-          <a href="/productos">Seguir viendo productos →</a>
+          <a href="/productos/">Seguir viendo productos →</a>
           <button type="button" data-clear>Vaciar solicitud</button>
           <div data-clear-confirm hidden>
             <p>¿Quieres eliminar todos los productos de tu solicitud?</p>
@@ -38,7 +38,7 @@ const canSend = Boolean(accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE');
             <button type="button" data-cancel-clear>Conservar productos</button>
           </div>
         </div>}
-        {final && <a class="order-request__back" href="/tu-solicitud">← Editar mi solicitud</a>}
+        {final && <a class="order-request__back" href="/tu-solicitud/">← Editar mi solicitud</a>}
       </div>
       <aside class="order-request__summary">
         <h2>{final ? 'El siguiente contacto.' : 'Tu selección, en conjunto.'}</h2>
@@ -48,7 +48,7 @@ const canSend = Boolean(accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE');
           <div class="order-request__total"><dt>Total estimado</dt><dd data-total="total"></dd></div>
         </dl>
         <p class="order-request__quote" hidden>Hay productos con importe por confirmar. Los totales incluyen únicamente los productos con precio definido; el resto se presupuestará aparte.</p>
-        {!final && <a class="order-request__button" href="/tu-solicitud/enviar">Continuar solicitud →</a>}
+        {!final && <a class="order-request__button" href="/tu-solicitud/enviar/">Continuar solicitud →</a>}
         {final && <form class="order-request__form" data-can-send={String(canSend)}>
           <input type="hidden" name="access_key" value={canSend ? accessKey : ''} />
           <input type="hidden" name="subject" value="Nueva solicitud de productos · TapNova" />
@@ -405,7 +405,7 @@ const canSend = Boolean(accessKey && accessKey !== 'YOUR_ACCESS_KEY_HERE');
             actions.className = 'order-request__item-actions';
             if (product) {
               const edit = document.createElement('a');
-              edit.href = `/productos/${product.slug}?editar=${encodeURIComponent(item.id)}#configurar-${product.slug}`;
+              edit.href = `/productos/${product.slug}/?editar=${encodeURIComponent(item.id)}#configurar-${product.slug}`;
               edit.textContent = 'Editar configuración →';
               edit.setAttribute('aria-label', `Editar ${product.name}`);
               actions.append(edit);

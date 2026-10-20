@@ -8,17 +8,17 @@ const { mobile = false } = Astro.props;
   <details class="product-navigation product-navigation--mobile">
     <summary>Productos</summary>
     <div class="product-navigation__links">
-      <a href="/productos">Todos los productos</a>
-      {products.map((product) => <a href={`/productos/${product.slug}`}>{product.name}</a>)}
+      <a href="/productos/">Todos los productos</a>
+      {products.map((product) => <a href={`/productos/${product.slug}/`}>{product.name}</a>)}
     </div>
   </details>
 ) : (
   <div class="product-navigation" data-product-navigation>
-    <a href="/productos" class="product-navigation__trigger" aria-controls="desktop-products" aria-expanded="false">Productos</a>
+    <a href="/productos/" class="product-navigation__trigger" aria-controls="desktop-products" aria-expanded="false">Productos</a>
     <div class="product-navigation__bridge">
       <div id="desktop-products" class="product-navigation__links">
-        <a href="/productos">Todos los productos</a>
-        {products.map((product) => <a href={`/productos/${product.slug}`}>{product.name}</a>)}
+        <a href="/productos/">Todos los productos</a>
+        {products.map((product) => <a href={`/productos/${product.slug}/`}>{product.name}</a>)}
       </div>
     </div>
   </div>

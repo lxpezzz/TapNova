@@ -1,4 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import SeoImage from '../../../public/images/services/seo-local.webp';
+import WebImage from '../../../public/images/services/web-horeca.webp';
+
+// object-cover necesita resolución para cubrir también la altura de los paneles.
+const panelImageSizes = '(max-width: 639px) max(calc(100vw - 40px), 700px), (max-width: 767px) max(calc(100vw - 64px), 780px), (max-width: 1023px) max(calc(100vw - 96px), 860px), 860px';
+
 // DigitalServices.astro - TapNova
 // Sección de servicios digitales inmediatamente posterior a la sección QR + NFC
 // Presenta los 2 servicios digitales: SEO Local y Páginas Web HORECA
@@ -49,9 +56,10 @@
     >
       <!-- Fotografía HORECA a sangre -->
       <picture class="absolute inset-0 w-full h-full select-none">
-        <source srcset="/images/services/seo-local.webp" type="image/webp" />
-        <img 
-          src="/images/services/seo-local.webp" 
+        <Image
+          src={SeoImage}
+          widths={[400, 640, 800, 1200]}
+          sizes={panelImageSizes}
           alt="Búsqueda local y perfil de restaurante en terraza europea con clientes" 
           loading="lazy" 
           decoding="async" 
@@ -85,7 +93,7 @@
 
         <!-- CTA discreto -->
         <a 
-          href="/seo-local" 
+          href="/seo-local/"
           class="inline-flex items-center gap-2.5 bg-white/95 hover:bg-white text-[#1C1613] text-[12px] sm:text-[12.5px] font-medium tracking-[0.16em] uppercase px-6 sm:px-7 py-3 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
         >
           <span>Descubrir SEO Local</span>
@@ -105,9 +113,10 @@
     >
       <!-- Fotografía HORECA a sangre -->
       <picture class="absolute inset-0 w-full h-full select-none">
-        <source srcset="/images/services/web-horeca.webp" type="image/webp" />
-        <img 
-          src="/images/services/web-horeca.webp" 
+        <Image
+          src={WebImage}
+          widths={[400, 640, 800, 1200]}
+          sizes={panelImageSizes}
           alt="Página web gastronómica mostrada en smartphone sobre mesa de restaurante con café" 
           loading="lazy" 
           decoding="async" 
@@ -141,7 +150,7 @@
 
         <!-- CTA discreto -->
         <a 
-          href="/paginas-web"
+          href="/paginas-web/"
           class="inline-flex items-center gap-2.5 bg-white/95 hover:bg-white text-[#1C1613] text-[12px] sm:text-[12.5px] font-medium tracking-[0.16em] uppercase px-6 sm:px-7 py-3 rounded-full transition-all duration-200 active:scale-[0.98] shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
         >
           <span>Consultar sobre mi web</span>

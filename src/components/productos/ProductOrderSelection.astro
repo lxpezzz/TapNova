@@ -510,7 +510,7 @@ const config = {
         else addRequestSelection(selection);
         status.textContent = editingId ? 'Cambios guardados en tu solicitud' : 'Añadido a tu solicitud';
         const requestLink = document.createElement('a');
-        requestLink.href = '/tu-solicitud';
+        requestLink.href = '/tu-solicitud/';
         requestLink.textContent = ' · Ver tu solicitud →';
         status.append(requestLink);
         submit.disabled = true;
